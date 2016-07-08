@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 #    Odoo, Open Source Management Solution
-#    Copyright (C) 2014 - hiro TAKADA. All Rights Reserved
-#    @author hiro TAKADA <hiro@thdo.biz>
+#    @author ichiki
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -25,7 +24,7 @@
 * Adds Cutoff Date field in Payment Term
 * Handles month-end date designation for both Cutoff Date and Due Date
     """,
-    'author': 'hiro TAKADA, Rooms For (Hong Kong) Limited T/A OSCG',
+    'author': 'TOYOKIKI',
     'license': 'AGPL-3',
     'depends': ["account"], 
     'data': [
