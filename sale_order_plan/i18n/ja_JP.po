@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_order_plan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-17 03:43+0000\n"
+"PO-Revision-Date: 2016-04-17 03:43+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_plan
+#: field:sale.order,assistant_id:0
+msgid "Assistant"
+msgstr "アシスタント"
+
+#. module: sale_order_plan
+#: field:sale.order,plan_id:0
+msgid "Plan Name"
+msgstr "プラン名"
+
+#. module: sale_order_plan
+#: field:sale.order,complete_date:0
+msgid "Complete Date"
+msgstr "竣工日"
+
