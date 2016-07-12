@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo 9.0\n"
+"Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-17 03:43+0000\n"
-"PO-Revision-Date: 2016-04-17 03:43+0000\n"
+"POT-Creation-Date: 2016-07-12 06:33+0000\n"
+"PO-Revision-Date: 2016-07-12 06:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,17 +16,125 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: sale_order_plan
+#: model:ir.ui.view,arch_db:sale_order_plan.view_order_form_plan
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='date_order']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">0</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"before\">\n"
+"                    <field name=\"plan_id\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"after\">\n"
+"                    <field name=\"complete_date\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='user_id']\" position=\"after\">\n"
+"                    <field name=\"assistant_id\"/>\n"
+"                </xpath>\n"
+"\n"
+"                <xpath expr=\"//field[@name='order_line']/tree/field[@name='tax_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='order_line']/tree/field[@name='discount']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"            </data>"
+msgstr "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='date_order']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">0</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"before\">\n"
+"                    <field name=\"plan_id\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"after\">\n"
+"                    <field name=\"complete_date\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='user_id']\" position=\"after\">\n"
+"                    <field name=\"assistant_id\"/>\n"
+"                </xpath>\n"
+"\n"
+"                <xpath expr=\"//field[@name='order_line']/tree/field[@name='tax_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='order_line']/tree/field[@name='discount']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"            </data>"
+
+#. module: sale_order_plan
+#: model:ir.ui.view,arch_db:sale_order_plan.view_quotation_tree_plan
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                     <field name=\"project_id\"/>\n"
+"                 </xpath>\n"
+"                 <xpath expr=\"//field[@name='date_order']\" position=\"before\">\n"
+"                     <field name=\"plan_id\"/>\n"
+"                 </xpath>\n"
+"                 <xpath expr=\"//field[@name='partner_id']\" position=\"attributes\">\n"
+"                     <attribute name=\"invisible\">1</attribute>\n"
+"                 </xpath>\n"
+"                 <xpath expr=\"//field[@name='date_order']\" position=\"after\">\n"
+"                     <field name=\"complete_date\"/>\n"
+" 		</xpath>\n"
+"                 <xpath expr=\"//field[@name='user_id']\" position=\"after\">\n"
+"                     <field name=\"assistant_id\"/>\n"
+"                 </xpath>\n"
+" 		<xpath expr=\"//field[@name='state']\" position=\"before\">\n"
+" 		    <field name=\"amount_untaxed\"/>\n"
+" 		</xpath>\n"
+" 		<xpath expr=\"//field[@name='amount_total']\" position=\"attributes\">\n"
+" 		    <attribute name=\"invisible\">1</attribute>\n"
+"                 </xpath>\n"
+"             </data>"
+msgstr "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                     <field name=\"project_id\"/>\n"
+"                 </xpath>\n"
+"                 <xpath expr=\"//field[@name='date_order']\" position=\"before\">\n"
+"                     <field name=\"plan_id\"/>\n"
+"                 </xpath>\n"
+"                 <xpath expr=\"//field[@name='partner_id']\" position=\"attributes\">\n"
+"                     <attribute name=\"invisible\">1</attribute>\n"
+"                 </xpath>\n"
+"                 <xpath expr=\"//field[@name='date_order']\" position=\"after\">\n"
+"                     <field name=\"complete_date\"/>\n"
+" 		</xpath>\n"
+"                 <xpath expr=\"//field[@name='user_id']\" position=\"after\">\n"
+"                     <field name=\"assistant_id\"/>\n"
+"                 </xpath>\n"
+" 		<xpath expr=\"//field[@name='state']\" position=\"before\">\n"
+" 		    <field name=\"amount_untaxed\"/>\n"
+" 		</xpath>\n"
+" 		<xpath expr=\"//field[@name='amount_total']\" position=\"attributes\">\n"
+" 		    <attribute name=\"invisible\">1</attribute>\n"
+"                 </xpath>\n"
+"             </data>"
+
+#. module: sale_order_plan
+#: model:ir.model.fields,field_description:sale_order_plan.field_sale_order_assistant_id
 #: field:sale.order,assistant_id:0
 msgid "Assistant"
 msgstr "アシスタント"
 
 #. module: sale_order_plan
+#: model:ir.model.fields,field_description:sale_order_plan.field_sale_order_complete_date
+#: field:sale.order,complete_date:0
+msgid "Complete Date"
+msgstr "竣工日"
+
+#. module: sale_order_plan
+#: model:ir.model.fields,field_description:sale_order_plan.field_sale_order_plan_id
 #: field:sale.order,plan_id:0
 msgid "Plan Name"
 msgstr "プラン名"
 
 #. module: sale_order_plan
-#: field:sale.order,complete_date:0
-msgid "Complete Date"
-msgstr "竣工日"
+#: model:ir.model.fields,help:sale_order_plan.field_sale_order_plan_id
+#: help:sale.order,plan_id:0
+msgid "Plan Name for Quotation"
+msgstr "Plan Name for Quotation"
+
+#. module: sale_order_plan
+#: model:ir.model,name:sale_order_plan.model_sale_order
+msgid "Sales Order"
+msgstr "受注"
 
