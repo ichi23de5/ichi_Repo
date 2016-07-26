@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #    Odoo, Open Source Management Solution
-#    Copyright (C) 2016 Rooms For (Hong Kong) Limited T/A OSCG
-#    <https://www.odoo-asia.com>
+#    Copyright (C) 2016 TOKI
+#    <https://www.toyo-kiki.co.jp>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
