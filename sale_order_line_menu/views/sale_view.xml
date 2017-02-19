@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<openerp>
+    <data>
+        <record id="view_order_line_tree_unit" model="ir.ui.view">
+            <field name="name">sale.order.line.tree.unit</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_order_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="price_unit"/>
+                </xpath>
+            </field>
+        </record>
+<!--
+        <record id="view_sales_order_line_filter_partner" model="ir.ui.view">
+            <field name="name">sale.order.line.select.partner</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_sales_order_line_filter"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//filter[@string='My Sales Order Lines']" position="after">
+                    <filter string="Not Draft" name="not_draft" domain="[('state','&lt;&gt;','draft')]"/>
+                </xpath>
+
+                <xpath expr="//group[@string='Group By']/filter[@string='Product']" position="after">
+                    <filter string="Partner" domain="[]" context="{'group_by':'order_partner_id'}"/>
+                </xpath>
+
+            </field>
+        </record>
+-->
+<!--
+        <menuitem id="menu_sale_order_line" action="action_order_line_tree_unit"  parent="base.menu_sales" sequence="14"/>
+-->
+
+        <record id="action_order_line_tree_unit" model="ir.actions.act_window">
+            <field name="name">Sales Order Lines Title</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_order_line_tree_unit"/>
+<!--   
+            <field name="search_view_id" ref="view_sales_order_line_filter_partner"/>
+-->
+            <field name="context">{'search_default_not_draft':1}</field>
+        </record>
+
+        <menuitem id="menu_sale_order_line" action="action_order_line_tree_unit"  parent="base.menu_sales" sequence="14"/>
+    
+      </data> 
+</openerp>
