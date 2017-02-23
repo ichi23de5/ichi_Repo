@@ -28,6 +28,7 @@
     "installable": True,
     "depends": [
         "sale",
+        "base",
     ],
     "data": [
         

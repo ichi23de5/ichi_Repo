@@ -2,7 +2,7 @@
 
 
 {
-	"name": "Sale Hayashi",
+	"name": " Check Add Fields",
 	"summary": "check add field in sale module",
 	"version": "9.0.0.1.1",
 	"category": "Sales",

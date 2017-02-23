@@ -12,13 +12,24 @@
                 <xpath expr="//field[@name='validity_date']" position="before">
                     <field name="plan_id"/>
                 </xpath>
+
                 <xpath expr="//field[@name='validity_date']" position="after">
                     <field name="complete_date"/>
+                </xpath>
+<!--
+                  <field name="complete2_date"/>
+
+                    <field name="sim_id"/>
+
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="after">
                     <field name="assistant_id"/>
                 </xpath>
 
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="sim_number"/>
+                </xpath>
+-->
                 <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>

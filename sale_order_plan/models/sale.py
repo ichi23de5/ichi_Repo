@@ -24,6 +24,7 @@ class SaleOrder(models.Model):
     plan_id = fields.Char(string='Plan Name',copy=True, help="Plan Name for Quotation")
     complete_date = fields.Date('Complete Date')
     assistant_id = fields.Many2one('res.users', string='Assistant')
-
+    sim_id = fields.Char(string='Sim')
+    complete2_date = fields.Date('Complete Date')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
