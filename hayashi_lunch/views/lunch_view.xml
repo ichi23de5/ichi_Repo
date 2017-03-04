@@ -1,0 +1,63 @@
+<openerp>
+    <data>
+	<!--Gets triggered by the record with id 'buttons_example_action'. Which in turn is triggered on click. -->
+	<record model="ir.ui.view" id="view_lunch_form">
+	    <field name="name">Lunch</field>
+	    <field name="model">hayashi.lunch.list</field>
+	    <field name="type">form</field>
+	    <field name="arch" type="xml">
+	        <form string="Hayashi Lunch">
+		    <!--The header tag is built to add buttons within. This puts them at the top -->
+		    <header>
+		        <button string="Function A" type="object" name="function_a" class="oe_highlight"/>
+			<button string="Function B" type="object" name="function_b"/>
+			<button string="Function C" type="object" name="function_c"/>
+		    </header>
+
+		    <group>
+                        <group>
+                            <field name="date_report"/>
+                            <field name="mainmenu_id"/>
+                            <field name="companion_id"/>
+                            <field name="test2"/>
+                            <field name="test"/>
+                        </group>
+                       <group>
+                            <field name="price_menu"/>
+                            <field name="opinion_type"/>
+                            <field name="gourmet_report"/>
+                        </group>
+<!--
+                       <group>
+                            <field name="image_main" widget="image"/>
+                            <field name="date_report"/>
+                            <field name="mainmenu_id"/>
+                            <field name="companion_id"/>
+                            <field name="price_menu"/>
+                            <field name="opinion_type"/>
+                            <field name="gourmet_report"/>
+                        </group>
+-->
+                    </group>
+		</form>
+	    </field>
+	</record>
+
+	<!--The action -->
+        <record model="ir.actions.act_window" id="buttons_example_action">
+            <field name="name">Create new Tabelog</field>
+            <field name="res_model">hayashi.lunch.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='view_lunch_form'/>
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_button_menu" name="Lunch Hayashi demo"/>
+        <menuitem id="button_menu" name="Lunch report"
+                  parent="main_button_menu"/>
+        <menuitem id="menu_detail_logging"
+                action="buttons_example_action" parent="button_menu"
+                sequence="20"/>
+    </data>
+</openerp>
