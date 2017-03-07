@@ -12,7 +12,11 @@
 		        <button string="Function A" type="object" name="function_a" class="oe_highlight"/>
 			<button string="Function B" type="object" name="function_b"/>
 			<button string="Function C" type="object" name="function_c"/>
-		    </header>
+                        <field name="state" widget="statusbar" statusbar_visible="hunger,normal,full,locked" statusbar_colors='{"hunger":"red","normal":"blue"}'/>
+		     <!--
+                        <field name="relation_id"/>
+                     -->
+                    </header>
 
 		    <group>
                         <group>
@@ -21,6 +25,9 @@
                             <field name="companion_id"/>
                             <field name="test2"/>
                             <field name="test"/>
+                            <field name="relation_id"/>
+                            <field name="relation2_id"/>
+                            <field name="relation3_id"/>
                         </group>
                        <group>
                             <field name="price_menu"/>
@@ -53,7 +60,7 @@
         </record>
 
         <!-- top level menu: no parent -->
-        <menuitem id="main_button_menu" name="Lunch Hayashi demo"/>
+        <menuitem id="main_button_menu" name="Lunch Hayashi demo" sequence="0"/>
         <menuitem id="button_menu" name="Lunch report"
                   parent="main_button_menu"/>
         <menuitem id="menu_detail_logging"

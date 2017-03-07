@@ -25,7 +25,20 @@ class HayashiLunch(models.Model):
         default='average') 
     test = fields.Char(string='Oyatsu', default='I wonder if I meet some nice tea.')
     test2 = fields.Boolean(string='Have a teatime?')
-    calorie = fields.Integer(string="Calirie", compute="_compute_calorie")
+    relation_id = fields.Many2one('res.partner',string='Ralated Field M2O')
+    relation2_id = fields.One2many('res.partner','id',string='Ralated Field O2M')
+    relation3_id = fields.One2many('res.partner','display_name',string='Ralated Field O2M.name')
+
+
+####This field is for StatusBar #####
+####Need some code to xml <field name ="state" widget="statusbar"###### 
+    state = fields.Selection([
+        ('hunger', 'Im hungry'),
+        ('normal', 'I dont want to eat'),
+        ('full', 'Im full'),
+        ('locked', 'I can take anymore!'),
+        ], string='Status', readonly=True, default='hunger')
+#    calorie = fields.Integer(string="Calirie", compute="_compute_calorie")
 ##### Using if else state ######
 #    @api.onchange('test2') 
 #    def _test_change(self):
@@ -136,9 +149,9 @@ class HayashiLunch(models.Model):
         self.write({'test':'Can you see?'})
         return
 
-    @api.depends()
-    def _compute_calorie(self):
-        pass
+#    @api.depends()
+#    def _compute_calorie(self):
+#        pass
 
 
 
