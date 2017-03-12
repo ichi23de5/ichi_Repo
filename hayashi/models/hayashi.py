@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
 from openerp import models, fields, api
 from datetime import datetime, timedelta
-# Non-odoo library
-# import random
-# from random import randint
-# import string
 
 
-class HayashiLunch(models.Model):
+class Hayashi(models.Model):
     _name = 'hayashi'
     _order = 'date_report desc'
 
@@ -33,7 +29,7 @@ class HayashiLunch(models.Model):
     relation6_id = fields.Many2one('product.product',string='Ralated Product')
 #    relation7_id = fields.Many2one('res.partner',string='Ralated Field M2O')
     relation8_id = fields.Many2one('purchase.order',string='Ralated PurchaseOrder')
-
+    partner_id = fields.Many2one('res.partner',string='Partner')
 
 
 

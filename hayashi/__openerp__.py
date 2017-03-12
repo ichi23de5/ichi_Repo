@@ -3,7 +3,7 @@
 
 
 {
-        "name": "Hayashi no Tabelog",
+        "name": "Tabelog with Report",
         "summary": "mainichi tabelog kakuyo",
         "version": "9.0.0.1.1",
         "category": "Uncategorized",
@@ -12,9 +12,12 @@
         "license": "AGPL-3",
 #        "application": False,
         "installable": True,
-        "depends": ["base","sale","purchase","product",
+        "depends": ["base","sale","purchase","product","report",
         ],
         "data": [
                 "views/lunch_view.xml",
+                "views/hayashi.tabe_report.xml",
+                "views/tabe_report.xml",
+
         ],
 }
