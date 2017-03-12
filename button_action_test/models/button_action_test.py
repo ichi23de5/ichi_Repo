@@ -7,13 +7,13 @@ from datetime import datetime, timedelta
 # import string
 
 class daily_report_demo(models.Model):
-    _name = 'daily.report'
+    _name = 'dailyreport'
     _order = 'date_report desc'
 
     name = fields.Char(string='Property Place' , required=True , default='Note a property place name!')
     daily_report = fields.Text(string='Report Note' , required=True , store=True)
     date_report = fields.Datetime(string='Report Date', required=True, readonly=True, index=True,  copy=False, default=fields.Datetime.now)
-
+    partner_id = fields.Many2one('res.partner',string='Partner')
 
     @api.multi
     def function_a(self):

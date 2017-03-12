@@ -17,10 +17,12 @@
     
     'category': 'Uncategorized',
     'version': '0.1',
-    'depends': ['base'],
+    'depends': ['base','report'],
     'data': [
         
-        'views/button_view.xml',
+        'views/dailyreport.xml',
+        'views/report_name.xml',
+        'views/dailyreport.report_name.xml',
     ],
     
     'demo': [
