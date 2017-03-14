@@ -57,6 +57,30 @@
             </field> 
         </record> 
 
+        <!-- base structure of sim_type form view -->
+        <record model="ir.ui.view" id="sim_type_view_form">
+            <field name="name">sim.type.view.form</field>
+            <field name="model">sim</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="SIM Type">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="size_code"/>
+                                <field name="deta_code"/>
+                            </group>
+                            <group>
+                                <field name="date_sim"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
 
 
 	<!--The action -->
@@ -67,6 +91,9 @@
             <field name="view_mode">form,tree</field>
             <field name='view_id' ref='sim_view_form'/>
         </record>
+        
+
+
 
         <!-- top level menu: no parent -->
         <menuitem id="main_button_menu" name="SIM" sequence="0"/>
