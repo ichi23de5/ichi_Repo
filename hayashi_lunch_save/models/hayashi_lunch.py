@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 
 class HayashiLunch(models.Model):
-    _name = 'hayashi.lunch.list'
+    _name = 'hayashi'
     _order = 'date_report desc'
 
     mainmenu_id = fields.Char('menu', required=True, placeholder='title')
@@ -27,7 +27,14 @@ class HayashiLunch(models.Model):
     test2 = fields.Boolean(string='Have a teatime?')
     relation_id = fields.Many2one('res.partner',string='Ralated Field M2O')
     relation2_id = fields.One2many('res.partner','id',string='Ralated Field O2M')
-    relation3_id = fields.One2many('res.partner','display_name',string='Ralated Field O2M.name')
+    relation3_id = fields.Many2one('res.users',string='Ralated Users')
+    relation4_id = fields.Many2one('sale.order',string='Ralated SaleOrder')
+#    relation5_id = fields.Many2one('res.partner',string='Ralated Field M2O')
+    relation6_id = fields.Many2one('product.product',string='Ralated Product')
+#    relation7_id = fields.Many2one('res.partner',string='Ralated Field M2O')
+    relation8_id = fields.Many2one('purchase.order',string='Ralated PurchaseOrder')
+
+
 
 
 ####This field is for StatusBar #####
@@ -166,4 +173,3 @@ class HayashiLunch(models.Model):
 #        if not self.product_uom or (self.product_id.uom_id.id != self.product_uom.id): 
 #            vals['product_uom'] = self.product_id.uom_id 
 #            vals['product_uom_qty'] = 1.0 
-

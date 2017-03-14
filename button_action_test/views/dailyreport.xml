@@ -3,7 +3,7 @@
 	<!--Gets triggered by the record with id 'buttons_example_action'. Which in turn is triggered on click. -->
 	<record model="ir.ui.view" id="view_report_form">
 	    <field name="name">Reports</field>
-	    <field name="model">daily.report</field>
+	    <field name="model">dailyreport</field>
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="Sales Term Daily Report">
@@ -24,10 +24,27 @@
 	    </field>
 	</record>
 
+<!-- Tree_view-->
+        <record id="view_report_tree" model="ir.ui.view">
+            <field name="name">dailyreport.report.tree</field>
+            <field name="model">dailyreport</field>
+            <field name="arch" type="xml">
+                <!--2. Set your String here. And Put fields.-->
+                <tree string="Daily Reports" toolbar="1" >
+                    <field name="date_report"/>
+                    <field name="name"/>
+                    <field name="daily_report"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+
 	<!--The action -->
         <record model="ir.actions.act_window" id="buttons_example_action">
             <field name="name">Create new report</field>
-            <field name="res_model">daily.report</field>
+            <field name="res_model">dailyreport</field>
             <field name="view_type">form</field>
             <field name="view_mode">form,tree</field>
             <field name='view_id' ref='view_report_form'/>
