@@ -1,0 +1,135 @@
+<openerp>
+    <data>
+
+	<!-- base structure of sim form view -->
+	<record model="ir.ui.view" id="sim_view_form">
+	    <field name="name">sim.view.form</field>
+	    <field name="model">sim</field>
+	    <field name="type">form</field>
+	    <field name="arch" type="xml">
+	        <form string="SIM">
+		    <!--The header tag is built to add buttons within. This puts them at the top -->
+		    <header>
+			<!--The oe_highlight class gives the button a red color when it is saved.
+			It is usually used to indicate the expected behaviour. -->
+		        <button string="Applicate" type="object" name="applicate_sim" class="oe_highlight"/>
+			<button string="Arrival" type="object" name="arrival_sim"/>
+		    </header>
+                    <sheet>
+		        <div class="oe_title">
+                            <label class="oe_edit_only" for="sim_number" string="SIM number"/>
+                            <h1><field name="sim_id"/></h1>
+                        </div>
+                        <group>
+                            <group>
+		    	        <field name="date_sim"/>
+                                <field name="user_number"/>
+                                <field name="phone"/>
+                                <field name="size_code"/>
+                                <field name="deta_code"/>
+                                <field name="iccid_number"/>
+                            </group>
+                            <group>
+                                <field name="reception_date"/>
+                                <field name="arrival_date"/>
+                                <field name="charge_date"/>
+                                <field name="min_month"/>
+                                <field name="expiration_date"/>
+                            </group>
+                        </group>
+		    </sheet>
+                </form>
+	    </field>
+	</record>
+
+
+        <!-- base structure of sim tree view -->
+        <record id="sim_view_tree" model="ir.ui.view"> 
+            <field name="name">sim.view.tree</field> 
+            <field name="model">sim</field> 
+            <field name="arch" type="xml"> 
+                <tree string="SIM List"> 
+                    <field name="sim_id"/> 
+                    <field name="reception_date"/> 
+                    <field name="charge_date"/> 
+                    <field name="expiration_date"/>  
+                </tree> 
+            </field> 
+        </record> 
+
+
+
+        <!-- base structure of sim tree view -->
+        <record id="sim_type_view_tree" model="ir.ui.view">
+            <field name="name">sim.type.view.tree</field>
+            <field name="model">sim_type</field>
+            <field name="arch" type="xml">
+                <tree string="SIM Type">
+                    <field name="date_sim"/>
+                    <field name="size_code"/>
+                    <field name="deta_code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- base structure of sim_type form view -->
+        <record model="ir.ui.view" id="sim_type_view_form">
+            <field name="name">sim.type.view.form</field>
+            <field name="model">sim_type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="SIM Type">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="size_code"/>
+                                <field name="deta_code"/>
+                            </group>
+                            <group>
+                                <field name="date_sim"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+
+	<!--The action -->
+        <record model="ir.actions.act_window" id="buttons_sim_action">
+            <field name="name">Entry new SIM</field>
+            <field name="res_model">sim</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='sim_view_form'/>
+        </record>
+        <record model="ir.actions.act_window" id="buttons_sim_type_action">
+            <field name="name">SIM type</field>
+            <field name="res_model">sim_type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='sim_type_view_form'/>
+        </record>
+
+
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_button_menu" name="SIM" sequence="0"/>
+        <menuitem id="button_menu" name="SIM management"
+                  parent="main_button_menu"/>
+        <menuitem id="menu_detail_logging"
+                  action="buttons_sim_action"
+                  parent="button_menu"
+                  sequence="20"/>
+        <menuitem id="menu_detail_logging2"
+                  action="buttons_sim_type_action"
+                  parent="button_menu"
+                  sequence="30"/>
+
+
+    </data>
+</openerp>

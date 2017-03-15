@@ -18,13 +18,13 @@
                     <sheet>
 		        <div class="oe_title">
                             <label class="oe_edit_only" for="sim_number" string="SIM number"/>
-                            <h1><field name="sim_id"/></h1>
+                            <h1><field name="sim_number"/></h1>
                         </div>
                         <group>
                             <group>
 		    	        <field name="date_sim"/>
                                 <field name="user_number"/>
-                                <field name="phone"/>
+                                <field name="tel_number"/>
                                 <field name="size_code"/>
                                 <field name="deta_code"/>
                                 <field name="iccid_number"/>
@@ -49,37 +49,13 @@
             <field name="model">sim</field> 
             <field name="arch" type="xml"> 
                 <tree string="SIM List"> 
-                    <field name="sim_id"/> 
+                    <field name="sim_number"/> 
                     <field name="reception_date"/> 
                     <field name="charge_date"/> 
                     <field name="expiration_date"/>  
                 </tree> 
             </field> 
         </record> 
-
-        <!-- base structure of sim_type form view -->
-        <record model="ir.ui.view" id="sim_type_view_form">
-            <field name="name">sim.type.view.form</field>
-            <field name="model">sim</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <form string="SIM Type">
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="size_code"/>
-                                <field name="deta_code"/>
-                            </group>
-                            <group>
-                                <field name="date_sim"/>
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-
 
 
 
@@ -91,9 +67,6 @@
             <field name="view_mode">form,tree</field>
             <field name='view_id' ref='sim_view_form'/>
         </record>
-        
-
-
 
         <!-- top level menu: no parent -->
         <menuitem id="main_button_menu" name="SIM" sequence="0"/>

@@ -20,7 +20,7 @@
                     <sheet>
 		        <div class="oe_title">
                             <label class="oe_edit_only" for="property_name" string="Property Name"/>
-                            <h1><field name="property_name"/></h1>
+                            <h1><field name="property_name" placeholder="Name"/></h1>
                         </div>
                         <group>
                             <group>
@@ -46,7 +46,7 @@
                                 <field name="application_date"/>
                                 <field name="approval_date"/>
                                 <field name="construction_date"/>
-                                <field name="expiration_date"/>
+                                <field name="expiration_date" placeholder="auto"/>
                                 <field name="changeapp_date"/>
                                 <field name="cancelapp_date"/>
                                 <field name="cancel_date"/>
@@ -57,21 +57,34 @@
 	    </field>
 	</record>
 
-
-        <!-- base structure of sim tree view --><!--
-        <record id="cloud_view_tree" model="ir.ui.view"> 
-            <field name="name">cloud.view.tree</field> 
-            <field name="model">cloud</field> 
-            <field name="arch" type="xml"> 
-                <tree string="TKCLOUD List"> 
-                    <field name="property_name"/> 
-                    <field name="client_number"/> 
-                    <field name="sim_id"/> 
-                    <field name="expiration_date"/>  
-                </tree> 
-            </field> 
-        </record> 
+        <!-- base structure of cloud rundom pass view -->
+<!--        <record model="ir.ui.view" id="cloud_contractor_view_form">
+            <field name="name">cloud.contractor.view.form</field>
+            <field name="model">cloud_contractor</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Contractor pass random create">
 -->
+                    <!--The header tag is built to add buttons within. This puts them at the top -->
+<!--                   
+                    <header>
+                        <button string="Generate name" type="object" name="generate_record_name" class="oe_highlight"$
+                        <button string="Generate password" type="object" name="generate_record_password"/>
+                        <button string="Clear data" type="object" name="clear_record_data"/>
+                    </header>
+-->
+<!--
+                    <div>
+                        <group>
+                            <field name="contoractor_number"/>
+                            <field name="contoractor_pass"/>
+                        </group>
+                    </div>
+                </form>
+            </field>
+        </record>
+-->
+
 
 
 	<!--The action -->
@@ -82,6 +95,15 @@
             <field name="view_mode">form,tree</field>
             <field name='view_id' ref='cloud_view_form'/>
         </record>
+<!--
+        <record model="ir.actions.act_window" id="buttons_cloud_contractor_action">
+            <field name="name">Create random pass</field>
+            <field name="res_model">cloud_contractor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='view_buttons_form'/>
+        </record>
+-->
 
         <!-- top level menu: no parent -->
         <menuitem id="main_button_menu" name="TKCLOUD" sequence="0"/>
@@ -90,5 +112,9 @@
         <menuitem id="menu_detail_logging"
                 action="buttons_cloud_action" parent="button_menu"
                 sequence="20"/>
+<!--        <menuitem id="menu_detail_logging"
+                action="buttons_cloud_contractor_action" parent="button_menu"
+                sequence="30"/>
+-->
     </data>
 </openerp>

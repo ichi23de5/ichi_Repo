@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "cloud*_management",
+    'name': "cloud",
     'summary': "this module is for cloud management2",
     'author': "ichi2",
     'website': "http://www.toyo-kiki.co.jp",

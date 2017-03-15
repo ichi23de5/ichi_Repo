@@ -58,27 +58,42 @@ class Cloud(models.Model):
 
 
 
-#    @api.multi
-#    def applicate_sim(self):
-#	pass
-        #self.ensure_one()
-	#Generates a random name between 9 and 15 characters long and writes it to the record.
-	#self.write({'name': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))})
+
+class CloudContractor(models.Model):
+    _name = 'cloud_contractor'
+#    _order = ''
+#    _description = ''
+
+    
+    contractor_number = fields.Char(string='Contractor ID',)
+    contractor_pass = fields.Char(string='Contractor PASS',)
+#    property_name = fields.Many2one(related='name.project_id.name', string='Property Name', readonly=True,)
+
+
 
 #    @api.multi
-#    def arrival_sim(self):
-#	pass
-        #self.ensure_one()
-	#Generates a random password between 12 and 15 characters long and writes it to the record.
-	#self.write({
-	#    'password': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(12,15)))
-	#})
+#    def generate_record_name(self):
+#        self.ensure_one()
+        #Generates a random name between 9 and 15 characters long and writes it to the record.
+#        self.write({
+#            'contractor_pass': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))
+#        })
+
+
 
 #    @api.multi
-#    def function_c(self):
-#	pass
-        #self.ensure_one()
-	#self.write({
-	#    'name': '',
-	#    'password': ''
-	#})
+#    def generate_record_password(self):
+#        self.ensure_one()
+#        #Generates a random password between 12 and 15 characters long and writes it to the record.
+#        self.write({
+#            'contractor_pass': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(range(randint(12,15)))
+#        })
+
+#    @api.multi
+#    def clear_record_data(self):
+#        self.ensure_one()
+#        self.write({
+#            'contractor_number': '',
+#            'contractor_pass': ''
+#        })
+
