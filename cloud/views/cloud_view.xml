@@ -58,13 +58,12 @@
 	</record>
 
         <!-- base structure of cloud rundom pass view -->
-<!--        <record model="ir.ui.view" id="cloud_contractor_view_form">
+        <record model="ir.ui.view" id="cloud_contractor_view_form">
             <field name="name">cloud.contractor.view.form</field>
             <field name="model">cloud_contractor</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Contractor pass random create">
--->
                     <!--The header tag is built to add buttons within. This puts them at the top -->
 <!--                   
                     <header>
@@ -74,16 +73,16 @@
                     </header>
 -->
 <!--
-                    <div>
+                    <sheet>
                         <group>
                             <field name="contoractor_number"/>
                             <field name="contoractor_pass"/>
                         </group>
-                    </div>
+                    </sheet>
+-->
                 </form>
             </field>
         </record>
--->
 
 
 
@@ -95,15 +94,15 @@
             <field name="view_mode">form,tree</field>
             <field name='view_id' ref='cloud_view_form'/>
         </record>
-<!--
+
         <record model="ir.actions.act_window" id="buttons_cloud_contractor_action">
             <field name="name">Create random pass</field>
             <field name="res_model">cloud_contractor</field>
             <field name="view_type">form</field>
             <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='view_buttons_form'/>
+            <field name='view_id' ref='cloud_contractor_view_form'/>
         </record>
--->
+
 
         <!-- top level menu: no parent -->
         <menuitem id="main_button_menu" name="TKCLOUD" sequence="0"/>
@@ -112,9 +111,8 @@
         <menuitem id="menu_detail_logging"
                 action="buttons_cloud_action" parent="button_menu"
                 sequence="20"/>
-<!--        <menuitem id="menu_detail_logging"
+        <menuitem id="menu_detail_logging"
                 action="buttons_cloud_contractor_action" parent="button_menu"
                 sequence="30"/>
--->
     </data>
 </openerp>
