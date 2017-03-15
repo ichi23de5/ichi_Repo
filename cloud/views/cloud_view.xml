@@ -111,7 +111,7 @@
         <menuitem id="menu_detail_logging"
                 action="buttons_cloud_action" parent="button_menu"
                 sequence="20"/>
-        <menuitem id="menu_detail_logging"
+        <menuitem id="menu_detail_logging2"
                 action="buttons_cloud_contractor_action" parent="button_menu"
                 sequence="30"/>
     </data>
