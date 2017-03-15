@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "sim_management",
-    'summary': "this module is for sim management",
+    'name': "warranty_management",
+    'summary': "this module is for warranty management",
     'author': "ichi2",
     'website': "http://www.toyo-kiki.co.jp",
 
@@ -9,9 +9,9 @@
     'installable': True,
     'category': "Uncategorized",
     'version': "9.0.0.1.1",
-    'depends': ['base','warranty'],
+    'depends': ['base','sale','product'],
     'data': [
-        "views/sim_view.xml",
+        "views/warranty_view.xml",
     ],
     
 #    'demo': [

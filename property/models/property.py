@@ -6,14 +6,34 @@ from dateutil.relativedelta import relativedelta
 
 class Property(models.Model):
     _name = 'property'
-    _order = 'property_name desc'
+    _order = 'name desc'
 
-
-    property_name = fields.Char(string='Name', required=True, copy=False,)
+    ### property infomation ###
+    name = fields.Char(string='Name', required=True, copy=False,)
     phone = fields.Char(string='TEL', required=False, copy=False,)
     zip = fields.Char(string='ZIP',)
-    property_addr = fields.Char(string='ADDRESS', copy=False,)    
-    partner_id = fields.Many2one('res.partner', string='Partner',)
-    rep_name_id = fields.Many2one('res.partner', string='Rep_Name',)
+    address = fields.Char(string='ADDRESS', copy=False,)    
+    partner_name = fields.Many2one('res.partner', string='Partner',)
+    rep_name = fields.Many2one('res.partner', string='Rep_Name',)
     note = fields.Text(string='NOTE',)
+
+    ### warranty ###
+    warranty_ids = fields.One2many('warranty','name', string='Warranty',)
+
+    ### inspection ###
+    inspection_ids = fields.One2many('inspection','inspector_id', string='property_id',)
+#    order_name = fields.Char(string='Order Name', related='inspection_id.',)
+
+    ### infomation of introduction ###
+#    introduction_name = fields.Char(string='Introduction Name', related='inspection_line.sale.order.name',)
+#    complection_date = fields.Date(string='Complection Date', related='inspection_line.sale.order.complection_date')
+
+
+
+    @api.model 
+    def create(self, vals): 
+        if vals.get('name', 'New') == 'New': 
+            vals['name'] = self.env['ir.sequence'].next_by_code('property') or 'New' 
+        result = super(Property, self).create(vals) 
+        return result 
 

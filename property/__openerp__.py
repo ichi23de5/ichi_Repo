@@ -9,7 +9,7 @@
     'installable': True,
     'category': "Property",
     'version': "9.0.0.1.1",
-    'depends': ['base','sale'],
+    'depends': ['base','sale','warranty','inspection'],
     'data': [
         "views/property_view.xml",
     ],

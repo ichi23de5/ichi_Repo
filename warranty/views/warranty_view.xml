@@ -1,0 +1,69 @@
+<openerp>
+    <data>
+
+
+        <!-- base structure of warranty tree view -->
+        <record id="warranty_view_tree" model="ir.ui.view">
+            <field name="name">warranty.view.tree</field>
+            <field name="model">warranty</field>
+            <field name="arch" type="xml">
+                <tree string="Warranty">
+                    <field name="name"/>
+                    <field name="scope_of_covaerage"/>
+                    <field name="range_coverage"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- base structure of warranty form view -->
+        <record model="ir.ui.view" id="warranty_view_form">
+            <field name="name">warranty.view.form</field>
+            <field name="model">warranty</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Warranty">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active"/>
+                            </group>
+                            <group>
+                                <field name="scope_of_covaerage"/>
+                                <field name="range_coverage"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+
+	<!--The action -->
+        <record model="ir.actions.act_window" id="buttons_warranty_action">
+            <field name="name"> Warranty</field>
+            <field name="res_model">warranty</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='warranty_view_form'/>
+        </record>
+
+
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_button_menu" name="Warranty" sequence="0"/>
+        <menuitem id="button_menu" name="Warranty management"
+                  parent="main_button_menu"/>
+        <menuitem id="menu_detail_logging"
+                  action="buttons_warranty_action"
+                  parent="button_menu"
+                  sequence="20"/>
+
+
+    </data>
+</openerp>

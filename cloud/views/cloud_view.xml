@@ -57,6 +57,7 @@
 	    </field>
 	</record>
 
+
         <!-- base structure of cloud rundom pass view -->
         <record model="ir.ui.view" id="cloud_contractor_view_form">
             <field name="name">cloud.contractor.view.form</field>
@@ -64,22 +65,16 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Contractor pass random create">
-                    <!--The header tag is built to add buttons within. This puts them at the top -->
-<!--                   
+                    <!--The header tag is built to add buttons within. This puts them at the top -->                   
                     <header>
-                        <button string="Generate name" type="object" name="generate_record_name" class="oe_highlight"$
+<!--                        <button string="Generate name" type="object" name="generate_record_name" class="oe_highlight"/> -->
                         <button string="Generate password" type="object" name="generate_record_password"/>
                         <button string="Clear data" type="object" name="clear_record_data"/>
                     </header>
--->
-<!--
-                    <sheet>
-                        <group>
-                            <field name="contoractor_number"/>
-                            <field name="contoractor_pass"/>
-                        </group>
-                    </sheet>
--->
+                    <group>
+                            <field name="contractor_number"/>
+                            <field name="contractor_pass"/>
+                    </group>
                 </form>
             </field>
         </record>

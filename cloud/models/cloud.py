@@ -71,13 +71,13 @@ class CloudContractor(models.Model):
 
 
 
-#    @api.multi
-#    def generate_record_name(self):
-#        self.ensure_one()
+    @api.multi
+    def generate_record_name(self):
+        self.ensure_one()
         #Generates a random name between 9 and 15 characters long and writes it to the record.
-#        self.write({
-#            'contractor_pass': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))
-#        })
+        self.write({
+            'contractor_pass': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))
+        })
 
 
 

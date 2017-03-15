@@ -17,20 +17,25 @@
                 -->
                     <sheet>
 		        <div class="oe_title" style="float:left;">
-                            <label class="oe_edit_only" for="property_name"/>
-                            <h1><field name="property_name" placeholder="Name"/></h1>
+                            <label class="oe_edit_only" for="name"/>
+                            <h1><field name="name" placeholder="Name"/></h1>
                         </div>
                         <div class="sheets" style="clear:both;">
                             <div style="float:left;">
                                 <field name="zip" placeholder="Zip"/>
-                                <field name="property_addr" placeholder="Address"/>
+                                <field name="address" placeholder="Address"/>
                                 <field name="phone" placeholder="Phone"/>
                             </div>
                             <div style="float:left;">
                                 <group>
-		    	            <field name="partner_id"/>
-                                    <field name="rep_name_id"/>
+		    	            <field name="partner_name"/>
+                                    <field name="rep_name"/>
                                 </group>
+                                <gloup>
+                                    <field name="warranty_ids"/>
+                                    <field name="inspection_ids"/>
+                                </gloup>
+
                             </div>
                         </div>
                         <div>
@@ -48,10 +53,10 @@
             <field name="model">property</field> 
             <field name="arch" type="xml"> 
                 <tree string="Property Information"> 
-                    <field name="property_name"/> 
-                    <field name="property_addr"/> 
-                    <field name="partner_id"/> 
-                    <field name="rep_name_id"/>  
+                    <field name="name"/> 
+                    <field name="address"/> 
+                    <field name="partner_name"/> 
+                    <field name="rep_name"/>  
                 </tree> 
             </field> 
         </record> 

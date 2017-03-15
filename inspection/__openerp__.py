@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "sim_management",
-    'summary': "this module is for sim management",
+    'name': "inspection_management",
+    'summary': "this module is for inspection management",
     'author': "ichi2",
     'website': "http://www.toyo-kiki.co.jp",
 
@@ -9,9 +9,9 @@
     'installable': True,
     'category': "Uncategorized",
     'version': "9.0.0.1.1",
-    'depends': ['base','warranty'],
+    'depends': ['base','sale','product'],
     'data': [
-        "views/sim_view.xml",
+        "views/inspection_view.xml",
     ],
     
 #    'demo': [
