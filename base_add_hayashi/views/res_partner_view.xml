@@ -30,8 +30,16 @@
                 </notebook>
             </field>
         </record>
-
-
+<!--
+        <record id="base.res_partner_action" model="ir.actions.act_window"> 
+            <field name="name">res.partner</field> 
+            <field name="type">ir.actions.act_window</field> 
+            <field name="res_model">res.partner</field> 
+            <field name="view_mode">tree,form,kanban</field> 
+            <field name="view_type">form</field> 
+            <field name="view_id" ref="base.view_partner_tree"/> 
+        </record> 
+-->
 
 
     </data>

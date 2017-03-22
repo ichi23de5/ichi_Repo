@@ -2,17 +2,6 @@
 
 <openerp>
     <data>
-<!--
-        <record id="view_order_form_check5" model="ir.ui.view">
-            <field name="name">product.template.form.check5</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_form_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//page[@name='sales']/group/group[@name='sale_condition']" position="replace">
-                </xpath>
-            </field>
-        </record>
--->
 	<record id="view_order_form_check4" model="ir.ui.view">
 	    <field name="name">product.template.form.check</field>
             <field name="model">product.template</field>
@@ -23,11 +12,6 @@
                 </xpath>
                 <xpath expr="//field[@name='invoice_policy']" position="replace">
                 </xpath>
-<!--                <xpath expr="//page[@name='sales']/group/group[@name='sale_condition']" position="replace">
-                </xpath>
-                <xpath expr="//field[@name='warranty']" position="replace">
-                </xpath>
--->
                 <xpath expr="//field[@name='list_price']" position="after">
                     <field name="reference_price"/>
                 </xpath>
@@ -63,12 +47,18 @@
                 </xpath>
             </field>
         </record>
-<!--
-        <record id="product_template_action" model="ir.actions.act_window"> 
-            <xpath expr="//field[@name='view_mode']" position="attribute">
-                <attribute name="view_mode">tree,form,kanban</attribute>
-            </xpath> 
+
+        <record id="product.product_template_action" model="ir.actions.act_window"> 
+            <field name="name">Products</field> 
+            <field name="type">ir.actions.act_window</field> 
+            <field name="res_model">product.template</field> 
+            <field name="view_mode">tree,form</field> 
+            <field name="view_type">form</field> 
+            <field name="view_id" ref="product.product_template_tree_view"/> 
         </record> 
--->
+
+
+
+
     </data>
 </openerp> 

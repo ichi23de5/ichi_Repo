@@ -26,8 +26,8 @@ class Sim(models.Model):
     arrival_date = fields.Date(string='Arrival Date', store=True)
     charge_date = fields.Date(string='Freebit Charge Date', store=True)
     min_month = fields.Date(string='Minimum Usage Date', store=True)
-    expiration_date = fields.One2many('warranty', 'id', string='Expiration Date')
-#    expiration_date = fields.Date(string='Expiration Date', store=True)
+#    expiration_date = fields.One2many('warranty', 'id', string='Expiration Date')
+    expiration_date = fields.Date(string='Expiration Date', store=True)
 #### Don't need it now ####
 #    cloud_name = field.Selection([
 #        ('tkcloud', 'TKCLOUD'),

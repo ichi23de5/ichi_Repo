@@ -7,6 +7,7 @@ from dateutil.relativedelta import relativedelta
 class Property(models.Model):
     _name = 'property'
     _order = 'name desc'
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
 
     ### property infomation ###
     name = fields.Char(string='Name', required=True, copy=False,)
