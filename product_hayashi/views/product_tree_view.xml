@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="view_product_template_analyzer" model="ir.ui.view">
+			<field name="name">product.product.template.tree.view</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_tree_view"/>
+			<field name="arch" type="xml">
+<!--
+				<xpath expr="//field[@name='partner_id']" position="attributes">
+					<attribute name="context">{'search_default_customer':1, 'show_address': 0}</attribute>
+				</xpath>
+
+				<xpath expr="//field[@name='project_id']" position="after">
+                                        <field name="check_report" string="This is a checkBox?"/>
+                                        <field name="check_manager" string="Managers Check OK?"/>
+                                        <field name="check_primer" string="Prime Check OK?"/>
+			        </xpath>
+				<xpath expr="//field[@name='date_order']" position="replace">
+					<field name="date_order" invisible="0"/>
+				</xpath>
+-->
+                                <xpath expr="//field[@name='standard_price']" position="after">
+                                        <field name="analyzer_id"/>
+                                </xpath>
+			</field>
+		</record>
+	</data>
+</openerp> 

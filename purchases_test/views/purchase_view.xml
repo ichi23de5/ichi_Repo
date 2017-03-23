@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<!--
+        <menuitem id="menu_purchase_ichi_test" name="test_test_purchase"
+            parent="menu_procurement_management" sequence="21" />
+-->
+    <record model="ir.ui.view" id="purchase_order_search_inherit_add">
+        <field name="name">purchase.order.list.select.inherit.add</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+<!--
+                    <header>
+                        <button string="Function A" type="object" name="functio$
+                        <button string="Function B" type="object" name="functio$
+                        <button string="Function C" type="object" name="functio$
+                    </header>
+-->
+            <xpath expr="//field[@name='partner_id']" position="after">
+               <field name="amount_untaxed"/>
+            </xpath>
+        </field>
+    </record>
+
+</data>
+</openerp>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="form_view_product_template_analyzer" model="ir.ui.view">
+			<field name="name">product.template.form.view.analyzer</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_form_view"/>
+			<field name="arch" type="xml">
+<!--
+                                <label string="analyzer_id"/>
+-->
+                                <xpath expr="//field[@name='sale_ok']" position="before">
+                                        <field name="analyzer_id" string="input analyzer id" invisible="0"/>
+                                </xpath>
+			</field>
+		</record>
+	</data>
+</openerp> 

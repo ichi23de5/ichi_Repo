@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_analyzer_product_tree" model="ir.ui.view">
+            <field name="name">product.view.analyzer.tree</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="before">
+                    <field name="analyzer_id"/>
+            </xpath>
+           </field>
+        </record>
+
+    </data>
+</openerp>
+
+
+
+
