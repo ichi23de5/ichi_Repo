@@ -1,0 +1,163 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* button_action_test
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-22 06:13+0000\n"
+"PO-Revision-Date: 2017-03-22 06:13+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: button_action_test
+#: model:ir.ui.view,arch_db:button_action_test.view_report_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<!--2. Set your String here. And Put fields.-->\n"
+"                <tree string=\"Daily Reports\" toolbar=\"1\">\n"
+"                    <field name=\"date_report\"/>\n"
+"                    <field name=\"name\"/>\n"
+"                    <field name=\"daily_report\"/>\n"
+"                </tree>\n"
+"            "
+msgstr ""
+
+#. module: button_action_test
+#: model:ir.ui.view,arch_db:button_action_test.view_report_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"Sales Term Daily Report\">\n"
+"		    <!--The header tag is built to add buttons within. This puts them at the top -->\n"
+"		    <header>\n"
+"			<!--The oe_highlight class gives the button a red color when it is saved.\n"
+"			It is usually used to indicate the expected behaviour. -->\n"
+"		        <button string=\"Upload Report\" type=\"object\" name=\"function_a\" class=\"oe_highlight\"/>\n"
+"			<button string=\"Delete Report\" type=\"object\" name=\"function_b\"/>\n"
+"			<button string=\"Confirm\" type=\"object\" name=\"function_c\"/>\n"
+"		    </header>\n"
+"		    <group>\n"
+"                        <field name=\"date_report\"/>\n"
+"			<field name=\"name\"/>\n"
+"			<field name=\"daily_report\"/>\n"
+"                    </group>\n"
+"		</form>\n"
+"	    "
+msgstr ""
+
+#. module: button_action_test
+#: model:ir.ui.view,arch_db:button_action_test.report_name
+msgid "<?xml version=\"1.0\"?>\n"
+"<t t-name=\"button_action_test.report_name\">\n"
+"    <t t-call=\"report.html_container\">\n"
+"        <t t-foreach=\"docs\" t-as=\"doc\">\n"
+"            <t t-call=\"button_action_test.report_name_document\" t-lang=\"doc.partner_id.lang\"/>\n"
+"        </t>\n"
+"    </t>\n"
+"</t>\n"
+""
+msgstr ""
+
+#. module: button_action_test
+#: model:ir.ui.view,arch_db:button_action_test.report_name_document
+msgid "<?xml version=\"1.0\"?>\n"
+"<t t-name=\"button_action_test.report_name_document\">\n"
+"    <t t-call=\"report.external_layout\">\n"
+"        <t t-set=\"doc\" t-value=\"doc.with_context({'lang':doc.partner_id.lang})\"/>\n"
+"        <div class=\"page\">\n"
+"            <div class=\"row\">\n"
+"                <h2>\n"
+"                Title\n"
+"                </h2>\n"
+"            </div>\n"
+"        </div>\n"
+"    </t>\n"
+"</t>\n"
+"\n"
+"\n"
+""
+msgstr ""
+
+#. module: button_action_test
+#: model:ir.actions.act_window,name:button_action_test.buttons_example_action
+#: model:ir.ui.menu,name:button_action_test.menu_detail_logging
+msgid "Create new report"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,create_uid:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,create_date:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: button_action_test
+#: model:ir.actions.report.xml,name:button_action_test.custom_report_name
+msgid "Daily Report"
+msgstr ""
+
+#. module: button_action_test
+#: model:ir.ui.menu,name:button_action_test.main_button_menu
+msgid "Daily Reports demo"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,id:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_id
+msgid "ID"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,write_uid:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,write_date:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,partner_id:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,name:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_name
+msgid "Property Place"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,date_report:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_date_report
+msgid "Report Date"
+msgstr ""
+
+#. module: button_action_test
+#: field:dailyreport,daily_report:0
+#: model:ir.model.fields,field_description:button_action_test.field_dailyreport_daily_report
+msgid "Report Note"
+msgstr ""
+
+#. module: button_action_test
+#: model:ir.ui.menu,name:button_action_test.button_menu
+msgid "Reports demo"
+msgstr ""
+
+#. module: button_action_test
+#: view:website:button_action_test.report_name_document
+msgid "Title"
+msgstr ""
+
