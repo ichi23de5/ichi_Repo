@@ -12,10 +12,11 @@
 	"application": False,
 	"installable": True,
 	"depends": [
-		"sale","inspection","cloud",
+		"sale","inspection","cloud","base","account","crm",
 	],
 	"data": [
 		"views/sale_view.xml",
-#                "views/sale_view_add.xml",
+                "security/user_groups.xml",
+                "security/ir.model.access.csv"
 	],
 }

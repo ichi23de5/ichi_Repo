@@ -6,6 +6,7 @@ from dateutil.relativedelta import relativedelta
 
 
 
+
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
@@ -29,6 +30,8 @@ class SaleOrder(models.Model):
         ], 
         string='Type', required=True, default='new')
     plan_id = fields.Char(string='Plan version')
+#    open_price = fields.Float(string='Open Price', digits=dp.get_precision('Product Price'))
+
 
     @api.onchange('create_date')
     def _date_exp(self):

@@ -12,21 +12,23 @@
                         <button string="Flag A" type="object" name="flag_a"/>
                     </group>
                 </header>
-                <xpath expr="//field[@name='project_id']" position="replace">
+                <data>
+                    <field name="project_id" position="replace"/>
+                </data>
+                <xpath expr="//field[@name='name']" position="after">
+                    <label class="oe_edit_only" string="Property Name"/>
+                    <h2><field name="property_id"/></h2>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="replace">
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="replace">
                 </xpath>
-<!--                <xpath expr="//field[@name='incoterm']" position="replace">
-                </xpath>
--->
                 <xpath expr="//field[@name='validity_date']" position="attributes">
                     <attribute name="placeholder">auto</attribute>
-<!--                    <attribute name="readonly">True</attribute> -->
                 </xpath>
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="plan_id"/>
                     <field name="work_type"/>
-                    <field name="property_id"/>
                     <field name="user_id" widget="selection"/>
                     <field name="assistant" widget="selection"/>
                     <field name="inspection_id"/>
@@ -34,13 +36,23 @@
                 <xpath expr="//field[@name='validity_date']" position="before">
                     <field name="create_date" readonly='0'/>
                 </xpath>
-<!--
-                <xpath expr="//field[@name='payment_term_id']" position="after">
-                    <field name="confirmation_date"/>
-                    <field name="construction_date"/>
-                    <field name="completion_date"/>
+
+                <!-- sale order line -->
+                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes"> 
+                    <attribute name="invisible">1</attribute> 
                 </xpath>
--->                
+<!--
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
+                    <field name="open_price"/>
+                </xpath>
+-->
+<!-- 
+                <xpath expr="//field[@name='order_line']/tree/field[@name='amount_total']" position="attributes">
+                    <attribute name="degits">dp.get_precision('Product Unit of Measure')</attribute>
+                </xpath>
+-->
+
+
                 <notebook>
                     <page string="Contract">
                         <group>
@@ -50,9 +62,5 @@
                 </notebook>
             </field>
         </record>
-
-
-
-
     </data>
 </openerp> 

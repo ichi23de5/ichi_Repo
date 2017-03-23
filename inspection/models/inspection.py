@@ -10,6 +10,8 @@ from dateutil.relativedelta import relativedelta
 class Inspection(models.Model):
     _name = 'inspection'
     _order = 'date desc'
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
+
 
     ### property ###
 #    property_id = fields.Many2one('property', string='Property ID', required=True,)

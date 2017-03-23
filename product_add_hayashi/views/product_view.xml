@@ -13,7 +13,7 @@
                 <xpath expr="//field[@name='invoice_policy']" position="replace">
                 </xpath>
                 <xpath expr="//field[@name='list_price']" position="after">
-                    <field name="reference_price"/>
+                    <field name="open_price"/>
                 </xpath>
                 <xpath expr="//field[@name='barcode']" position="after">
                     <field name="manufacturer" string="Maker"/>

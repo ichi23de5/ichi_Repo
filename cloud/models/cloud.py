@@ -3,14 +3,13 @@ from openerp import models, fields, api
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
-# Non-odoo library
-# import random
-# from random import randint
-# import string
 
-class Cloud(models.Model):
+class cloud(models.Model):
     _name = 'cloud'
     _order = 'date_cloud desc'
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
+
+
 
     date_cloud = fields.Datetime(string='Date', copy=False, default=fields.Datetime.now, required=True, index=True,)
     name = fields.Many2one('sale.order', string='Quotation Number', required=True,)
@@ -30,7 +29,6 @@ class Cloud(models.Model):
     end_user = fields.Char(string='User Name',)
 
     sim_id = fields.Many2one('sim', string='SIM ID', required=True, copy=False,)
-#    sim_id = fields.Char(string='SIM ID', required=True, copy=False,)
 
     contractor_number = fields.Char(string='Contractor ID',)
     contractor_pass = fields.Char(string='Contractor PASS',)
@@ -62,7 +60,6 @@ class Cloud(models.Model):
 class CloudContractor(models.Model):
     _name = 'cloud_contractor'
 #    _order = ''
-#    _description = ''
 
     
     contractor_number = fields.Char(string='Contractor ID',)
