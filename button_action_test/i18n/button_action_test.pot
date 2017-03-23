@@ -85,79 +85,79 @@ msgstr ""
 #: model:ir.actions.act_window,name:button_action_test.buttons_example_action
 #: model:ir.ui.menu,name:button_action_test.menu_detail_logging
 msgid "Create new report"
-msgstr ""
+msgstr "新規作成"
 
 #. module: button_action_test
 #: field:dailyreport,create_uid:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "作成者"
 
 #. module: button_action_test
 #: field:dailyreport,create_date:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_create_date
 msgid "Created on"
-msgstr ""
+msgstr "作成日"
 
 #. module: button_action_test
 #: model:ir.actions.report.xml,name:button_action_test.custom_report_name
 msgid "Daily Report"
-msgstr ""
+msgstr "日報"
 
 #. module: button_action_test
 #: model:ir.ui.menu,name:button_action_test.main_button_menu
 msgid "Daily Reports demo"
-msgstr ""
+msgstr "日報管理"
 
 #. module: button_action_test
 #: field:dailyreport,id:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: button_action_test
 #: field:dailyreport,write_uid:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "最終更新者"
 
 #. module: button_action_test
 #: field:dailyreport,write_date:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "最終更新日"
 
 #. module: button_action_test
 #: field:dailyreport,partner_id:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_partner_id
 msgid "Partner"
-msgstr ""
+msgstr "顧客名"
 
 #. module: button_action_test
 #: field:dailyreport,name:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_name
 msgid "Property Place"
-msgstr ""
+msgstr "物件名"
 
 #. module: button_action_test
 #: field:dailyreport,date_report:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_date_report
 msgid "Report Date"
-msgstr ""
+msgstr "提出日"
 
 #. module: button_action_test
 #: field:dailyreport,daily_report:0
 #: model:ir.model.fields,field_description:button_action_test.field_dailyreport_daily_report
 msgid "Report Note"
-msgstr ""
+msgstr "報告内容"
 
 #. module: button_action_test
 #: model:ir.ui.menu,name:button_action_test.button_menu
 msgid "Reports demo"
-msgstr ""
+msgstr "日報"
 
 #. module: button_action_test
 #: view:website:button_action_test.report_name_document
 msgid "Title"
-msgstr ""
+msgstr "表題"
 
