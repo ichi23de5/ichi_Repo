@@ -12,19 +12,23 @@ class cloud(models.Model):
 
 
     date_cloud = fields.Datetime(string='Date', copy=False, default=fields.Datetime.now, required=True, index=True,)
-    name = fields.Many2one('sale.order', string='Quotation Number', required=True,)
+    order_id = fields.Many2one('sale.order', string='Quotation Number', required=True,)
     #### auto input ### with name ###
-    property_name = fields.Char(related='name.project_id.name', string='Property Name', readonly=True,)
-    property_add = fields.Char(string='Property Add', readonly=True,)
+#    property_name = fields.Char(related='name.project_id.name', string='Property Name', readonly=True,)
+    property_name = fields.Char(related='order_id.property_id.name', string='Property Name', readonly=True,)
+    property_add = fields.Char(related='order_id.property_id.address', string='Property Add', readonly=True,)
      #### Don't need it now ####
 #    client_number = fields.Char(string='Client ID',readonly=True,)
 #    passward = fields.Char(string='Passward',)
-    name_id = fields.Char(string='Name', readonly=True,)
-    rep_name_id = fields.Char(string='Rep Name', readonly=True,)
-    user_id = fields.Char(string='Salesperson', readonly=True,)
-    ass_user_id = fields.Char(string='Assistant', readonly=True,)
-    plan = fields.Char(string='TKCLOUD Plan', readonly=True,)
+
+#    partner_id = fields.Char(related='order_id.parter_id.name', string='PartnerName', readonly=True,)
+    rep_partner_id = fields.Char(string='Rep Name', readonly=True,)
+    user_id = fields.Char(related='order_id.user_id.name',string='Salesperson', readonly=True,)
+#    assinstant_id = fields.Char(related='order_id.assistant_id.name', string='Assistant', readonly=True,)
+    plan = fields.Char(related='order_id.', string='TKCLOUD Plan', readonly=True,)
     rate_plan = fields.Char(string='TKCLOUD Rate Plan', readonly=True,)
+
+
 
     end_user = fields.Char(string='User Name',)
 

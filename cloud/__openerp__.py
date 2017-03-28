@@ -19,6 +19,6 @@
     'data': [
         'security/user_groups.xml',
 	'security/ir.model.access.csv',
-	'views/cloud_view.xml'
+#	'views/cloud_view.xml'
     ],
 }

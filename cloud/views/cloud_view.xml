@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<openerp>
     <data>
 
         <!--Gets triggered by the record with id 'access_rights_admin_action'. Which in turn is triggered on click. -->
@@ -18,30 +18,47 @@
                         <group>
                             <group>
                                 <field name="date_cloud"/>
-		    	        <field name="name"/>
-                                <field name="property_name"/>
+		    	        <field name="order_id"/>
                                 <field name="property_add"/>
                                 <field name="end_user"/>
-                                <field name="name_id"/>
-                                <field name="rep_name_id"/>
+                                <!-- <field name="partner_id"/>-->
+                                <field name="rep_partner_id"/>
                                 <field name="user_id"/>
-                                <field name="ass_user_id"/>
-                                <field name="plan"/>
-                                <field name="rate_plan"/>
+                                <!--<field name="ass_user_id"/>-->
                             </group>
                             <group>
                                 <field name="sim_id"/>
-                                <field name="contractor_number"/>
-                                <field name="contractor_pass"/>
-                                <field name="application_date"/>
-                                <field name="approval_date"/>
-                                <field name="construction_date"/>
-                                <field name="expiration_date" placeholder="auto"/>
-                                <field name="changeapp_date"/>
-                                <field name="cancelapp_date"/>
-                                <field name="cancel_date"/>
+                                <field name="plan"/>
+                                <field name="rate_plan"/>
                             </group>
                         </group>
+                        <notebook> 
+                            <page string="Contract">
+                                <group>
+                                    <group string="Infomation">
+                                        <field name="contractor_number"/>
+                                        <field name="contractor_pass"/>
+                                        <field name="application_date"/>
+                                    </group>
+                                    <group string="Contraction Date">
+                                        <field name="approval_date"/>
+                                        <field name="construction_date"/>
+                                        <field name="expiration_date" placeholder="auto"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Change and Cancel"> 
+                                <group>
+                                    <group name="change" string="Change"> 
+                                        <field name="changeapp_date"/>
+                                    </group> 
+                                    <group name="cancel" string="Cancel">
+                                        <field name="cancelapp_date"/>
+                                        <field name="cancel_date"/>
+                                    </group>
+                                </group>
+                            </page> 
+                        </notebook> 
 		    </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
@@ -122,11 +139,24 @@
                                 <field name="construction_date"/>
                                 <field name="expiration_date" placeholder="auto"/>
                                 <field name="changeapp_date"/>
-                                <!-- <field name="cancelapp_date"/>
-                                <field name="cancel_date"/> -->
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Change and Cancel">
+                                <group name="change" string="Change">
+                                    <field name="changeapp_date"/>
+                                </group>
+                                <group name="cancel" string="Cancel">
+                                    <field name="cancelapp_date"/>
+                                    <field name="cancel_date"/>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -166,4 +196,4 @@
 
 
     </data>
-</odoo>
+</openerp>

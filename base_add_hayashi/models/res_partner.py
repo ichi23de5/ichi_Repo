@@ -13,4 +13,4 @@ class ResPartner2(models.Model):
 
     outside_order = fields.Boolean(string="Outside Flag")
     mail_address = fields.Char(string="Email") #email field hidden#
-
+    p_contract = fields.Char(string="Partner ID")

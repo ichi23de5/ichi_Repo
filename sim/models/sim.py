@@ -11,8 +11,6 @@ class Sim(models.Model):
 
     user_number = fields.Char(string='SIM User Number', required=True, copy=False,)
     phone = fields.Char(string='SIM Tel Number', required=False, copy=False,)
-    size_code = fields.Char(string='Size Code', default="FBN0300001",)
-    deta_code = fields.Char(string='Price Plan', default="YNSM0_09",)
     sim_id = fields.Char(string='SIM ID', copy=False,)
     date_sim = fields.Datetime(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now,)
     iccid_number = fields.Char(string='Iccid Number', copy=False,)
@@ -48,27 +46,10 @@ class Sim(models.Model):
     @api.multi
     def applicate_sim(self):
 	pass
-        #self.ensure_one()
-	#Generates a random name between 9 and 15 characters long and writes it to the record.
-	#self.write({'name': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))})
 
     @api.multi
     def arrival_sim(self):
 	pass
-        #self.ensure_one()
-	#Generates a random password between 12 and 15 characters long and writes it to the record.
-	#self.write({
-	#    'password': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(12,15)))
-	#})
-
-#    @api.multi
-#    def function_c(self):
-#	pass
-        #self.ensure_one()
-	#self.write({
-	#    'name': '',
-	#    'password': ''
-	#})
 
 
 class SimType(models.Model):
@@ -76,7 +57,37 @@ class SimType(models.Model):
     _order = 'date_sim desc'
 
 
-    size_code = fields.Char(string='Size Code', store=True,)
-    deta_code = fields.Char(string='Price Plan', store=True,)
-    date_sim = fields.Datetime(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now,)
+    sim_type_id = fields.Char(string='SIM Type ID', required=True, copy=False,)
+    max_storage = fields.Char(string='Max Strage')
+    business_number = fields.Char(string='Business Number')
+    size_code = fields.Char(string='Size Code')
+    deta_code = fields.Char(string='Kakinkaishibi')
+    datermination = fields.Char(string='Sansyutuhouhou')
+    pay_per_up = fields.Char(string='Juuryoukakin Up')
+    pay_per_down = fields.Char(string='Juuryoukakin Down')
+    min_use_time = fields.Char(string='Minimum Perion of Use')
+
+
+    ### charge ###
+    basic_charge = fields.Integer(string='Basic Charge')
+    cancel_charge = fields.Integer(string='Cancel Charge')
+    admin_charge = fields.Integer(string='Admin Charge')
+    ### commission ###
+    opening_sim = fields.Integer(string='Opening Sim Commission')
+    opening_sim_up = fields.Integer(string='Opening Sim Commission up')
+    unreturned_sim = fields.Integer(string='Unreturned Sim Commission')
+    reissure_sim = fields.Integer(string='Reissure Sim Commission')
+    change_plan = fields.Integer(string='Change Plan Commission')
+    change_size = fields.Integer(string='Change Size Commission')
+    redelivery_sim = fields.Integer(string='Redelivery Sim Commission')
+    stop_sim = fields.Integer(string='Stop Sim Commission')
+    delivery_sim = fields.Integer(string='Delivery Sim Commission')
+    universal_service = fields.Integer(string='Universal Service Commission')
+    cancel_charge_first = fields.Integer(string='Cancel Charge 1month')
+    cancel_charge_year = fields.Integer(string='Cancel Charge Year')
+    charge100 = fields.Integer(string='100MB')
+    charge500 = fields.Integer(string='500MB')
+    charge1000 = fields.Integer(string='1000MB')
+    ip_month = fields.Integer(string='IP Charge')
+    date_model = fields.Char(string='Date Model')
 

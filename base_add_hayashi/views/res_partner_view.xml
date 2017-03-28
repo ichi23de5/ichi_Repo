@@ -17,6 +17,7 @@
 
                 <xpath expr="//field[@name='fax']" position="after">
                     <field name="mail_address"/>
+                    <field name="p_contract" placeholder="partner contraction ID"/>
                 </xpath>
                 <xpath expr="//field[@name='website']" position="after">
                     <field name="credit"/>
