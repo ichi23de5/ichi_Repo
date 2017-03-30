@@ -15,7 +15,6 @@ class SaleOrder(models.Model):
 
     inspection_id = fields.Many2one('inspection', string='Inspection')
     construction_date = fields.Date(string='Constraction Date', store=True)
-#    completion_date = fields.Date(string='Completion Date', store=True)
     property_id = fields.Many2one('property', string='Property Name')
     order_date = fields.Date(string='Order Date')
     assistant = fields.Many2one('res.users', string='Assistant')
@@ -57,9 +56,14 @@ class SaleOrder(models.Model):
         return True 
 
 
+    extra_confirm = fields.Boolean('Extra Confirm',)
 
     @api.multi
-    def flag_a(self):
+    def confirm_director(self):
+        pass
+
+    @api.multi
+    def confirm_president(self):
         pass
 
 

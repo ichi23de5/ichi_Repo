@@ -5,10 +5,6 @@
     'summary': "test user",
     'author': "ichi2",
     'website': "http://www.toyo-kiki.co.jp",
-
-
-    'author': "Yenthe Van Ginneken",
-    'website': "http://www.odoo.yenthevg.com",
     'installable': True,
     'category': "Uncategorized",
     'version': "9.0.0.1.1",

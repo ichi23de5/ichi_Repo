@@ -16,13 +16,13 @@
 		    </header>
                     <sheet>
 		        <div class="oe_title" style="float:left;">
-                            <label class="oe_edit_only" for="sim_number" string="SIM number"/>
-                            <h2><field name="sim_id"/></h2>
+                            <label class="oe_edit_only" string="SIM user number"/>
+                            <h2><field name="user_number"/></h2>
                         </div>
                         <group>
                             <group>
 		    	        <field name="date_sim"/>
-                                <field name="user_number"/>
+                                <field name="sim_id" widget="selection"/>
                                 <field name="phone"/>
                                 <field name="iccid_number"/>
                             </group>
@@ -63,7 +63,7 @@
         <!-- base structure of sim tree view -->
         <record id="sim_type_view_tree" model="ir.ui.view">
             <field name="name">sim.type.view.tree</field>
-            <field name="model">sim_type</field>
+            <field name="model">sim.type</field>
             <field name="arch" type="xml">
                 <tree string="SIM Type">
                     <field name="sim_type_id"/>
@@ -76,7 +76,7 @@
         <!-- base structure of sim_type form view -->
         <record model="ir.ui.view" id="sim_type_view_form">
             <field name="name">sim.type.view.form</field>
-            <field name="model">sim_type</field>
+            <field name="model">sim.type</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="SIM Type">
@@ -161,7 +161,7 @@
         </record>
         <record model="ir.actions.act_window" id="buttons_sim_type_action">
             <field name="name">SIM type</field>
-            <field name="res_model">sim_type</field>
+            <field name="res_model">sim.type</field>
             <field name="view_type">form</field>
             <field name="view_mode">form,tree</field>
             <field name='view_id' ref='sim_type_view_form'/>

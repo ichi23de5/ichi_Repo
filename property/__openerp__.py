@@ -11,6 +11,8 @@
     'version': "9.0.0.1.1",
     'depends': ['base','sale','warranty','inspection'],
     'data': [
+        'security/user_groups.xml',
+        'security/ir.model.access.csv',
         "views/property_view.xml",
     ],
     

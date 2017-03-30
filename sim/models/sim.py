@@ -8,10 +8,11 @@ class Sim(models.Model):
     _name = 'sim'
     _order = 'date_sim desc'
     _inherit = ['mail.thread', 'ir.needaction_mixin']
+    _rec_name = 'user_number'
 
     user_number = fields.Char(string='SIM User Number', required=True, copy=False,)
     phone = fields.Char(string='SIM Tel Number', required=False, copy=False,)
-    sim_id = fields.Char(string='SIM ID', copy=False,)
+    sim_id = fields.Many2one('sim.type', string='SIM ID')
     date_sim = fields.Datetime(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now,)
     iccid_number = fields.Char(string='Iccid Number', copy=False,)
 
@@ -43,19 +44,12 @@ class Sim(models.Model):
             return
 
 
-    @api.multi
-    def applicate_sim(self):
-	pass
 
-    @api.multi
-    def arrival_sim(self):
-	pass
 
 
 class SimType(models.Model):
-    _name = 'sim_type'
-    _order = 'date_sim desc'
-
+    _name = 'sim.type'
+    _rec_name = 'sim_type_id' 
 
     sim_type_id = fields.Char(string='SIM Type ID', required=True, copy=False,)
     max_storage = fields.Char(string='Max Strage')

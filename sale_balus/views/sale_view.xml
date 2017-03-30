@@ -8,19 +8,16 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
 <!--                <header>  
-                    <group>
-                        <button string="Flag A" type="object" name="flag_a"/>
-                    </group>
+                    <button string="for director" type="object" name="confirm_director"/>
+                    <button string="for president" type="object" name="confirm_president"/>
                 </header>
 -->
                 <xpath expr="//field[@name='name']" position="after">
                     <label class="oe_edit_only" string="Property Name"/>
                     <h2><field name="property_id"/></h2>
+                    <button string="for director" type="object" name="confirm_director"/>
+                    <button string="for president" type="object" name="confirm_president"/>
                 </xpath>
-<!--                <xpath expr="//field[@name='campaign_id']" position="replace"/>
-                <xpath expr="//field[@name='medium_id']" position="replace"/>
-                <xpath expr="//field[@name='source_id']" position="replace"/>
-                <xpath expr="//field[@name='opportunity_id']" position="replace"/>-->
                 <xpath expr="//field[@name='project_id']" position="replace"/>
                 <xpath expr="//field[@name='name']" position="replace"/>
                 <xpath expr="//field[@name='user_id']" position="replace"/>
@@ -33,6 +30,9 @@
                     <field name="user_id" widget="selection"/>
                     <field name="tag_ids" invisible='1'/>
                     <field name="assistant" widget="selection"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="extra_confirm"/>
                 </xpath>
                 <xpath expr="//field[@name='validity_date']" position="before">
                     <field name="create_date" readonly='0' required='True'/>
