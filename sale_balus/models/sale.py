@@ -31,7 +31,7 @@ class SaleOrder(models.Model):
         ], 
         string='Type', required=True, default='new')
     plan_id = fields.Char(string='Plan version')
-    image_1 = fields.Binary(string="Image to upload", default=_get_default_image())
+#    image_1 = fields.Binary(string="Image to upload", default=lambda self:self._get_default_image())
 
     @api.onchange('create_date')
     def _date_exp(self):
@@ -61,12 +61,14 @@ class SaleOrder(models.Model):
 
     @api.multi
     def flag_a(self):
-        pass
+        self.ensure_one()
+        va = self.env['product.product'].create({'name':'TestNewRecord'})
+        return va
 
-    @api.model
-    def _get_default_image(self):
-    image = image_colorize(open(openerp.modules.get_module_resource('base','static/src/img', 'avatar.png')).read())
-    return image_resize_image_big(image.encode('base64'))
+#    @api.model
+#    def _get_default_image(self):
+#        image = image_colorize(open(openerp.modules.get_module_resource('base','static/src/img', 'avater.png')).read())
+#        return image_resize_image_big(image.encode('base64'))
 
 
 class SaleOrderLine(models.Model):

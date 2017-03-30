@@ -7,12 +7,12 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-<!--                <header>  
-                    <group>
+                <header>  
+                    <xpath expr="//form/header/button[@name='action_done']" position="after">
                         <button string="Flag A" type="object" name="flag_a"/>
-                    </group>
+                    </xpath>
                 </header>
--->
+
 
                <xpath expr="//form/header/button[@name='action_confirm']" position="attributes">
                     <attribute name="groups">base.group_sale_upper</attribute>                    
@@ -29,7 +29,12 @@
                 <xpath expr="//field[@name='name']" position="after">
                     <label class="oe_edit_only" string="Property Name"/>
                     <h2><field name="property_id"/></h2>
+                    <p>
+                    <FONT color="#ff0000">director confirmed</FONT>
+                    </p>
+<!--
                     <field name="image_1" widget='image'/>
+-->
                 </xpath>
 <!--                <xpath expr="//field[@name='campaign_id']" position="replace"/>
                 <xpath expr="//field[@name='medium_id']" position="replace"/>
