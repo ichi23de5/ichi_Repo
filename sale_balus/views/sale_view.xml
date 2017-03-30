@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+	<record id="view_order_form_check3" model="ir.ui.view">
+	    <field name="name">sale.order.form.check</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+<!--                <header>  
+                    <button string="for director" type="object" name="confirm_director"/>
+                    <button string="for president" type="object" name="confirm_president"/>
+                </header>
+-->
+                <xpath expr="//field[@name='name']" position="after">
+                    <label class="oe_edit_only" string="Property Name"/>
+                    <h2><field name="property_id"/></h2>
+                    <button string="for director" type="object" name="confirm_director"/>
+                    <button string="for president" type="object" name="confirm_president"/>
+                </xpath>
+                <xpath expr="//field[@name='project_id']" position="replace"/>
+                <xpath expr="//field[@name='name']" position="replace"/>
+                <xpath expr="//field[@name='user_id']" position="replace"/>
+                <xpath expr="//field[@name='validity_date']" position="attributes">
+                    <attribute name="placeholder">auto</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="plan_id"/>
+                    <field name="work_type"/>
+                    <field name="user_id" widget="selection"/>
+                    <field name="tag_ids" invisible='1'/>
+                    <field name="assistant" widget="selection"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="extra_confirm"/>
+                </xpath>
+                <xpath expr="//field[@name='validity_date']" position="before">
+                    <field name="create_date" readonly='0' required='True'/>
+                </xpath>
+                <xpath expr="//field[@name='fiscal_position_id']" position="after">
+                    <group string="Inspection" name="inspection">
+                        <field name="inspection_id"/> 
+                    </group> 
+                </xpath>
+                <!-- sale order line -->
+                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes"> 
+                    <attribute name="invisible">1</attribute> 
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
+                    <field name="open_price"/>
+                </xpath>
+
+                <notebook>
+                    <page string="Contract">
+                        <group>
+                            <field name="tkcloud_id"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</openerp> 

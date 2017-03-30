@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
+<odoo>
     <data>
 
         <!--Gets triggered by the record with id 'access_rights_admin_action'. Which in turn is triggered on click. -->
@@ -18,52 +18,31 @@
                         <group>
                             <group>
                                 <field name="date_cloud"/>
-		    	        <field name="order_id"/>
+		    	        <field name="name"/>
+                                <field name="property_name"/>
                                 <field name="property_add"/>
                                 <field name="end_user"/>
-                                <!-- <field name="partner_id"/>-->
-                                <field name="rep_partner_id"/>
+                                <field name="name_id"/>
+                                <field name="rep_name_id"/>
                                 <field name="user_id"/>
-                                <!--<field name="ass_user_id"/>-->
-                            </group>
-                            <group>
-                                <field name="sim_id"/>
+                                <field name="ass_user_id"/>
                                 <field name="plan"/>
                                 <field name="rate_plan"/>
                             </group>
+                            <group>
+                                <field name="sim_id"/>
+                                <field name="contractor_number"/>
+                                <field name="contractor_pass"/>
+                                <field name="application_date"/>
+                                <field name="approval_date"/>
+                                <field name="construction_date"/>
+                                <field name="expiration_date" placeholder="auto"/>
+                                <field name="changeapp_date"/>
+                                <field name="cancelapp_date"/>
+                                <field name="cancel_date"/>
+                            </group>
                         </group>
-                        <notebook> 
-                            <page string="Contract">
-                                <group>
-                                    <group string="Infomation">
-                                        <field name="contractor_number"/>
-                                        <field name="contractor_pass"/>
-                                        <field name="application_date"/>
-                                    </group>
-                                    <group string="Contraction Date">
-                                        <field name="approval_date"/>
-                                        <field name="construction_date"/>
-                                        <field name="expiration_date" placeholder="auto"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Change and Cancel"> 
-                                <group>
-                                    <group name="change" string="Change"> 
-                                        <field name="changeapp_date"/>
-                                    </group> 
-                                    <group name="cancel" string="Cancel">
-                                        <field name="cancelapp_date"/>
-                                        <field name="cancel_date"/>
-                                    </group>
-                                </group>
-                            </page> 
-                        </notebook> 
 		    </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
                 </form>
 	    </field>
 	</record>
@@ -139,24 +118,11 @@
                                 <field name="construction_date"/>
                                 <field name="expiration_date" placeholder="auto"/>
                                 <field name="changeapp_date"/>
+                                <!-- <field name="cancelapp_date"/>
+                                <field name="cancel_date"/> -->
                             </group>
                         </group>
-                        <notebook>
-                            <page string="Change and Cancel">
-                                <group name="change" string="Change">
-                                    <field name="changeapp_date"/>
-                                </group>
-                                <group name="cancel" string="Cancel">
-                                    <field name="cancelapp_date"/>
-                                    <field name="cancel_date"/>
-                                </group>
-                            </page>
-                        </notebook>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
                 </form>
             </field>
         </record>
@@ -196,4 +162,92 @@
 
 
     </data>
-</openerp>
+</odoo>
+
+
+
+
+
+<!--
+    <record model="ir.ui.view" id="view_access_rights_admin_form">
+      <field name="name">Demo access right</field>
+      <field name="model">demo.access.rights</field>
+	<field name="arch" type="xml">
+	  <form string="ACL">
+	    <sheet>
+	      <group>
+		<field name="name"/>
+	      </group>
+	    </sheet>
+	  </form>
+	</field>
+    </record>
+
+    <record model="ir.ui.view" id="view_access_rights_admin_tree">
+      <field name="name">Demo access right</field>
+      <field name="model">demo.access.rights</field>
+      <field name="arch" type="xml">
+        <tree string="ACL">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="access_rights_admin_action" model="ir.actions.act_window">
+      <field name="name">Admin records</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">demo.access.rights</field>
+      <field name="view_type">form</field>
+      <field name="view_id" ref="view_access_rights_admin_tree"/>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+
+    <!--Gets triggered by the record with id 'access_rights_user_action'. Which in turn is triggered on click. -->
+<!--    <record model="ir.ui.view" id="view_access_rights_user_form">
+      <field name="name">Demo access right</field>
+      <field name="model">demo.access.rights</field>
+      <field name="arch" type="xml">
+	<form string="ACL">
+	  <sheet>
+	    <group>
+	      <field name="name"/>
+	    </group>
+	  </sheet>
+	</form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_access_rights_user_tree">
+      <field name="name">Demo access right</field>
+      <field name="model">demo.access.rights</field>
+      <field name="arch" type="xml">
+        <tree string="ACL">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="access_rights_user_action" model="ir.actions.act_window">
+      <field name="name">User records</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">demo.access.rights</field>
+      <field name="view_type">form</field>
+      <field name="view_id" ref="view_access_rights_user_tree"/>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+    <!-- top level menu: no parent -->
+<!--
+    <menuitem id="main_access_rights_menu" name="Access rights demo"/>
+    <menuitem id="access_rights_menu" name="Rights demo" parent="main_access_rights_menu"/>
+-->
+    <!-- Add the security groups here to allow only access for specific user groups! -->
+<!--    <menuitem id="menu_detail_access_admin_rights" action="access_rights_admin_action" parent="access_rights_menu" 
+      groups="user_access_rights_demo.group_manager"/>
+    <menuitem id="menu_detail_access_user_rights" action="access_rights_user_action" parent="access_rights_menu" 
+      groups="user_access_rights_demo.group_user"/>
+  </data>
+</odoo>
+-->

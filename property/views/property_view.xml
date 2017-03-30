@@ -20,28 +20,32 @@
                             <label class="oe_edit_only" for="name"/>
                             <h1><field name="name" placeholder="Name"/></h1>
                         </div>
-                        <div class="sheets" style="clear:both;">
+                        <group>
                             <div style="float:left;">
-                                <field name="zip" placeholder="Zip"/>
                                 <field name="address" placeholder="Address"/>
                                 <field name="phone" placeholder="Phone"/>
                             </div>
-                            <div style="float:left;">
-                                <group>
-		    	            <field name="partner_name"/>
-                                    <field name="rep_name"/>
-                                </group>
-                                <gloup>
-                                    <field name="warranty_ids"/>
-                                    <field name="inspection_ids"/>
-                                </gloup>
-
-                            </div>
-                        </div>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="key" placeholder="Key or Auto lock number when locked"/>
+                            </group>
+                            <group>
+		    	        <field name="partner_name"/>
+                            </group>
+                        </group>
+                            <group>
+                                <field name="warranty_ids"/>
+                                <field name="inspection_ids"/>
+                            </group>
                         <div>
                             <field name="note" placeholder="Note"/>
                         </div>
 		    </sheet>
+                    <div class="oe_chatter"> 
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/> 
+                    </div> 
                 </form>
 	    </field>
 	</record>
@@ -56,7 +60,6 @@
                     <field name="name"/> 
                     <field name="address"/> 
                     <field name="partner_name"/> 
-                    <field name="rep_name"/>  
                 </tree> 
             </field> 
         </record> 

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+demo_admin, Model admin access,model_property,property.group_manager,1,1,1,1
+demo_user, Model user access,model_property,property.group_user,1,0,0,0
+demo_upper, Model upper access,model_property,property.group_upper,1,1,1,1
