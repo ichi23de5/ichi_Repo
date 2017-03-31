@@ -1,47 +1,44 @@
 <openerp>
     <data>
-
 	<!-- base structure of inspection form view -->
 	<record model="ir.ui.view" id="inspection_view_form">
 	    <field name="name">inspection.view.form</field>
-	    <field name="model">inspection</field>
+	    <field name="model">property.inspection</field>
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="Inspection">
-		    <!--The header tag is built to add buttons within. This puts them at the top -->
-<!--
-		    <header>
--->
-			<!--The oe_highlight class gives the button a red color when it is saved.
-			It is usually used to indicate the expected behaviour. -->
-<!--
-		        <button string="Applicate" type="object" name="applicate_sim" class="oe_highlight"/>
-			<button string="Arrival" type="object" name="arrival_sim"/>
-		    </header>
--->
                     <sheet>
-		        <div class="oe_title">
-<!--                            <label class="oe_edit_only" string="Property Name"/>
-                            <h1><field name="property_id" placeholder="Name"/></h1>
--->
-                        </div>
                         <group>
                             <group>
 		    	        <field name="date"/>
-                                <field name="inspector_id"/>
+                                <field name="inspector_id" widget="selection"/>
                                 <field name="act_type"/>
-                                <field name="inspection_note"/>
-                                <field name="product_memo"/>
-                            </group>
-                            <group>
-                                <field name="request_id"/>
-                                <field name="request_date"/>
-                                <field name="requester_name"/>
-                                <field name="request_note"/>
-                                <field name="responder_name"/>
                                 <field name="state"/>
                             </group>
+                            <group>
+                                <field name="product_memo"/>
+                            </group>
                         </group>
+                        <div>
+                            <field name="inspection_note" placeholder="Note"/>
+                        </div>
+                        <notebook>
+                            <page string="request">
+                                <group>
+                                    <group>
+                                        <field name="request_id"/>
+                                        <field name="request_date"/>
+                                    </group>
+                                    <group>
+                                        <field name="requester_name"/>
+                                        <field name="responder_name"/>
+                                    </group>
+                                </group>
+                                <div>
+                                    <field name="request_note"/>
+                                </div>
+                            </page>
+                        </notebook>
 		    </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
@@ -55,16 +52,14 @@
         <!-- base structure of inspection tree view -->
         <record id="inspection_view_tree" model="ir.ui.view"> 
             <field name="name">inspection.view.tree</field> 
-            <field name="model">inspection</field> 
+            <field name="model">property.inspection</field> 
             <field name="arch" type="xml"> 
                 <tree string="Inspection List"> 
-<!--
-                    <field name="property_id"/> 
--->
+                    <field name="property_id"/>
                     <field name="date"/> 
                     <field name="inspector_id"/> 
                     <field name="act_type"/>  
-                    <field name="inspection_note"/>
+                    <field name="state"/>
                 </tree> 
             </field> 
         </record> 
@@ -74,7 +69,7 @@
         <!-- base structure of inspection_request tree view -->
         <record id="inspection_request_view_tree" model="ir.ui.view">
             <field name="name">inspection.request.view.tree</field>
-            <field name="model">inspection.request</field>
+            <field name="model">property.inspection.request</field>
             <field name="arch" type="xml">
                 <tree string="Inspection Request">
                     <field name="date"/>
@@ -88,7 +83,7 @@
         <!-- base structure of inspection_request form view -->
         <record model="ir.ui.view" id="inspection_request_view_form">
             <field name="name">inspection.request.view.form</field>
-            <field name="model">inspection.request</field>
+            <field name="model">property.inspection.request</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Inspection Request">
@@ -115,34 +110,35 @@
 
 	<!--The action -->
         <record model="ir.actions.act_window" id="buttons_inspection_action">
-            <field name="name">Inspection Model</field>
-            <field name="res_model">inspection</field>
+            <field name="name">Inspection</field>
+            <field name="res_model">property.inspection</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='inspection_view_form'/>
+            <field name="view_mode">tree,form</field>
+            <field name='view_id' ref='inspection_view_tree'/>
         </record>
         <record model="ir.actions.act_window" id="buttons_inspection_request_action">
             <field name="name">Inspection Request</field>
-            <field name="res_model">inspection.request</field>
+            <field name="res_model">property.inspection.request</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='inspection_request_view_form'/>
+            <field name="view_mode">tree,form</field>
+            <field name='view_id' ref='inspection_request_view_tree'/>
         </record>
 
 
 
         <!-- top level menu: no parent -->
-        <menuitem id="main_button_menu" name="Inspection" sequence="0"/>
-        <menuitem id="button_menu" name="Inspection management"
-                  parent="main_button_menu"/>
-        <menuitem id="menu_detail_logging"
+        <menuitem id="button_menu_inspection" name="Inspection" 
+                  parent="pro_main_button_menu"
+                  sequence="9"/> 
+
+        <menuitem id="inspection"
                   action="buttons_inspection_action"
-                  parent="button_menu"
-                  sequence="20"/>
-        <menuitem id="menu_detail_logging2"
+                  parent="button_menu_inspection"
+                  sequence="10"/>
+        <menuitem id="inspection_request"
                   action="buttons_inspection_request_action"
-                  parent="button_menu"
-                  sequence="30"/>
+                  parent="button_menu_inspection"
+                  sequence="11"/>
 
 
     </data>

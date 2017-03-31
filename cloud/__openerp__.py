@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "cloud",
+    'name': "CLOUD",
 
     'summary': "test user",
     'author': "ichi2",
@@ -8,13 +8,14 @@
     'installable': True,
     'category': "Uncategorized",
     'version': "9.0.0.1.1",
-    'depends': ['base','sale','product','project','account','sim',],
+    'depends': ['base','sale','product','project','account','property'],
 
 
     # always loaded
     'data': [
-        'security/user_groups.xml',
-	'security/ir.model.access.csv',
-#	'views/cloud_view.xml'
+#        'security/user_groups.xml',
+#	'security/ir.model.access.csv',
+	'views/cloud_view.xml',
+        'views/sim_view.xml'
     ],
 }

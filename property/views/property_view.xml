@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
 
@@ -8,13 +9,6 @@
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="PROPERTY">
-		<!--   
-                    <header>
-			
-		        <button string="Applicate" type="object" name="applicate_sim" class="oe_highlight"/>
-			<button string="Arrival" type="object" name="arrival_sim"/>
-		    </header>
-                -->
                     <sheet>
 		        <div class="oe_title" style="float:left;">
                             <label class="oe_edit_only" for="name"/>
@@ -28,19 +22,27 @@
                         </group>
                         <group>
                             <group>
+                                <field name="partner_name"/>
                                 <field name="key" placeholder="Key or Auto lock number when locked"/>
                             </group>
                             <group>
-		    	        <field name="partner_name"/>
+		    	        <field name="dvr1"/>
+                                <field name="dvr2"/>
+                                <field name="dvr3"/>
+                                <field name="dvr4"/>
                             </group>
                         </group>
-                            <group>
-                                <field name="warranty_ids"/>
-                                <field name="inspection_ids"/>
-                            </group>
                         <div>
                             <field name="note" placeholder="Note"/>
                         </div>
+                        <notebook>
+                            <page string="Warranty">
+                                <field name="warranty_ids"/>
+                            </page>
+                            <page string="Inspection">
+                                <field name="inspection_ids"/>
+                            </page>
+                        </notebook>
 		    </sheet>
                     <div class="oe_chatter"> 
                         <field name="message_follower_ids" widget="mail_followers"/>
@@ -49,9 +51,7 @@
                 </form>
 	    </field>
 	</record>
-
-
-        <!-- base structure of sim tree view -->
+        <!-- base structure of property tree view -->
         <record id="property_view_tree" model="ir.ui.view"> 
             <field name="name">property.view.tree</field> 
             <field name="model">property</field> 
@@ -66,21 +66,79 @@
 
 
 
+        <!-- base structure of warranty tree view -->
+        <record id="warranty_view_tree" model="ir.ui.view">
+            <field name="name">warranty.view.tree</field>
+            <field name="model">warranty</field>
+            <field name="arch" type="xml">
+                <tree string="Warranty">
+                    <field name="name"/>
+                    <field name="scope_of_covaerage"/>
+                    <field name="range_coverage"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <!-- base structure of warranty form view -->
+        <record model="ir.ui.view" id="warranty_view_form">
+            <field name="name">warranty.view.form</field>
+            <field name="model">warranty</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Warranty">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active"/>
+                            </group>
+                            <group>
+                                <field name="scope_of_covaerage"/>
+                                <field name="range_coverage"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+
 	<!--The action -->
         <record model="ir.actions.act_window" id="property_view_action">
             <field name="name">Property Info</field>
             <field name="res_model">property</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form,tree</field>
+            <field name="view_mode">tree,form</field>
             <field name='view_id' ref='property_view_form'/>
         </record>
+        <record model="ir.actions.act_window" id="buttons_warranty_action">
+            <field name="name">Warranty</field>
+            <field name="res_model">warranty</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='warranty_view_form'/>
+        </record>
+
 
         <!-- top level menu: no parent -->
         <menuitem id="pro_main_button_menu" name="Property"/>
-        <menuitem id="pro_button_menu" name="Property"
+
+        <menuitem id="button_menu_property" name="Property"
                   parent="pro_main_button_menu"/>
-        <menuitem id="pro_menu_detail"
-                action="property_view_action" parent="pro_button_menu"
-                sequence="20"/>
+        <menuitem id="property"
+                action="property_view_action" parent="button_menu_property"
+                sequence="2"/>
+
+        <menuitem id="button_menu_warranty" name="Warranty management"
+                  parent="pro_main_button_menu"/>
+        <menuitem id="warranty"
+                  action="buttons_warranty_action"
+                  parent="button_menu_warranty"
+                  sequence="10"/>
+
     </data>
 </openerp>
