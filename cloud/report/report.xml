@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+
+    <record id="customer_login_report_id" model="ir.actions.report.xml">
+        <field name="name">Customer Login Report</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">sample_report</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="parser_loc">cloud/report/parser.py</field>
+        <field name="report_rml">cloud/report/tkcloud_report.ods</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+
+        <ir_set>
+            <field name="key" eval="'action'"/>
+            <field name="key2" eval="'client_print_multi'"/>
+            <field name="models" eval="['cloud']"/>
+            <field name="name">Acceptance note</field>
+            <field name="value" eval="'ir.actions.report.xml,'+str("customer_login_report_id)"/>
+            <field name="isobject" eval="True"/>
+            <field name="replace" eval="True"/>
+        </ir_set>
+
+</data>
+</openerp>
+

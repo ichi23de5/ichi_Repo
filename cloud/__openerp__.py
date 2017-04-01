@@ -9,9 +9,10 @@
     'installable': True,
     'category': "Uncategorized",
     'version': "9.0.0.1.1",
-    'depends': ['base','sale','product','project','account','sim',],
+    'depends': ['base','report_aeroo','sale','product','project','account','sim',],
     'data': [
         "views/cloud_view.xml",
+        "report/report.xml",
     ],
     
 #    'demo': [
