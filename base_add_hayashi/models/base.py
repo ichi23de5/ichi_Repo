@@ -12,5 +12,5 @@ class ResPartner2(models.Model):
 
 
     outside_order = fields.Boolean(string="Outside Flag")
-
+    maker = fields.Boolean(string='Maker', help='maker dattara check')
 

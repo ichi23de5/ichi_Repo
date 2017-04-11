@@ -23,8 +23,12 @@
                     <field name="credit"/>
                     <field name="debit"/>
                     <field name="outside_order"/>
-                </xpath>
 
+                </xpath>
+<!--                <xpath expr="//field[@name='supplier']" position="after">
+                    <field name="maker"/>
+                </xpath>
+-->
                 <notebook>
                     <page string="Contract Management">
                     </page>

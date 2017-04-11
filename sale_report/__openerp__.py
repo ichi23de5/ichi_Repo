@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
+
 {
-        "name": " Sale add test",
+        "name": " Sale report",
         "summary": "sale report",
         "version": "9.0.0.1.1",
         "category": "Sales",
@@ -11,12 +12,15 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property"
-                   ],
+                "sale","property",
+                "base","account","crm","product",
+        ],
         "data": [
                 "views/sale_view.xml",
-                "views/product_view.xml",
-                ],
+                "security/user_groups.xml",
+                "security/ir.model.access.csv",
+        ],
 }
+
 
 

@@ -47,7 +47,7 @@ class InspectionRequest(models.Model):
     date = fields.Date(string='Date', required=True, copy=False,)
     partner_id = fields.Many2one('res.partner', string='partner_id',)
     request_note = fields.Text(string='request_note',)
-    user_id = fields.Many2one('res.users', string='user_id', required=True,)
+    user_id = fields.Many2one('res.users', string='user_id', required=True, help='hosyu no irai wo uketahitoy')
 
     @api.model
     def create(self, vals):

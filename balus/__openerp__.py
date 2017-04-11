@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 
+
 {
-        "name": " Sale add test",
-        "summary": "sale report",
+        "name": "Balus",
+        "summary": "by hayashi",
         "version": "9.0.0.1.1",
-        "category": "Sales",
         "website": "http://www.toyo-kiki.co.jp",
         "author": "ichi2",
         "license": "AGPL-3",
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property"
+                   "sale","product","base",
                    ],
         "data": [
-                "views/sale_view.xml",
                 "views/product_view.xml",
                 ],
 }
-
 

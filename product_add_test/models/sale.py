@@ -37,16 +37,6 @@ class SaleOrder(models.Model):
     construction_title = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids = fields.One2many('sale.construction','list_id', string='yokutsukau tokkizikou model', store=True)
     construction_note = fields.Text(string='Others', help='Sonota tokkizikou')
-#    construction_flag = fields.selection([
-#        ('toki', 'TOKI'),
-#        ('outside', 'Gaityu'),
-#        ('both', 'Ryouhou')
-#        ], string='Work')
-#    outside_order = fields.Boolean('outsider', invisible=True)
-
-    @api.onchange('construction_flag')
-    def onchange_construction_flag(self):
-        self.outside_order = (self.construction_flag == 'outside')
 
 
 
@@ -86,7 +76,7 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    open_price = fields.Char(string='Open Price', related='product_id.open_price', required=True)
+    open_price = fields.Char(string='Open Price', related='product_id.name', required=True)
 
 
 class Construction(models.Model):
