@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+	<record id="view_partner_form_check5" model="ir.ui.view">
+	    <field name="name">res.partner.form.check</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='mobile']" position="replace"/>
+                <xpath expr="//field[@name='email']" position="replace"/>
+                <!-- <xpath expr="//field[@name='category_id']" position="replace"/>-->
+                <xpath expr="//field[@name='lang']" position="replace"/>
+                <xpath expr="//field[@name='title']" position="replace"/>
+                <xpath expr="//field[@name='fax']" position="after">
+                    <field name="mail_address"/>
+                    <field name="partner_number" placeholder="partner contraction ID"/>
+                </xpath>
+                <xpath expr="//field[@name='supplier']" position="after">
+                    <field name="outside_order"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="base.res_partner_action" model="ir.actions.act_window"> 
+            <field name="name">res.partner</field> 
+            <field name="type">ir.actions.act_window</field> 
+            <field name="res_model">res.partner</field> 
+            <field name="view_mode">tree,form,kanban</field> 
+            <field name="view_type">tree</field> 
+            <field name="view_id" ref="base.view_partner_tree"/> 
+        </record> 
+
+    </data>
+</openerp> 

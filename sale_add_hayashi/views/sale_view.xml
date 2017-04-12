@@ -34,9 +34,11 @@
                     <field name="assistant_id" widget="selection"/>
                 </xpath>
                 <xpath expr="//field[@name='validity_date']" position="before">
-                    <field name="create_date" readonly="0"/>
+                    <field name="order_date"/>
                 </xpath>
-                <xpath expr="//field[@name='validity_date']" position="after">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="construction_type"/>
+                    <field name="outside_order" invisible="1"/>
                     <field name="completion_date"/>
                 </xpath>
 
@@ -50,7 +52,7 @@
 
                 <!-- construction page -->
                 <notebook>
-                    <page string="Construction">
+                    <page string="Construction" attrs="{'invisible': [('construction_type', '==', 'outside')]}">
                         <group>
                             <group string="Construction Dates">
                                 <field name="start_date"/>
@@ -64,6 +66,25 @@
                         <field name="construction_title" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
                         <field name="construction_ids"/>
                         <field name="construction_note" placeholder="Sonota tokkizikou"/>
+                    </page>
+                    <page string="Outside" attrs="{'invisible': [('construction_type', '==', 'toki')]}">
+                        <group class="oe_left">
+                            <field name="outside_id" placeholder="Outside Supplier" widget="selection"/>
+                            <field name="amount_outside"/>
+                        </group>
+                        <group>
+                            <group string="Construction Dates">
+                                <field name="start_date_o"/>
+                                <field name="end_date_o"/>
+                            </group>
+                            <group string="Construction Times">
+                                <field name="start_time_o"/>
+                                <field name="end_time_o"/>
+                            </group>
+                        </group>
+                        <field name="construction_title_o" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
+                        <field name="construction_ids_o"/>
+                        <field name="construction_note_o" placeholder="Sonota tokkizikou"/>
                     </page>
                 </notebook>
 

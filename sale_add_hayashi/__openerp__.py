@@ -2,7 +2,7 @@
 
 {
         "name": " Sale add test",
-        "summary": "sale report",
+        "summary": "sale by hayashi",
         "version": "9.0.0.1.1",
         "category": "Sales",
         "website": "http://www.toyo-kiki.co.jp",
@@ -11,11 +11,12 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property"
+                   "sale","property","base"
                    ],
         "data": [
                 "views/sale_view.xml",
                 "views/product_view.xml",
+                "views/res_partner_view.xml",
                 ],
 }
 

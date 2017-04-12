@@ -11,6 +11,7 @@ class SaleOrder(models.Model):
 
 
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    order_date = fields.Datetime(string='Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     assistant_id = fields.Many2one('res.users', string='Assistant')
     work_type = fields.Selection([
         ('new', 'New construction'),
@@ -22,39 +23,48 @@ class SaleOrder(models.Model):
         ],
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     plan_id = fields.Char(string='Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    completion_date = fields.Date(string='Syunkoubi')
-
-
-
-
+    completion_date = fields.Date(string='Syunkoubi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
 
 
     ### construction field for (old) purchase order ###
-    start_date = fields.Date(string='Kouzi start')
-    end_date = fields.Date(string='Kouzi end')
+    construction_type = fields.Selection([
+        ('toki', 'TOKI'),
+        ('outside', 'Gaityu'),
+        ('both', 'Ryouhou')
+        ], string='Work', default='toki')
+    outside_order = fields.Boolean('Outside order', default=False)
+    ### construction TOKI ###
+    start_date = fields.Date(string='Kouji start')
+    end_date = fields.Date(string='Kouji end')
     start_time = fields.Char(string='Start time')
     end_time = fields.Char(string='End time')
     construction_title = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids = fields.One2many('sale.construction','list_id', string='yokutsukau tokkizikou model', store=True)
     construction_note = fields.Text(string='Others', help='Sonota tokkizikou')
-#    construction_flag = fields.selection([
-#        ('toki', 'TOKI'),
-#        ('outside', 'Gaityu'),
-#        ('both', 'Ryouhou')
-#        ], string='Work')
-#    outside_order = fields.Boolean('outsider', invisible=True)
-
-    @api.onchange('construction_flag')
-    def onchange_construction_flag(self):
-        self.outside_order = (self.construction_flag == 'outside')
-
-
+    ### construction OUTSIDE ORDER ###
+    outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
+    amount_outside = fields.Integer(string='Gaityukingaku')
+    start_date_o = fields.Date(string='Kouji start')
+    end_date_o = fields.Date(string='Kouji end')
+    start_time_o = fields.Char(string='Start time')
+    end_time_o = fields.Char(string='End time')
+    construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
+    construction_ids_o = fields.One2many('sale.construction','list_id', string='yokutsukau tokkizikou model', store=True)
+    construction_note_o = fields.Text(string='Others', help='Sonota tokkizikou')
 
 
 
-    @api.onchange('create_date')
+
+
+    @api.onchange('construction_type') 
+    def onchange_construction_type(self): 
+        self.outside_order = (self.construction_type == 'outside' or self.construction_type == 'both')
+
+
+
+    @api.onchange('order_date')
     def _date_exp(self):
-        main = fields.Datetime.from_string(self.create_date)
+        main = fields.Datetime.from_string(self.order_date)
         if main:
             exp = main + relativedelta(months=3)
             self.update({'validity_date': exp})
@@ -62,10 +72,13 @@ class SaleOrder(models.Model):
 
 
 
+
     confirmation_date = fields.Datetime(string='Confirmation Date',
                                         readonly=True,
                                         index=True, help="Date on which the sale order is confirmed.",
                                         oldname="date_confirm")
+
+
 
     @api.multi
     def action_confirm(self):
