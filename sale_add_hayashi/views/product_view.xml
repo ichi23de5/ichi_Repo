@@ -17,6 +17,7 @@
 <!--
                 <xpath expr="//field[@name='barcode']" position="after">
                     <field name="maker_id"/>
+                    <field name="maker_code" invisible="1"/>
                 </xpath>
 -->
                 <xpath expr="//field[@name='property_stock_inventory']" position="after">

@@ -7,6 +7,9 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <h3><field name="default_code" domain="[('is_company', '=', True)]" attrs="{'invisible': [('is_company','=', False)]}" placeholder="Nickname"/></h3>
+                </xpath>
                 <xpath expr="//field[@name='mobile']" position="replace"/>
                 <xpath expr="//field[@name='email']" position="replace"/>
                 <xpath expr="//field[@name='category_id']" position="attributes">

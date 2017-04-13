@@ -2,7 +2,7 @@
 
 {
         "name": " Sale add test",
-        "summary": "sale by hayashi",
+        "summary": "res_partner[fix]",
         "version": "9.0.0.1.1",
         "category": "Sales",
         "website": "http://www.toyo-kiki.co.jp",
