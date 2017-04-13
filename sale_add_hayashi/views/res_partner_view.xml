@@ -9,15 +9,18 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='mobile']" position="replace"/>
                 <xpath expr="//field[@name='email']" position="replace"/>
-                <!-- <xpath expr="//field[@name='category_id']" position="replace"/>-->
+                <xpath expr="//field[@name='category_id']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
                 <xpath expr="//field[@name='lang']" position="replace"/>
                 <xpath expr="//field[@name='title']" position="replace"/>
                 <xpath expr="//field[@name='fax']" position="after">
                     <field name="mail_address"/>
-                    <field name="partner_number" placeholder="partner contraction ID"/>
+                    <field name="partner_number" placeholder="partner contraction ID" attrs="{'invisible': [('is_company','=', False)]}"/>
                 </xpath>
-                <xpath expr="//field[@name='supplier']" position="after">
+                <xpath expr="//group/field[@name='supplier']" position="after">
                     <field name="outside_order"/>
+                    <field name="maker"/>
                 </xpath>
             </field>
         </record>

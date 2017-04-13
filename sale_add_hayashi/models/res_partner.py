@@ -11,3 +11,5 @@ class ResPartner2(models.Model):
     outside_order = fields.Boolean(string="Outside Flag")
     mail_address = fields.Char(string="Email") #email field hidden#
     partner_number = fields.Char(string="Partner ID")
+    maker = fields.Boolean("Maker Flag")
+    default_code = fields.Char("Ryakusyou")

@@ -14,9 +14,11 @@
                 <xpath expr="//field[@name='list_price']" position="after">
                     <field name="open_price"/>
                 </xpath>
+<!--
                 <xpath expr="//field[@name='barcode']" position="after">
-                    <field name="maker"/>
+                    <field name="maker_id"/>
                 </xpath>
+-->
                 <xpath expr="//field[@name='property_stock_inventory']" position="after">
                     <field name="invoice_policy" widget="radio"/>
                 </xpath>
