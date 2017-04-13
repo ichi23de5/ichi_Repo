@@ -9,7 +9,7 @@
     'installable': True,
     'category': "Uncategorized",
     'version': "9.0.0.1.1",
-    'depends': ['base','sale','product'],
+    'depends': ['base','sale','product','property'],
     'data': [
         "views/inspection_view.xml",
     ],

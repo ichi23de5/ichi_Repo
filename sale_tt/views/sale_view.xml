@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+	<record id="view_order_form_codetest" model="ir.ui.view">
+	    <field name="name">sale.order.form.codetest</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <header>  
+                    <xpath expr="//form/header/button[@name='action_done']" position="after">
+                        <button string="Flag A" type="object" name="flag_b"/>
+                    </xpath>
+                </header>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                       <field name="plan_id"/>
+                       <field name="check"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp> 

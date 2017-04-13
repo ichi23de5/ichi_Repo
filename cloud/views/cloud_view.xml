@@ -8,15 +8,11 @@
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="TKCLOUD">
-		    <!--The header tag is built to add buttons within. This puts them at the top -->
-		    <!-- <header> -->
+		    <header>
 			<!--The oe_highlight class gives the button a red color when it is saved.
 			It is usually used to indicate the expected behaviour. -->
-		    <!--
-                        <button string="Applicate" type="object" name="applicate_sim" class="oe_highlight"/>
-			<button string="Arrival" type="object" name="arrival_sim"/>
+                        <button string="flag_a" type="object" name="flag_a" />
 		    </header>
-                    -->
                     <sheet>
 		        <div class="oe_title">
 <!--

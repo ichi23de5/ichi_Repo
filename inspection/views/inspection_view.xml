@@ -21,9 +21,9 @@
 -->
                     <sheet>
 		        <div class="oe_title">
-<!--                            <label class="oe_edit_only" string="Property Name"/>
+                            <label  string="Property Name"/>
                             <h1><field name="property_id" placeholder="Name"/></h1>
--->
+
                         </div>
                         <group>
                             <group>
@@ -94,6 +94,7 @@
                                 <field name="date"/>
                                 <field name="partner_id"/>
                                 <field name="user_id"/>
+                                <field name="name"/>
                             </group>
                             <group>
                                 <field name="request_note"/>

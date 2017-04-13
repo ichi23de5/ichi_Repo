@@ -8,12 +8,13 @@ class Property(models.Model):
     _name = 'property'
     _order = 'property_name desc'
     _inherit = ['mail.thread', 'ir.needaction_mixin']
+    _rec_name = "property_name"
 
     property_name = fields.Char(string='Name', required=True, copy=False,)
     phone = fields.Char(string='TEL', required=False, copy=False,)
     zip = fields.Char(string='ZIP',)
     property_addr = fields.Char(string='ADDRESS', copy=False,)    
     partner_id = fields.Many2one('res.partner', string='Partner',)
-    rep_name_id = fields.Many2one('res.partner', string='Rep_Name',)
+    rep_name_id = fields.Many2one('res.partner', string='Rep_Name',domain=[('company_type','=','person')])
     note = fields.Text(string='NOTE',)
-
+#    inspection_ids = fields.One2many('inspection','property_id',string='Inspections', delegate=True)
