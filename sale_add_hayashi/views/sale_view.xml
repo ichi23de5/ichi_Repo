@@ -1,58 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <openerp>
     <data>
-	<record id="view_order_form_check3" model="ir.ui.view">
-	    <field name="name">sale.order.form.check</field>
+        <record id="sale_report_form" model="ir.ui.view">
+            <field name="name">sale.order.form.report</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <header>  
-                    <group>
-                        <button string="Flag A" type="object" name="flag_a"/>
-                    </group>
-                </header>
-                <xpath expr="//field[@name='project_id']" position="replace">
+                <xpath expr="//field[@name='name']" position="after">
+                    <label class="oe_edit_only" string="Property Name"/>
+                    <h2><field name="property_id"/></h2>
                 </xpath>
-                <xpath expr="//field[@name='user_id']" position="replace">
-                </xpath>
-<!--                <xpath expr="//field[@name='incoterm']" position="replace">
-                </xpath>
--->
                 <xpath expr="//field[@name='validity_date']" position="attributes">
                     <attribute name="placeholder">auto</attribute>
-<!--                    <attribute name="readonly">True</attribute> -->
+                    <attribute name="store">True</attribute>
                 </xpath>
+                <xpath expr="//field[@name='project_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="context">"{'show_address': 0}"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="replace"/>
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="plan_id"/>
                     <field name="work_type"/>
-                    <field name="property_id"/>
                     <field name="user_id" widget="selection"/>
-                    <field name="assistant" widget="selection"/>
-                    <field name="inspection_id"/>
+                    <field name="assistant_id" widget="selection"/>
                 </xpath>
                 <xpath expr="//field[@name='validity_date']" position="before">
-                    <field name="create_date" readonly='0'/>
+                    <field name="order_date"/>
                 </xpath>
-<!--
                 <xpath expr="//field[@name='payment_term_id']" position="after">
-                    <field name="confirmation_date"/>
-                    <field name="construction_date"/>
+                    <field name="construction_type"/>
+                    <field name="outside_order" invisible="1"/>
                     <field name="completion_date"/>
                 </xpath>
--->                
+
+                <!-- attributes sale.order.line -->
+                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
+                    <field name="open_price"/>
+                </xpath>
+
+                <!-- construction page -->
                 <notebook>
-                    <page string="Contract">
+                    <page string="Construction" attrs="{'invisible': [('construction_type', '==', 'outside')]}">
                         <group>
-                            <field name="tkcloud_id"/>
+                            <group string="Construction Dates">
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                            <group string="Construction Times">
+                                <field name="start_time"/>
+                                <field name="end_time"/>
+                            </group>
                         </group>
+                        <field name="construction_title" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
+                        <field name="construction_ids"/>
+                        <field name="construction_note" placeholder="Sonota tokkizikou"/>
+                    </page>
+                    <page string="Outside" attrs="{'invisible': [('construction_type', '==', 'toki')]}">
+                        <group class="oe_left">
+                            <field name="outside_id"/>
+                            <field name="amount_outside"/>
+                        </group>
+                        <group>
+                            <group string="Construction Dates">
+                                <field name="start_date_o"/>
+                                <field name="end_date_o"/>
+                            </group>
+                            <group string="Construction Times">
+                                <field name="start_time_o"/>
+                                <field name="end_time_o"/>
+                            </group>
+                        </group>
+                        <field name="construction_title_o" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
+                        <field name="construction_ids_o"/>
+                        <field name="construction_note_o" placeholder="Sonota tokkizikou"/>
                     </page>
                 </notebook>
-            </field>
-        </record>
 
-
-
-
+           </field>
+         </record>
     </data>
-</openerp> 
+</openerp>
+
