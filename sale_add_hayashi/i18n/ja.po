@@ -1,0 +1,483 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_add_hayashi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-14 11:55+0000\n"
+"PO-Revision-Date: 2017-04-14 11:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_add_hayashi
+#: model:ir.ui.view,arch_db:sale_add_hayashi.view_order_form_check4
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='invoice_policy']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='default_code']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='list_price']\" position=\"after\">\n"
+"                    <field name=\"open_price\"/>\n"
+"                </xpath>\n"
+"<!--\n"
+"                <xpath expr=\"//field[@name='barcode']\" position=\"after\">\n"
+"                    <field name=\"maker_id\"/>\n"
+"                    <field name=\"maker_code\" invisible=\"1\"/>\n"
+"                </xpath>\n"
+"-->\n"
+"                <xpath expr=\"//field[@name='property_stock_inventory']\" position=\"after\">\n"
+"                    <field name=\"invoice_policy\" widget=\"radio\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='seller_ids']\" position=\"replace\"/>\n"
+"                <notebook>\n"
+"                    <page string=\"Flag\">\n"
+"                        <group string=\"Flag\">\n"
+"                            <field name=\"is_warranty\"/>\n"
+"                            <field name=\"is_cloud\"/>\n"
+"                            <field name=\"is_payment\"/>\n"
+"                            <field name=\"pay_per\"/>\n"
+"                        </group>\n"
+"                    </page>\n"
+"                </notebook>\n"
+"            </data>"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.ui.view,arch_db:sale_add_hayashi.view_partner_form_check5
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                    <h3><field name=\"default_code\" domain=\"[('is_company', '=', True)]\" attrs=\"{'invisible': [('is_company','=', False)]}\" placeholder=\"Nickname\"/></h3>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='mobile']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='email']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='category_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">\"1\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='lang']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='title']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='fax']\" position=\"after\">\n"
+"                    <field name=\"mail_address\"/>\n"
+"                    <field name=\"partner_number\" placeholder=\"partner contraction ID\" attrs=\"{'invisible': [('is_company','=', False)]}\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//group/field[@name='supplier']\" position=\"after\">\n"
+"                    <field name=\"outside_order\"/>\n"
+"                    <field name=\"maker\"/>\n"
+"                </xpath>\n"
+"            </data>"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.ui.view,arch_db:sale_add_hayashi.sale_report_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                    <label class=\"oe_edit_only\" string=\"Property Name\"/>\n"
+"                    <h2><field name=\"property_id\"/></h2>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"attributes\">\n"
+"                    <attribute name=\"placeholder\">auto</attribute>\n"
+"                    <attribute name=\"store\">True</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='project_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='name']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"context\">\"{'show_address': 0}\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_shipping_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='user_id']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"after\">\n"
+"                    <field name=\"plan_id\"/>\n"
+"                    <field name=\"work_type\"/>\n"
+"                    <field name=\"user_id\" widget=\"selection\"/>\n"
+"                    <field name=\"assistant_id\" widget=\"selection\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"before\">\n"
+"                    <field name=\"order_date\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='payment_term_id']\" position=\"after\">\n"
+"                    <field name=\"construction_type\"/>\n"
+"                    <field name=\"outside_order\" invisible=\"1\"/>\n"
+"                    <field name=\"completion_date\"/>\n"
+"                </xpath>\n"
+"\n"
+"                <!-- attributes sale.order.line -->\n"
+"                <xpath expr=\"//field[@name='order_line']/tree//field[@name='tax_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='order_line']/tree//field[@name='price_unit']\" position=\"before\">\n"
+"                    <field name=\"open_price\"/>\n"
+"                </xpath>\n"
+"\n"
+"                <!-- construction page -->\n"
+"                <notebook>\n"
+"                    <page string=\"Construction\" attrs=\"{'invisible': [('construction_type', '==', 'outside')]}\">\n"
+"                        <group>\n"
+"                            <group string=\"Construction Dates\">\n"
+"                                <field name=\"start_date\"/>\n"
+"                                <field name=\"end_date\"/>\n"
+"                            </group>\n"
+"                            <group string=\"Construction Times\">\n"
+"                                <field name=\"start_time\"/>\n"
+"                                <field name=\"end_time\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <field name=\"construction_title\" placeholder=\"Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.\"/>\n"
+"                        <field name=\"construction_ids\"/>\n"
+"                        <field name=\"construction_note\" placeholder=\"Sonota tokkizikou\"/>\n"
+"                    </page>\n"
+"                    <page string=\"Outside\" attrs=\"{'invisible': [('construction_type', '==', 'toki')]}\">\n"
+"                        <group class=\"oe_left\">\n"
+"                            <field name=\"outside_id\"/>\n"
+"                            <field name=\"amount_outside\"/>\n"
+"                        </group>\n"
+"                        <group>\n"
+"                            <group string=\"Construction Dates\">\n"
+"                                <field name=\"start_date_o\"/>\n"
+"                                <field name=\"end_date_o\"/>\n"
+"                            </group>\n"
+"                            <group string=\"Construction Times\">\n"
+"                                <field name=\"start_time_o\"/>\n"
+"                                <field name=\"end_time_o\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <field name=\"construction_title_o\" placeholder=\"Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.\"/>\n"
+"                        <field name=\"construction_ids_o\"/>\n"
+"                        <field name=\"construction_note_o\" placeholder=\"Sonota tokkizikou\"/>\n"
+"                    </page>\n"
+"                </notebook>\n"
+"\n"
+"           </data>"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.ui.view,arch_db:sale_add_hayashi.product_template_tree_view2
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='weight']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='volume']\" position=\"replace\"/>\n"
+"            </data>"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_assistant_id
+#: field:sale.order,assistant_id:0
+msgid "Assistant"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_is_cloud
+#: field:product.template,is_cloud:0
+msgid "Cloud Flag"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_confirmation_date
+#: field:sale.order,confirmation_date:0
+msgid "Confirmation Date"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_order_date
+#: field:sale.order,order_date:0
+msgid "Create Date"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_create_uid
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_create_uid
+#: field:sale.construction,create_uid:0
+#: field:sale.construction.list,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_create_date
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_create_date
+#: field:sale.construction,create_date:0
+#: field:sale.construction.list,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,help:sale_add_hayashi.field_sale_order_confirmation_date
+#: help:sale.order,confirmation_date:0
+msgid "Date on which the sale order is confirmed."
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_mail_address
+#: field:res.partner,mail_address:0
+msgid "Email"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_end_time
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_end_time_o
+#: field:sale.order,end_time:0
+#: field:sale.order,end_time_o:0
+msgid "End time"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,work_type:0
+msgid "Extention"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,construction_type:0
+msgid "Gaityu"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_amount_outside
+#: field:sale.order,amount_outside:0
+msgid "Gaityukingaku"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_id
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_id_6084
+#: field:sale.construction,id:0
+#: field:sale.construction.list,id:0
+msgid "ID"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,work_type:0
+msgid "Inspection"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_end_date
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_end_date_o
+#: field:sale.order,end_date:0
+#: field:sale.order,end_date_o:0
+msgid "Kouji end"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_start_date
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_start_date_o
+#: field:sale.order,start_date:0
+#: field:sale.order,start_date_o:0
+msgid "Kouji start"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,help:sale_add_hayashi.field_sale_order_construction_title
+#: model:ir.model.fields,help:sale_add_hayashi.field_sale_order_construction_title_o
+#: help:sale.order,construction_title:0
+#: help:sale.order,construction_title_o:0
+msgid "Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_write_uid
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_write_uid
+#: field:sale.construction,write_uid:0
+#: field:sale.construction.list,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_write_date
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_write_date
+#: field:sale.construction,write_date:0
+#: field:sale.construction.list,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_maker
+#: field:res.partner,maker:0
+msgid "Maker Flag"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_is_payment
+#: field:product.template,is_payment:0
+msgid "Monthly Payment Flag"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,work_type:0
+msgid "New construction"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_note
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_note_o
+#: field:sale.order,construction_note:0
+#: field:sale.order,construction_note_o:0
+#: selection:sale.order,work_type:0
+msgid "Others"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_outside_order
+#: field:res.partner,outside_order:0
+msgid "Outside Flag"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_outside_id
+#: field:sale.order,outside_id:0
+msgid "Outside Supplier"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_outside_order
+#: field:sale.order,outside_order:0
+msgid "Outside order"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model,name:sale_add_hayashi.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_partner_number
+#: field:res.partner,partner_number:0
+msgid "Partner ID"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_pay_per
+#: field:product.template,pay_per:0
+msgid "Pay per Flag"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model,name:sale_add_hayashi.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_property_id
+#: field:sale.order,property_id:0
+msgid "Property Name"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,work_type:0
+msgid "ReNewal"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_default_code
+#: field:res.partner,default_code:0
+msgid "Ryakusyou"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,construction_type:0
+msgid "Ryouhou"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,work_type:0
+msgid "Sale of Product"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model,name:sale_add_hayashi.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model,name:sale_add_hayashi.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,help:sale_add_hayashi.field_sale_order_construction_note
+#: model:ir.model.fields,help:sale_add_hayashi.field_sale_order_construction_note_o
+#: help:sale.order,construction_note:0
+#: help:sale.order,construction_note_o:0
+msgid "Sonota tokkizikou"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_start_time
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_start_time_o
+#: field:sale.order,start_time:0
+#: field:sale.order,start_time_o:0
+msgid "Start time"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_completion_date
+#: field:sale.order,completion_date:0
+msgid "Syunkoubi"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: selection:sale.order,construction_type:0
+msgid "TOKI"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_work_type
+#: field:sale.order,work_type:0
+msgid "Type"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_open_price
+#: field:product.template,open_price:0
+msgid "Vender Price"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_is_warranty
+#: field:product.template,is_warranty:0
+msgid "Warranty Flag"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_type
+#: field:sale.order,construction_type:0
+msgid "Work"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_note
+#: field:sale.construction.list,note:0
+msgid "memo"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_id
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_list_id
+#: field:sale.construction,list_id:0
+#: field:sale.construction.list,list_id:0
+msgid "template"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_title
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_title_o
+#: field:sale.order,construction_title:0
+#: field:sale.order,construction_title_o:0
+msgid "title"
+msgstr ""
+
+#. module: sale_add_hayashi
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_ids
+#: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_ids_o
+#: field:sale.order,construction_ids:0
+#: field:sale.order,construction_ids_o:0
+msgid "yokutsukau tokkizikou model"
+msgstr ""
+
