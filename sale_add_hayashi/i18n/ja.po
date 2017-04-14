@@ -172,7 +172,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_assistant_id
 #: field:sale.order,assistant_id:0
 msgid "Assistant"
-msgstr ""
+msgstr "アシスタント"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_is_cloud
@@ -184,13 +184,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_confirmation_date
 #: field:sale.order,confirmation_date:0
 msgid "Confirmation Date"
-msgstr ""
+msgstr "承認日"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_order_date
 #: field:sale.order,order_date:0
 msgid "Create Date"
-msgstr ""
+msgstr "見積作成日"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_create_uid
@@ -198,7 +198,7 @@ msgstr ""
 #: field:sale.construction,create_uid:0
 #: field:sale.construction.list,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "見積作成者"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_create_date
@@ -206,13 +206,13 @@ msgstr ""
 #: field:sale.construction,create_date:0
 #: field:sale.construction.list,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "作成日"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,help:sale_add_hayashi.field_sale_order_confirmation_date
 #: help:sale.order,confirmation_date:0
 msgid "Date on which the sale order is confirmed."
-msgstr ""
+msgstr "見積が稟議承認された日付"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_mail_address
@@ -226,23 +226,23 @@ msgstr ""
 #: field:sale.order,end_time:0
 #: field:sale.order,end_time_o:0
 msgid "End time"
-msgstr ""
+msgstr "終了期限"
 
 #. module: sale_add_hayashi
 #: selection:sale.order,work_type:0
 msgid "Extention"
-msgstr ""
+msgstr "増設工事"
 
 #. module: sale_add_hayashi
 #: selection:sale.order,construction_type:0
 msgid "Gaityu"
-msgstr ""
+msgstr "外注工事"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_amount_outside
 #: field:sale.order,amount_outside:0
 msgid "Gaityukingaku"
-msgstr ""
+msgstr "外注金額"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_id
@@ -255,7 +255,7 @@ msgstr ""
 #. module: sale_add_hayashi
 #: selection:sale.order,work_type:0
 msgid "Inspection"
-msgstr ""
+msgstr "点検作業"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_end_date
@@ -263,7 +263,7 @@ msgstr ""
 #: field:sale.order,end_date:0
 #: field:sale.order,end_date_o:0
 msgid "Kouji end"
-msgstr ""
+msgstr "終了予定日"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_start_date
@@ -271,7 +271,7 @@ msgstr ""
 #: field:sale.order,start_date:0
 #: field:sale.order,start_date_o:0
 msgid "Kouji start"
-msgstr ""
+msgstr "着工日"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,help:sale_add_hayashi.field_sale_order_construction_title
@@ -279,7 +279,7 @@ msgstr ""
 #: help:sale.order,construction_title:0
 #: help:sale.order,construction_title_o:0
 msgid "Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."
-msgstr ""
+msgstr "工事内容のかんたんな概要。例：カメラ３台設置など"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_write_uid
@@ -312,7 +312,7 @@ msgstr ""
 #. module: sale_add_hayashi
 #: selection:sale.order,work_type:0
 msgid "New construction"
-msgstr ""
+msgstr "新設工事"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_note
@@ -321,7 +321,7 @@ msgstr ""
 #: field:sale.order,construction_note_o:0
 #: selection:sale.order,work_type:0
 msgid "Others"
-msgstr ""
+msgstr "その他"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_outside_order
@@ -333,13 +333,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_outside_id
 #: field:sale.order,outside_id:0
 msgid "Outside Supplier"
-msgstr ""
+msgstr "外注業者"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_outside_order
 #: field:sale.order,outside_order:0
 msgid "Outside order"
-msgstr ""
+msgstr "外注発注"
 
 #. module: sale_add_hayashi
 #: model:ir.model,name:sale_add_hayashi.model_res_partner
@@ -350,7 +350,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_partner_number
 #: field:res.partner,partner_number:0
 msgid "Partner ID"
-msgstr ""
+msgstr "顧客コード"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_pay_per
@@ -367,28 +367,28 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_property_id
 #: field:sale.order,property_id:0
 msgid "Property Name"
-msgstr ""
+msgstr "物件名"
 
 #. module: sale_add_hayashi
 #: selection:sale.order,work_type:0
 msgid "ReNewal"
-msgstr ""
+msgstr "リニューアル"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_res_partner_default_code
 #: field:res.partner,default_code:0
 msgid "Ryakusyou"
-msgstr ""
+msgstr "略称"
 
 #. module: sale_add_hayashi
 #: selection:sale.order,construction_type:0
 msgid "Ryouhou"
-msgstr ""
+msgstr "協同"
 
 #. module: sale_add_hayashi
 #: selection:sale.order,work_type:0
 msgid "Sale of Product"
-msgstr ""
+msgstr "物販"
 
 #. module: sale_add_hayashi
 #: model:ir.model,name:sale_add_hayashi.model_sale_order
@@ -406,7 +406,7 @@ msgstr ""
 #: help:sale.order,construction_note:0
 #: help:sale.order,construction_note_o:0
 msgid "Sonota tokkizikou"
-msgstr ""
+msgstr "特記事項"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_start_time
@@ -414,30 +414,30 @@ msgstr ""
 #: field:sale.order,start_time:0
 #: field:sale.order,start_time_o:0
 msgid "Start time"
-msgstr ""
+msgstr "開始可能時間"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_completion_date
 #: field:sale.order,completion_date:0
 msgid "Syunkoubi"
-msgstr ""
+msgstr "竣工日"
 
 #. module: sale_add_hayashi
 #: selection:sale.order,construction_type:0
 msgid "TOKI"
-msgstr ""
+msgstr "TOKI"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_work_type
 #: field:sale.order,work_type:0
 msgid "Type"
-msgstr ""
+msgstr "工事種別"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_open_price
 #: field:product.template,open_price:0
 msgid "Vender Price"
-msgstr ""
+msgstr "参考定価"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_product_template_is_warranty
@@ -449,13 +449,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_type
 #: field:sale.order,construction_type:0
 msgid "Work"
-msgstr ""
+msgstr "実施業者"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_note
 #: field:sale.construction.list,note:0
 msgid "memo"
-msgstr ""
+msgstr "メモ"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_construction_list_id
@@ -463,7 +463,7 @@ msgstr ""
 #: field:sale.construction,list_id:0
 #: field:sale.construction.list,list_id:0
 msgid "template"
-msgstr ""
+msgstr "テンプレート"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_title
@@ -471,7 +471,7 @@ msgstr ""
 #: field:sale.order,construction_title:0
 #: field:sale.order,construction_title_o:0
 msgid "title"
-msgstr ""
+msgstr "タイトル"
 
 #. module: sale_add_hayashi
 #: model:ir.model.fields,field_description:sale_add_hayashi.field_sale_order_construction_ids
@@ -479,5 +479,5 @@ msgstr ""
 #: field:sale.order,construction_ids:0
 #: field:sale.order,construction_ids_o:0
 msgid "yokutsukau tokkizikou model"
-msgstr ""
+msgstr "よく使用する特記事項の定型文"
 
