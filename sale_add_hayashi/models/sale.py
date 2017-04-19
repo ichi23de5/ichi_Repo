@@ -17,6 +17,7 @@ class SaleOrder(models.Model):
         ('new', 'New construction'),
         ('renewal', 'ReNewal'),
         ('add', 'Extention'),
+        ('building', 'Shinchiku'),
         ('inspection', 'Inspection'),
         ('goods', 'Sale of Product'),
         ('other', 'Others')
@@ -29,7 +30,7 @@ class SaleOrder(models.Model):
     ### construction field for (old) purchase order ###
     construction_type = fields.Selection([
         ('toki', 'TOKI'),
-        ('outside', 'Gaityu'),
+        ('outside', 'Gaichu'),
         ('both', 'Ryouhou')
         ], string='Work', default='toki')
     outside_order = fields.Boolean('Outside order', default=False)
@@ -92,14 +93,16 @@ class SaleOrder(models.Model):
             self.action_done()
         return True
 
-
+    ### header button ###
+    state = fields.Selection(selection_add=[('check', 'Check')])
 
 
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    open_price = fields.Char(string='Open Price', related='product_id.open_price', required=True)
+    open_price = fields.Char(string='Open Price', related='product_id.open_price', required=True, store=True)
+    maker = fields.Char(string='Maker', related='product_id.maker_id.default_code', required=True, store=True)
 
 
 class Construction(models.Model):

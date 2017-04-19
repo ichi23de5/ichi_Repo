@@ -8,22 +8,18 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='invoice_policy']" position="replace"/>
-                <xpath expr="//field[@name='default_code']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
                 <xpath expr="//field[@name='list_price']" position="after">
                     <field name="open_price"/>
                 </xpath>
-<!--
                 <xpath expr="//field[@name='barcode']" position="after">
                     <field name="maker_id"/>
-                    <field name="maker_code" invisible="1"/>
                 </xpath>
--->
                 <xpath expr="//field[@name='property_stock_inventory']" position="after">
                     <field name="invoice_policy" widget="radio"/>
                 </xpath>
-                <xpath expr="//field[@name='seller_ids']" position="replace"/>
+                <xpath expr="//field[@name='seller_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <notebook>
                     <page string="Flag">
                         <group string="Flag">
@@ -55,6 +51,43 @@
             <field name="view_type">form</field>
             <field name="view_id" ref="product.product_template_tree_view"/>
         </record>
+
+
+        <!-- for sale.order.line -->
+        <record id="product_normal_form_view2" model="ir.ui.view"> 
+            <field name="name">product.product.form2</field> 
+            <field name="model">product.product</field> 
+            <field name="inherit_id" ref="product.product_normal_form_view"/> 
+            <field name="arch" type="xml"> 
+                <xpath expr="//field[@name='invoice_policy']" position="replace"/>
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='lst_price']" position="after">
+                    <field name="open_price"/>
+                </xpath>
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="maker_id"/>
+                </xpath>
+                <xpath expr="//field[@name='property_stock_inventory']" position="after">
+                    <field name="invoice_policy" widget="radio"/>
+                </xpath>
+                <xpath expr="//field[@name='seller_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <notebook>
+                    <page string="Flag">
+                        <group string="Flag">
+                            <field name="is_warranty"/>
+                            <field name="is_cloud"/>
+                            <field name="is_payment"/>
+                            <field name="pay_per"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
 
     </data>
 </openerp>

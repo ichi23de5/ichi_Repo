@@ -11,8 +11,4 @@ class Product(models.Model):
     is_cloud = fields.Boolean(string="Cloud Flag")
     is_payment = fields.Boolean(string="Monthly Payment Flag")
     pay_per = fields.Boolean(string="Pay per Flag")
-#    maker_id = fields.Many2one('res.partner', domain="[('maker','=',True)]")
-#    maker_code = fields.Char('maker', related='maker_id.name.default_code')
-
-
-
+    maker_id = fields.Many2one("res.partner", domain="[('maker','=',True)]")
