@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <record id="view_account_invoice_form_add" model="ir.ui.view">
+            <field name="name">account.invoice.form.add</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_invoice']" position="after">
+                    <field name="property_name"/>
+                </xpath>
+                <xpath expr="//field[@name='date_due']" position="after">
+                    <!--<field name="outside_order"/>-->
+                    <field name="completion_date"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_tree_add" model="ir.ui.view">
+            <field name="name">account.invoice.tree.add</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="completion_date"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

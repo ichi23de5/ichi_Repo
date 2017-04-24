@@ -22,13 +22,7 @@ class Sim(models.Model):
     charge_date = fields.Date(string='Freebit Charge Date', store=True)
     min_month = fields.Date(string='Minimum Usage Date', store=True)
     expiration_date = fields.Date(string='Expiration Date', store=True)
-
-#### Don't need it now ####
-#    cloud_name = field.Selection([
-#        ('tkcloud', 'TKCLOUD'),
-#        ('eagleeye', 'Eagle Eye'),
-#        ], string='service', default='tkcloud',)
-#    emp_number = fields.Integer(string="Emp Number",)      
+    ip_address = fields.Char('IP Address', required=True)
 
     @api.onchange('reception_date')
     def _date_calc(self):

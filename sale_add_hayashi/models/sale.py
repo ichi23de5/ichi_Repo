@@ -7,7 +7,6 @@ from dateutil.relativedelta import relativedelta
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
-    _rec_name = 'property_id'
 
 
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})

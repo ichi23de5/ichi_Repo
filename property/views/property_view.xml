@@ -25,19 +25,13 @@
                                 <field name="partner_name"/>
                                 <field name="key" placeholder="Key or Auto lock number when locked"/>
                             </group>
-                            <group>
-		    	        <field name="dvr1"/>
-                                <field name="dvr2"/>
-                                <field name="dvr3"/>
-                                <field name="dvr4"/>
-                            </group>
                         </group>
                         <div>
                             <field name="note" placeholder="Note"/>
                         </div>
                         <notebook>
                             <page string="Warranty">
-                                <field name="warranty_ids"/>
+                                <!--<field name="warranty_ids"/>-->
                             </page>
                             <page string="Inspection">
                                 <field name="inspection_ids"/>
@@ -67,20 +61,21 @@
 
 
         <!-- base structure of warranty tree view -->
-        <record id="warranty_view_tree" model="ir.ui.view">
+<!--        <record id="warranty_view_tree" model="ir.ui.view">
             <field name="name">warranty.view.tree</field>
             <field name="model">warranty</field>
             <field name="arch" type="xml">
                 <tree string="Warranty">
-                    <field name="name"/>
+                    <field name="warranty_id"/>
                     <field name="scope_of_covaerage"/>
                     <field name="range_coverage"/>
                     <field name="active"/>
                 </tree>
             </field>
         </record>
+-->
         <!-- base structure of warranty form view -->
-        <record model="ir.ui.view" id="warranty_view_form">
+<!--        <record model="ir.ui.view" id="warranty_view_form">
             <field name="name">warranty.view.form</field>
             <field name="model">warranty</field>
             <field name="type">form</field>
@@ -89,7 +84,7 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
+                                <field name="warranty_id"/>
                                 <field name="active"/>
                             </group>
                             <group>
@@ -101,7 +96,7 @@
                 </form>
             </field>
         </record>
-
+-->
 
 
 

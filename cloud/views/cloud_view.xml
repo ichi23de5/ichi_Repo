@@ -7,12 +7,16 @@
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="TKCLOUD">
+                    <header>
+                        <button string="Start" type="object" name="start" states="check,stop"/>
+                        <button string="Ringishinsei" type="object" name="request" states="draft,sent"/>
+                        <field name="state" widget="statusbar" statusbar_visible="check,work,stop,limit,finish"/>
+                    </header>
                     <sheet>
 <!--		        <div class="oe_title">
                             <label string="Property Name"/>
                             <h1><field name="property_name" placeholder="Name"/></h1>
-                        </div>
--->
+                        </div>-->
                         <group>
                             <group>
                                 <field name="date_cloud"/>
@@ -20,7 +24,7 @@
                                 <!--<field name="property_add"/>-->
                                 <field name="end_user" placeholder="end user name"/>
                                 <!-- <field name="partner_id"/>-->
-                                <field name="rep_partner_id"/>
+                                <field name="rep_partner_name"/>
                                 <field name="user_id"/>
                                 <!--<field name="assistant_id"/>-->
                             </group>
@@ -33,6 +37,12 @@
                         <notebook> 
                             <page string="Quotation list">
                                 <!--<field name="quotation_ids"/>-->
+                                <group string="DVR">
+                                    <field name="dvr1"/>
+                                    <field name="dvr2"/>
+                                    <field name="dvr3"/>
+                                    <field name="dvr4"/>
+                                </group>
                             </page>
                             <page string="Contract">
                                 <group>
@@ -69,38 +79,18 @@
 	    </field>
 	</record>
 
-
-
-        <!-- Not stipulated form view -->
-<!--        <record model="ir.ui.view" id="cloud_contractor_view_form">
-            <field name="name">cloud.contractor.view.form</field>
-            <field name="model">cloud_contractor</field>
-            <field name="type">form</field>
+        <record model="ir.ui.view" id="cloud_view_tree">
+            <field name="name">cloud.view.tree</field>
+            <field name="model">cloud</field>
+            <field name="type">tree</field>
             <field name="arch" type="xml">
-                <form string="Contractor pass random create">
-                    <header>-->
-                   <!-- <button string="Generate name" type="object" name="generate_record_name" class="oe_highlight"/> -->
-<!--                        <button string="Generate password" type="object" name="generate_record_password"/>
-                        <button string="Clear data" type="object" name="clear_record_data"/>
-                    </header>
-                    <group>
-                            <field name="contractor_number"/>
-                            <field name="contractor_pass"/>
-                    </group>
-                </form>
+                <tree string="TKCLOUD">
+                    <field name="state"/>
+                </tree>
             </field>
         </record>
--->
 
-        <!-- Not stipulated action window -->
-<!--        <record model="ir.actions.act_window" id="buttons_cloud_contractor_action">
-            <field name="name">Create random pass</field>
-            <field name="res_model">cloud_contractor</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='cloud_contractor_view_form'/>
-        </record>
--->
+
 
         <!-- The Action -->
         <record model="ir.actions.act_window" id="cloud_view_action">
@@ -111,11 +101,10 @@
             <field name='view_id' ref='cloud_view_form'/>
         </record>
 
-        <!-- top level menu: no parent -->
-        <menuitem id="main_button_menu_cloud" name="CLOUD"/>
-
+        <!-- Side Menu Sales -->
         <menuitem id="button_menu_cloud" name="CLOUD" 
-                  parent="main_button_menu_cloud"/>
+                  parent="base.menu_sales"
+                  sequence="20"/>
         <menuitem id="cloud" action="cloud_view_action" 
                   parent="button_menu_cloud"/>
 

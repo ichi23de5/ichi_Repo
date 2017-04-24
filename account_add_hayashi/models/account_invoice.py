@@ -5,6 +5,6 @@ from openerp import api, fields ,models,  _
 class AccountInvoice(models.Model): 
     _inherit = "account.invoice" 
 
-    property_id = fields.Many2one('property', string='Property Name')
-    outside_order = fields.Boolean('Outside Flag')
-    completion_date = fields.Date('Syunkoubi')
+    property_name = fields.Char(string='Property Name', readonly=True, store=True)
+#    outside_order = fields.Boolean('Outside Flag', readonly=True, store=True)
+    completion_date = fields.Date('Syunkoubi', readonly=True, store=True)

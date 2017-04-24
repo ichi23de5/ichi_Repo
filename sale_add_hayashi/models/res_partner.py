@@ -13,3 +13,6 @@ class ResPartner2(models.Model):
     partner_number = fields.Char(string="Partner ID")
     maker = fields.Boolean("Maker Flag")
     default_code = fields.Char("Ryakusyou")
+
+
+

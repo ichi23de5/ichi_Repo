@@ -10,16 +10,21 @@ class Cloud(models.Model):
     _inherit = ['mail.thread', 'ir.needaction_mixin']
 
 
-
+    state = fields.Selection([ 
+         ('check', 'Check'), 
+         ('work', 'Working'), 
+         ('stop', 'Stopping'), 
+         ('limit', 'Limit'), 
+         ('finish', 'Finished'), 
+         ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='check') 
     date_cloud = fields.Date(string='Date', copy=False, default=fields.Datetime.now, required=True, index=True,)
     order_id = fields.Many2one('sale.order', string='Quotation Number', required=True,)
     #### auto input ### with name ###
 #    property_name = fields.Char(related='order_id.property_id.name', string='Property Name', store=True)
 #    property_add = fields.Char(related='order_id.property_id.address', string='Property Add', readonly=True, store=True)
 #    partner_id = fields.Char(related='order_id.partner_id.name', string='PartnerName', readonly=True, store=True)
-    rep_partner_id = fields.Char(string='Rep Name', related='order_id.partner_id.name', readonly=True, store=True)
+    rep_partner_name = fields.Char(string='Rep Name', related='order_id.partner_id.name', readonly=True, store=True)
     user_id = fields.Char(string='Salesperson', related='order_id.user_id.name', readonly=True, store=True)
-#    assistant_id = fields.Char(related='order_id.assistant.name', string='Assistant', readonly=True, store=True)
     plan = fields.Selection([
            ('lite', 'Lite'),
            ('standard', 'Standard'),
@@ -34,7 +39,10 @@ class Cloud(models.Model):
                 ('incurred', 'Incurred Amount')],
                 string='TKCLOUD Rate Plan', required=True)
     end_user = fields.Char(string='User Name')
-
+    dvr1 = fields.Many2one('product.product', string='dvr1')
+    dvr2 = fields.Many2one('product.product', string='dvr2')
+    dvr3 = fields.Many2one('product.product', string='dvr3')
+    dvr4 = fields.Many2one('product.product', string='dvr4')
     sim_id = fields.Many2one('sim', string='SIM ID', required=True, copy=False,)
 
     contractor_number = fields.Char(string='Contractor ID',)
@@ -52,6 +60,7 @@ class Cloud(models.Model):
 #    quotation_ids = fields.One2many('sale.order','cloud_id', help='cloud no mitsumori zenbu ireru')
 
 
+
     @api.onchange('construction_date')
     def _date_calcloud(self):
         main = fields.Datetime.from_string(self.construction_date)
@@ -59,45 +68,3 @@ class Cloud(models.Model):
             exp = main + relativedelta(day=1, months=25)
             self.update({'expiration_date': exp})
             return
-
-
-
-
-
-##### for create passward model ####
-#####################################
-#class CloudContractor(models.Model):
-#    _name = 'cloud_contractor'
-
-    
-#    contractor_number = fields.Char(string='Contractor ID', store=True)
-#    contractor_pass = fields.Char(string='Contractor PASS',)
-#    property_name = fields.Many2one('cloud', string='Property Name', readonly=True,)
-
-
-#    @api.multi
-#    def generate_record_name(self):
-#        self.ensure_one()
-        #Generates a random name between 9 and 15 characters long and writes it to the record.
-#        self.write({
-#            'contractor_pass': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(randint(9,15)))
-#        })
-
-
-
-#    @api.multi
-#    def generate_record_password(self):
-#        self.ensure_one()
-#        #Generates a random password between 12 and 15 characters long and writes it to the record.
-#        self.write({
-#            'contractor_pass': ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(range(randint(12,15)))
-#        })
-
-#    @api.multi
-#    def clear_record_data(self):
-#        self.ensure_one()
-#        self.write({
-#            'contractor_number': '',
-#            'contractor_pass': ''
-#        })
-

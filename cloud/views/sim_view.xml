@@ -21,6 +21,7 @@
                                 <field name="sim_id" widget="selection"/>
                                 <field name="phone"/>
                                 <field name="iccid_number"/>
+                                <field name="ip_address"/>
                             </group>
                             <group>
                                 <field name="reception_date"/>
@@ -163,14 +164,12 @@
         </record>
 
         <!-- top level menu: no parent -->
-        <menuitem id="button_menu_sim" name="SIM"
-                  parent="main_button_menu_cloud"/>
         <menuitem id="sim"
                   action="buttons_sim_action"
-                  parent="button_menu_sim" sequence="20"/>
+                  parent="button_menu_cloud"/>
         <menuitem id="sim_type"
                   action="buttons_sim_type_action"
-                  parent="button_menu_sim" sequence="21"/>
+                  parent="button_menu_cloud"/>
 
     </data>
 </openerp>
