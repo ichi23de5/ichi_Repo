@@ -9,26 +9,25 @@
 	        <form string="TKCLOUD">
                     <header>
                         <button string="Start" type="object" name="start" states="check,stop"/>
-                        <button string="Ringishinsei" type="object" name="request" states="draft,sent"/>
-                        <field name="state" widget="statusbar" statusbar_visible="check,work,stop,limit,finish"/>
+                        <button string="Stop" type="object" name="stop" states="work"/>
+                        <button string="Finish" type="object" name="finish" states="work,stop"/>
+                        <field name="state" widget="statusbar" statusbar_visible="check,work,stop,finish"/>
                     </header>
                     <sheet>
-<!--		        <div class="oe_title">
-                            <label string="Property Name"/>
-                            <h1><field name="property_name" placeholder="Name"/></h1>
-                        </div>-->
+		        <div class="oe_title">
+                            <label string="Property Infomation"/>
+                            <h2><field name="property_name" placeholder="Name"/></h2>
+                            <field name="property_add"/>
+                        </div>
                         <group>
                             <group>
                                 <field name="date_cloud"/>
-		    	        <field name="order_id"/>
-                                <!--<field name="property_add"/>-->
-                                <field name="end_user" placeholder="end user name"/>
-                                <!-- <field name="partner_id"/>-->
-                                <field name="rep_partner_name"/>
+                                <field name="partner_id"/>
+                                <!--<field name="rep_partner_name"/>-->
                                 <field name="user_id"/>
-                                <!--<field name="assistant_id"/>-->
                             </group>
                             <group>
+                                <field name="order_id"/>
                                 <field name="sim_id"/>
                                 <field name="plan"/>
                                 <field name="rate_plan"/>
@@ -36,12 +35,19 @@
                         </group>
                         <notebook> 
                             <page string="Quotation list">
-                                <!--<field name="quotation_ids"/>-->
-                                <group string="DVR">
-                                    <field name="dvr1"/>
-                                    <field name="dvr2"/>
-                                    <field name="dvr3"/>
-                                    <field name="dvr4"/>
+                                <!--<group string="Quotation">
+                                    <field name="quotation_ids"/>
+                                </group>-->
+                                <group>
+                                    <group string="DVR">
+                                        <field name="dvr1"/>
+                                        <field name="dvr2"/>
+                                        <field name="dvr3"/>
+                                        <field name="dvr4"/>
+                                    </group>
+                                    <group string="Memo">
+                                        <field name="memo" nolabel="1" placeholder="memo"/>
+                                    </group>
                                 </group>
                             </page>
                             <page string="Contract">
@@ -50,6 +56,7 @@
                                         <field name="contractor_number"/>
                                         <field name="contractor_pass"/>
                                         <field name="application_date"/>
+                                        <field name="end_user" placeholder="end user name"/>
                                     </group>
                                     <group string="Contraction Date">
                                         <field name="approval_date"/>
@@ -85,6 +92,11 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="TKCLOUD">
+                    <field name="property_name"/>
+                    <field name="partner_id"/>
+                    <field name="plan"/>
+                    <field name="construction_date"/>
+                    <field name="expiration_date"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -94,11 +106,11 @@
 
         <!-- The Action -->
         <record model="ir.actions.act_window" id="cloud_view_action">
-            <field name="name">TKCLOUD management</field>
+            <field name="name">TKCLOUD</field>
             <field name="res_model">cloud</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='cloud_view_form'/>
+            <field name="view_mode">tree,form</field>
+            <field name='view_id' ref='cloud_view_tree'/>
         </record>
 
         <!-- Side Menu Sales -->

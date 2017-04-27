@@ -149,11 +149,11 @@
 
 	<!--The action -->
         <record model="ir.actions.act_window" id="buttons_sim_action">
-            <field name="name">Entry new SIM</field>
+            <field name="name">SIM list</field>
             <field name="res_model">sim</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='sim_view_form'/>
+            <field name="view_mode">tree,form</field>
+            <field name='view_id' ref='sim_view_tree'/>
         </record>
        <record model="ir.actions.act_window" id="buttons_sim_type_action">
             <field name="name">SIM type</field>

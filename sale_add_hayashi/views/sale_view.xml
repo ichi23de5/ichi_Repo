@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="sale_report_form" model="ir.ui.view">
-            <field name="name">sale.order.form.report</field>
+        <record id="view_sale_order_form_add" model="ir.ui.view">
+            <field name="name">sale.order.form.add</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <!-- ringi button -->
                 <xpath expr="//header/button[@name='action_confirm']" position="before">
-                    <button string="Ringishinsei" type="object" name="request" states="draft,sent"/>
-                    <button string="Manager" type="object" name="manager" states="check"/>
-                    <button string="President" type="object" name="president" states="check"/>
+                    <button string="Ringishinsei" type="object" name="request" attrs="{'invisible': [('check_state', '!=', 'ng')]}"/>
+                    <button string="OK" type="object" name="manager_ok" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
+                    <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
+                    <button string="President" type="object" name="president" attrs="{'invisible': [('check_state', '!=', 'manager')]}"/>
                 </xpath>
                 <xpath expr="//header/button[@name='action_confirm']" position="attributes">
                     <attribute name="string">President</attribute>
                 </xpath>
-                <xpath expr="//field[@name='state']" position="attributes">
-                    <attribute name="statusbar_visible">draft,sent,check,sale</attribute>
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="check_state" widget="statusbar" statusbar_visible="stand,manager,president" attrs="{'invisible': [('request_flag', '=', False)]}"/>
                 </xpath>
 
                 <xpath expr="//field[@name='name']" position="after">
@@ -45,6 +46,7 @@
                     <field name="work_type"/>
                     <field name="user_id" widget="selection"/>
                     <field name="assistant_id" widget="selection"/>
+                    <field name="request_flag" invisible="1"/>
                 </xpath>
                 <xpath expr="//field[@name='validity_date']" position="before">
                     <field name="order_date"/>
@@ -103,9 +105,19 @@
                         <field name="construction_note_o" placeholder="Sonota tokkizikou"/>
                     </page>
                 </notebook>
+            </field>
+        </record>
+        <record id="view_sale_order_tree_add" model="ir.ui.view">
+            <field name="name">sale.order.tree.add</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="property_id"/>
+                </xpath>
+            </field>
+        </record>
 
-           </field>
-         </record>
     </data>
 </openerp>
 

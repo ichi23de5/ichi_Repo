@@ -9,9 +9,16 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
 
+
+    check_state = fields.Selection([
+         ('stand', 'Check waiting'),
+         ('ng', 'Check NG'),
+         ('manager', 'Manager OK'),
+         ('president', 'President OK'),
+         ], string='State2', readonly=True, copy=False, index=True, track_visibility='onchange', default='ng')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime(string='Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    assistant_id = fields.Many2one('res.users', string='Assistant')
+    assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
         ('renewal', 'ReNewal'),
@@ -79,7 +86,6 @@ class SaleOrder(models.Model):
                                         oldname="date_confirm")
 
 
-
     @api.multi
     def action_confirm(self):
         for order in self:
@@ -92,8 +98,23 @@ class SaleOrder(models.Model):
             self.action_done()
         return True
 
-    ### header button ###
-    state = fields.Selection(selection_add=[('check', 'Check')])
+
+    request_flag = fields.Boolean('request')
+
+    @api.multi
+    def request(self):
+        self.write({'check_state': 'stand'})
+        self.write({'request_flag': True})
+
+    @api.multi
+    def manager_ok(self):
+        self.write({'check_state': 'manager'})
+
+
+    @api.multi
+    def manager_ng(self):
+        self.write({'check_state': 'ng'})
+
 
 
 

@@ -128,7 +128,7 @@
 
         <!-- top level menu: no parent -->
         <menuitem id="button_menu_inspection" name="Inspection" 
-                  parent="pro_main_button_menu"
+                  parent="main_button_menu"
                   sequence="9"/> 
 
         <menuitem id="inspection"
