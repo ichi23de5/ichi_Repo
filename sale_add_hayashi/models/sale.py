@@ -18,6 +18,7 @@ class SaleOrder(models.Model):
          ], string='State2', readonly=True, copy=False, index=True, track_visibility='onchange', default='ng')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime(string='Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person')]")
     assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
@@ -29,7 +30,7 @@ class SaleOrder(models.Model):
         ('other', 'Others')
         ],
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    plan_id = fields.Char(string='Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    version = fields.Char(string='Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     completion_date = fields.Date(string='Syunkoubi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
 
 
@@ -50,7 +51,7 @@ class SaleOrder(models.Model):
     construction_note = fields.Text(string='Others', help='Sonota tokkizikou')
     ### construction OUTSIDE ORDER ###
     outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
-    amount_outside = fields.Integer(string='Gaityukingaku')
+    amount_outside = fields.Monetary(string='Gaityukingaku')
     start_date_o = fields.Date(string='Kouji start')
     end_date_o = fields.Date(string='Kouji end')
     start_time_o = fields.Char(string='Start time')
@@ -115,6 +116,9 @@ class SaleOrder(models.Model):
     def manager_ng(self):
         self.write({'check_state': 'ng'})
 
+    @api.multi
+    def president(self):
+        self.write({'check_state': 'president'})
 
 
 
@@ -122,7 +126,7 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     open_price = fields.Char(string='Open Price', related='product_id.open_price', required=True, store=True)
-    maker = fields.Char(string='Maker', related='product_id.maker_id.default_code', required=True, store=True)
+    maker = fields.Char(string='Maker', related='product_id.maker_id.default_code', store=True)
 
 
 class Construction(models.Model):

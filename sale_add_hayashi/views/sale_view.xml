@@ -23,10 +23,14 @@
                 <xpath expr="//field[@name='name']" position="after">
                     <label class="oe_edit_only" string="Property Name"/>
                     <h2><field name="property_id"/></h2>
+                    <field name="version" nolavel="1" placeholder="ex:plan version"/>
                 </xpath>
                 <xpath expr="//field[@name='validity_date']" position="attributes">
                     <attribute name="placeholder">auto</attribute>
                     <attribute name="store">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">"[('customer','=',True), ('company_type','=','company')]"</attribute>
                 </xpath>
                 <xpath expr="//field[@name='project_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
@@ -42,7 +46,7 @@
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="replace"/>
                 <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="plan_id"/>
+                    <field name="rep_partner_id"/>
                     <field name="work_type"/>
                     <field name="user_id" widget="selection"/>
                     <field name="assistant_id" widget="selection"/>
@@ -56,6 +60,8 @@
                     <field name="outside_order" invisible="1"/>
                     <field name="completion_date"/>
                 </xpath>
+                <xpath expr="//field[@name='note']" position="replace"/>
+
 
                 <!-- attributes sale.order.line -->
                 <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
@@ -67,9 +73,11 @@
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="before">
                     <field name="maker" invisible="1"/>
                 </xpath>
-
                 <!-- construction page -->
                 <notebook>
+                    <page string="Note">
+                        <field name="note" nolabel="1"/>
+                    </page>
                     <page string="Construction" attrs="{'invisible': [('construction_type', '==', 'outside')]}">
                         <group>
                             <group string="Construction Dates">
@@ -117,6 +125,30 @@
                 </xpath>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="sale_margin_form_replace"> 
+            <field name="name">sale.order.margin.view.form.replace</field> 
+            <field name="model">sale.order</field> 
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/> 
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='margin']" position="replace"/>
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="margin"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form_inherit_sale_stock_replace" model="ir.ui.view"> 
+             <field name="name">sale.order.form.sale.stock.replace</field> 
+             <field name="model">sale.order</field> 
+             <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/> 
+             <field name="arch" type="xml"> 
+                <xpath expr="//field[@name='incoterm']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
 
     </data>
 </openerp>

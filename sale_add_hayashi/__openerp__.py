@@ -11,7 +11,7 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property","base"
+                   "sale","property","base","sale_margin","sale_stock",
                    ],
         "data": [
                 "views/sale_view.xml",

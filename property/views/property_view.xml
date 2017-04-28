@@ -120,16 +120,16 @@
 
 
         <!-- top level menu: no parent -->
-        <menuitem id="pro_main_button_menu" name="Property"/>
+        <menuitem id="main_button_menu" name="Property"/>
 
         <menuitem id="button_menu_property" name="Property"
-                  parent="pro_main_button_menu"/>
+                  parent="main_button_menu"/>
         <menuitem id="property"
                 action="property_view_action" parent="button_menu_property"
                 sequence="2"/>
 
         <menuitem id="button_menu_warranty" name="Warranty management"
-                  parent="pro_main_button_menu"/>
+                  parent="main_button_menu"/>
         <menuitem id="warranty"
                   action="buttons_warranty_action"
                   parent="button_menu_warranty"
