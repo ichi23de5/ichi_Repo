@@ -2,8 +2,8 @@
 
 <openerp>
     <data>
-	<record id="view_partner_form_check5" model="ir.ui.view">
-	    <field name="name">res.partner.form.check</field>
+	<record id="view_partner_form_add" model="ir.ui.view">
+	    <field name="name">view.res.partner.form.add</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
@@ -28,12 +28,30 @@
             </field>
         </record>
 
-        <record id="base.res_partner_action" model="ir.actions.act_window"> 
+        <record id="view_partner_tree_add" model="ir.ui.view">
+            <field name="name">view.res.partner.tree.add</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="fax"/>
+                </xpath>
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <field name="default_code"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="base.res_partner_action_add" model="ir.actions.act_window"> 
             <field name="name">res.partner</field> 
             <field name="type">ir.actions.act_window</field> 
             <field name="res_model">res.partner</field> 
-            <field name="view_mode">tree,form,kanban</field> 
-            <field name="view_type">form</field> 
+            <field name="view_mode">tree,form,kanban</field>  
             <field name="view_id" ref="base.view_partner_tree"/> 
         </record> 
 

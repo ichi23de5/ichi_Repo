@@ -16,3 +16,9 @@ class ResPartner2(models.Model):
 
 
 
+    @api.onchange('outside_order')
+    def _outside_flag(self):
+        if self.outside_order:
+            self.update({'supplier':True})
+            return
+

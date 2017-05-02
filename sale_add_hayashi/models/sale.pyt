@@ -33,7 +33,7 @@ class SaleOrder(models.Model):
     version = fields.Char(string='Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     completion_date = fields.Date(string='Syunkoubi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
     purchace_order = fields.Boolean('Purchace order', copy=False)
-    inspection_id = fields.Many2one('property.inspection', string='Inspection', help='Kokokara hosyujouhou nyuryoku')
+    inspection_id = fields.Many2one('inspection', string='Inspection', help='Kokokara hosyujouhou nyuryoku')
 
     ### construction field for (old) purchase order ###
     construction_type = fields.Selection([
@@ -103,9 +103,6 @@ class SaleOrder(models.Model):
 
     request_flag = fields.Boolean('request', copy=False)
 
-
-
-
     @api.multi
     def request(self):
         self.write({'check_state': 'stand'})
@@ -115,15 +112,14 @@ class SaleOrder(models.Model):
     def manager_ok(self):
         self.write({'check_state': 'manager'})
 
+
     @api.multi
     def manager_ng(self):
         self.write({'check_state': 'ng'})
 
-
     @api.multi
     def president(self):
         self.write({'check_state': 'president'})
-
 
 
 

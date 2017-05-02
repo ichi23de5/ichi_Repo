@@ -48,6 +48,7 @@
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="rep_partner_id"/>
                     <field name="work_type"/>
+                    <field name="inspection_id" attrs="{'invisible': [('work_type', '!=', 'inspection')]}"/>
                     <field name="user_id" widget="selection"/>
                     <field name="assistant_id" widget="selection"/>
                     <field name="request_flag" invisible="1"/>
@@ -78,7 +79,7 @@
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="before">
                     <field name="maker" invisible="1"/>
                 </xpath>
-                <!-- construction page -->
+
                 <notebook>
                     <page string="Note">
                         <group string="Bikouran">
