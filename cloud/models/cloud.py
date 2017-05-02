@@ -17,7 +17,7 @@ class Cloud(models.Model):
          ('finish', 'Finished'), 
          ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='check', help='finish ni ittara saikeiyaku') 
     date_cloud = fields.Date('Check Date', copy=False, default=fields.Datetime.now, required=True, index=True, readonly=True, states={'check': [('readonly', False)]})
-    order_id = fields.Many2one('sale.order', string='Quotation Number', required=True, domain=[('check_state','=','manager'),('check_state','=','president'),('purchace_order','=',True)])
+    order_id = fields.Many2one('sale.order', string='Quotation Number', required=True, domain=[('purchace_order','=',True),('check_state','=',('manager','president'))])
     #### auto input ### with 'order_id' ###
     property_name = fields.Char(related='order_id.property_id.name', string='Property Name', store=True)
     property_add = fields.Char(related='order_id.property_id.address', string='Property Add', readonly=True, store=True)

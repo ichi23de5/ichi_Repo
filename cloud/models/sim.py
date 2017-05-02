@@ -12,7 +12,7 @@ class Sim(models.Model):
 
     user_number = fields.Char(string='SIM User Number', required=True, copy=False,)
     phone = fields.Char(string='SIM Tel Number', required=False, copy=False,)
-    sim_id = fields.Many2one('sim.type', string='SIM ID')
+    sim_id = fields.Many2one('sim.type', string='SIM Type ID')
     date_sim = fields.Datetime(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now,)
     iccid_number = fields.Char(string='Iccid Number', copy=False,)
 
@@ -22,7 +22,7 @@ class Sim(models.Model):
     charge_date = fields.Date(string='Freebit Charge Date', store=True)
     min_month = fields.Date(string='Minimum Usage Date', store=True)
     expiration_date = fields.Date(string='Expiration Date', store=True)
-    ip_address = fields.Char('IP Address', required=True)
+    ip_address = fields.Char('IP Address')
 
     @api.onchange('reception_date')
     def _date_calc(self):
