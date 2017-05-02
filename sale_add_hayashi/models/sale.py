@@ -15,10 +15,10 @@ class SaleOrder(models.Model):
          ('ng', 'Check NG'),
          ('manager', 'Manager OK'),
          ('president', 'President OK'),
-         ], string='State2', readonly=True, copy=False, index=True, track_visibility='onchange', default='ng')
+         ], string='State2', readonly=True, copy=False, index=True, default='ng')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime(string='Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person')]")
+    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
@@ -32,7 +32,7 @@ class SaleOrder(models.Model):
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     version = fields.Char(string='Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     completion_date = fields.Date(string='Syunkoubi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
-
+    purchace_order = fields.Boolean('Purchace order', copy=False)
 
     ### construction field for (old) purchase order ###
     construction_type = fields.Selection([
@@ -59,7 +59,7 @@ class SaleOrder(models.Model):
     construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids_o = fields.One2many('sale.construction','list_id', string='yokutsukau tokkizikou model', store=True)
     construction_note_o = fields.Text(string='Others', help='Sonota tokkizikou')
-
+    memo = fields.Text('memo')
 
 
 
@@ -100,7 +100,7 @@ class SaleOrder(models.Model):
         return True
 
 
-    request_flag = fields.Boolean('request')
+    request_flag = fields.Boolean('request', copy=False)
 
     @api.multi
     def request(self):

@@ -16,14 +16,13 @@ class Cloud(models.Model):
          ('stop', 'Stopping'), 
          ('finish', 'Finished'), 
          ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='check', help='finish ni ittara saikeiyaku') 
-    date_cloud = fields.Date(string='Check Date', copy=False, default=fields.Datetime.now, required=True, index=True, readonly=True, states={'check': [('readonly', False)]})
-    order_id = fields.Many2one('sale.order', string='Quotation Number', required=True,)
-    #### auto input ### with name ###
+    date_cloud = fields.Date('Check Date', copy=False, default=fields.Datetime.now, required=True, index=True, readonly=True, states={'check': [('readonly', False)]})
+    order_id = fields.Many2one('sale.order', string='Quotation Number', required=True, domain=[('check_state','=','manager'),('check_state','=','president'),('purchace_order','=',True)])
+    #### auto input ### with 'order_id' ###
     property_name = fields.Char(related='order_id.property_id.name', string='Property Name', store=True)
     property_add = fields.Char(related='order_id.property_id.address', string='Property Add', readonly=True, store=True)
     partner_id = fields.Char(related='order_id.partner_id.name', string='PartnerName', readonly=True, store=True)
-#    rep_partner_name = fields.Char(string='Rep Name', related='order_id.partner_id.name', readonly=True, store=True)
-    user_id = fields.Char(string='Salesperson', related='order_id.user_id.name', readonly=True, store=True)
+    user_id = fields.Char('Salesperson', related='order_id.user_id.name', readonly=True, store=True)
     plan = fields.Selection([
            ('lite', 'Lite'),
            ('standard', 'Standard'),
@@ -42,24 +41,21 @@ class Cloud(models.Model):
     dvr2 = fields.Many2one('product.product', string='dvr2')
     dvr3 = fields.Many2one('product.product', string='dvr3')
     dvr4 = fields.Many2one('product.product', string='dvr4')
-    sim_id = fields.Many2one('sim', string='SIM ID', required=True, copy=False,)
+    sim_id = fields.Many2one('sim', string='SIM ID', required=True, copy=False)
     memo = fields.Text('Memo')
 
-    contractor_number = fields.Char(string='Contractor ID',)
-    contractor_pass = fields.Char(string='Contractor PASS',)
-    application_date = fields.Date(string='Apprication Date',)
-    approval_date = fields.Date(string='Approval Date',)
+    contractor_number = fields.Char('Contractor ID')
+    contractor_pass = fields.Char('Contractor PASS')
+    application_date = fields.Date('Apprication Date')
+    approval_date = fields.Date('Approval Date')
 
-    construction_date = fields.Date(string='Construction Date', readonly=True, states={'check': [('readonly', False)]})
+    construction_date = fields.Date('Construction Date', readonly=True, states={'check': [('readonly', False)]})
     #### auto input ### with constraction_date ###
-    expiration_date = fields.Date(string='Expiration Date', store=True, readonly=True, states={'check': [('readonly', False)]})
+    expiration_date = fields.Date('Expiration Date', store=True, readonly=True, states={'check': [('readonly', False)]})
 #    end_date = fields.Date(string='Service End Date', store=True, readonly=True, states={'check': [('readonly', False)]})
-    changeapp_date = fields.Date(string='Changeapp Date',)
-    cancelapp_date = fields.Date(string='Cancelapp Date',)
-    cancel_date = fields.Date(string='Cancel Date',)
-
-
-#    quotation_ids = fields.One2many('sale.order','cloud_id', help='cloud no mitsumori zenbu ireru')
+    changeapp_date = fields.Date('Changeapp Date')
+    cancelapp_date = fields.Date('Cancelapp Date')
+    cancel_date = fields.Date('Cancel Date')
 
 
 

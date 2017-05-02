@@ -61,6 +61,11 @@
                     <field name="completion_date"/>
                 </xpath>
                 <xpath expr="//field[@name='note']" position="replace"/>
+                <group>
+                    <h3>
+                        <field name="purchace_order" class="oe_inline"/> Purchase Order Check
+                    </h3>
+                </group>
 
 
                 <!-- attributes sale.order.line -->
@@ -76,7 +81,12 @@
                 <!-- construction page -->
                 <notebook>
                     <page string="Note">
-                        <field name="note" nolabel="1"/>
+                        <group string="Bikouran">
+                            <field name="note" nolabel="1"/>
+                        </group>
+                        <group string="Memo">
+                            <field name="memo" nolabel="1"/>
+                        </group>
                     </page>
                     <page string="Construction" attrs="{'invisible': [('construction_type', '==', 'outside')]}">
                         <group>
@@ -115,17 +125,51 @@
                 </notebook>
             </field>
         </record>
+
         <record id="view_sale_order_tree_add" model="ir.ui.view">
             <field name="name">sale.order.tree.add</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="property_id"/>
+                    <field name="version"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="before">
+                    <field name="amount_untaxed" sum="Total Tax Included"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="rep_partner_id"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_sale_order_tree_add2" model="ir.ui.view">
+            <field name="name">sale.order.tree.add2</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="property_id"/>
                 </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="rep_partner_id"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="before">
+                    <field name="amount_untaxed" sum="Total Tax Included"/>
+                </xpath>
             </field>
         </record>
 
+
+        <!-- Addmodule for sale_order replace -->
         <record model="ir.ui.view" id="sale_margin_form_replace"> 
             <field name="name">sale.order.margin.view.form.replace</field> 
             <field name="model">sale.order</field> 
@@ -137,7 +181,6 @@
                 </xpath>
             </field>
         </record>
-
         <record id="view_order_form_inherit_sale_stock_replace" model="ir.ui.view"> 
              <field name="name">sale.order.form.sale.stock.replace</field> 
              <field name="model">sale.order</field> 
