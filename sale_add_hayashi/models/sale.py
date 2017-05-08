@@ -124,6 +124,11 @@ class SaleOrder(models.Model):
     def president(self):
         self.write({'check_state': 'president'})
 
+    @api.multi 
+    def action_cancel(self): 
+        self.write({'state': 'cancel'}) 
+        self.write({'request_flag': False})
+        self.write({'check_state': 'ng'})
 
 
 
