@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_sale_order_form_add" model="ir.ui.view">
+            <field name="name">sale.order.form.add</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- ringi button -->
+                <xpath expr="//header/button[@name='action_confirm']" position="before">
+                    <button string="Ringishinsei" type="object" name="request" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'ng'),('state', '=', 'cancel')]}"/>
+                    <button string="OK" type="object" name="manager_ok" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
+                    <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
+                    <button string="President" type="object" name="president" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'manager'),('request_flag', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//header/button[@name='action_confirm']" position="attributes">
+                    <attribute name="string">President</attribute>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="check_state" widget="statusbar" statusbar_visible="stand,manager,president" attrs="{'invisible': [('request_flag', '=', False)]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <label class="oe_edit_only" string="Property Name"/>
+                    <h2><field name="property_id"/></h2>
+                    <field name="version" nolavel="1" placeholder="ex:plan version"/>
+                </xpath>
+                <xpath expr="//field[@name='validity_date']" position="attributes">
+                    <attribute name="placeholder">auto</attribute>
+                    <attribute name="store">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">"[('customer','=',True), ('company_type','=','company')]"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='project_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="context">"{'show_address': 0}"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="replace"/>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="rep_partner_id"/>
+                    <field name="work_type"/>
+                    <field name="inspection_id" attrs="{'invisible': [('work_type', '!=', 'inspection')]}"/>
+                    <field name="user_id" widget="selection"/>
+                    <field name="assistant_id" widget="selection"/>
+                    <field name="request_flag" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='validity_date']" position="before">
+                    <field name="order_date"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="construction_type"/>
+                    <field name="outside_order" invisible="1"/>
+                    <field name="completion_date"/>
+                </xpath>
+                <xpath expr="//field[@name='note']" position="replace"/>
+                <group>
+                    <h3>
+                        <field name="purchase_order" class="oe_inline"/> Purchase Order Check
+                    </h3>
+                </group>
+                <!-- attributes sale.order.line -->
+                <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
+                    <field name="open_price"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="before">
+                    <field name="maker" invisible="1"/>
+                </xpath>
+                <notebook>
+                    <page string="Note">
+                        <group string="Bikouran">
+                            <field name="note" nolabel="1"/>
+                        </group>
+                        <group string="Memo">
+                            <field name="memo" nolabel="1"/>
+                        </group>
+                    </page>
+                    <page string="Construction" attrs="{'invisible': [('construction_type', '==', 'outside')]}">
+                        <group>
+                            <group string="Construction Dates">
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                            <group string="Construction Times">
+                                <field name="start_time"/>
+                                <field name="end_time"/>
+                            </group>
+                        </group>
+                        <field name="construction_title" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
+                        <field name="construction_ids"/>
+                        <field name="construction_note" placeholder="Sonota tokkizikou"/>
+                    </page>
+                    <page string="Outside" attrs="{'invisible': [('construction_type', '==', 'toki')]}">
+                        <group class="oe_left">
+                            <field name="outside_id"/>
+                            <field name="amount_outside"/>
+                        </group>
+                        <group>
+                            <group string="Construction Dates">
+                                <field name="start_date_o"/>
+                                <field name="end_date_o"/>
+                            </group>
+                            <group string="Construction Times">
+                                <field name="start_time_o"/>
+                                <field name="end_time_o"/>
+                            </group>
+                        </group>
+                        <field name="construction_title_o" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
+                        <field name="construction_ids_o"/>
+                        <field name="construction_note_o" placeholder="Sonota tokkizikou"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="view_sale_order_tree_add" model="ir.ui.view">
+            <field name="name">sale.order.tree.add</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="property_id"/>
+                    <field name="version"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="before">
+                    <field name="amount_untaxed" sum="Total Tax Included"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="rep_partner_id"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_sale_order_tree_add2" model="ir.ui.view">
+            <field name="name">sale.order.tree.add2</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="property_id"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="rep_partner_id"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="before">
+                    <field name="amount_untaxed" sum="Total Tax Included"/>
+                    <field name="purchase_order"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!-- Addmodule for sale_order replace -->
+        <record model="ir.ui.view" id="sale_margin_form_replace"> 
+            <field name="name">sale.order.margin.view.form.replace</field> 
+            <field name="model">sale.order</field> 
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/> 
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='margin']" position="replace"/>
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="margin"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_order_form_inherit_sale_stock_replace" model="ir.ui.view"> 
+             <field name="name">sale.order.form.sale.stock.replace</field> 
+             <field name="model">sale.order</field> 
+             <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/> 
+             <field name="arch" type="xml"> 
+                <xpath expr="//field[@name='incoterm']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
+

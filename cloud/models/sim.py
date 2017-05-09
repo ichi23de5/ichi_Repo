@@ -19,10 +19,11 @@ class Sim(models.Model):
     reception_date = fields.Date(string='Reception Date', required=True, copy=False, store=True, index=True,)
     #### auto input ### with reception_date ### 
     arrival_date = fields.Date(string='Arrival Date', store=True)
-    charge_date = fields.Date(string='Freebit Charge Date', store=True)
+    charge_date = fields.Date(string='Charge Date', store=True)
     min_month = fields.Date(string='Minimum Usage Date', store=True)
     expiration_date = fields.Date(string='Expiration Date', store=True)
     ip_address = fields.Char('IP Address')
+
 
     @api.onchange('reception_date')
     def _date_calc(self):
@@ -54,6 +55,7 @@ class SimType(models.Model):
     pay_per_up = fields.Char(string='Juuryoukakin Up')
     pay_per_down = fields.Char(string='Juuryoukakin Down')
     min_use_time = fields.Char(string='Minimum Perion of Use')
+    supplier_id = fields.Many2one('res.partner', string='Supplier', domain="[('supplier','=',True)]")
 
 
     ### charge ###

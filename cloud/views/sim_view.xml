@@ -17,18 +17,18 @@
                         </div>
                         <group>
                             <group>
-		    	        <field name="date_sim"/>
                                 <field name="sim_id" widget="selection"/>
+		    	        <field name="date_sim"/>
+                                <field name="reception_date"/>
                                 <field name="phone"/>
                                 <field name="iccid_number"/>
-                                <field name="ip_address"/>
                             </group>
                             <group>
-                                <field name="reception_date"/>
                                 <field name="arrival_date"/>
+                                <field name="ip_address"/>
                                 <field name="charge_date"/>
-                                <field name="min_month"/>
                                 <field name="expiration_date"/>
+                                <field name="min_month"/>
                             </group>
                         </group>
 		    </sheet>
@@ -84,6 +84,7 @@
                         </div>
                         <group>
                             <group>
+                                <field name="supplier_id"/>
                                 <field name="max_storage"/>
                                 <field name="business_number"/>
                                 <field name="datermination"/>
@@ -113,6 +114,7 @@
                                         <field name="unreturned_sim"/>
                                         <field name="reissure_sim"/>
                                         <field name="redelivery_sim"/>
+                                        <field name="stop_sim"/>
                                     </group>
                                 </group>
                             </page>
@@ -131,7 +133,6 @@
                                 <group> 
                                     <group string="Cancel">
                                         <field name="cancel_charge"/>
-                                        <field name="stop_sim"/>
                                         <field name="cancel_charge_first"/>
                                         <field name="cancel_charge_year"/>
                                     </group>

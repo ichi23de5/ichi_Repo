@@ -26,7 +26,8 @@ class Cloud(models.Model):
     plan = fields.Selection([
            ('lite', 'Lite'),
            ('standard', 'Standard'),
-           ('pro', 'Pro')],         
+           ('pro', 'Pro'),
+           ('support', 'Support')],         
            string='TKCLOUD Plan', required=True)
     rate_plan = fields.Selection([
                 ('monthly', 'Monthly Amount'),
