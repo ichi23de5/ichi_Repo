@@ -69,8 +69,6 @@ class SaleOrder(models.Model):
     def onchange_construction_type(self): 
         self.outside_order = (self.construction_type == 'outside' or self.construction_type == 'both')
 
-
-
     @api.onchange('order_date')
     def _date_exp(self):
         main = fields.Datetime.from_string(self.order_date)
@@ -87,7 +85,6 @@ class SaleOrder(models.Model):
                                         index=True, help="Date on which the sale order is confirmed.",
                                         oldname="date_confirm")
 
-
     @api.multi
     def action_confirm(self):
         for order in self:
@@ -100,11 +97,8 @@ class SaleOrder(models.Model):
             self.action_done()
         return True
 
-
+    ### check_state move ###
     request_flag = fields.Boolean('request', copy=False)
-
-
-
 
     @api.multi
     def request(self):
@@ -119,7 +113,6 @@ class SaleOrder(models.Model):
     def manager_ng(self):
         self.write({'check_state': 'ng'})
 
-
     @api.multi
     def president(self):
         self.write({'check_state': 'president'})
@@ -129,6 +122,34 @@ class SaleOrder(models.Model):
         self.write({'state': 'cancel'}) 
         self.write({'request_flag': False})
         self.write({'check_state': 'ng'})
+
+
+    ### reflect account.invoice ###
+    @api.multi
+    def _prepare_invoice(self):
+        self.ensure_one()
+        journal_id = self.env['account.invoice'].default_get(['journal_id'])['journal_id']
+        if not journal_id:
+            raise UserError(_('Please define an accounting sale journal for this company.'))
+        invoice_vals = {
+            'name': self.client_order_ref or '',
+            'origin': self.name,
+            'type': 'out_invoice',
+            'account_id': self.partner_invoice_id.property_account_receivable_id.id,
+            'partner_id': self.partner_invoice_id.id,
+            'partner_shipping_id': self.partner_shipping_id.id,
+            'journal_id': journal_id,
+            'currency_id': self.pricelist_id.currency_id.id,
+            'comment': self.note,
+            'payment_term_id': self.payment_term_id.id,
+            'fiscal_position_id': self.fiscal_position_id.id or self.partner_invoice_id.property_account_position_id.id,
+            'company_id': self.company_id.id,
+            'user_id': self.user_id and self.user_id.id,
+            'team_id': self.team_id.id,
+            'property_name': self.property_id.name or '',
+            'completion_date': self.completion_date
+        }
+        return invoice_vals
 
 
 

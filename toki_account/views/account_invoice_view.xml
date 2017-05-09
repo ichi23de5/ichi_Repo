@@ -11,7 +11,6 @@
                     <field name="property_name"/>
                 </xpath>
                 <xpath expr="//field[@name='date_due']" position="after">
-                    <!--<field name="outside_order"/>-->
                     <field name="completion_date"/>
                 </xpath>
             </field>

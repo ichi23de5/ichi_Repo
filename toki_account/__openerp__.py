@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-        "name": " Account add hayashi",
+        "name": " TOKI Account",
         "summary": "",
         "version": "9.0.0.1.1",
         "category": "Account",
@@ -11,7 +11,7 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "account","property","sale"
+                   "account","property","sale","toki_sale"
                    ],
         "data": [
                 "views/account_invoice_view.xml",
