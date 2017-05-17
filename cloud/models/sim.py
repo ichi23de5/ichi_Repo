@@ -13,7 +13,7 @@ class Sim(models.Model):
     user_number = fields.Char(string='SIM User Number', required=True, copy=False,)
     phone = fields.Char(string='SIM Tel Number', required=False, copy=False,)
     sim_id = fields.Many2one('sim.type', string='SIM Type ID')
-    date_sim = fields.Datetime(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now,)
+    date_sim = fields.Datetime(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now, help='SIM moushikonda date')
     iccid_number = fields.Char(string='Iccid Number', copy=False,)
 
     reception_date = fields.Date(string='Reception Date', required=True, copy=False, store=True, index=True,)

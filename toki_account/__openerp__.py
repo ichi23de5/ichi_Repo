@@ -2,7 +2,7 @@
 
 {
         "name": " TOKI Account",
-        "summary": "",
+        "summary": "add fields[FIX-1]",
         "version": "9.0.0.1.1",
         "category": "Account",
         "website": "http://www.toyo-kiki.co.jp",

@@ -28,7 +28,7 @@
                                 <field name="ip_address"/>
                                 <field name="charge_date"/>
                                 <field name="expiration_date"/>
-                                <field name="min_month"/>
+                                <field name="min_month" invisible="1"/>
                             </group>
                         </group>
 		    </sheet>
@@ -47,10 +47,10 @@
             <field name="model">sim</field> 
             <field name="arch" type="xml"> 
                 <tree string="SIM List"> 
+                    <field name="user_number"/>
                     <field name="sim_id"/> 
-                    <field name="reception_date"/> 
-                    <field name="charge_date"/> 
-                    <field name="expiration_date"/>  
+                    <field name="date_sim"/> 
+                    <field name="charge_date"/>  
                 </tree> 
             </field> 
         </record> 

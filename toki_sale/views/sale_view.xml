@@ -71,6 +71,11 @@
                 <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+<!--
+                <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="attributes">
+                    <attribute name="states">"{'draft': [('readonly', False)], 'sent': [('readonly', False)], 'sent': [('readonly', False)]}"</attribute>
+                </xpath>
+-->
                 <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
                     <field name="open_price"/>
                 </xpath>
@@ -198,6 +203,34 @@
             </field>
         </record>
 
+
+        <!-- President approval view -->
+<!--        <record model="ir.ui.view" id="sale_president_view_tree">
+            <field name="name">sale.president.view.tree</field>
+            <field name="model">sale.order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="President approval pending">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="partner_id"/>
+                    <field name="order_date"/>
+                    <field name="check_state"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="sale_president_view_action">
+            <field name="name">President</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree</field>
+            <field name='view_id' ref='sale_president_view_tree'/>
+        </record>
+
+        <menuitem id="president"
+                  action="sale_president_view_action"
+                  parent="base.menu_sales" sequence="10"/>
+
+-->
 
     </data>
 </openerp>

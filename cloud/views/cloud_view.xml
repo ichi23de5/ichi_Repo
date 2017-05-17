@@ -23,7 +23,6 @@
                             <group>
                                 <field name="date_cloud"/>
                                 <field name="partner_id"/>
-                                <!--<field name="rep_partner_name"/>-->
                                 <field name="user_id"/>
                             </group>
                             <group>
@@ -35,9 +34,6 @@
                         </group>
                         <notebook> 
                             <page string="Quotation list">
-                                <!--<group string="Quotation">
-                                    <field name="quotation_ids"/>
-                                </group>-->
                                 <group>
                                     <group string="DVR">
                                         <field name="dvr1"/>
@@ -53,10 +49,12 @@
                             <page string="Contract">
                                 <group>
                                     <group string="Infomation">
-                                        <field name="contractor_number"/>
-                                        <field name="contractor_pass"/>
-                                        <field name="application_date"/>
+                                        <field name="contractor_number" invisible="1"/>
+                                        <field name="contractor_pass" invisible="1"/>
+                                        <field name="application_date" invisible="1"/>
                                         <field name="end_user" placeholder="end user name"/>
+                                        <field name="end_phone" placeholder="end user phone"/>
+                                        <field name="contact_check"/>
                                     </group>
                                     <group string="Contraction Date">
                                         <field name="approval_date"/>

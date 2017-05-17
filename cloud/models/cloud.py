@@ -17,7 +17,7 @@ class Cloud(models.Model):
          ('finish', 'Finished'), 
          ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='check', help='finish ni ittara saikeiyaku') 
     date_cloud = fields.Date('Check Date', copy=False, default=fields.Datetime.now, required=True, index=True, readonly=True, states={'check': [('readonly', False)]})
-    order_id = fields.Many2one('sale.order', string='Quotation Number', required=True, domain=[('purchace_order','=',True),('check_state','=',('manager','president'))])
+    order_id = fields.Many2one('sale.order', string='Quotation Number', required=True, domain=[('purchase_order','=',True),('check_state','=',('manager','president'))], help='Hachusyo naito check dekinai')
     #### auto input ### with 'order_id' ###
     property_name = fields.Char(related='order_id.property_id.name', string='Property Name', store=True)
     property_add = fields.Char(related='order_id.property_id.address', string='Property Add', readonly=True, store=True)
@@ -37,12 +37,14 @@ class Cloud(models.Model):
                 ('lump7', 'Lump sum 7'),
                 ('incurred', 'Incurred Amount')],
                 string='TKCLOUD Rate Plan', required=True)
-    end_user = fields.Char(string='User Name')
+    end_user = fields.Char('User Name')
+    end_phone = fields.Char('User Phone Number')
+    contact_check = fields.Boolean('Contact OK')
     dvr1 = fields.Many2one('product.product', string='dvr1')
     dvr2 = fields.Many2one('product.product', string='dvr2')
     dvr3 = fields.Many2one('product.product', string='dvr3')
     dvr4 = fields.Many2one('product.product', string='dvr4')
-    sim_id = fields.Many2one('sim', string='SIM ID', required=True, copy=False)
+    sim_id = fields.Many2one('sim', string='SIM User Number', required=True, copy=False)
     memo = fields.Text('Memo')
 
     contractor_number = fields.Char('Contractor ID')
@@ -53,7 +55,6 @@ class Cloud(models.Model):
     construction_date = fields.Date('Construction Date', readonly=True, states={'check': [('readonly', False)]})
     #### auto input ### with constraction_date ###
     expiration_date = fields.Date('Expiration Date', store=True, readonly=True, states={'check': [('readonly', False)]})
-#    end_date = fields.Date(string='Service End Date', store=True, readonly=True, states={'check': [('readonly', False)]})
     changeapp_date = fields.Date('Changeapp Date')
     cancelapp_date = fields.Date('Cancelapp Date')
     cancel_date = fields.Date('Cancel Date')
@@ -67,20 +68,6 @@ class Cloud(models.Model):
             exp = main + relativedelta(day=1, months=25)
             self.update({'expiration_date': exp})
             return
-
-
-#    contract_years = fields.Integer('Keiyakunensu', related='order_id.contract_years', invisible='1')
-
-#    @api.onchange('construction_date')
-#    def _date_service_end(self):
-#        main = fields.Datetime.from_string(self.construction_date)
-#        if main:
-#            vals = self.contract_years
-#            end = main + relativedelta(day=1, months=vals)
-#            self.update({'end_date': end})
-#            return
-
-
 
 
 

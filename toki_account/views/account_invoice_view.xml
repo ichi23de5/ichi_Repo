@@ -7,7 +7,7 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='date_invoice']" position="after">
+                <xpath expr="//field[@name='partner_id']" position="before">
                     <field name="property_name"/>
                 </xpath>
                 <xpath expr="//field[@name='date_due']" position="after">
@@ -21,6 +21,9 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_tree"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="property_name"/>
+                </xpath>
                 <xpath expr="//field[@name='user_id']" position="after">
                     <field name="completion_date"/>
                 </xpath>

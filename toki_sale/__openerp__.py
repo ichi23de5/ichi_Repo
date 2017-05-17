@@ -19,5 +19,3 @@
                 "views/res_partner_view.xml",
                 ],
 }
-
-
