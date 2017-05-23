@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
          ], string='State2', readonly=True, copy=False, index=True, default='ng')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime('Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person')]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
@@ -78,6 +78,16 @@ class SaleOrder(models.Model):
             return
 
 
+    @api.onchange('partner_id')
+    def _rep_partner_selection(self):
+        if not self.partner_id:
+            return
+        else:
+            pass   
+#            pp = self.partner_id
+#            self.update({'parent_id': pp})
+        return
+
 
 
     confirmation_date = fields.Datetime(string='Confirmation Date',
@@ -100,13 +110,23 @@ class SaleOrder(models.Model):
     ### check_state move ###
     request_flag = fields.Boolean('request', copy=False)
 
+
+
+ 
     @api.multi
     def request(self):
+        for order in self:
+ #           if self.env['res.partner'].id[24] not in order.message_partner_ids:
+            order.message_subscribe([24,25,26])
+        self.message_post(type="comment",subtype="mt_comment",body="Request for Ringi")
         self.write({'check_state': 'stand'})
         self.write({'request_flag': True})
 
+
+
     @api.multi
     def manager_ok(self):
+        self.message_post(type="comment",subtype="mt_comment",body="Ringi Result ALLOK")
         self.write({'check_state': 'manager'})
 
     @api.multi
