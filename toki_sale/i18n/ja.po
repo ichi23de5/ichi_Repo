@@ -317,35 +317,35 @@ msgstr ""
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_assistant_id
 #: field:sale.order,assistant_id:0
 msgid "Assistant"
-msgstr ""
+msgstr "アシスタント"
 
 #. module: toki_sale
 #: selection:sale.order,check_state:0
 msgid "Check NG"
-msgstr ""
+msgstr "稟議却下"
 
 #. module: toki_sale
 #: selection:sale.order,check_state:0
 msgid "Check waiting"
-msgstr ""
+msgstr "稟議待ち"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_product_template_is_cloud
 #: field:product.template,is_cloud:0
 msgid "Cloud Flag"
-msgstr ""
+msgstr "クラウドあり"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_confirmation_date
 #: field:sale.order,confirmation_date:0
 msgid "Confirmation Date"
-msgstr ""
+msgstr "承認日"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_order_date
 #: field:sale.order,order_date:0
 msgid "Create Date"
-msgstr ""
+msgstr "見積作成日"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_construction_create_uid
@@ -353,7 +353,7 @@ msgstr ""
 #: field:sale.construction,create_uid:0
 #: field:sale.construction.list,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "作成者"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_construction_create_date
@@ -361,19 +361,19 @@ msgstr ""
 #: field:sale.construction,create_date:0
 #: field:sale.construction.list,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "作成日"
 
 #. module: toki_sale
 #: model:ir.model.fields,help:toki_sale.field_sale_order_confirmation_date
 #: help:sale.order,confirmation_date:0
 msgid "Date on which the sale order is confirmed."
-msgstr ""
+msgstr "この見積が承認された日です"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_res_partner_mail_address
 #: field:res.partner,mail_address:0
 msgid "Email"
-msgstr ""
+msgstr "メール"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_end_time
@@ -381,23 +381,23 @@ msgstr ""
 #: field:sale.order,end_time:0
 #: field:sale.order,end_time_o:0
 msgid "End time"
-msgstr ""
+msgstr "施工可能時刻"
 
 #. module: toki_sale
 #: selection:sale.order,work_type:0
 msgid "Extention"
-msgstr ""
+msgstr "追加工事"
 
 #. module: toki_sale
 #: selection:sale.order,construction_type:0
 msgid "Gaichu"
-msgstr ""
+msgstr "外注"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_amount_outside
 #: field:sale.order,amount_outside:0
 msgid "Gaityukingaku"
-msgstr ""
+msgstr "外注金額"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_construction_id
@@ -412,13 +412,13 @@ msgstr ""
 #: field:sale.order,inspection_id:0
 #: selection:sale.order,work_type:0
 msgid "Inspection"
-msgstr ""
+msgstr "点検"
 
 #. module: toki_sale
 #: model:ir.model.fields,help:toki_sale.field_sale_order_inspection_id
 #: help:sale.order,inspection_id:0
 msgid "Kokokara hosyujouhou nyuryoku"
-msgstr ""
+msgstr "以下に保守情報を入力してください"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_end_date
@@ -426,7 +426,7 @@ msgstr ""
 #: field:sale.order,end_date:0
 #: field:sale.order,end_date_o:0
 msgid "Kouji end"
-msgstr ""
+msgstr "施工終了予定日"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_start_date
@@ -434,7 +434,7 @@ msgstr ""
 #: field:sale.order,start_date:0
 #: field:sale.order,start_date_o:0
 msgid "Kouji start"
-msgstr ""
+msgstr "施工開始日"
 
 #. module: toki_sale
 #: model:ir.model.fields,help:toki_sale.field_sale_order_construction_title
@@ -442,7 +442,7 @@ msgstr ""
 #: help:sale.order,construction_title:0
 #: help:sale.order,construction_title_o:0
 msgid "Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."
-msgstr ""
+msgstr "工事の概要　例：監視カメラ3台設置工事"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_write_uid
@@ -450,7 +450,7 @@ msgstr ""
 #: field:sale.construction,write_uid:0
 #: field:sale.construction.list,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "最終更新者"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_write_date
@@ -458,13 +458,13 @@ msgstr ""
 #: field:sale.construction,write_date:0
 #: field:sale.construction.list,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "最終更新日"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_line_maker
 #: field:sale.order.line,maker:0
 msgid "Maker"
-msgstr ""
+msgstr "メーカー"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_res_partner_maker
@@ -476,29 +476,29 @@ msgstr ""
 #: model:ir.model.fields,field_description:toki_sale.field_product_template_maker_id
 #: field:product.template,maker_id:0
 msgid "Maker id"
-msgstr ""
+msgstr "メーカー名"
 
 #. module: toki_sale
 #: selection:sale.order,check_state:0
 msgid "Manager OK"
-msgstr ""
+msgstr "所長承認"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_product_template_is_payment
 #: field:product.template,is_payment:0
 msgid "Monthly Payment Flag"
-msgstr ""
+msgstr "月払い"
 
 #. module: toki_sale
 #: selection:sale.order,work_type:0
 msgid "New construction"
-msgstr ""
+msgstr "新設工事"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_line_open_price
 #: field:sale.order.line,open_price:0
 msgid "Open Price"
-msgstr ""
+msgstr "希望小売価格"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_note
@@ -507,59 +507,59 @@ msgstr ""
 #: field:sale.order,construction_note_o:0
 #: selection:sale.order,work_type:0
 msgid "Others"
-msgstr ""
+msgstr "その他"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_res_partner_outside_order
 #: field:res.partner,outside_order:0
 msgid "Outside Flag"
-msgstr ""
+msgstr "外注フラグ"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_outside_id
 #: field:sale.order,outside_id:0
 msgid "Outside Supplier"
-msgstr ""
+msgstr "外注業者"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_outside_order
 #: field:sale.order,outside_order:0
 msgid "Outside order"
-msgstr ""
+msgstr "外注"
 
 #. module: toki_sale
 #: model:ir.model,name:toki_sale.model_res_partner
 msgid "Partner"
-msgstr ""
+msgstr "顧客"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_res_partner_partner_number
 #: field:res.partner,partner_number:0
 msgid "Partner ID"
-msgstr ""
+msgstr "顧客"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_product_template_pay_per
 #: field:product.template,pay_per:0
 msgid "Pay per Flag"
-msgstr ""
+msgstr "従量課金フラグ"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_version
 #: field:sale.order,version:0
 msgid "Plan version"
-msgstr ""
+msgstr "プラン"
 
 #. module: toki_sale
 #: code:addons/toki_sale/models/sale.py:133
 #, python-format
 msgid "Please define an accounting sale journal for this company."
-msgstr ""
+msgstr "勘定科目を入力してください"
 
 #. module: toki_sale
 #: selection:sale.order,check_state:0
 msgid "President OK"
-msgstr ""
+msgstr "社長承認済"
 
 #. module: toki_sale
 #: model:ir.model,name:toki_sale.model_product_template
@@ -570,55 +570,55 @@ msgstr ""
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_property_id
 #: field:sale.order,property_id:0
 msgid "Property Name"
-msgstr ""
+msgstr "物件名"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_purchase_order
 #: field:sale.order,purchase_order:0
 msgid "Purchase order"
-msgstr ""
+msgstr "＠発注書＠"
 
 #. module: toki_sale
 #: selection:sale.order,work_type:0
 msgid "ReNewal"
-msgstr ""
+msgstr "リニューアル"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_rep_partner_id
 #: field:sale.order,rep_partner_id:0
 msgid "Rep Name"
-msgstr ""
+msgstr "顧客担当者"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_res_partner_default_code
 #: field:res.partner,default_code:0
 msgid "Ryakusyou"
-msgstr ""
+msgstr "通称"
 
 #. module: toki_sale
 #: selection:sale.order,construction_type:0
 msgid "Ryouhou"
-msgstr ""
+msgstr "＠当社兼外注業者＠"
 
 #. module: toki_sale
 #: selection:sale.order,work_type:0
 msgid "Sale of Product"
-msgstr ""
+msgstr "機器販売"
 
 #. module: toki_sale
 #: model:ir.model,name:toki_sale.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "販売"
 
 #. module: toki_sale
 #: model:ir.model,name:toki_sale.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
+msgstr "見積内訳"
 
 #. module: toki_sale
 #: selection:sale.order,work_type:0
 msgid "Shinchiku"
-msgstr ""
+msgstr "新築"
 
 #. module: toki_sale
 #: model:ir.model.fields,help:toki_sale.field_sale_order_construction_note
@@ -626,7 +626,7 @@ msgstr ""
 #: help:sale.order,construction_note:0
 #: help:sale.order,construction_note_o:0
 msgid "Sonota tokkizikou"
-msgstr ""
+msgstr "特記事項"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_start_time
@@ -634,7 +634,7 @@ msgstr ""
 #: field:sale.order,start_time:0
 #: field:sale.order,start_time_o:0
 msgid "Start time"
-msgstr ""
+msgstr "施工開始時刻"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_check_state
@@ -646,36 +646,36 @@ msgstr ""
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_completion_date
 #: field:sale.order,completion_date:0
 msgid "Syunkoubi"
-msgstr ""
+msgstr "竣工日"
 
 #. module: toki_sale
 #: selection:sale.order,construction_type:0
 msgid "TOKI"
-msgstr ""
+msgstr "TOKI"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_work_type
 #: field:sale.order,work_type:0
 msgid "Type"
-msgstr ""
+msgstr "工事種別"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_product_template_open_price
 #: field:product.template,open_price:0
 msgid "Vender Price"
-msgstr ""
+msgstr "仕入価格"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_product_template_is_warranty
 #: field:product.template,is_warranty:0
 msgid "Warranty Flag"
-msgstr ""
+msgstr "保証フラグ"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_type
 #: field:sale.order,construction_type:0
 msgid "Work"
-msgstr ""
+msgstr "施工業者"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_note
@@ -683,13 +683,13 @@ msgstr ""
 #: field:sale.construction.list,note:0
 #: field:sale.order,memo:0
 msgid "memo"
-msgstr ""
+msgstr "社内用メモ"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_request_flag
 #: field:sale.order,request_flag:0
 msgid "request"
-msgstr ""
+msgstr "リクエスト"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_id
@@ -697,7 +697,7 @@ msgstr ""
 #: field:sale.construction,list_id:0
 #: field:sale.construction.list,list_id:0
 msgid "template"
-msgstr ""
+msgstr "定型文"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_title
@@ -705,7 +705,7 @@ msgstr ""
 #: field:sale.order,construction_title:0
 #: field:sale.order,construction_title_o:0
 msgid "title"
-msgstr ""
+msgstr "＠タイトル＠"
 
 #. module: toki_sale
 #: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_ids
@@ -713,5 +713,5 @@ msgstr ""
 #: field:sale.order,construction_ids:0
 #: field:sale.order,construction_ids_o:0
 msgid "yokutsukau tokkizikou model"
-msgstr ""
+msgstr "工事発注書に記載する定型文です"
 
