@@ -37,12 +37,12 @@ msgstr ""
 #. module: toki_bank
 #: model:ir.model,name:toki_bank.model_res_bank
 msgid "Bank"
-msgstr ""
+msgstr "＠銀行"
 
 #. module: toki_bank
 #: model:ir.model,name:toki_bank.model_res_partner_bank
 msgid "Bank Accounts"
-msgstr ""
+msgstr "＠銀行口座"
 
 #. module: toki_bank
 #: model:ir.model.fields,field_description:toki_bank.field_res_bank_branch
@@ -50,5 +50,5 @@ msgstr ""
 #: field:res.bank,branch:0
 #: field:res.partner.bank,branch:0
 msgid "Branch Name"
-msgstr ""
+msgstr "＠支店名"
 
