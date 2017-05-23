@@ -66,7 +66,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:toki_account.field_stock_picking_outside_order
 #: field:stock.picking,outside_order:0
 msgid "Outside Flag"
-msgstr ""
+msgstr "外注フラグ"
 
 #. module: toki_account
 #: field:account.invoice,property_name:0
@@ -74,13 +74,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:toki_account.field_stock_picking_property_name
 #: field:stock.picking,property_name:0
 msgid "Property Name"
-msgstr ""
+msgstr "物件名"
 
 #. module: toki_account
 #: field:account.invoice,completion_date:0
 #: model:ir.model.fields,field_description:toki_account.field_account_invoice_completion_date
 msgid "Syunkoubi"
-msgstr ""
+msgstr "竣工日"
 
 #. module: toki_account
 #: model:ir.model,name:toki_account.model_stock_picking
