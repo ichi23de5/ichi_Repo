@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sales_report_product_image
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-24 00:38+0000\n"
+"PO-Revision-Date: 2017-05-24 00:38+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sales_report_product_image
+#: model:ir.ui.view,arch_db:sales_report_product_image.report_saleorder_document_inherit
+msgid "<?xml version=\"1.0\"?>\n"
+"<data inherit_id=\"sale.report_saleorder_document\">\n"
+"         <xpath expr=\"//table[@class='table table-condensed']/thead/tr/th[1]\" position=\"before\">\n"
+"             <t t-if=\"doc.print_image and doc.image_sizes in ('image', 'image_medium', 'image_small') \">\n"
+"                 <th>\n"
+"                    Product Image\n"
+"                </th>\n"
+"             </t>\n"
+"        </xpath>\n"
+"        <xpath expr=\"//table/t/t[2]/tr/td[1]\" position=\"before\">\n"
+"            <t t-if=\"doc.image_sizes == 'image' and doc.print_image \">\n"
+"                <td>\n"
+"                    <span t-field=\"l.product_id.image\" t-field-options=\"{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;}\"/>\n"
+"                </td>\n"
+"            </t>\n"
+"            <t t-if=\"doc.image_sizes == 'image_medium' and doc.print_image\">\n"
+"                <td>\n"
+"                    <span t-field=\"l.product_id.image_medium\" t-field-options=\"{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;}\"/>\n"
+"                </td>\n"
+"            </t>\n"
+"            <t t-if=\"doc.image_sizes == 'image_small' and doc.print_image \">\n"
+"                <td>\n"
+"                    <span t-field=\"l.product_id.image_small\" t-field-options=\"{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;img-rounded&quot;}\"/>\n"
+"                </td>\n"
+"            </t>\n"
+"        </xpath>\n"
+"    </data>\n"
+"\n"
+""
+msgstr ""
+
+#. module: sales_report_product_image
+#: model:ir.ui.view,arch_db:sales_report_product_image.view_order_image_form_inherit
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='order_line']/form//field[@name='product_id']\" position=\"before\">\n"
+"                <field name=\"image_small\" widget=\"image\"/>\n"
+"            </xpath>\n"
+"            <xpath expr=\"//field[@name='order_line']/tree/field[@name='product_id']\" position=\"before\">\n"
+"                <field name=\"image_small\" widget=\"image\"/>\n"
+"            </xpath>\n"
+"            <field name=\"client_order_ref\" position=\"after\">\n"
+"                <field name=\"print_image\"/>\n"
+"                <field name=\"image_sizes\"/>\n"
+"            </field>\n"
+"        </data>"
+msgstr ""
+
+#. module: sales_report_product_image
+#: selection:sale.order,image_sizes:0
+msgid "Big sized Image"
+msgstr ""
+
+#. module: sales_report_product_image
+#: model:ir.model.fields,help:sales_report_product_image.field_sale_order_print_image
+#: help:sale.order,print_image:0
+msgid "If ticked, you can see\n"
+"                    the product image in report of sale order/quotation"
+msgstr ""
+
+#. module: sales_report_product_image
+#: model:ir.model.fields,field_description:sales_report_product_image.field_sale_order_image_sizes
+#: field:sale.order,image_sizes:0
+msgid "Image Sizes"
+msgstr ""
+
+#. module: sales_report_product_image
+#: model:ir.model.fields,help:sales_report_product_image.field_sale_order_image_sizes
+#: help:sale.order,image_sizes:0
+msgid "Image size to be displayed in report"
+msgstr ""
+
+#. module: sales_report_product_image
+#: selection:sale.order,image_sizes:0
+msgid "Medium Sized Image"
+msgstr ""
+
+#. module: sales_report_product_image
+#: model:ir.model.fields,field_description:sales_report_product_image.field_sale_order_print_image
+#: field:sale.order,print_image:0
+msgid "Print Image"
+msgstr ""
+
+#. module: sales_report_product_image
+#: view:website:sale.report_saleorder_document
+msgid "Product Image"
+msgstr ""
+
+#. module: sales_report_product_image
+#: model:ir.model,name:sales_report_product_image.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: sales_report_product_image
+#: model:ir.model,name:sales_report_product_image.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: sales_report_product_image
+#: selection:sale.order,image_sizes:0
+msgid "Small Sized Image"
+msgstr ""
+
