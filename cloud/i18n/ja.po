@@ -290,7 +290,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:cloud.field_sim_type_business_number
 #: field:sim.type,business_number:0
 msgid "Business Number"
-msgstr ""
+msgstr "ビジネスナンバー"
 
 #. module: cloud
 #: model:ir.ui.menu,name:cloud.button_menu_cloud
