@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_construction,sale_construction,model_sale_construction,sales_team.group_sale_salesman,1,1,1,1
+access_sale_construction_list,sale_construction_list,model_sale_construction,sales_team.group_sale_salesman,1,1,1,1
