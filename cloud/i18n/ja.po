@@ -65,7 +65,7 @@ msgstr ""
 #: field:cloud,property_name:0
 #: model:ir.model.fields,field_description:cloud.field_cloud_property_name
 msgid "Property Name"
-msgstr "物件名（監視装置名）"
+msgstr "物件名"
 
 #. module: cloud
 #: field:cloud,order_id:0
