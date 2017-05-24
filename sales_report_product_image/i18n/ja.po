@@ -67,55 +67,55 @@ msgstr ""
 #. module: sales_report_product_image
 #: selection:sale.order,image_sizes:0
 msgid "Big sized Image"
-msgstr ""
+msgstr "画像サイズ大"
 
 #. module: sales_report_product_image
 #: model:ir.model.fields,help:sales_report_product_image.field_sale_order_print_image
 #: help:sale.order,print_image:0
 msgid "If ticked, you can see\n"
 "                    the product image in report of sale order/quotation"
-msgstr ""
+msgstr "＠チェックが入ると確認が可能です"
 
 #. module: sales_report_product_image
 #: model:ir.model.fields,field_description:sales_report_product_image.field_sale_order_image_sizes
 #: field:sale.order,image_sizes:0
 msgid "Image Sizes"
-msgstr ""
+msgstr "写真サイズ"
 
 #. module: sales_report_product_image
 #: model:ir.model.fields,help:sales_report_product_image.field_sale_order_image_sizes
 #: help:sale.order,image_sizes:0
 msgid "Image size to be displayed in report"
-msgstr ""
+msgstr "表示する写真のサイズ"
 
 #. module: sales_report_product_image
 #: selection:sale.order,image_sizes:0
 msgid "Medium Sized Image"
-msgstr ""
+msgstr "画像サイズ中"
 
 #. module: sales_report_product_image
 #: model:ir.model.fields,field_description:sales_report_product_image.field_sale_order_print_image
 #: field:sale.order,print_image:0
 msgid "Print Image"
-msgstr ""
+msgstr "印刷画像"
 
 #. module: sales_report_product_image
 #: view:website:sale.report_saleorder_document
 msgid "Product Image"
-msgstr ""
+msgstr "製品画像"
 
 #. module: sales_report_product_image
 #: model:ir.model,name:sales_report_product_image.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "＠"
 
 #. module: sales_report_product_image
 #: model:ir.model,name:sales_report_product_image.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
+msgstr "＠"
 
 #. module: sales_report_product_image
 #: selection:sale.order,image_sizes:0
 msgid "Small Sized Image"
-msgstr ""
+msgstr "画像サイズ小"
 
