@@ -1,6 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_toki_sale_admin,admin access,model_sale_construction,toki_sale.group_manager,1,1,1,1
-access_toki_sale_user,user access,model_sale_construction,toki_sale.group_user,1,1,1,0
-access_toki_sale_admin_list,admin access,model_sale_construction_list,toki_sale.group_manager,1,1,1,1
-access_toki_sale_user_list,user access,model_sale_construction_list,toki_sale.group_user,1,1,1,0
-
+access_sale_const_manager,sale_const_manager,model_sale_construction,toki_sale.group_manager,1,1,1,1
+access_sale_const_list_manager,sale_const_list_manager,model_sale_construction_list,toki_sale.group_manager,1,1,1,1
+access_sale_const_user,sale_const_user,model_sale_construction,toki_sale.group_user,1,1,1,0
+access_sale_const_list_user,sale_const_list_user,model_sale_construction_list,toki_sale.group_user,1,1,1,0
