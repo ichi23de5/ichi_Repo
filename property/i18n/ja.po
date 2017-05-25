@@ -193,13 +193,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:property.field_property_address
 #: field:property,address:0
 msgid "ADDRESS"
-msgstr ""
+msgstr "住所"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_act_type
 #: field:property.inspection,act_type:0
 msgid "Act type"
-msgstr ""
+msgstr "作業内容"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_warranty_active
@@ -217,7 +217,7 @@ msgstr ""
 #: field:property.inspection.request,create_uid:0
 #: field:warranty,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "作成者"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_create_date
@@ -237,7 +237,7 @@ msgstr ""
 #: field:property.inspection,date:0
 #: field:property.inspection.request,date:0
 msgid "Date"
-msgstr ""
+msgstr "日"
 
 #. module: property
 #: model:ir.model.fields,help:property.field_property_inspection_message_last_post
@@ -264,13 +264,13 @@ msgstr ""
 #: field:property.inspection,message_follower_ids:0
 #: field:warranty,message_follower_ids:0
 msgid "Followers"
-msgstr ""
+msgstr "フォロワー"
 
 #. module: property
 #: model:ir.model.fields,help:property.field_property_warranty_ids
 #: help:property,warranty_ids:0
 msgid "Hosyu ga attara nyuryoku"
-msgstr ""
+msgstr "保守がある場合は入力"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_id
@@ -289,47 +289,47 @@ msgstr ""
 #: model:ir.ui.menu,name:property.button_menu_inspection
 #: model:ir.ui.menu,name:property.inspection
 msgid "Inspection"
-msgstr ""
+msgstr "オンサイト保守"
 
 #. module: property
 #: model:ir.actions.act_window,name:property.buttons_inspection_request_action
 #: model:ir.ui.menu,name:property.inspection_request
 msgid "Inspection Request"
-msgstr ""
+msgstr "保守連絡"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_inspector_id
 #: field:property.inspection,inspector_id:0
 msgid "Inspector"
-msgstr ""
+msgstr "対応者"
 
 #. module: property
 #: selection:property.inspection,state:0
 msgid "Kanryo"
-msgstr ""
+msgstr "完了"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_key
 #: field:property,key:0
 msgid "Key"
-msgstr ""
+msgstr "鍵"
 
 #. module: property
 #: model:ir.model.fields,help:property.field_property_key
 #: help:property,key:0
 msgid "Key or Auto lock number when locked"
-msgstr ""
+msgstr "現地の確認に、オートロック番号やキーボックス番号等が必要な場合にはご入力ください"
 
 #. module: property
 #: selection:property.inspection,act_type:0
 msgid "Koukan"
-msgstr ""
+msgstr "交換"
 
 #. module: property
 #: model:ir.model.fields,help:property.field_property_inspection_product_memo
 #: help:property.inspection,product_memo:0
 msgid "Koukan sita kiki wo kaitene"
-msgstr ""
+msgstr "交換した機器を入力してください"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_message_last_post
@@ -339,7 +339,7 @@ msgstr ""
 #: field:property.inspection,message_last_post:0
 #: field:warranty,message_last_post:0
 msgid "Last Message Date"
-msgstr ""
+msgstr "最終入力日"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_request_write_uid
@@ -351,7 +351,7 @@ msgstr ""
 #: field:property.inspection.request,write_uid:0
 #: field:warranty,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "最終更新者"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_request_write_date
@@ -368,7 +368,7 @@ msgstr ""
 #. module: property
 #: model:res.groups,name:property.group_manager
 msgid "Manager"
-msgstr ""
+msgstr "マネージャー"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_message_ids
@@ -378,13 +378,13 @@ msgstr ""
 #: field:property.inspection,message_ids:0
 #: field:warranty,message_ids:0
 msgid "Messages"
-msgstr ""
+msgstr "メッセージ"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_note
 #: field:property,note:0
 msgid "NOTE"
-msgstr ""
+msgstr "ノート"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_name
@@ -392,49 +392,49 @@ msgstr ""
 #: field:property,name:0
 #: field:warranty,warranty_id:0
 msgid "Name"
-msgstr ""
+msgstr "氏名"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_inspection_note
 #: field:property.inspection,inspection_note:0
 msgid "Note"
-msgstr ""
+msgstr "ノート"
 
 #. module: property
 #: selection:property.inspection,act_type:0
 msgid "Other"
-msgstr ""
+msgstr "その他"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_partner_name
 #: field:property,partner_name:0
 msgid "Partner"
-msgstr ""
+msgstr "顧客"
 
 #. module: property
 #: model:ir.module.category,name:property.module_management
 #: model:ir.ui.menu,name:property.button_menu_property
 #: model:ir.ui.menu,name:property.main_button_menu
 msgid "Property"
-msgstr ""
+msgstr "物件"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_property_id
 #: field:property.inspection,property_id:0
 msgid "Property ID"
-msgstr ""
+msgstr "物件ID"
 
 #. module: property
 #: model:ir.actions.act_window,name:property.property_view_action
 #: model:ir.ui.menu,name:property.property
 msgid "Property Info"
-msgstr ""
+msgstr "物件Info"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_request_id
 #: field:property.inspection,request_id:0
 msgid "Request"
-msgstr ""
+msgstr "リクエスト"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_warranty_scope_of_covaerage
@@ -445,53 +445,53 @@ msgstr ""
 #. module: property
 #: selection:property.inspection,act_type:0
 msgid "Syuri"
-msgstr ""
+msgstr "修理"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_phone
 #: field:property,phone:0
 msgid "TEL"
-msgstr ""
+msgstr "電話番号"
 
 #. module: property
 #: selection:property.inspection,state:0
 msgid "Taioutyu"
-msgstr ""
+msgstr "対応中"
 
 #. module: property
 #: selection:property.inspection,state:0
 msgid "Tehaityu"
-msgstr ""
+msgstr "手配中"
 
 #. module: property
 #: selection:property.inspection,act_type:0
 msgid "Teikitenken"
-msgstr ""
+msgstr "定期点検"
 
 #. module: property
 #: selection:property.inspection,act_type:0
 msgid "Tenken"
-msgstr ""
+msgstr "点検"
 
 #. module: property
 #: selection:property.inspection,act_type:0
 msgid "Tyousei"
-msgstr ""
+msgstr "調整"
 
 #. module: property
 #: model:res.groups,name:property.group_upper
 msgid "Upper"
-msgstr ""
+msgstr "上限"
 
 #. module: property
 #: model:res.groups,name:property.group_user
 msgid "User"
-msgstr ""
+msgstr "ユーザー"
 
 #. module: property
 #: model:ir.module.category,description:property.module_management
 msgid "User access level for this module"
-msgstr ""
+msgstr "このモジュールへのユーザーアクセスレベル"
 
 #. module: property
 #: model:ir.actions.act_window,name:property.buttons_warranty_action
@@ -499,36 +499,36 @@ msgstr ""
 #: model:ir.ui.menu,name:property.warranty
 #: field:property,warranty_ids:0
 msgid "Warranty"
-msgstr ""
+msgstr "保証"
 
 #. module: property
 #: model:ir.ui.menu,name:property.button_menu_warranty
 msgid "Warranty management"
-msgstr ""
+msgstr "保証管理"
 
 #. module: property
 #: model:ir.model.fields,help:property.field_property_inspection_request_user_id
 #: help:property.inspection.request,user_id:0
 msgid "hosyu no irai wo uketahitoy"
-msgstr ""
+msgstr "受付者"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_request_partner_id
 #: field:property.inspection.request,partner_id:0
 msgid "partner_id"
-msgstr ""
+msgstr "顧客ID"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_product_memo
 #: field:property.inspection,product_memo:0
 msgid "product_memo"
-msgstr ""
+msgstr "製品メモ"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_ids
 #: field:property,inspection_ids:0
 msgid "property_id"
-msgstr ""
+msgstr "物件ID"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_warranty_range_coverage
@@ -540,17 +540,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:property.field_property_inspection_request_request_note
 #: field:property.inspection.request,request_note:0
 msgid "request_note"
-msgstr ""
+msgstr "受付ノート"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_state
 #: field:property.inspection,state:0
 msgid "state"
-msgstr ""
+msgstr "ステータス"
 
 #. module: property
 #: model:ir.model.fields,field_description:property.field_property_inspection_request_user_id
 #: field:property.inspection.request,user_id:0
 msgid "user_id"
-msgstr ""
+msgstr "担当者"
 
