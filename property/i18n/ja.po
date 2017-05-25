@@ -1,0 +1,556 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* property
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-25 04:18+0000\n"
+"PO-Revision-Date: 2017-05-25 04:18+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.inspection_request_view_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"Inspection Request\">\n"
+"                    <sheet>\n"
+"                        <group>\n"
+"                            <group>\n"
+"                                <field name=\"date\"/>\n"
+"                                <field name=\"partner_id\"/>\n"
+"                                <field name=\"user_id\"/>\n"
+"                            </group>\n"
+"                            <group>\n"
+"                                <field name=\"request_note\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                    </sheet>\n"
+"                </form>\n"
+"            "
+msgstr ""
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.inspection_view_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"Inspection\">\n"
+"                    <sheet>\n"
+"                        <group>\n"
+"                            <group>\n"
+"		    	        <field name=\"date\"/>\n"
+"                                <field name=\"inspector_id\" widget=\"selection\"/>\n"
+"                                <field name=\"act_type\"/>\n"
+"                                <field name=\"state\"/>\n"
+"                            </group>\n"
+"                            <group>\n"
+"                                <field name=\"product_memo\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <div>\n"
+"                            <field name=\"inspection_note\" placeholder=\"Note\"/>\n"
+"                        </div>\n"
+"                        <notebook>\n"
+"                            <page string=\"request\">\n"
+"                                <group>\n"
+"                                    <group>\n"
+"                                        <field name=\"request_id\"/>\n"
+"                                        <field name=\"request_date\"/>\n"
+"                                    </group>\n"
+"                                    <group>\n"
+"                                        <field name=\"requester_name\"/>\n"
+"                                        <field name=\"responder_name\"/>\n"
+"                                    </group>\n"
+"                                </group>\n"
+"                                <div>\n"
+"                                    <field name=\"request_note\"/>\n"
+"                                </div>\n"
+"                            </page>\n"
+"                        </notebook>\n"
+"		    </sheet>\n"
+"                    <div class=\"oe_chatter\">\n"
+"                        <field name=\"message_follower_ids\" widget=\"mail_followers\" groups=\"base.group_user\"/>\n"
+"                        <field name=\"message_ids\" widget=\"mail_thread\"/>\n"
+"                    </div>\n"
+"                </form>\n"
+"	    "
+msgstr ""
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.property_view_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"PROPERTY\">\n"
+"                    <sheet>\n"
+"		        <div class=\"oe_title\" style=\"float:left;\">\n"
+"                            <label class=\"oe_edit_only\" for=\"name\"/>\n"
+"                            <h1><field name=\"name\" placeholder=\"Name\"/></h1>\n"
+"                        </div>\n"
+"                        <group>\n"
+"                            <div style=\"float:left;\">\n"
+"                                <field name=\"address\" placeholder=\"Address\"/>\n"
+"                                <field name=\"phone\" placeholder=\"Phone\"/>\n"
+"                            </div>\n"
+"                        </group>\n"
+"                        <group>\n"
+"                            <group>\n"
+"                                <field name=\"partner_name\"/>\n"
+"                                <field name=\"key\" placeholder=\"Key or Auto lock number when locked\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <div>\n"
+"                            <field name=\"note\" placeholder=\"Note\"/>\n"
+"                        </div>\n"
+"                        <notebook>\n"
+"                            <page string=\"Warranty\">\n"
+"                                <field name=\"warranty_ids\"/>\n"
+"                            </page>\n"
+"                            <page string=\"Inspection\">\n"
+"                                <field name=\"inspection_ids\"/>\n"
+"                            </page>\n"
+"                        </notebook>\n"
+"		    </sheet>\n"
+"                    <div class=\"oe_chatter\"> \n"
+"                        <field name=\"message_follower_ids\" widget=\"mail_followers\"/>\n"
+"                        <field name=\"message_ids\" widget=\"mail_thread\"/> \n"
+"                    </div> \n"
+"                </form>\n"
+"	    "
+msgstr ""
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.warranty_view_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"Warranty\">\n"
+"                    <sheet>\n"
+"                        <group>\n"
+"                            <group>\n"
+"                                <field name=\"warranty_id\"/>\n"
+"                                <field name=\"active\"/>\n"
+"                            </group>\n"
+"                            <group>\n"
+"                                <field name=\"scope_of_covaerage\"/>\n"
+"                                <field name=\"range_coverage\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                    </sheet>\n"
+"                </form>\n"
+"            "
+msgstr ""
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.inspection_view_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<tree string=\"Inspection List\"> \n"
+"                    <field name=\"property_id\"/>\n"
+"                    <field name=\"date\"/> \n"
+"                    <field name=\"inspector_id\"/> \n"
+"                    <field name=\"act_type\"/>  \n"
+"                    <field name=\"state\"/>\n"
+"                </tree> \n"
+"            "
+msgstr ""
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.inspection_request_view_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<tree string=\"Inspection Request\">\n"
+"                    <field name=\"date\"/>\n"
+"                    <field name=\"partner_id\"/>\n"
+"                    <field name=\"request_note\"/>\n"
+"                    <field name=\"user_id\"/>\n"
+"                </tree>\n"
+"            "
+msgstr ""
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.property_view_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<tree string=\"Property Information\"> \n"
+"                    <field name=\"name\"/> \n"
+"                    <field name=\"address\"/> \n"
+"                    <field name=\"partner_name\"/> \n"
+"                </tree> \n"
+"            "
+msgstr ""
+
+#. module: property
+#: model:ir.ui.view,arch_db:property.warranty_view_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<tree string=\"Warranty\">\n"
+"                    <field name=\"warranty_id\"/>\n"
+"                    <field name=\"scope_of_covaerage\"/>\n"
+"                    <field name=\"range_coverage\"/>\n"
+"                    <field name=\"active\"/>\n"
+"                </tree>\n"
+"            "
+msgstr ""
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_address
+#: field:property,address:0
+msgid "ADDRESS"
+msgstr "住所"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_act_type
+#: field:property.inspection,act_type:0
+msgid "Act type"
+msgstr "作業内容"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_warranty_active
+#: field:warranty,active:0
+msgid "Active"
+msgstr ""
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_create_uid
+#: model:ir.model.fields,field_description:property.field_property_inspection_create_uid
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_create_uid
+#: model:ir.model.fields,field_description:property.field_warranty_create_uid
+#: field:property,create_uid:0
+#: field:property.inspection,create_uid:0
+#: field:property.inspection.request,create_uid:0
+#: field:warranty,create_uid:0
+msgid "Created by"
+msgstr "作成者"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_create_date
+#: model:ir.model.fields,field_description:property.field_property_inspection_create_date
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_create_date
+#: model:ir.model.fields,field_description:property.field_warranty_create_date
+#: field:property,create_date:0
+#: field:property.inspection,create_date:0
+#: field:property.inspection.request,create_date:0
+#: field:warranty,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_date
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_date_4625
+#: field:property.inspection,date:0
+#: field:property.inspection.request,date:0
+msgid "Date"
+msgstr "日"
+
+#. module: property
+#: model:ir.model.fields,help:property.field_property_inspection_message_last_post
+#: model:ir.model.fields,help:property.field_property_message_last_post
+#: model:ir.model.fields,help:property.field_warranty_message_last_post
+#: help:property,message_last_post:0
+#: help:property.inspection,message_last_post:0
+#: help:warranty,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr ""
+
+#. module: property
+#: model:ir.model,name:property.model_property
+#: model:ir.model,name:property.model_property_inspection
+#: model:ir.model,name:property.model_warranty
+msgid "Email Thread"
+msgstr ""
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_message_follower_ids
+#: model:ir.model.fields,field_description:property.field_property_message_follower_ids
+#: model:ir.model.fields,field_description:property.field_warranty_message_follower_ids
+#: field:property,message_follower_ids:0
+#: field:property.inspection,message_follower_ids:0
+#: field:warranty,message_follower_ids:0
+msgid "Followers"
+msgstr "フォロワー"
+
+#. module: property
+#: model:ir.model.fields,help:property.field_property_warranty_ids
+#: help:property,warranty_ids:0
+msgid "Hosyu ga attara nyuryoku"
+msgstr "保守がある場合は入力"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_id
+#: model:ir.model.fields,field_description:property.field_property_inspection_id
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_id_4628
+#: model:ir.model.fields,field_description:property.field_warranty_id
+#: field:property,id:0
+#: field:property.inspection,id:0
+#: field:property.inspection.request,id:0
+#: field:warranty,id:0
+msgid "ID"
+msgstr ""
+
+#. module: property
+#: model:ir.actions.act_window,name:property.buttons_inspection_action
+#: model:ir.ui.menu,name:property.button_menu_inspection
+#: model:ir.ui.menu,name:property.inspection
+msgid "Inspection"
+msgstr "オンサイト保守"
+
+#. module: property
+#: model:ir.actions.act_window,name:property.buttons_inspection_request_action
+#: model:ir.ui.menu,name:property.inspection_request
+msgid "Inspection Request"
+msgstr "保守連絡"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_inspector_id
+#: field:property.inspection,inspector_id:0
+msgid "Inspector"
+msgstr "対応者"
+
+#. module: property
+#: selection:property.inspection,state:0
+msgid "Kanryo"
+msgstr "完了"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_key
+#: field:property,key:0
+msgid "Key"
+msgstr "鍵"
+
+#. module: property
+#: model:ir.model.fields,help:property.field_property_key
+#: help:property,key:0
+msgid "Key or Auto lock number when locked"
+msgstr "現地の確認に、オートロック番号やキーボックス番号等が必要な場合にはご入力ください"
+
+#. module: property
+#: selection:property.inspection,act_type:0
+msgid "Koukan"
+msgstr "交換"
+
+#. module: property
+#: model:ir.model.fields,help:property.field_property_inspection_product_memo
+#: help:property.inspection,product_memo:0
+msgid "Koukan sita kiki wo kaitene"
+msgstr "交換した機器を入力してください"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_message_last_post
+#: model:ir.model.fields,field_description:property.field_property_message_last_post
+#: model:ir.model.fields,field_description:property.field_warranty_message_last_post
+#: field:property,message_last_post:0
+#: field:property.inspection,message_last_post:0
+#: field:warranty,message_last_post:0
+msgid "Last Message Date"
+msgstr "最終入力日"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_write_uid
+#: model:ir.model.fields,field_description:property.field_property_inspection_write_uid
+#: model:ir.model.fields,field_description:property.field_property_write_uid
+#: model:ir.model.fields,field_description:property.field_warranty_write_uid
+#: field:property,write_uid:0
+#: field:property.inspection,write_uid:0
+#: field:property.inspection.request,write_uid:0
+#: field:warranty,write_uid:0
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_write_date
+#: model:ir.model.fields,field_description:property.field_property_inspection_write_date
+#: model:ir.model.fields,field_description:property.field_property_write_date
+#: model:ir.model.fields,field_description:property.field_warranty_write_date
+#: field:property,write_date:0
+#: field:property.inspection,write_date:0
+#: field:property.inspection.request,write_date:0
+#: field:warranty,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: property
+#: model:res.groups,name:property.group_manager
+msgid "Manager"
+msgstr "マネージャー"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_message_ids
+#: model:ir.model.fields,field_description:property.field_property_message_ids
+#: model:ir.model.fields,field_description:property.field_warranty_message_ids
+#: field:property,message_ids:0
+#: field:property.inspection,message_ids:0
+#: field:warranty,message_ids:0
+msgid "Messages"
+msgstr "メッセージ"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_note
+#: field:property,note:0
+msgid "NOTE"
+msgstr "ノート"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_name
+#: model:ir.model.fields,field_description:property.field_warranty_warranty_id
+#: field:property,name:0
+#: field:warranty,warranty_id:0
+msgid "Name"
+msgstr "氏名"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_inspection_note
+#: field:property.inspection,inspection_note:0
+msgid "Note"
+msgstr "ノート"
+
+#. module: property
+#: selection:property.inspection,act_type:0
+msgid "Other"
+msgstr "その他"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_partner_name
+#: field:property,partner_name:0
+msgid "Partner"
+msgstr "顧客"
+
+#. module: property
+#: model:ir.module.category,name:property.module_management
+#: model:ir.ui.menu,name:property.button_menu_property
+#: model:ir.ui.menu,name:property.main_button_menu
+msgid "Property"
+msgstr "物件"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_property_id
+#: field:property.inspection,property_id:0
+msgid "Property ID"
+msgstr "物件ID"
+
+#. module: property
+#: model:ir.actions.act_window,name:property.property_view_action
+#: model:ir.ui.menu,name:property.property
+msgid "Property Info"
+msgstr "物件Info"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_id
+#: field:property.inspection,request_id:0
+msgid "Request"
+msgstr "リクエスト"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_warranty_scope_of_covaerage
+#: field:warranty,scope_of_covaerage:0
+msgid "Scope of Covaerage"
+msgstr ""
+
+#. module: property
+#: selection:property.inspection,act_type:0
+msgid "Syuri"
+msgstr "修理"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_phone
+#: field:property,phone:0
+msgid "TEL"
+msgstr "電話番号"
+
+#. module: property
+#: selection:property.inspection,state:0
+msgid "Taioutyu"
+msgstr "対応中"
+
+#. module: property
+#: selection:property.inspection,state:0
+msgid "Tehaityu"
+msgstr "手配中"
+
+#. module: property
+#: selection:property.inspection,act_type:0
+msgid "Teikitenken"
+msgstr "定期点検"
+
+#. module: property
+#: selection:property.inspection,act_type:0
+msgid "Tenken"
+msgstr "点検"
+
+#. module: property
+#: selection:property.inspection,act_type:0
+msgid "Tyousei"
+msgstr "調整"
+
+#. module: property
+#: model:res.groups,name:property.group_upper
+msgid "Upper"
+msgstr "上限"
+
+#. module: property
+#: model:res.groups,name:property.group_user
+msgid "User"
+msgstr "ユーザー"
+
+#. module: property
+#: model:ir.module.category,description:property.module_management
+msgid "User access level for this module"
+msgstr "このモジュールへのユーザーアクセスレベル"
+
+#. module: property
+#: model:ir.actions.act_window,name:property.buttons_warranty_action
+#: model:ir.model.fields,field_description:property.field_property_warranty_ids
+#: model:ir.ui.menu,name:property.warranty
+#: field:property,warranty_ids:0
+msgid "Warranty"
+msgstr "保証"
+
+#. module: property
+#: model:ir.ui.menu,name:property.button_menu_warranty
+msgid "Warranty management"
+msgstr "保証管理"
+
+#. module: property
+#: model:ir.model.fields,help:property.field_property_inspection_request_user_id
+#: help:property.inspection.request,user_id:0
+msgid "hosyu no irai wo uketahitoy"
+msgstr "受付者"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_partner_id
+#: field:property.inspection.request,partner_id:0
+msgid "partner_id"
+msgstr "顧客ID"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_product_memo
+#: field:property.inspection,product_memo:0
+msgid "product_memo"
+msgstr "製品メモ"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_ids
+#: field:property,inspection_ids:0
+msgid "property_id"
+msgstr "物件ID"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_warranty_range_coverage
+#: field:warranty,range_coverage:0
+msgid "range_coverage"
+msgstr ""
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_request_note
+#: field:property.inspection.request,request_note:0
+msgid "request_note"
+msgstr "受付ノート"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_state
+#: field:property.inspection,state:0
+msgid "state"
+msgstr "ステータス"
+
+#. module: property
+#: model:ir.model.fields,field_description:property.field_property_inspection_request_user_id
+#: field:property.inspection.request,user_id:0
+msgid "user_id"
+msgstr "担当者"
+

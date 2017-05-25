@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
     <img t-name="ListView.row.image"
+<<<<<<< HEAD
          t-att-height="widget.height || 16"
+=======
+         t-att-height="widget.height || 64"
+>>>>>>> 7463eab223462d5eb18632da10a4ca9562793230
          t-att-src="src" />
 </templates>

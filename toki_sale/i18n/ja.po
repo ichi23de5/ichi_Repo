@@ -1,0 +1,717 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* toki_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-23 02:30+0000\n"
+"PO-Revision-Date: 2017-05-23 02:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.view_sale_order_form_add
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><!-- ringi button -->\n"
+"                <xpath expr=\"//header/button[@name='action_confirm']\" position=\"before\">\n"
+"                    <button string=\"Ringishinsei\" type=\"object\" name=\"request\" attrs=\"{'invisible': ['|', '|', ('check_state', '!=', 'ng'),('state', '=', 'cancel')]}\"/>\n"
+"                    <button string=\"OK\" type=\"object\" name=\"manager_ok\" attrs=\"{'invisible': [('check_state', '!=', 'stand')]}\"/>\n"
+"                    <button string=\"NG\" type=\"object\" name=\"manager_ng\" attrs=\"{'invisible': [('check_state', '!=', 'stand')]}\"/>\n"
+"                    <button string=\"President\" type=\"object\" name=\"president\" attrs=\"{'invisible': ['|', '|', ('check_state', '!=', 'manager'),('request_flag', '=', False)]}\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//header/button[@name='action_confirm']\" position=\"attributes\">\n"
+"                    <attribute name=\"string\">President</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='state']\" position=\"after\">\n"
+"                    <field name=\"check_state\" widget=\"statusbar\" statusbar_visible=\"stand,manager,president\" attrs=\"{'invisible': [('request_flag', '=', False)]}\"/>\n"
+"                </xpath>\n"
+"\n"
+"                <xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                    <label class=\"oe_edit_only\" string=\"Property Name\"/>\n"
+"                    <h2><field name=\"property_id\"/></h2>\n"
+"                    <field name=\"version\" nolavel=\"1\" placeholder=\"ex:plan version\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"attributes\">\n"
+"                    <attribute name=\"placeholder\">auto</attribute>\n"
+"                    <attribute name=\"store\">True</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"domain\">\"[('customer','=',True), ('company_type','=','company')]\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='project_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='name']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"context\">\"{'show_address': 0}\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_shipping_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='user_id']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"after\">\n"
+"                    <field name=\"rep_partner_id\"/>\n"
+"                    <field name=\"work_type\"/>\n"
+"                    <field name=\"inspection_id\" attrs=\"{'invisible': [('work_type', '!=', 'inspection')]}\"/>\n"
+"                    <field name=\"user_id\" widget=\"selection\"/>\n"
+"                    <field name=\"assistant_id\" widget=\"selection\"/>\n"
+"                    <field name=\"request_flag\" invisible=\"1\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='validity_date']\" position=\"before\">\n"
+"                    <field name=\"order_date\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='payment_term_id']\" position=\"after\">\n"
+"                    <field name=\"construction_type\"/>\n"
+"                    <field name=\"outside_order\" invisible=\"1\"/>\n"
+"                    <field name=\"completion_date\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='note']\" position=\"replace\"/>\n"
+"                <group>\n"
+"                    <h3>\n"
+"                        <field name=\"purchase_order\" class=\"oe_inline\"/> Purchase Order Check\n"
+"                    </h3>\n"
+"                </group>\n"
+"                <!-- attributes sale.order.line -->\n"
+"                <xpath expr=\"//field[@name='order_line']/tree//field[@name='tax_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"<!--\n"
+"                <xpath expr=\"//field[@name='order_line']/tree//field[@name='product_uom_qty']\" position=\"attributes\">\n"
+"                    <attribute name=\"states\">\"{'draft': [('readonly', False)], 'sent': [('readonly', False)], 'sent': [('readonly', False)]}\"</attribute>\n"
+"                </xpath>\n"
+"-->\n"
+"                <xpath expr=\"//field[@name='order_line']/tree//field[@name='price_unit']\" position=\"before\">\n"
+"                    <field name=\"open_price\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='order_line']/tree//field[@name='product_uom_qty']\" position=\"before\">\n"
+"                    <field name=\"maker\" invisible=\"1\"/>\n"
+"                </xpath>\n"
+"                <notebook>\n"
+"                    <page string=\"Note\">\n"
+"                        <group string=\"Bikouran\">\n"
+"                            <field name=\"note\" nolabel=\"1\"/>\n"
+"                        </group>\n"
+"                        <group string=\"Memo\">\n"
+"                            <field name=\"memo\" nolabel=\"1\"/>\n"
+"                        </group>\n"
+"                    </page>\n"
+"                    <page string=\"Construction\" attrs=\"{'invisible': [('construction_type', '==', 'outside')]}\">\n"
+"                        <group>\n"
+"                            <group string=\"Construction Dates\">\n"
+"                                <field name=\"start_date\"/>\n"
+"                                <field name=\"end_date\"/>\n"
+"                            </group>\n"
+"                            <group string=\"Construction Times\">\n"
+"                                <field name=\"start_time\"/>\n"
+"                                <field name=\"end_time\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <field name=\"construction_title\" placeholder=\"Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.\"/>\n"
+"                        <field name=\"construction_ids\"/>\n"
+"                        <field name=\"construction_note\" placeholder=\"Sonota tokkizikou\"/>\n"
+"                    </page>\n"
+"                    <page string=\"Outside\" attrs=\"{'invisible': [('construction_type', '==', 'toki')]}\">\n"
+"                        <group class=\"oe_left\">\n"
+"                            <field name=\"outside_id\"/>\n"
+"                            <field name=\"amount_outside\"/>\n"
+"                        </group>\n"
+"                        <group>\n"
+"                            <group string=\"Construction Dates\">\n"
+"                                <field name=\"start_date_o\"/>\n"
+"                                <field name=\"end_date_o\"/>\n"
+"                            </group>\n"
+"                            <group string=\"Construction Times\">\n"
+"                                <field name=\"start_time_o\"/>\n"
+"                                <field name=\"end_time_o\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <field name=\"construction_title_o\" placeholder=\"Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.\"/>\n"
+"                        <field name=\"construction_ids_o\"/>\n"
+"                        <field name=\"construction_note_o\" placeholder=\"Sonota tokkizikou\"/>\n"
+"                    </page>\n"
+"                </notebook>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.view_partner_tree_add
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='email']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">\"1\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='phone']\" position=\"after\">\n"
+"                    <field name=\"fax\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='display_name']\" position=\"after\">\n"
+"                    <field name=\"default_code\"/>\n"
+"                </xpath>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.product_normal_form_view2
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='invoice_policy']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='default_code']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='lst_price']\" position=\"after\">\n"
+"                    <field name=\"open_price\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='barcode']\" position=\"after\">\n"
+"                    <field name=\"maker_id\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='property_stock_inventory']\" position=\"after\">\n"
+"                    <field name=\"invoice_policy\" widget=\"radio\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='seller_ids']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <notebook>\n"
+"                    <page string=\"Flag\">\n"
+"                        <group string=\"Flag\">\n"
+"                            <field name=\"is_warranty\"/>\n"
+"                            <field name=\"is_cloud\"/>\n"
+"                            <field name=\"is_payment\"/>\n"
+"                            <field name=\"pay_per\"/>\n"
+"                        </group>\n"
+"                    </page>\n"
+"                </notebook>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.view_order_form_check4
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='invoice_policy']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='list_price']\" position=\"after\">\n"
+"                    <field name=\"open_price\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='barcode']\" position=\"after\">\n"
+"                    <field name=\"maker_id\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='property_stock_inventory']\" position=\"after\">\n"
+"                    <field name=\"invoice_policy\" widget=\"radio\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='seller_ids']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"                <notebook>\n"
+"                    <page string=\"Flag\">\n"
+"                        <group string=\"Flag\">\n"
+"                            <field name=\"is_warranty\"/>\n"
+"                            <field name=\"is_cloud\"/>\n"
+"                            <field name=\"is_payment\"/>\n"
+"                            <field name=\"pay_per\"/>\n"
+"                        </group>\n"
+"                    </page>\n"
+"                </notebook>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.sale_margin_form_replace
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='margin']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='amount_total']\" position=\"after\">\n"
+"                    <field name=\"margin\"/>\n"
+"                </xpath>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.view_sale_order_tree_add
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                    <field name=\"property_id\"/>\n"
+"                    <field name=\"version\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='amount_total']\" position=\"before\">\n"
+"                    <field name=\"amount_untaxed\" sum=\"Total Tax Included\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"after\">\n"
+"                    <field name=\"rep_partner_id\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">\"1\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='amount_total']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">\"1\"</attribute>\n"
+"                </xpath>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.view_sale_order_tree_add2
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                    <field name=\"property_id\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"after\">\n"
+"                    <field name=\"rep_partner_id\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='partner_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">\"1\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='amount_total']\" position=\"before\">\n"
+"                    <field name=\"amount_untaxed\" sum=\"Total Tax Included\"/>\n"
+"                    <field name=\"purchase_order\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='amount_total']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">\"1\"</attribute>\n"
+"                </xpath>\n"
+"\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.view_partner_form_add
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='name']\" position=\"after\">\n"
+"                    <h3><field name=\"default_code\" domain=\"[('is_company', '=', True)]\" attrs=\"{'invisible': [('is_company','=', False)]}\" placeholder=\"Nickname\"/></h3>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='mobile']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='email']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='category_id']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">\"1\"</attribute>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//field[@name='lang']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='title']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='fax']\" position=\"after\">\n"
+"                    <field name=\"mail_address\"/>\n"
+"                    <field name=\"partner_number\" placeholder=\"partner contraction ID\" attrs=\"{'invisible': [('is_company','=', False)]}\"/>\n"
+"                </xpath>\n"
+"                <xpath expr=\"//group/field[@name='supplier']\" position=\"after\">\n"
+"                    <field name=\"outside_order\"/>\n"
+"                    <field name=\"maker\"/>\n"
+"                </xpath>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.product_template_tree_view2
+msgid "<?xml version=\"1.0\"?>\n"
+"<data><xpath expr=\"//field[@name='weight']\" position=\"replace\"/>\n"
+"                <xpath expr=\"//field[@name='volume']\" position=\"replace\"/>\n"
+"            </data>"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.ui.view,arch_db:toki_sale.view_order_form_inherit_sale_stock_replace
+msgid "<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//field[@name='incoterm']\" position=\"attributes\">\n"
+"                    <attribute name=\"invisible\">1</attribute>\n"
+"                </xpath>\n"
+"            "
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_assistant_id
+#: field:sale.order,assistant_id:0
+msgid "Assistant"
+msgstr "アシスタント"
+
+#. module: toki_sale
+#: selection:sale.order,check_state:0
+msgid "Check NG"
+msgstr "稟議却下"
+
+#. module: toki_sale
+#: selection:sale.order,check_state:0
+msgid "Check waiting"
+msgstr "稟議待ち"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_product_template_is_cloud
+#: field:product.template,is_cloud:0
+msgid "Cloud Flag"
+msgstr "クラウドあり"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_confirmation_date
+#: field:sale.order,confirmation_date:0
+msgid "Confirmation Date"
+msgstr "承認日"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_order_date
+#: field:sale.order,order_date:0
+msgid "Create Date"
+msgstr "見積作成日"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_create_uid
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_create_uid
+#: field:sale.construction,create_uid:0
+#: field:sale.construction.list,create_uid:0
+msgid "Created by"
+msgstr "作成者"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_create_date
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_create_date
+#: field:sale.construction,create_date:0
+#: field:sale.construction.list,create_date:0
+msgid "Created on"
+msgstr "作成日"
+
+#. module: toki_sale
+#: model:ir.model.fields,help:toki_sale.field_sale_order_confirmation_date
+#: help:sale.order,confirmation_date:0
+msgid "Date on which the sale order is confirmed."
+msgstr "この見積が承認された日です"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_res_partner_mail_address
+#: field:res.partner,mail_address:0
+msgid "Email"
+msgstr "メール"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_end_time
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_end_time_o
+#: field:sale.order,end_time:0
+#: field:sale.order,end_time_o:0
+msgid "End time"
+msgstr "施工可能時刻"
+
+#. module: toki_sale
+#: selection:sale.order,work_type:0
+msgid "Extention"
+msgstr "追加工事"
+
+#. module: toki_sale
+#: selection:sale.order,construction_type:0
+msgid "Gaichu"
+msgstr "外注"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_amount_outside
+#: field:sale.order,amount_outside:0
+msgid "Gaityukingaku"
+msgstr "外注金額"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_id
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_id_4683
+#: field:sale.construction,id:0
+#: field:sale.construction.list,id:0
+msgid "ID"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_inspection_id
+#: field:sale.order,inspection_id:0
+#: selection:sale.order,work_type:0
+msgid "Inspection"
+msgstr "点検"
+
+#. module: toki_sale
+#: model:ir.model.fields,help:toki_sale.field_sale_order_inspection_id
+#: help:sale.order,inspection_id:0
+msgid "Kokokara hosyujouhou nyuryoku"
+msgstr "以下に保守情報を入力してください"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_end_date
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_end_date_o
+#: field:sale.order,end_date:0
+#: field:sale.order,end_date_o:0
+msgid "Kouji end"
+msgstr "施工終了予定日"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_start_date
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_start_date_o
+#: field:sale.order,start_date:0
+#: field:sale.order,start_date_o:0
+msgid "Kouji start"
+msgstr "施工開始日"
+
+#. module: toki_sale
+#: model:ir.model.fields,help:toki_sale.field_sale_order_construction_title
+#: model:ir.model.fields,help:toki_sale.field_sale_order_construction_title_o
+#: help:sale.order,construction_title:0
+#: help:sale.order,construction_title_o:0
+msgid "Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."
+msgstr "工事の概要　例：監視カメラ3台設置工事"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_write_uid
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_write_uid
+#: field:sale.construction,write_uid:0
+#: field:sale.construction.list,write_uid:0
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_write_date
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_write_date
+#: field:sale.construction,write_date:0
+#: field:sale.construction.list,write_date:0
+msgid "Last Updated on"
+msgstr "最終更新日"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_line_maker
+#: field:sale.order.line,maker:0
+msgid "Maker"
+msgstr "メーカー"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_res_partner_maker
+#: field:res.partner,maker:0
+msgid "Maker Flag"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_product_template_maker_id
+#: field:product.template,maker_id:0
+msgid "Maker id"
+msgstr "メーカー名"
+
+#. module: toki_sale
+#: selection:sale.order,check_state:0
+msgid "Manager OK"
+msgstr "所長承認"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_product_template_is_payment
+#: field:product.template,is_payment:0
+msgid "Monthly Payment Flag"
+msgstr "月払い"
+
+#. module: toki_sale
+#: selection:sale.order,work_type:0
+msgid "New construction"
+msgstr "新設工事"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_line_open_price
+#: field:sale.order.line,open_price:0
+msgid "Open Price"
+msgstr "希望小売価格"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_note
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_note_o
+#: field:sale.order,construction_note:0
+#: field:sale.order,construction_note_o:0
+#: selection:sale.order,work_type:0
+msgid "Others"
+msgstr "その他"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_res_partner_outside_order
+#: field:res.partner,outside_order:0
+msgid "Outside Flag"
+msgstr "外注フラグ"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_outside_id
+#: field:sale.order,outside_id:0
+msgid "Outside Supplier"
+msgstr "外注業者"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_outside_order
+#: field:sale.order,outside_order:0
+msgid "Outside order"
+msgstr "外注"
+
+#. module: toki_sale
+#: model:ir.model,name:toki_sale.model_res_partner
+msgid "Partner"
+msgstr "顧客"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_res_partner_partner_number
+#: field:res.partner,partner_number:0
+msgid "Partner ID"
+msgstr "顧客"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_product_template_pay_per
+#: field:product.template,pay_per:0
+msgid "Pay per Flag"
+msgstr "従量課金フラグ"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_version
+#: field:sale.order,version:0
+msgid "Plan version"
+msgstr "プラン"
+
+#. module: toki_sale
+#: code:addons/toki_sale/models/sale.py:133
+#, python-format
+msgid "Please define an accounting sale journal for this company."
+msgstr "勘定科目を入力してください"
+
+#. module: toki_sale
+#: selection:sale.order,check_state:0
+msgid "President OK"
+msgstr "社長承認済"
+
+#. module: toki_sale
+#: model:ir.model,name:toki_sale.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_property_id
+#: field:sale.order,property_id:0
+msgid "Property Name"
+msgstr "物件名"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_purchase_order
+#: field:sale.order,purchase_order:0
+msgid "Purchase order"
+msgstr "＠発注書＠"
+
+#. module: toki_sale
+#: selection:sale.order,work_type:0
+msgid "ReNewal"
+msgstr "リニューアル"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_rep_partner_id
+#: field:sale.order,rep_partner_id:0
+msgid "Rep Name"
+msgstr "顧客担当者"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_res_partner_default_code
+#: field:res.partner,default_code:0
+msgid "Ryakusyou"
+msgstr "通称"
+
+#. module: toki_sale
+#: selection:sale.order,construction_type:0
+msgid "Ryouhou"
+msgstr "＠当社兼外注業者＠"
+
+#. module: toki_sale
+#: selection:sale.order,work_type:0
+msgid "Sale of Product"
+msgstr "機器販売"
+
+#. module: toki_sale
+#: model:ir.model,name:toki_sale.model_sale_order
+msgid "Sales Order"
+msgstr "販売"
+
+#. module: toki_sale
+#: model:ir.model,name:toki_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "見積内訳"
+
+#. module: toki_sale
+#: selection:sale.order,work_type:0
+msgid "Shinchiku"
+msgstr "新築"
+
+#. module: toki_sale
+#: model:ir.model.fields,help:toki_sale.field_sale_order_construction_note
+#: model:ir.model.fields,help:toki_sale.field_sale_order_construction_note_o
+#: help:sale.order,construction_note:0
+#: help:sale.order,construction_note_o:0
+msgid "Sonota tokkizikou"
+msgstr "特記事項"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_start_time
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_start_time_o
+#: field:sale.order,start_time:0
+#: field:sale.order,start_time_o:0
+msgid "Start time"
+msgstr "施工開始時刻"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_check_state
+#: field:sale.order,check_state:0
+msgid "State2"
+msgstr ""
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_completion_date
+#: field:sale.order,completion_date:0
+msgid "Syunkoubi"
+msgstr "竣工日"
+
+#. module: toki_sale
+#: selection:sale.order,construction_type:0
+msgid "TOKI"
+msgstr "TOKI"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_work_type
+#: field:sale.order,work_type:0
+msgid "Type"
+msgstr "工事種別"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_product_template_open_price
+#: field:product.template,open_price:0
+msgid "Vender Price"
+msgstr "仕入価格"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_product_template_is_warranty
+#: field:product.template,is_warranty:0
+msgid "Warranty Flag"
+msgstr "保証フラグ"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_type
+#: field:sale.order,construction_type:0
+msgid "Work"
+msgstr "施工業者"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_note
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_memo
+#: field:sale.construction.list,note:0
+#: field:sale.order,memo:0
+msgid "memo"
+msgstr "社内用メモ"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_request_flag
+#: field:sale.order,request_flag:0
+msgid "request"
+msgstr "リクエスト"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_id
+#: model:ir.model.fields,field_description:toki_sale.field_sale_construction_list_list_id
+#: field:sale.construction,list_id:0
+#: field:sale.construction.list,list_id:0
+msgid "template"
+msgstr "定型文"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_title
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_title_o
+#: field:sale.order,construction_title:0
+#: field:sale.order,construction_title_o:0
+msgid "title"
+msgstr "＠タイトル＠"
+
+#. module: toki_sale
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_ids
+#: model:ir.model.fields,field_description:toki_sale.field_sale_order_construction_ids_o
+#: field:sale.order,construction_ids:0
+#: field:sale.order,construction_ids_o:0
+msgid "yokutsukau tokkizikou model"
+msgstr "工事発注書に記載する定型文です"
+
