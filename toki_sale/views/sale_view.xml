@@ -104,7 +104,22 @@
                             </group>
                         </group>
                         <field name="construction_title" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
-                        <field name="construction_ids"/>
+                        <field name="construction_ids" mode="tree">
+                            <form string="Construction">
+                                <group>
+                                    <field name="list_id" />
+<!--
+                                    <field name="work_type" />
+-->
+                                </group>
+                            </form>
+                            <tree string="Construction" editable="bottom">
+                                 <field name="list_id"/>
+<!--
+                                 <field name="work_type" />
+-->
+                            </tree>
+                        </field>
                         <field name="construction_note" placeholder="Sonota tokkizikou"/>
                     </page>
                     <page string="Outside" attrs="{'invisible': [('construction_type', '==', 'toki')]}">
@@ -123,7 +138,16 @@
                             </group>
                         </group>
                         <field name="construction_title_o" placeholder="Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi."/>
-                        <field name="construction_ids_o"/>
+                        <field name="construction_ids_o" mode="tree">
+                             <form string="Construction">
+                                <group>
+                                    <field name="list_id" />
+                                </group>
+                             </form>
+                             <tree string="Construction" editable="bottom">
+                                  <field name="list_id"/>
+                             </tree>
+                        </field>
                         <field name="construction_note_o" placeholder="Sonota tokkizikou"/>
                     </page>
                 </notebook>

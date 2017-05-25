@@ -48,7 +48,8 @@ class SaleOrder(models.Model):
     start_time = fields.Char(string='Start time')
     end_time = fields.Char(string='End time')
     construction_title = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
-    construction_ids = fields.One2many('sale.construction','list_id', string='yokutsukau tokkizikou model', store=True)
+#    construction_ids = fields.One2many('sale.construction','list_id', string='yokutsukau tokkizikou model', store=True)
+    construction_ids = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model')
     construction_note = fields.Text(string='Others', help='Sonota tokkizikou')
     ### construction OUTSIDE ORDER ###
     outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
@@ -58,7 +59,7 @@ class SaleOrder(models.Model):
     start_time_o = fields.Char(string='Start time')
     end_time_o = fields.Char(string='End time')
     construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
-    construction_ids_o = fields.One2many('sale.construction','list_id', string='yokutsukau tokkizikou model', store=True)
+    construction_ids_o = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model')
     construction_note_o = fields.Text(string='Others', help='Sonota tokkizikou')
     memo = fields.Text('memo')
 
@@ -78,16 +79,17 @@ class SaleOrder(models.Model):
             return
 
 
-    @api.onchange('partner_id')
-    def _rep_partner_selection(self):
-        if not self.partner_id:
+    @api.onchange('assistant_id')
+    def _assistant_onchange(self):
+        if not self.assistant_id:
             return
         else:
-            pass   
-#            pp = self.partner_id
-#            self.update({'parent_id': pp})
-        return
-
+            for order in self:
+                pass
+#                if order.assistant_id.id not in order.message_partner_ids:
+#                order.message_subscribe([18])
+#            self.message_post(type="comment",subtype="mt_comment",body=order.assistant_id.name)              
+        return 
 
 
     confirmation_date = fields.Datetime(string='Confirmation Date',
@@ -184,8 +186,17 @@ class Construction(models.Model):
     _name = 'sale.construction'
     _rec_name = 'list_id'
 
-    list_id = fields.Many2one('sale.construction.list', string='template')
+    list_id = fields.Many2one('sale.construction.list', string='template') 
+    order_id = fields.Many2one('sale.order', string='Order Reference', required=True, ondelete='cascade', index=True, copy=False)    
 
+    
+#    @api.onchange('list_id')
+#    def onchange_list(self):
+#        type = "" 
+#        if not self.work_type:
+#            type = self.order_id.construction_type
+#            self.write({"self.list_id.work_type": type})
+        
 
 class ConstructionList(models.Model):
     _name = 'sale.construction.list'
@@ -194,4 +205,5 @@ class ConstructionList(models.Model):
 
     list_id = fields.Char(string='template', required=True)
     note = fields.Text(string='memo')
+#    work_type = fields.Char(string='Work')
 
