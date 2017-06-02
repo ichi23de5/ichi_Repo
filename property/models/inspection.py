@@ -26,8 +26,8 @@ class Inspection(models.Model):
     product_memo = fields.Text(string='product_memo', help='Koukan sita kiki wo kaitene')
     ### request ###
     request_id = fields.Many2one('property.inspection.request', string='Request')
-    request_date = fields.Date(string='request_date', related='request_id.date', readonly=True)
     requester_name = fields.Char(string='requester_name', related='request_id.partner_id.name', readonly=True)
+    requester_rep_name = fields.Char(string='requester_name', related='request_id.rep_partner_id.name', readonly=True)
     request_note = fields.Text(string='request_note', related='request_id.request_note', readonly=True)
     responder_name = fields.Char(string='responder_name', related='request_id.user_id.name', readonly=True)
     ### ###
@@ -42,10 +42,11 @@ class Inspection(models.Model):
 class InspectionRequest(models.Model):
     _name = 'property.inspection.request'
     _order = 'date desc'
-
+    _rec_name = 'date'
 
     date = fields.Date(string='Date', required=True, copy=False,)
-    partner_id = fields.Many2one('res.partner', string='partner_id',)
+    partner_id = fields.Many2one('res.partner', string='partner_id', required=True, domain="[('customer','=',True), ('company_type','=','company')]")
+    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]")
     request_note = fields.Text(string='request_note',)
     user_id = fields.Many2one('res.users', string='user_id', required=True, help='hosyu no irai wo uketahitoy')
 

@@ -17,10 +17,6 @@
                 "views/sale_view.xml",
                 "views/product_view.xml",
                 "views/res_partner_view.xml",
-<<<<<<< HEAD
                 "report/report.xml",
-=======
-#                "security/ir.model.access.csv",
->>>>>>> 7463eab223462d5eb18632da10a4ca9562793230
                 ],
 }

@@ -164,10 +164,8 @@ class Construction(models.Model):
     _name = 'sale.construction'
     _rec_name = 'list_id'
 
-#    list_id = fields.Char(string='template', required=True)
     list_id = fields.Many2one('sale.construction.list', string='template')
     order_id = fields.Many2one('sale.order', string='Order Reference', required=True, ondelete='cascade', index=True, copy=False)
-#    note = fields.Text(string='memo')
 
 #    @api.onchange('list_id') 
 #    def onchange_list(self): 
