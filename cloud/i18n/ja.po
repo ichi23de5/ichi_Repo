@@ -1,0 +1,836 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* cloud
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-24 06:22+0000\n"
+"PO-Revision-Date: 2017-05-24 06:22+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_charge1000
+#: field:sim.type,charge1000:0
+msgid "1000MB"
+msgstr ""
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_charge100
+#: field:sim.type,charge100:0
+msgid "100MB"
+msgstr ""
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_charge500
+#: field:sim.type,charge500:0
+msgid "500MB"
+msgstr ""
+
+#. module: cloud
+#: model:ir.ui.view,arch_db:cloud.sim_type_view_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"SIM Type\">\n"
+"                    <sheet>\n"
+"                        <div class=\"oe_title\" style=\"float:left;\">\n"
+"                            <label class=\"oe_edit_only\" string=\"SIM ID\"/>\n"
+"                            <h2><field name=\"sim_type_id\"/></h2>\n"
+"                        </div>\n"
+"                        <group>\n"
+"                            <group>\n"
+"                                <field name=\"supplier_id\"/>\n"
+"                                <field name=\"max_storage\"/>\n"
+"                                <field name=\"business_number\"/>\n"
+"                                <field name=\"datermination\"/>\n"
+"                                <field name=\"min_use_time\"/>\n"
+"                            </group>\n"
+"                            <group>\n"
+"                                <field name=\"size_code\"/>\n"
+"                                <field name=\"deta_code\"/>\n"
+"                                <field name=\"pay_per_up\"/>\n"
+"                                <field name=\"pay_per_down\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <notebook>\n"
+"                            <page string=\"Basic\">\n"
+"                                <group>\n"
+"                                    <group string=\"Initial Cost\">\n"
+"                                        <field name=\"basic_charge\"/>\n"
+"                                        <field name=\"admin_charge\"/>\n"
+"                                        <field name=\"opening_sim\"/>\n"
+"                                        <field name=\"opening_sim_up\"/>\n"
+"                                        <field name=\"delivery_sim\"/>\n"
+"                                        <field name=\"universal_service\"/>\n"
+"                                        <field name=\"ip_month\"/>\n"
+"                                        <field name=\"date_model\"/>\n"
+"                                    </group>\n"
+"                                    <group string=\"Commission\">\n"
+"                                        <field name=\"unreturned_sim\"/>\n"
+"                                        <field name=\"reissure_sim\"/>\n"
+"                                        <field name=\"redelivery_sim\"/>\n"
+"                                        <field name=\"stop_sim\"/>\n"
+"                                    </group>\n"
+"                                </group>\n"
+"                            </page>\n"
+"                            <page string=\"Change and Cancel\">\n"
+"                                <group>\n"
+"                                    <group string=\"Change\">\n"
+"                                        <field name=\"change_plan\"/>\n"
+"                                        <field name=\"change_size\"/>\n"
+"                                    </group>\n"
+"                                    <group string=\"Charge\">\n"
+"                                        <field name=\"charge100\"/>\n"
+"                                        <field name=\"charge500\"/>\n"
+"                                        <field name=\"charge1000\"/>\n"
+"                                    </group>\n"
+"                                </group>\n"
+"                                <group> \n"
+"                                    <group string=\"Cancel\">\n"
+"                                        <field name=\"cancel_charge\"/>\n"
+"                                        <field name=\"cancel_charge_first\"/>\n"
+"                                        <field name=\"cancel_charge_year\"/>\n"
+"                                    </group>\n"
+"                                </group>\n"
+"                            </page>\n"
+"                        </notebook>\n"
+"                    </sheet>\n"
+"                </form>\n"
+"            "
+msgstr ""
+
+#. module: cloud
+#: model:ir.ui.view,arch_db:cloud.sim_view_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"SIM\">\n"
+"                    <sheet>\n"
+"		        <div class=\"oe_title\" style=\"float:left;\">\n"
+"                            <label class=\"oe_edit_only\" string=\"SIM user number\"/>\n"
+"                            <h2><field name=\"user_number\"/></h2>\n"
+"                        </div>\n"
+"                        <group>\n"
+"                            <group>\n"
+"                                <field name=\"sim_id\" widget=\"selection\"/>\n"
+"		    	        <field name=\"date_sim\"/>\n"
+"                                <field name=\"reception_date\"/>\n"
+"                                <field name=\"phone\"/>\n"
+"                                <field name=\"iccid_number\"/>\n"
+"                            </group>\n"
+"                            <group>\n"
+"                                <field name=\"arrival_date\"/>\n"
+"                                <field name=\"ip_address\"/>\n"
+"                                <field name=\"charge_date\"/>\n"
+"                                <field name=\"expiration_date\"/>\n"
+"                                <field name=\"min_month\" invisible=\"1\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"		    </sheet>\n"
+"                    <div class=\"oe_chatter\"> \n"
+"                        <field name=\"message_follower_ids\" widget=\"mail_followers\" groups=\"base.group_user\"/> \n"
+"                        <field name=\"message_ids\" widget=\"mail_thread\"/> \n"
+"                    </div>\n"
+"               </form>\n"
+"	    "
+msgstr ""
+
+#. module: cloud
+#: model:ir.ui.view,arch_db:cloud.cloud_view_form
+msgid "<?xml version=\"1.0\"?>\n"
+"<form string=\"TKCLOUD\">\n"
+"                    <header>\n"
+"                        <button string=\"Start\" type=\"object\" name=\"start\" states=\"check,stop\"/>\n"
+"                        <button string=\"Stop\" type=\"object\" name=\"stop\" states=\"work\"/>\n"
+"                        <button string=\"Finish\" type=\"object\" name=\"finish\" states=\"work,stop\"/>\n"
+"                        <field name=\"state\" widget=\"statusbar\" statusbar_visible=\"check,work,stop,finish\"/>\n"
+"                    </header>\n"
+"                    <sheet>\n"
+"		        <div class=\"oe_title\">\n"
+"                            <label string=\"Property Infomation\"/>\n"
+"                            <h2><field name=\"property_name\" placeholder=\"Name\"/></h2>\n"
+"                            <field name=\"property_add\"/>\n"
+"                        </div>\n"
+"                        <group>\n"
+"                            <group>\n"
+"                                <field name=\"date_cloud\"/>\n"
+"                                <field name=\"partner_id\"/>\n"
+"                                <field name=\"user_id\"/>\n"
+"                            </group>\n"
+"                            <group>\n"
+"                                <field name=\"order_id\"/>\n"
+"                                <field name=\"sim_id\"/>\n"
+"                                <field name=\"plan\"/>\n"
+"                                <field name=\"rate_plan\"/>\n"
+"                            </group>\n"
+"                        </group>\n"
+"                        <notebook> \n"
+"                            <page string=\"Quotation list\">\n"
+"                                <group>\n"
+"                                    <group string=\"DVR\">\n"
+"                                        <field name=\"dvr1\"/>\n"
+"                                        <field name=\"dvr2\"/>\n"
+"                                        <field name=\"dvr3\"/>\n"
+"                                        <field name=\"dvr4\"/>\n"
+"                                    </group>\n"
+"                                    <group string=\"Memo\">\n"
+"                                        <field name=\"memo\" nolabel=\"1\" placeholder=\"memo\"/>\n"
+"                                    </group>\n"
+"                                </group>\n"
+"                            </page>\n"
+"                            <page string=\"Contract\">\n"
+"                                <group>\n"
+"                                    <group string=\"Infomation\">\n"
+"                                        <field name=\"contractor_number\" invisible=\"1\"/>\n"
+"                                        <field name=\"contractor_pass\" invisible=\"1\"/>\n"
+"                                        <field name=\"application_date\" invisible=\"1\"/>\n"
+"                                        <field name=\"end_user\" placeholder=\"end user name\"/>\n"
+"                                        <field name=\"end_phone\" placeholder=\"end user phone\"/>\n"
+"                                        <field name=\"contact_check\"/>\n"
+"                                    </group>\n"
+"                                    <group string=\"Contraction Date\">\n"
+"                                        <field name=\"approval_date\"/>\n"
+"                                        <field name=\"construction_date\"/>\n"
+"                                        <field name=\"expiration_date\" placeholder=\"auto\"/>\n"
+"                                    </group>\n"
+"                                </group>\n"
+"                            </page>\n"
+"                            <page string=\"Change and Cancel\"> \n"
+"                                <group>\n"
+"                                    <group name=\"change\" string=\"Change\"> \n"
+"                                        <field name=\"changeapp_date\"/>\n"
+"                                    </group> \n"
+"                                    <group name=\"cancel\" string=\"Cancel\">\n"
+"                                        <field name=\"cancelapp_date\"/>\n"
+"                                        <field name=\"cancel_date\"/>\n"
+"                                    </group>\n"
+"                                </group>\n"
+"                            </page> \n"
+"                        </notebook> \n"
+"		    </sheet>\n"
+"                    <div class=\"oe_chatter\">\n"
+"                        <field name=\"message_follower_ids\" widget=\"mail_followers\" groups=\"base.group_user\"/>\n"
+"                        <field name=\"message_ids\" widget=\"mail_thread\"/>\n"
+"                    </div>\n"
+"                </form>\n"
+"	    "
+msgstr ""
+
+#. module: cloud
+#: model:ir.ui.view,arch_db:cloud.sim_view_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<tree string=\"SIM List\"> \n"
+"                    <field name=\"user_number\"/>\n"
+"                    <field name=\"sim_id\"/> \n"
+"                    <field name=\"date_sim\"/> \n"
+"                    <field name=\"charge_date\"/>  \n"
+"                </tree> \n"
+"            "
+msgstr ""
+
+#. module: cloud
+#: model:ir.ui.view,arch_db:cloud.sim_type_view_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<tree string=\"SIM Type\">\n"
+"                    <field name=\"sim_type_id\"/>\n"
+"                    <field name=\"max_storage\"/>\n"
+"                    <field name=\"business_number\"/>\n"
+"                </tree>\n"
+"            "
+msgstr ""
+
+#. module: cloud
+#: model:ir.ui.view,arch_db:cloud.cloud_view_tree
+msgid "<?xml version=\"1.0\"?>\n"
+"<tree string=\"TKCLOUD\">\n"
+"                    <field name=\"property_name\"/>\n"
+"                    <field name=\"partner_id\"/>\n"
+"                    <field name=\"plan\"/>\n"
+"                    <field name=\"construction_date\"/>\n"
+"                    <field name=\"expiration_date\"/>\n"
+"                    <field name=\"state\"/>\n"
+"                </tree>\n"
+"            "
+msgstr ""
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_admin_charge
+#: field:sim.type,admin_charge:0
+msgid "Admin Charge"
+msgstr "従量課金"
+
+#. module: cloud
+#: field:cloud,application_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_application_date
+msgid "Apprication Date"
+msgstr "＠アプリケーション日"
+
+#. module: cloud
+#: field:cloud,approval_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_approval_date
+msgid "Approval Date"
+msgstr "契約成立日"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_arrival_date
+#: field:sim,arrival_date:0
+msgid "Arrival Date"
+msgstr "到着日"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_basic_charge
+#: field:sim.type,basic_charge:0
+msgid "Basic Charge"
+msgstr "SIM開通事務手数料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_business_number
+#: field:sim.type,business_number:0
+msgid "Business Number"
+msgstr "事業者番号"
+
+#. module: cloud
+#: model:ir.ui.menu,name:cloud.button_menu_cloud
+msgid "CLOUD"
+msgstr ""
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_cancel_charge
+#: field:sim.type,cancel_charge:0
+msgid "Cancel Charge"
+msgstr "解約作業料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_cancel_charge_first
+#: field:sim.type,cancel_charge_first:0
+msgid "Cancel Charge 1month"
+msgstr "利用開始月の解約料"
+
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_cancel_charge_year
+#: field:sim.type,cancel_charge_year:0
+msgid "Cancel Charge Year"
+msgstr "＠最低利用期間1年以内の解約料"
+
+#. module: cloud
+#: field:cloud,cancel_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_cancel_date
+msgid "Cancel Date"
+msgstr "契約解除日"
+
+#. module: cloud
+#: field:cloud,cancelapp_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_cancelapp_date
+msgid "Cancelapp Date"
+msgstr "契約解除申込日"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_change_plan
+#: field:sim.type,change_plan:0
+msgid "Change Plan Commission"
+msgstr "SIMプラン変更手数料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_change_size
+#: field:sim.type,change_size:0
+msgid "Change Size Commission"
+msgstr "SIMサイズ契約変更"
+
+#. module: cloud
+#: field:cloud,changeapp_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_changeapp_date
+msgid "Changeapp Date"
+msgstr "契約変更届申込日"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_charge_date
+#: field:sim,charge_date:0
+msgid "Charge Date"
+msgstr "契約内容変更日"
+
+#. module: cloud
+#: selection:cloud,state:0
+msgid "Check"
+msgstr "＠文言要検討未設置"
+
+#. module: cloud
+#: field:cloud,date_cloud:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_date_cloud
+msgid "Check Date"
+msgstr "入力日"
+
+#. module: cloud
+#: field:cloud,construction_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_construction_date
+msgid "Construction Date"
+msgstr "利用実施開始日"
+
+#. module: cloud
+#: field:cloud,contact_check:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_contact_check
+msgid "Contact OK"
+msgstr "＠契約済"
+
+#. module: cloud
+#: field:cloud,contractor_number:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_contractor_number
+msgid "Contractor ID"
+msgstr "契約者ID"
+
+#. module: cloud
+#: field:cloud,contractor_pass:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_contractor_pass
+msgid "Contractor PASS"
+msgstr "契約者パスワード"
+
+#. module: cloud
+#: field:cloud,create_uid:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_create_uid
+#: model:ir.model.fields,field_description:cloud.field_sim_create_uid
+#: model:ir.model.fields,field_description:cloud.field_sim_type_create_uid
+#: field:sim,create_uid:0
+#: field:sim.type,create_uid:0
+msgid "Created by"
+msgstr "＠作成者"
+
+#. module: cloud
+#: field:cloud,create_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_create_date
+#: model:ir.model.fields,field_description:cloud.field_sim_create_date
+#: model:ir.model.fields,field_description:cloud.field_sim_type_create_date
+#: field:sim,create_date:0
+#: field:sim.type,create_date:0
+msgid "Created on"
+msgstr "＠作成者2"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_date_model
+#: field:sim.type,date_model:0
+msgid "Date Model"
+msgstr "＠どういう際に必要か要検討データ容量モデル"
+
+#. module: cloud
+#: help:cloud,message_last_post:0
+#: model:ir.model.fields,help:cloud.field_cloud_message_last_post
+#: model:ir.model.fields,help:cloud.field_sim_message_last_post
+#: help:sim,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr "＠どこに出てくるかわからない"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_delivery_sim
+#: field:sim.type,delivery_sim:0
+msgid "Delivery Sim Commission"
+msgstr "発送手数料"
+
+#. module: cloud
+#: model:ir.model,name:cloud.model_cloud
+#: model:ir.model,name:cloud.model_sim
+msgid "Email Thread"
+msgstr "＠メール"
+
+#. module: cloud
+#: field:cloud,expiration_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_expiration_date
+#: model:ir.model.fields,field_description:cloud.field_sim_expiration_date
+#: field:sim,expiration_date:0
+msgid "Expiration Date"
+msgstr "仕入先最低利用期間満了日"
+
+#. module: cloud
+#: selection:cloud,state:0
+msgid "Finished"
+msgstr "解約済"
+
+#. module: cloud
+#: field:cloud,message_follower_ids:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_message_follower_ids
+#: model:ir.model.fields,field_description:cloud.field_sim_message_follower_ids
+#: field:sim,message_follower_ids:0
+msgid "Followers"
+msgstr "フォロワー"
+
+#. module: cloud
+#: help:cloud,order_id:0
+#: model:ir.model.fields,help:cloud.field_cloud_order_id
+msgid "Hachusyo naito check dekinai"
+msgstr ""
+
+#. module: cloud
+#: field:cloud,id:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_id
+#: model:ir.model.fields,field_description:cloud.field_sim_id
+#: model:ir.model.fields,field_description:cloud.field_sim_type_id
+#: field:sim,id:0
+#: field:sim.type,id:0
+msgid "ID"
+msgstr ""
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_ip_address
+#: field:sim,ip_address:0
+msgid "IP Address"
+msgstr "固定グローバルIPアドレス"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_ip_month
+#: field:sim.type,ip_month:0
+msgid "IP Charge"
+msgstr "固定グローバルIPアドレス月額利用料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_iccid_number
+#: field:sim,iccid_number:0
+msgid "Iccid Number"
+msgstr "製造番号"
+
+#. module: cloud
+#: selection:cloud,rate_plan:0
+msgid "Incurred Amount"
+msgstr "従量課金"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_pay_per_down
+#: field:sim.type,pay_per_down:0
+msgid "Juuryoukakin Down"
+msgstr "通信速度下り"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_pay_per_up
+#: field:sim.type,pay_per_up:0
+msgid "Juuryoukakin Up"
+msgstr "通信速度上り"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_deta_code
+#: field:sim.type,deta_code:0
+msgid "Kakinkaishibi"
+msgstr "課金開始日"
+
+#. module: cloud
+#: field:cloud,message_last_post:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_message_last_post
+#: model:ir.model.fields,field_description:cloud.field_sim_message_last_post
+#: field:sim,message_last_post:0
+msgid "Last Message Date"
+msgstr "＠どこにあるかわからない"
+
+#. module: cloud
+#: field:cloud,write_uid:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_write_uid
+#: model:ir.model.fields,field_description:cloud.field_sim_type_write_uid
+#: model:ir.model.fields,field_description:cloud.field_sim_write_uid
+#: field:sim,write_uid:0
+#: field:sim.type,write_uid:0
+msgid "Last Updated by"
+msgstr "最終更新者"
+
+#. module: cloud
+#: field:cloud,write_date:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_write_date
+#: model:ir.model.fields,field_description:cloud.field_sim_type_write_date
+#: model:ir.model.fields,field_description:cloud.field_sim_write_date
+#: field:sim,write_date:0
+#: field:sim.type,write_date:0
+msgid "Last Updated on"
+msgstr "＠最終更新"
+
+#. module: cloud
+#: selection:cloud,plan:0
+msgid "Lite"
+msgstr "ライト"
+
+#. module: cloud
+#: selection:cloud,rate_plan:0
+msgid "Lump sum 2"
+msgstr "2年一括"
+
+#. module: cloud
+#: selection:cloud,rate_plan:0
+msgid "Lump sum 5"
+msgstr "5年一括"
+
+#. module: cloud
+#: selection:cloud,rate_plan:0
+msgid "Lump sum 7"
+msgstr "7年一括"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_max_storage
+#: field:sim.type,max_storage:0
+msgid "Max Strage"
+msgstr "上限容量"
+
+#. module: cloud
+#: field:cloud,memo:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_memo
+msgid "Memo"
+msgstr "メモ"
+
+#. module: cloud
+#: field:cloud,message_ids:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_message_ids
+#: model:ir.model.fields,field_description:cloud.field_sim_message_ids
+#: field:sim,message_ids:0
+msgid "Messages"
+msgstr "メッセージ"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_min_use_time
+#: field:sim.type,min_use_time:0
+msgid "Minimum Perion of Use"
+msgstr "最低利用期間"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_min_month
+#: field:sim,min_month:0
+msgid "Minimum Usage Date"
+msgstr "最低利用期間起算月"
+
+#. module: cloud
+#: selection:cloud,rate_plan:0
+msgid "Monthly Amount"
+msgstr "月払い"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_opening_sim
+#: field:sim.type,opening_sim:0
+msgid "Opening Sim Commission"
+msgstr "SIM開通事務手数料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_opening_sim_up
+#: field:sim.type,opening_sim_up:0
+msgid "Opening Sim Commission up"
+msgstr "＠上り専用SIM開通事務手数料"
+
+#. module: cloud
+#: field:cloud,partner_id:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_partner_id
+msgid "PartnerName"
+msgstr "顧客名"
+
+#. module: cloud
+#: selection:cloud,plan:0
+msgid "Pro"
+msgstr "プロ"
+
+#. module: cloud
+#: field:cloud,property_add:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_property_add
+msgid "Property Add"
+msgstr "物件住所"
+
+#. module: cloud
+#: field:cloud,property_name:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_property_name
+msgid "Property Name"
+msgstr "物件名"
+
+#. module: cloud
+#: field:cloud,order_id:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_order_id
+msgid "Quotation Number"
+msgstr ""
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_reception_date
+#: field:sim,reception_date:0
+msgid "Reception Date"
+msgstr "出荷日"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_date_sim
+#: field:sim,date_sim:0
+msgid "Record Date"
+msgstr "SIM発注日"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_redelivery_sim
+#: field:sim.type,redelivery_sim:0
+msgid "Redelivery Sim Commission"
+msgstr "不達再配達手数料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_reissure_sim
+#: field:sim.type,reissure_sim:0
+msgid "Reissure Sim Commission"
+msgstr "再発行手数料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_phone
+#: field:sim,phone:0
+msgid "SIM Tel Number"
+msgstr "電話番号"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_sim_id
+#: model:ir.model.fields,field_description:cloud.field_sim_type_sim_type_id
+#: field:sim,sim_id:0
+#: field:sim.type,sim_type_id:0
+msgid "SIM Type ID"
+msgstr "種別"
+
+#. module: cloud
+#: field:cloud,sim_id:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_sim_id
+#: model:ir.model.fields,field_description:cloud.field_sim_user_number
+#: field:sim,user_number:0
+msgid "SIM User Number"
+msgstr "ユーザー番号"
+
+#. module: cloud
+#: model:ir.actions.act_window,name:cloud.buttons_sim_action
+#: model:ir.ui.menu,name:cloud.sim
+msgid "SIM list"
+msgstr "SIMリスト"
+
+#. module: cloud
+#: model:ir.model.fields,help:cloud.field_sim_date_sim
+#: help:sim,date_sim:0
+msgid "SIM moushikonda date"
+msgstr "＠SIMを申し込んだ日"
+
+#. module: cloud
+#: model:ir.actions.act_window,name:cloud.buttons_sim_type_action
+#: model:ir.ui.menu,name:cloud.sim_type
+msgid "SIM type"
+msgstr "SIM種別"
+
+#. module: cloud
+#: field:cloud,user_id:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_user_id
+msgid "Salesperson"
+msgstr "顧客担当者"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_datermination
+#: field:sim.type,datermination:0
+msgid "Sansyutuhouhou"
+msgstr "契約月の算出方法"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_size_code
+#: field:sim.type,size_code:0
+msgid "Size Code"
+msgstr "SIMサイズ"
+
+#. module: cloud
+#: selection:cloud,plan:0
+msgid "Standard"
+msgstr "スタンダード"
+
+#. module: cloud
+#: field:cloud,state:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_state
+msgid "Status"
+msgstr "ステータス"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_stop_sim
+#: field:sim.type,stop_sim:0
+msgid "Stop Sim Commission"
+msgstr "SIM停止手数料"
+
+#. module: cloud
+#: selection:cloud,state:0
+msgid "Stopping"
+msgstr "停止中"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_supplier_id
+#: field:sim.type,supplier_id:0
+msgid "Supplier"
+msgstr "仕入先"
+
+#. module: cloud
+#: selection:cloud,plan:0
+msgid "Support"
+msgstr "総合サポート"
+
+#. module: cloud
+#: model:ir.actions.act_window,name:cloud.cloud_view_action
+#: model:ir.ui.menu,name:cloud.cloud
+msgid "TKCLOUD"
+msgstr ""
+
+#. module: cloud
+#: field:cloud,plan:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_plan
+msgid "TKCLOUD Plan"
+msgstr "プラン"
+
+#. module: cloud
+#: field:cloud,rate_plan:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_rate_plan
+msgid "TKCLOUD Rate Plan"
+msgstr "料金プラン"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_universal_service
+#: field:sim.type,universal_service:0
+msgid "Universal Service Commission"
+msgstr "ユニバーサル手数料"
+
+#. module: cloud
+#: model:ir.model.fields,field_description:cloud.field_sim_type_unreturned_sim
+#: field:sim.type,unreturned_sim:0
+msgid "Unreturned Sim Commission"
+msgstr "SIM未返却手数料"
+
+#. module: cloud
+#: field:cloud,end_user:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_end_user
+msgid "User Name"
+msgstr "ご担当者名"
+
+#. module: cloud
+#: field:cloud,end_phone:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_end_phone
+msgid "User Phone Number"
+msgstr "電話番号"
+
+#. module: cloud
+#: selection:cloud,state:0
+msgid "Working"
+msgstr "稼働中"
+
+#. module: cloud
+#: selection:cloud,rate_plan:0
+msgid "Yearly Amount"
+msgstr "年払い"
+
+#. module: cloud
+#: field:cloud,dvr1:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_dvr1
+msgid "dvr1"
+msgstr "レコーダー1"
+
+#. module: cloud
+#: field:cloud,dvr2:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_dvr2
+msgid "dvr2"
+msgstr "レコーダー2"
+
+#. module: cloud
+#: field:cloud,dvr3:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_dvr3
+msgid "dvr3"
+msgstr "レコーダー3"
+
+#. module: cloud
+#: field:cloud,dvr4:0
+#: model:ir.model.fields,field_description:cloud.field_cloud_dvr4
+msgid "dvr4"
+msgstr "レコーダー4"
+
+#. module: cloud
+#: help:cloud,state:0
+#: model:ir.model.fields,help:cloud.field_cloud_state
+msgid "finish ni ittara saikeiyaku"
+msgstr "契約終了後は再契約が必要です"
+
