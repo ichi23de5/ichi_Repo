@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="report_sale_construction_xls" model="ir.actions.report.xml">
+            <field name="name">Syanai Construction</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">sale.order</field>
+            <field name="report_name">sale_construction_xls</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_xls_odt')"/>
+            <field name="parser_loc">report_aeroo_test/report/parser.py</field>
+            <field name="report_rml">report_aeroo_test/report/sale_construction.ods</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+
+        <ir_set>
+            <field name="key" eval="'action'"/>
+            <field name="key2" eval="'client_print_multi'"/>
+            <field name="models" eval="['sale.order']"/>
+            <field name="name">Syanai Construction</field>
+            <field name="value" eval="'ir.actions.report.xml,'+str(report_sale_construction_xls)"/>
+            <field name="isobject" eval="True"/>
+            <field name="replace" eval="True"/>
+        </ir_set>
+
+        <record id="report_sale_construction_o_xls" model="ir.actions.report.xml">
+            <field name="name">Gaichu Construction</field>
+            <field name="type">ir.actions.report.xml</field>
+            <field name="model">sale.order</field>
+            <field name="report_name">sale_construction_o_xls</field>
+            <field name="report_type">aeroo</field>
+            <field name="in_format">oo-ods</field>
+            <field name="out_format" eval="ref('report_aeroo.report_mimetypes_xls_odt')"/>
+            <field name="parser_loc">report_aeroo_test/report/parser.py</field>
+            <field name="report_rml">report_aeroo_test/report/sale_construction_o.ods</field>
+            <field name="parser_state">loc</field>
+            <field name="tml_source">file</field>
+        </record>
+
+        <ir_set>
+            <field name="key" eval="'action'"/>
+            <field name="key2" eval="'client_print_multi'"/>
+            <field name="models" eval="['sale.order']"/>
+            <field name="name">Gaichu Construction</field>
+            <field name="value" eval="'ir.actions.report.xml,'+str(report_sale_construction_o_xls)"/>
+            <field name="isobject" eval="True"/>
+            <field name="replace" eval="True"/>
+        </ir_set>
+
+    </data>
+</openerp>
