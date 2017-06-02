@@ -48,7 +48,6 @@ class SaleOrder(models.Model):
     start_time = fields.Char(string='Start time')
     end_time = fields.Char(string='End time')
     construction_title = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
-#    construction_ids = fields.One2many('sale.construction','id', string='yokutsukau tokkizikou model', store=True)
     construction_ids = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
     construction_note = fields.Text(string='Others', help='Sonota tokkizikou')
     ### construction OUTSIDE ORDER ###
@@ -60,7 +59,6 @@ class SaleOrder(models.Model):
     end_time_o = fields.Char(string='End time')
     construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids_o = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
-#    construction_ids_o = fields.One2many('sale.construction','id', string='yokutsukau tokkizikou model', store=True)
     construction_note_o = fields.Text(string='Others', help='Sonota tokkizikou')
     memo = fields.Text('memo')
 
