@@ -52,6 +52,19 @@
             <field name="view_id" ref="product.product_template_tree_view"/>
         </record>
 
+<!-- add comment to Notes page -->
+        <record id="product_template_form_view2" model="ir.ui.view">
+            <field name="name">product.template.form.view2</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description_sale']" position="after">
+                    <separator string="Seihin no Chuuigaki(Shanai-yoh)" colspan="4"/>
+                    <field name="comment" colspan="4" nolabel="1"
+                     placeholder="Kokoniwa kono seihin no chuuigaki wo kaite kudasai."/>
+                </xpath>
+           </field>
+        </record>
 
         <!-- for sale.order.line -->
         <record id="product_normal_form_view2" model="ir.ui.view"> 

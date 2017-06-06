@@ -12,3 +12,4 @@ class Product(models.Model):
     is_payment = fields.Boolean(string="Monthly Payment Flag")
     pay_per = fields.Boolean(string="Pay per Flag")
     maker_id = fields.Many2one("res.partner", domain="[('maker','=',True)]")
+    comment = fields.Char(string='Comment', copy=True)
