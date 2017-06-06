@@ -52,7 +52,7 @@ class SaleOrder(models.Model):
     construction_note = fields.Text(string='Others', help='Sonota tokkizikou')
     ### construction OUTSIDE ORDER ###
     outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
-    amount_outside = fields.Monetary(string='Gaityukingaku')
+    amount_outside = fields.Integer(string='Gaityukingaku')
     start_date_o = fields.Date(string='Kouji start')
     end_date_o = fields.Date(string='Kouji end')
     start_time_o = fields.Char(string='Start time')
