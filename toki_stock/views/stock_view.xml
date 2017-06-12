@@ -7,6 +7,17 @@
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
+                <!-- header -->
+                <xpath expr="//header/button[@name='action_confirm']" position="before">
+                    <button string="Soukoiki" type="object" name="shipment" attrs="{'invisible': [('state', '!=', 'assigned')]}" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//header/button[@name='do_new_transfer']" position="attributes">
+                    <attribute name="states">"draft,partially_available,assigned,waiting_shipment"</attribute>
+                </xpath>
+                <xpath expr="//header/button[@name='action_cancel']" position="attributes">
+                    <attribute name="states">"assigned,confirmed,partially_available,draft,waiting,waiting_shipment"</attribute>
+                </xpath>
+                <!-- sheet -->
                 <xpath expr="//field[@name='partner_id']" position="before">
                     <field name="property_name"/>
                 </xpath>
@@ -19,6 +30,20 @@
             <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
+                    <field name="property_name"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+        <record id="view_stock_move_form_add" model="ir.ui.view">
+            <field name="name">stock.move.form.add</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="before">
                     <field name="property_name"/>
                 </xpath>
             </field>
