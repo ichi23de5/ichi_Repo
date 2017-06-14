@@ -30,8 +30,8 @@ class SaleOrder(models.Model):
         ('other', 'Others')
         ],
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    version = fields.Char(string='Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    completion_date = fields.Date(string='Syunkoubi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
+    version = fields.Char('Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    completion_date = fields.Date('Syunkoubi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
     purchase_order = fields.Boolean('Purchase order', copy=False)
     inspection_id = fields.Many2one('property.inspection', string='Inspection', help='Kokokara hosyujouhou nyuryoku')
 
@@ -49,7 +49,7 @@ class SaleOrder(models.Model):
     end_time = fields.Char(string='End time')
     construction_title = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
-    construction_note = fields.Text(string='Others', help='Sonota tokkizikou')
+    construction_note = fields.Text('Others', help='Sonota tokkizikou')
     ### construction OUTSIDE ORDER ###
     outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
     amount_outside = fields.Integer(string='Gaityukingaku')
@@ -59,7 +59,7 @@ class SaleOrder(models.Model):
     end_time_o = fields.Char(string='End time')
     construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids_o = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
-    construction_note_o = fields.Text(string='Others', help='Sonota tokkizikou')
+    construction_note_o = fields.Text('Others', help='Sonota tokkizikou')
     memo = fields.Text('memo')
 
 
@@ -124,48 +124,23 @@ class SaleOrder(models.Model):
         self.write({'check_state': 'ng'})
 
 
-    ### reflect account.invoice ###
-    @api.multi
-    def _prepare_invoice(self):
-        self.ensure_one()
-        journal_id = self.env['account.invoice'].default_get(['journal_id'])['journal_id']
-        if not journal_id:
-            raise UserError(_('Please define an accounting sale journal for this company.'))
-        invoice_vals = {
-            'name': self.client_order_ref or '',
-            'origin': self.name,
-            'type': 'out_invoice',
-            'account_id': self.partner_invoice_id.property_account_receivable_id.id,
-            'partner_id': self.partner_invoice_id.id,
-            'partner_shipping_id': self.partner_shipping_id.id,
-            'journal_id': journal_id,
-            'currency_id': self.pricelist_id.currency_id.id,
-            'comment': self.note,
-            'payment_term_id': self.payment_term_id.id,
-            'fiscal_position_id': self.fiscal_position_id.id or self.partner_invoice_id.property_account_position_id.id,
-            'company_id': self.company_id.id,
-            'user_id': self.user_id and self.user_id.id,
-            'team_id': self.team_id.id,
-            'property_name': self.property_id.name or '',
-            'completion_date': self.completion_date
-        }
-        return invoice_vals
+
 
 
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    open_price = fields.Char(string='Open Price', related='product_id.open_price', required=True, store=True)
-    maker = fields.Char(string='Maker', related='product_id.maker_id.default_code', store=True)
+    open_price = fields.Char('Open Price', related='product_id.open_price', required=True, store=True)
+    maker = fields.Char('Maker', related='product_id.maker_id.default_code')
 
 
 class Construction(models.Model):
     _name = 'sale.construction'
     _rec_name = 'list_id'
 
-    list_id = fields.Many2one('sale.construction.list', string='template')
-    order_id = fields.Many2one('sale.order', string='Order Reference', required=True, ondelete='cascade', index=True, copy=False)
+    list_id = fields.Many2one('sale.construction.list', 'template')
+    order_id = fields.Many2one('sale.order', 'Order Reference', required=True, ondelete='cascade', index=True, copy=False)
 
 #    @api.onchange('list_id') 
 #    def onchange_list(self): 
