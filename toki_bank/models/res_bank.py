@@ -13,7 +13,7 @@ class Bank(models.Model):
 
 class ResPartnerBank(models.Model): 
     _inherit = 'res.partner.bank' 
-
+    _rec_name = 'bank_id'
 
     acc_type = fields.Selection([
         ('ordinary', 'Ordinary Account'),
@@ -26,7 +26,7 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
 
-#    payee_bank = fields.Many2one('res.partner.bank', 'Hurikomisaki')
-#                                 domain="[('partner_id.id', '=', '1')]",
-#                                 help='seikyu surutoki no TOKI furikomisaki bank')
+    payee_bank = fields.Many2one('res.partner.bank', string='Hurikomisaki',
+                                 domain="[('partner_id.id', '=', '1')]",
+                                 help='seikyu surutoki no TOKI furikomisaki bank')
 

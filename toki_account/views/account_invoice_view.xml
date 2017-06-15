@@ -13,6 +13,9 @@
                 <xpath expr="//field[@name='date_due']" position="after">
                     <field name="completion_date"/>
                 </xpath>
+                <xpath expr="//field[@name='team_id']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
             </field>
         </record>
 
@@ -29,6 +32,30 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="view_sale_order_form_add2" model="ir.ui.view">
+            <field name="name">sale.order.form.add2</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="replace"/>
+                <notebook>
+                    <page string="Invoice">
+                        <group>
+                            <group string="Summary">
+                                <field name="act_type"/>
+                                <field name="purchase_number"/>
+                                <field name="completion_date"/>
+                            </group>
+                            <group string="Payment">
+                                <field name="payment_term_id"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
 
     </data>
 </openerp>

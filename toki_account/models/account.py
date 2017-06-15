@@ -5,14 +5,30 @@ from openerp import api, fields ,models,  _
 class AccountInvoice(models.Model): 
     _inherit = "account.invoice" 
 
-    property_name = fields.Char(string='Property Name', readonly=True, store=True)
+    property_name = fields.Char('Property Name', readonly=True, store=True)
     completion_date = fields.Date('Syunkoubi', readonly=True, store=True)
 
+
+
+class AccountActType(models.Model):
+    _name = 'account.act.type'
+    _rec_name = 'type_id'
+
+    type_id = fields.Char('Act Type', required=True)
+    category = fields.Selection([
+        ('construction', 'Construction'),
+        ('inspection', 'Inspection'),
+        ('goods', 'Sale of Product'),
+        ('other', 'Others')
+        ], string='Category')
 
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    act_type = fields.Many2one('account.act.type', 'Act Type', help='Seikyusyo no KoujiSyubetsu wo kaku.')
+    purchase_number = fields.Char('Purchase Number')
+    completion_date = fields.Date('Syunkoubi Nohinbi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
 
     ### reflect account.invoice ###
     @api.multi

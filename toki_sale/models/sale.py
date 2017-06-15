@@ -31,7 +31,6 @@ class SaleOrder(models.Model):
         ],
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     version = fields.Char('Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    completion_date = fields.Date('Syunkoubi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
     purchase_order = fields.Boolean('Purchase order', copy=False)
     inspection_id = fields.Many2one('property.inspection', string='Inspection', help='Kokokara hosyujouhou nyuryoku')
 
@@ -142,12 +141,7 @@ class Construction(models.Model):
     list_id = fields.Many2one('sale.construction.list', 'template')
     order_id = fields.Many2one('sale.order', 'Order Reference', required=True, ondelete='cascade', index=True, copy=False)
 
-#    @api.onchange('list_id') 
-#    def onchange_list(self): 
-#        type = ""  
-#        if not self.work_type: 
-#            type = self.order_id.construction_type 
-#            self.write({"self.list_id.work_type": type}) 
+ 
 
 
 class ConstructionList(models.Model):

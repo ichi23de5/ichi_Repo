@@ -56,10 +56,9 @@
                 <xpath expr="//field[@name='validity_date']" position="before">
                     <field name="order_date"/>
                 </xpath>
-                <xpath expr="//field[@name='payment_term_id']" position="after">
+                <xpath expr="//field[@name='validity_date']" position="after">
                     <field name="construction_type"/>
                     <field name="outside_order" invisible="1"/>
-                    <field name="completion_date"/>
                 </xpath>
                 <xpath expr="//field[@name='note']" position="replace"/>
                 <group>
@@ -71,11 +70,6 @@
                 <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-<!--
-                <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="attributes">
-                    <attribute name="states">"{'draft': [('readonly', False)], 'sent': [('readonly', False)], 'sent': [('readonly', False)]}"</attribute>
-                </xpath>
--->
                 <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
                     <field name="open_price"/>
                 </xpath>
