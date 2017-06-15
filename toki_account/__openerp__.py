@@ -11,10 +11,11 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "account","property","sale","toki_sale"
+                   "account","property","sale","toki_sale","report_aeroo","aeroo_page_count"
                    ],
         "data": [
                 "views/account_invoice_view.xml",
+                "report/report.xml"
                 ],
 }
 

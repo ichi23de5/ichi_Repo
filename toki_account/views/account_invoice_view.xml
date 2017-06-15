@@ -33,12 +33,35 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="view_account_act_type_form">
+            <field name="name">view.account.act.type.form</field>
+            <field name="model">account.act.type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <group>
+                    <field name="type_id"/>
+                </group>
+                <group>
+                    <group>
+                        <field name="category"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+
         <record id="view_sale_order_form_add2" model="ir.ui.view">
             <field name="name">sale.order.form.add2</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='payment_term_id']" position="replace"/>
+                <xpath expr="//field[@name='fiscal_position_id']" position="replace"/>
+                <xpath expr="//group[@name='sale_pay']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath> 
                 <notebook>
                     <page string="Invoice">
                         <group>
@@ -49,6 +72,7 @@
                             </group>
                             <group string="Payment">
                                 <field name="payment_term_id"/>
+                                <field name="fiscal_position_id"/>
                             </group>
                         </group>
                     </page>
