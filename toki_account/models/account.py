@@ -8,6 +8,19 @@ class AccountInvoice(models.Model):
     property_name = fields.Char('Property Name', readonly=True, store=True)
     completion_date = fields.Date('Syunkoubi', readonly=True, store=True)
 
+    ### invoice for property list ###
+    property_line_ids = fields.One2many('account.property.line', 'property_id', string='Property Lines', oldname='property_line',
+        readonly=True, states={'draft': [('readonly', False)]}, copy=True) 
+
+class AccountPropertyLine(models.Model):
+    _name = 'account.property.line'
+
+
+    invoice_id = fields.Many2one('account.invoice', string='Invoice Reference', ondelete='cascade', index=True) 
+    property_id = fields.Many2one('property', string='Property Name', readonly=True, index=True)
+    completion_date = fields.Date('Syunkoubi', readonly=True, index=True)
+    price_total = fields.Monetary('Amount', readonly=True)
+    purchase_number = fields.Char('Purchase Number', readonly=True, index=True)
 
 
 class AccountActType(models.Model):
@@ -28,7 +41,7 @@ class SaleOrder(models.Model):
 
     act_type = fields.Many2one('account.act.type', 'Act Type', help='Seikyusyo no KoujiSyubetsu wo kaku.')
     purchase_number = fields.Char('Purchase Number')
-    completion_date = fields.Date('Syunkoubi Nohinbi', states={'draft': [('invisible', True)], 'sent': [('invisible', True)]})
+    completion_date = fields.Date('Syunkoubi Nohinbi', states={'draft': [('readonly', True)], 'sent': [('readonly', True)]})
 
     ### reflect account.invoice ###
     @api.multi
