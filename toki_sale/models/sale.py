@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
          ], string='State2', readonly=True, copy=False, index=True, default='ng')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime('Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=False, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
@@ -61,7 +61,13 @@ class SaleOrder(models.Model):
     construction_note_o = fields.Text('Others', help='Sonota tokkizikou')
     memo = fields.Text('memo')
 
-
+    direct_flag = fields.Boolean('Direct transaction')
+    @api.onchange('partner_id')
+    def _flag_direct_transaction(self):
+        direct = self.partner_id.direct_transaction
+        if direct:
+            self.update({'direct_flag':True})
+            return
 
 
     @api.onchange('construction_type') 

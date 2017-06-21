@@ -13,14 +13,15 @@ class ResPartner2(models.Model):
     partner_number = fields.Char("Partner ID")
     maker = fields.Boolean("Maker Flag")
     default_code = fields.Char("Ryakusyou")
-#    direct_transaction = fields.Boolean("Direct transaction", help="TOKI to cyokusetsu torihiki siteru kojin nado")
+    direct_transaction = fields.Boolean("Direct transaction", help="TOKI to cyokusetsu torihiki siteru kojin nado")
 
 
-#    @api.onchange('direct_transaction')
-#    def _direct_flag(self):
-#        if self.direct_transaction:
-#            self.update({'customer':True})
-#            return
+    @api.onchange('direct_transaction')
+    def _direct_flag(self):
+        if self.direct_transaction:
+            self.update({'customer':True})
+            self.update({'company_type': 'company'})
+            return
 
     @api.onchange('outside_order')
     def _outside_flag(self):

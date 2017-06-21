@@ -21,10 +21,9 @@
                     <field name="mail_address"/>
                     <field name="partner_number" placeholder="partner contraction ID" attrs="{'invisible': [('is_company','=', False)]}"/>
                 </xpath>
-                <xpath expr="//field[@name='customer']" position="after">
-                    <!-- <field name="direct_transaction"/>-->
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="direct_transaction"/>
                 </xpath>
-
                 <xpath expr="//group/field[@name='supplier']" position="after">
                     <field name="outside_order"/>
                     <field name="maker"/>
