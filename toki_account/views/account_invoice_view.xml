@@ -7,31 +7,51 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="before">
-                    <field name="property_name"/>
-                </xpath>
-                <xpath expr="//field[@name='date_due']" position="after">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="order_id"/>
                     <field name="completion_date"/>
+                    <field name="purchase_number"/>
                 </xpath>
+
                 <xpath expr="//field[@name='team_id']" position="attributes">
                     <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <notebook> 
+                    <page string="Property Line"> 
+                        <field name="property_line_ids"/> 
+                    </page> 
+                </notebook>
+            </field>
+        </record>
+
+        <record id="view_invoice_line_tree_add" model="ir.ui.view"> 
+            <field name="name">account.invoice.line.tree.add</field> 
+            <field name="model">account.invoice.line</field>
+            <field name="inherit_id" ref="account.view_invoice_line_tree"/> 
+            <field name="arch" type="xml"> 
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="order_id"/>
+                    <field name="completion_date"/>
+                    <field name="purchase_number"/>
                 </xpath>
             </field>
         </record>
 
-        <record id="view_account_invoice_tree_add" model="ir.ui.view">
-            <field name="name">account.invoice.tree.add</field>
-            <field name="model">account.invoice</field>
-            <field name="inherit_id" ref="account.invoice_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="property_name"/>
-                </xpath>
-                <xpath expr="//field[@name='user_id']" position="after">
-                    <field name="completion_date"/>
-                </xpath>
-            </field>
-        </record>
+
+        <record id="account_property_line_view_tree" model="ir.ui.view"> 
+            <field name="name">account.property.line.tree</field> 
+            <field name="model">account.property.line</field> 
+            <field name="arch" type="xml"> 
+                <tree string="Property Lines"> 
+                    <field name="origin" invisible="1"/>
+                    <field name="completion_date"/> 
+                    <field name="property_id"/> 
+                    <field name="purchase_number"/>
+                    <field name="act_type"/>
+                    <field name="price_total"/> 
+                </tree> 
+            </field> 
+        </record> 
 
         <record model="ir.ui.view" id="view_account_act_type_form">
             <field name="name">view.account.act.type.form</field>

@@ -32,6 +32,7 @@ class SaleOrder(models.Model):
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     version = fields.Char('Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     purchase_order = fields.Boolean('Purchase order', copy=False)
+    inspection_id = fields.Many2one('property.inspection', string='Inspection', help='Kokokara hosyujouhou nyuryoku')
 
     ### construction field for (old) purchase order ###
     construction_type = fields.Selection([
