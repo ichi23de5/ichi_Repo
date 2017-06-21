@@ -3,23 +3,31 @@
 from openerp import api, fields ,models,  _
 from dateutil.relativedelta import relativedelta
 
+
 class AccountInvoice(models.Model): 
     _inherit = "account.invoice" 
 
     property_name = fields.Char('Property Name', readonly=True, store=True)
     completion_date = fields.Date('Syunkoubi', readonly=True, store=True)
 
-
     ### invoice for property list ###
-    property_line_ids = fields.One2many('account.property.line', 'property_id', string='Property Lines', oldname='property_line',
+    property_line_ids = fields.One2many('account.property.line','invoice_id', string='Property Lines', oldname='property_line',
         readonly=True, states={'draft': [('readonly', False)]}, copy=True) 
+#    amount_untaxed_pro = fields.Integer(string='Untaxed Amount', store=True, readonly=True, compute='_amount_pro', track_visibility='always')
 
-
+#    @api.depends('property_line_ids.price_total') 
+#    def _amount_pro(self):
+#        for order in self: 
+#            amount_untaxed_pro = 0.0 
+#            for line in order.property_line_ids:
+#                amount_untaxed_pro += line.price_total
+#            order.update({ 
+#                'amount_untaxed_pro': round(amount_untaxed_pro), 
+#            }) 
 
 
 class AccountInvoiceLine(models.Model): 
     _inherit = 'account.invoice.line' 
-
 
     order_id = fields.Many2one('sale.order', 'Order Number', readonly=True, index=True)
     completion_date = fields.Date('Syunkoubi', readonly=True, index=True)
@@ -28,17 +36,15 @@ class AccountInvoiceLine(models.Model):
 
 class AccountPropertyLine(models.Model):
     _name = 'account.property.line'
+    _rec_name = 'origin'
 
-
+    invoice_id = fields.Many2one('account.invoice', 'Invoice Reference', required=True, ondelete='cascade', index=True, copy=False)
     origin = fields.Char('Source', help='Reference of the document that produced this invoice')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, index=True)
     completion_date = fields.Date('Syunkoubi', readonly=True, index=True)
     price_total = fields.Integer('Amount', readonly=True)
     purchase_number = fields.Char('Purchase Number', readonly=True, index=True)
     act_type = fields.Many2one('account.act.type', 'Act Type', help='Seikyusyo no KoujiSyubetsu wo kaku.', index=True)
-
-
-
 
 
 

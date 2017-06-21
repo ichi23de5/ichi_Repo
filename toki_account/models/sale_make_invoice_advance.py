@@ -11,6 +11,8 @@ class SaleAdvancePaymentInv(models.TransientModel):
     _description = "Sales Advance Payment Invoice"
 
 
+
+
     @api.multi
     def _create_invoice(self, order, so_line, amount):
         inv_obj = self.env['account.invoice']
