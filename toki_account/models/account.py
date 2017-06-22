@@ -7,8 +7,6 @@ from dateutil.relativedelta import relativedelta
 class AccountInvoice(models.Model): 
     _inherit = "account.invoice" 
 
-    property_name = fields.Char('Property Name', readonly=True, store=True)
-    completion_date = fields.Date('Syunkoubi', readonly=True, store=True)
 
     ### invoice for property list ###
     property_line_ids = fields.One2many('account.property.line','invoice_id', string='Property Lines', oldname='property_line',
@@ -29,7 +27,6 @@ class AccountInvoice(models.Model):
 class AccountInvoiceLine(models.Model): 
     _inherit = 'account.invoice.line' 
 
-    order_id = fields.Many2one('sale.order', 'Order Number', readonly=True, index=True)
     completion_date = fields.Date('Syunkoubi', readonly=True, index=True)
     purchase_number = fields.Char('Purchase Number', readonly=True, index=True)
 
@@ -64,6 +61,7 @@ class AccountActType(models.Model):
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+
     act_type = fields.Many2one('account.act.type', 'Act Type', help='Seikyusyo no KoujiSyubetsu wo kaku.')
     purchase_number = fields.Char('Purchase Number')
     completion_date = fields.Date('Syunkoubi Nohinbi', states={'draft': [('readonly', True)], 'sent': [('readonly', True)]})
@@ -95,4 +93,42 @@ class SaleOrder(models.Model):
 #        }
 #        return invoice_vals
 
+class SaleOrderLine(models.Model):
+    _inherit = "sale.order.line"
 
+
+
+    @api.multi
+    def _prepare_invoice_line(self, qty):
+        """
+        Prepare the dict of values to create the new invoice line for a sales order line.
+
+        :param qty: float quantity to invoice
+        """
+        self.ensure_one()
+        res = {}
+        account = self.product_id.property_account_income_id or self.product_id.categ_id.property_account_income_categ_id
+        if not account:
+            raise UserError(_('Please define income account for this product: "%s" (id:%d) - or for its category: "%s".') % \
+                            (self.product_id.name, self.product_id.id, self.product_id.categ_id.name))
+
+        fpos = self.order_id.fiscal_position_id or self.order_id.partner_id.property_account_position_id
+        if fpos:
+            account = fpos.map_account(account)
+
+        res = {
+            'name': self.name,
+            'sequence': self.sequence,
+            'origin': self.order_id.name,
+            'account_id': account.id,
+            'price_unit': self.price_unit,
+            'quantity': qty,
+            'discount': self.discount,
+            'uom_id': self.product_uom.id,
+            'product_id': self.product_id.id or False,
+            'invoice_line_tax_ids': [(6, 0, self.tax_id.ids)],
+            'account_analytic_id': self.order_id.project_id.id,
+            'purchase_number': self.order_id.purchase_number,
+            'completion_date': self.order_id.completion_date,
+        }
+        return res

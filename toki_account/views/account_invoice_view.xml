@@ -8,14 +8,18 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="after">
-                    <field name="order_id"/>
-                    <field name="completion_date"/>
-                    <field name="purchase_number"/>
-                </xpath>
-
+                <xpath expr="//field[@name='name']" position="after"> 
+                    <field name="completion_date"/> 
+                    <field name="purchase_number"/> 
+                </xpath> 
                 <xpath expr="//field[@name='team_id']" position="attributes">
                     <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='account_id']" position="attributes"> 
+                    <attribute name="invisible">1</attribute> 
+                </xpath> 
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='invoice_line_tax_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
                 <notebook> 
                     <page string="Property Line"> 
@@ -32,7 +36,6 @@
             <field name="inherit_id" ref="account.view_invoice_line_tree"/> 
             <field name="arch" type="xml"> 
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="order_id"/>
                     <field name="completion_date"/>
                     <field name="purchase_number"/>
                 </xpath>
