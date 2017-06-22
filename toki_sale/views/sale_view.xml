@@ -216,54 +216,5 @@
             </field>
         </record>
 
-
-        <!-- President approval view -->
-        <record model="ir.ui.view" id="sale_president_view_tree">
-            <field name="name">sale.order.tree</field>
-            <field name="model">sale.order</field>
-            <field name="arch" type="xml">
-                <tree string="President approval pending">
-                    <field name="name"/>
-                    <field name="property_id"/>
-                    <field name="partner_id"/>
-                    <field name="order_date"/>
-                    <field name="check_state"/>
-                </tree>
-            </field>
-        </record>
-<!--
-        <record id="sale_order_view_search_president" model="ir.ui.view"> 
-            <field name="name">sale.order.search.president</field> 
-            <field name="model">sale.order</field> 
-            <field name="mode">primary</field> 
-            <field name="inherit_id" ref="sale.view_sales_order_filter"/> 
-            <field name="arch" type="xml"> 
-                <xpath expr="//filter[@name='my_sale_orders_filter']" position="after"> 
-                    <separator/> 
-                    <filter string="President Ringi Machi" name="president" domain="[('check_state','=','manager')]"/> 
-                </xpath> 
-            </field> 
-        </record>
--->
-
-        <record model="ir.actions.act_window" id="sale_president_view_action">
-            <field name="name">Sale Ringi</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form,kanban,calendar,pivot,graph</field>
-            <field name='view_id' ref='sale_president_view_tree'/>
-            <!-- <field name="search_view_id" ref="sale_order_view_search_president"/> -->
-        </record>
-
-        <menuitem id="president_button_menu" name="President"/>
-        <menuitem id="button_menu_approval" name="President Approval"
-                  parent="president_button_menu"/>
-        <menuitem id="sale_president"
-                action="sale_president_view_action" parent="button_menu_approval"
-                sequence="1"/>
-
-
-
-
     </data>
 </openerp>

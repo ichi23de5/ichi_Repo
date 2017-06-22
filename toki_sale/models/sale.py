@@ -136,8 +136,8 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    open_price = fields.Char('Open Price', related='product_id.open_price', required=True, store=True)
-    maker = fields.Char('Maker', related='product_id.maker_id.default_code')
+    open_price = fields.Char('Open Price', related='product_id.open_price', index=True)
+    maker = fields.Char('Maker', related='product_id.maker_id.default_code', index=True)
 
 
 class Construction(models.Model):
