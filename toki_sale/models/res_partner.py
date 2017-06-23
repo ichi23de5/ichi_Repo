@@ -8,12 +8,12 @@ class ResPartner2(models.Model):
     _inherit = "res.partner"
 
 
-    outside_order = fields.Boolean("Outside Flag")
-    mail_address = fields.Char("Email") #email field hidden#
-    partner_number = fields.Char("Partner ID")
-    maker = fields.Boolean("Maker Flag")
-    default_code = fields.Char("Ryakusyou")
-    direct_transaction = fields.Boolean("Direct transaction", help="TOKI to cyokusetsu torihiki siteru kojin nado")
+    outside_order = fields.Boolean('Outside Flag')
+    mail_address = fields.Char('Email') #email field hidden#
+    partner_number = fields.Char('Partner ID')
+    maker = fields.Boolean('Maker Flag')
+    default_code = fields.Char('Ryakusyou')
+    direct_transaction = fields.Boolean('Direct Transaction', help='TOKI to cyokusetsu torihiki siteru kojin nado')
 
 
     @api.onchange('direct_transaction')
