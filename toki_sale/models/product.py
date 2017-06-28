@@ -11,8 +11,4 @@ class Product(models.Model):
     is_cloud = fields.Boolean("Cloud Flag")
     is_payment = fields.Boolean("Monthly Payment Flag")
     pay_per = fields.Boolean("Pay per Flag")
-    maker_id = fields.Many2one("res.partner", "maker", domain="[('maker','=',True)]")
-
-
-
-
+    maker_id = fields.Many2one("res.partner", "maker", domain="[('maker','=',True)]", help="TEC no Quotation ni kaku maker wo toroku sitene. res.partner no maker field to default_code field wo kanarazu touroku sitene.")

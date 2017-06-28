@@ -28,6 +28,8 @@ class SaleAdvancePaymentInv(models.TransientModel):
             raise UserError(
                 _('There is no income account defined for this product: "%s". You may have to install a chart of account from Accounting app, settings menu.') % \
                     (self.product_id.name,))
+        if not self.purchase_order:
+            raise UserError(_('Hachusyo ga kiteimasen!'))
 
         if self.amount <= 0.00:
             raise UserError(_('The value of the down payment amount must be positive.'))

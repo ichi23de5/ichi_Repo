@@ -2,6 +2,8 @@
 
 from openerp import api, fields ,models,  _
 from dateutil.relativedelta import relativedelta
+from openerp.exceptions import UserError
+from openerp.tools import float_is_zero, float_compare, DEFAULT_SERVER_DATETIME_FORMAT
 
 
 class AccountInvoice(models.Model): 
@@ -73,6 +75,8 @@ class SaleOrder(models.Model):
         journal_id = self.env['account.invoice'].default_get(['journal_id'])['journal_id']
         if not journal_id:
             raise UserError(_('Please define an accounting sale journal for this company.'))
+        if not self.purchase_order:
+            raise UserError(_('Hachusyo ga kiteimasen!'))
         invoice_vals = {
             'name': self.client_order_ref or '',
             'origin': self.name,
@@ -98,6 +102,9 @@ class SaleOrder(models.Model):
             })],           
         }
         return invoice_vals
+
+
+
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
