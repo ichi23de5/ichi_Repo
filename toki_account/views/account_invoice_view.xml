@@ -52,7 +52,7 @@
                     <field name="completion_date"/> 
                     <field name="property_id"/> 
                     <field name="purchase_number"/>
-                    <field name="act_type"/>
+                    <field name="type_id"/>
                     <field name="price_total"/> 
                 </tree> 
             </field> 
@@ -73,7 +73,7 @@
                             <group>
                                 <field name="completion_date"/>
                                 <field name="purchase_number"/>
-                                <field name="act_type"/>
+                                <field name="type_id"/>
                                 <field name="price_total"/>
                             </group>
                         </group>
