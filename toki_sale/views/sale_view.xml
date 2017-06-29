@@ -47,7 +47,6 @@
                 <xpath expr="//field[@name='user_id']" position="replace"/>
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="rep_partner_id"/>
-                    <field name="inspection_id" attrs="{'invisible': [('work_type', '!=', 'inspection')]}"/>
                     <field name="user_id" widget="selection"/>
                     <field name="assistant_id" widget="selection"/>
                     <field name="request_flag" invisible="1"/>
