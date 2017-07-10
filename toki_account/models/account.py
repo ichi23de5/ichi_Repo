@@ -37,7 +37,8 @@ class AccountPropertyLine(models.Model):
     _name = 'account.property.line'
     _rec_name = 'origin'
 
-    invoice_id = fields.Many2one('account.invoice', 'Invoice Reference', required=True, ondelete='cascade', index=True, copy=False)
+#    invoice_id = fields.Many2one('account.invoice', 'Invoice Reference', required=True, ondelete='cascade', index=True, copy=False)
+    invoice_id = fields.Many2one('account.invoice', 'Invoice Reference', ondelete='cascade', index=True, copy=False)
     origin = fields.Char('Source', help='Reference of the document that produced this invoice')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, index=True)
     completion_date = fields.Date('Syunkoubi', readonly=True, index=True)
@@ -68,6 +69,8 @@ class SaleOrder(models.Model):
     purchase_number = fields.Char('Purchase Number')
     completion_date = fields.Date('Syunkoubi Nohinbi', states={'draft': [('readonly', True)], 'sent': [('readonly', True)]})
 
+
+
     ### reflect account.invoice ###
     @api.multi
     def _prepare_invoice(self):
@@ -77,6 +80,20 @@ class SaleOrder(models.Model):
             raise UserError(_('Please define an accounting sale journal for this company.'))
         if not self.purchase_order:
             raise UserError(_('Hachusyo ga kiteimasen!'))
+
+   ## add code from here
+#        property_line_obj = self.env['account.property.line']
+#        pp_line = property_line_obj.create({
+#            'invoice_id':self.env['account.invoice'].id,
+#            'origin': self.name,
+#            'property_id': self.property_id.id or False,
+#            'completion_date': self.completion_date,
+#            'price_total': self.amount_untaxed,
+#            'purchase_number': self.purchase_number or False,
+#            'type_id': self.act_type.type_id,
+#            })
+
+
         invoice_vals = {
             'name': self.client_order_ref or '',
             'origin': self.name,
@@ -92,6 +109,7 @@ class SaleOrder(models.Model):
             'company_id': self.company_id.id,
             'user_id': self.user_id and self.user_id.id,
             'team_id': self.team_id.id,
+#            'property_line_ids': [(0, 0, {pp_line})],
             'property_line_ids': [(0, 0, {
                 'origin': self.name,
                 'property_id': self.property_id.id or False,

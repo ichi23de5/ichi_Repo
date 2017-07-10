@@ -10,7 +10,21 @@
                    <field name="branch"/>
                 </xpath>
            </field>
-         </record>
+        </record>
+        <record id="view_res_bank_tree_add" model="ir.ui.view">
+            <field name="name">res.bank.tree.add</field>
+            <field name="model">res.bank</field>
+            <field name="inherit_id" ref="base.view_res_bank_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                   <field name="branch"/>
+                   <field name="phone"/>
+                </xpath>
+                <xpath expr="//field[@name='country']" position="attributes">
+                   <attribute name="invisible">"1"</attribute>
+                </xpath>
+           </field>
+        </record>
 
 
         <record id="view_partner_bank_form_add" model="ir.ui.view">
@@ -23,7 +37,7 @@
                    <field name="acc_type"/>
                 </xpath>
            </field>
-         </record>
+        </record>
 
 
         <record id="view_partner_form_add_bank" model="ir.ui.view">

@@ -6,9 +6,11 @@ from openerp import api, fields ,models,  _
 class stock_picking(models.Model): 
     _inherit = 'stock.picking'
 
-    property_name = fields.Char('Property Name',
-                                related='move_lines.procurement_id.sale_line_id.order_id.property_id.display_name',
-                                readonly=True)
+    property_name = fields.Char('Property Name', related='order_id.property_id.name')
+    order_id = fields.Many2one('sale.order', 'Order Number')
+
+
+
 
 
 

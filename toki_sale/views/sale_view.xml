@@ -13,13 +13,9 @@
                     <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
                     <button string="President" type="object" name="president" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'manager'),('request_flag', '=', False)]}"/>
                 </xpath>
-                <xpath expr="//header/button[@name='action_confirm']" position="attributes">
-                    <attribute name="string">President</attribute>
-                </xpath>
                 <xpath expr="//field[@name='state']" position="after">
                     <field name="check_state" widget="statusbar" statusbar_visible="stand,manager,president" attrs="{'invisible': [('request_flag', '=', False)]}"/>
                 </xpath>
-
                 <xpath expr="//field[@name='name']" position="after">
                     <label class="oe_edit_only" string="Property Name"/>
                     <h2><field name="property_id"/></h2>

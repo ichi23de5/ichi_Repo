@@ -45,6 +45,20 @@ class SaleAdvancePaymentInv(models.TransientModel):
         else:
             tax_ids = taxes.ids
 
+# add code from here
+
+        property_line_obj = self.env['account.property.line']
+        pp_line = property_line_obj.create({
+#            'invoice_id':,
+            'origin': order.name,
+            'property_id': order.property_id.id or False,
+            'completion_date': order.completion_date,
+            'price_total': order.amount_untaxed,
+            'purchase_number': order.purchase_number or False,
+            'type_id': order.act_type,
+            })
+
+
         invoice = inv_obj.create({
             'name': order.client_order_ref or order.name,
             'origin': order.name,
@@ -64,23 +78,26 @@ class SaleAdvancePaymentInv(models.TransientModel):
                 'sale_line_ids': [(6, 0, [so_line.id])],
                 'invoice_line_tax_ids': [(6, 0, tax_ids)],
                 'account_analytic_id': order.project_id.id or False,
-                'order_id':  self.order_id.id,
-                'completion_date': order.completion_date,
-                'purchase_number': self.purchase_number,
+#                'order_id':  order.order_id.id,
+#                'completion_date': order.completion_date,
+#                'purchase_number': order.purchase_number,
             })],
             'currency_id': order.pricelist_id.currency_id.id,
             'payment_term_id': order.payment_term_id.id,
             'fiscal_position_id': order.fiscal_position_id.id or order.partner_id.property_account_position_id.id,
             'team_id': order.team_id.id,
-            'property_line_ids': [(0, 0, {
-                'origin': self.name,
-                'property_id': self.property_id.id or False,
-                'completion_date': self.completion_date,
-                'price_total': self.amount_untaxed,
-                'purchase_number': self.purchase_number or False,
-                'act_type': self.act_type,
-            })],
+            'property_line_ids': [(0, 0, [pp_line.id])],
+#            'property_line_ids': [(0, 0, {
+#                'origin': order.name,
+#                'property_id': order.property_id.id or False,
+#                'completion_date': order.completion_date,
+#                'price_total': order.amount_untaxed,
+#                'purchase_number': order.purchase_number or False,
+#                'act_type': self.act_type,
+#                'type_id': order.act_type,
+#            })],
         })
+
         invoice.compute_taxes()
         return invoice
 

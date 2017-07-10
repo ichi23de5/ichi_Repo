@@ -122,6 +122,8 @@ class SaleOrder(models.Model):
     def president(self):
         self.write({'check_state': 'president'})
 
+
+
     @api.multi 
     def action_cancel(self): 
         self.write({'state': 'cancel'}) 
@@ -157,4 +159,3 @@ class ConstructionList(models.Model):
 
     list_id = fields.Char(string='template', required=True)
     note = fields.Text(string='memo')
-

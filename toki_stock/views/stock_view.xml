@@ -11,18 +11,9 @@
                 <xpath expr="//header/button[@name='force_assign']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                <!--<xpath expr="//header/button[@name='action_confirm']" position="before">
-                    <button string="Soukoiki" type="object" name="shipment" attrs="{'invisible': [('state', '!=', 'assigned')]}" class="oe_highlight"/>
-                </xpath>-->
-                <!-- Warui --><!--
-                <xpath expr="//header/button[@name='do_new_transfer']" position="attributes">
-                    <attribute name="states">"draft,partially_available,assigned,waiting_shipment"</attribute>
-                </xpath>
-                <xpath expr="//header/button[@name='action_cancel']" position="attributes">
-                    <attribute name="states">"assigned,confirmed,partially_available,draft,waiting,waiting_shipment"</attribute>
-                </xpath>-->
                 <!-- sheet -->
-                <xpath expr="//field[@name='partner_id']" position="before">
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="order_id"/>
                     <field name="property_name"/>
                 </xpath>
             </field>
