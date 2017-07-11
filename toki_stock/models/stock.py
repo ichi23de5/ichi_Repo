@@ -9,17 +9,14 @@ class stock_picking(models.Model):
     property_name = fields.Char('Property Name', related='order_id.property_id.name')
     order_id = fields.Many2one('sale.order', 'Order Number')
 
+    @api.onchange('order_id')
+    def _onchange_order_number(self):
+        sale = self.order_id.name
+        if sale:
+            self.update({'origin': sale})
+            return
 
 
-
-
-
-
-class StockMove(models.Model):
-    _inherit = 'stock.move'
-
-    property_name = fields.Char('Property Name',
-                                related='procurement_id.sale_line_id.order_id.property_id.display_name',readonly=True)
 
 
 
