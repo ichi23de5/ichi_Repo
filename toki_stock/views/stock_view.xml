@@ -13,8 +13,8 @@
                 </xpath>
                 <!-- sheet -->
                 <xpath expr="//field[@name='origin']" position="after">
-                    <field name="order_id" attrs="{'invisible': [('group_id', '=', True)]}"/>
-                    <field name="property_name" attrs="{'invisible': [('group_id', '=', True)]}"/>
+                    <field name="order_id"/>
+                    <field name="property_name"/>
                 </xpath>
             </field>
         </record>
