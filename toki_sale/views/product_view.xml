@@ -24,6 +24,7 @@
                             <field name="is_cloud"/>
                             <field name="is_payment"/>
                             <field name="pay_per"/>
+                            <field name="rate_id" attrs="{'invisible':[('is_cloud','!=',True)]}"/>
                         </group>
                     </page>
                 </notebook>

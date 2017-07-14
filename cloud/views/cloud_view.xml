@@ -29,7 +29,7 @@
                                 <field name="order_id"/>
                                 <field name="sim_id"/>
                                 <field name="plan"/>
-                                <field name="rate_plan"/>
+                                <field name="rate_id"/>
                             </group>
                         </group>
                         <notebook> 
@@ -100,7 +100,25 @@
             </field>
         </record>
 
-
+        <record model="ir.ui.view" id="cloud_rate_plan_view_form">
+            <field name="name">cloud.rate.plan.view.form</field>
+            <field name="model">cloud.rate.plan</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="TKCLOUD Ryokin Plan">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="method"/>
+                        </group>
+                        <group>
+                            <field name="contract_years"/>
+                            <field name="pay_per_use"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
 
         <!-- The Action -->
         <record model="ir.actions.act_window" id="cloud_view_action">

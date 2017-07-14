@@ -25,18 +25,18 @@ class Cloud(models.Model):
     user_id = fields.Char('Salesperson', related='order_id.user_id.name', readonly=True, store=True)
     plan = fields.Selection([
            ('lite', 'Lite'),
-           ('standard', 'Standard'),
-           ('pro', 'Pro'),
-           ('support', 'Support')],         
+           ('basic', 'Basic'),
+           ('entry', 'Entry')],         
            string='TKCLOUD Plan', required=True)
-    rate_plan = fields.Selection([
-                ('monthly', 'Monthly Amount'),
-                ('yearly', 'Yearly Amount'),
-                ('lump2', 'Lump sum 2'),
-                ('lump5', 'Lump sum 5'),
-                ('lump7', 'Lump sum 7'),
-                ('incurred', 'Incurred Amount')],
-                string='TKCLOUD Rate Plan', required=True)
+    rate_id = fields.Many2one('cloud.rate.plan', 'Rate Plan', required=True)
+#    rate_plan = fields.Selection([
+#                ('monthly', 'Monthly Amount'),
+#                ('yearly', 'Yearly Amount'),
+#                ('lump2', 'Lump sum 2'),
+#                ('lump5', 'Lump sum 5'),
+#                ('lump7', 'Lump sum 7'),
+#                ('incurred', 'Incurred Amount')],
+#                string='TKCLOUD Rate Plan', required=True)
     end_user = fields.Char('User Name')
     end_phone = fields.Char('User Phone Number')
     contact_check = fields.Boolean('Contact OK')
@@ -70,8 +70,6 @@ class Cloud(models.Model):
             return
 
 
-
-
     ### state shift button ###
     @api.multi 
     def start(self): 
@@ -85,3 +83,18 @@ class Cloud(models.Model):
     def finish(self):
         self.write({'state': 'finish'})
 
+
+
+class CloudRatePlan(models.Model):
+    _name = 'cloud.rate.plan'
+    _order = 'name desc'
+
+
+    name = fields.Char('Plan Name', required=True)
+    contract_years = fields.Integer('Keiyaku nensu')
+    method = fields.Selection([
+           ('lump', 'ikkatsu'),
+           ('monthly', 'Monthly'),
+           ('yearly', 'Yearly')],
+           string='Payment method')
+    pay_per_use = fields.Boolean('Juryokakin')
