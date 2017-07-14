@@ -9,5 +9,4 @@ class Product(models.Model):
     open_price = fields.Char('Vender Price', copy=True, default="OPEN")
     is_warranty = fields.Boolean("Warranty Flag")
     is_cloud = fields.Boolean("Cloud Flag")
-    is_payment = fields.Boolean("Monthly Payment Flag")
     maker_id = fields.Many2one("res.partner", "maker", domain="[('maker','=',True)]", help="TEC no Quotation ni kaku maker wo toroku sitene. res.partner no maker field to default_code field wo kanarazu touroku sitene.")
