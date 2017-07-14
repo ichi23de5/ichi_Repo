@@ -120,6 +120,18 @@
             </field>
         </record>
 
+        <record id="view_order_form_add_cloud" model="ir.ui.view">
+            <field name="name">product.template.form.cloud</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_cloud']" position="after">
+                    <field name="rate_id" attrs="{'invisible':[('is_cloud','!=',True)]}"/>                    
+                </xpath>
+            </field>
+        </record>
+
+
         <!-- The Action -->
         <record model="ir.actions.act_window" id="cloud_view_action">
             <field name="name">TKCLOUD</field>

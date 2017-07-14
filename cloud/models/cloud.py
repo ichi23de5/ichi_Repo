@@ -98,3 +98,10 @@ class CloudRatePlan(models.Model):
            ('yearly', 'Yearly')],
            string='Payment method')
     pay_per_use = fields.Boolean('Juryokakin')
+
+
+class ProductTemplate(models.Model): 
+    _inherit = 'product.template' 
+
+    rate_id = fields.Many2one('cloud.rate.plan', 'CLOUD Rate Plan')
+

@@ -23,8 +23,6 @@
                             <field name="is_warranty"/>
                             <field name="is_cloud"/>
                             <field name="is_payment"/>
-                            <field name="pay_per"/>
-                            <field name="rate_id" attrs="{'invisible':[('is_cloud','!=',True)]}"/>
                         </group>
                     </page>
                 </notebook>
@@ -76,7 +74,6 @@
                             <field name="is_warranty"/>
                             <field name="is_cloud"/>
                             <field name="is_payment"/>
-                            <field name="pay_per"/>
                         </group>
                     </page>
                 </notebook>
