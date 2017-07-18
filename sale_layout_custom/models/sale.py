@@ -47,3 +47,29 @@ class SaleOrderLine(models.Model):
                 self.update({"sale_layout_cat_id": 2})
 
         return {'domain': domain}
+
+
+class ProductSetAdd(models.TransientModel):
+    _inherit = 'product.set.add'
+
+
+    def prepare_sale_order_line_data(self, sale_order_id, set, set_line,
+                                     max_sequence=0):
+        if set_line.product_id.type:
+            if set_line.product_id.type == "product":
+                ## Kikihi = 1  self.update({"sale_layout_cat_id": 1})
+                layout = 1
+            elif set_line.product_id.type == "service":
+                ## Sekouhi = 2 self.update({"sale_layout_cat_id": 2})
+                layout = 2
+
+
+        return {
+            'order_id': sale_order_id,
+            'product_id': set_line.product_id.id,
+            'product_uom_qty': set_line.quantity * self.quantity,
+            'product_uom': set_line.product_id.uom_id.id,
+            'sequence': max_sequence + set_line.sequence,
+            'sale_layout_cat_id': layout 
+        }
+

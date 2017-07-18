@@ -9,7 +9,7 @@
     'website': 'http://www.toki.com',
     'version': '9.0.1.0.0',
     'sequence': 1,
-    'depends': ['sale_layout', 'sale'],
+    'depends': ['sale_layout', 'sale', 'sale_product_set'],
     'data': [ ],
     'installable': True,
 }
