@@ -4,16 +4,16 @@
     <data>
 
 	<!-- base structure of sim form view -->
-	<record model="ir.ui.view" id="sim_view_form">
-	    <field name="name">sim.view.form</field>
-	    <field name="model">sim</field>
+	<record model="ir.ui.view" id="cloud_sim_view_form">
+	    <field name="name">cloud.sim.view.form</field>
+	    <field name="model">cloud.sim</field>
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="SIM">
                     <sheet>
 		        <div class="oe_title" style="float:left;">
-                            <label class="oe_edit_only" string="SIM user number"/>
-                            <h2><field name="user_number"/></h2>
+                            <label class="oe_edit_only" string="Kotei IP address"/>
+                            <h2><field name="ip_address"/></h2>
                         </div>
                         <group>
                             <group>
@@ -25,7 +25,7 @@
                             </group>
                             <group>
                                 <field name="arrival_date"/>
-                                <field name="ip_address"/>
+                                <field name="user_number"/>
                                 <field name="charge_date"/>
                                 <field name="expiration_date"/>
                                 <field name="min_month" invisible="1"/>
@@ -42,11 +42,12 @@
 
 
         <!-- base structure of sim tree view -->
-        <record id="sim_view_tree" model="ir.ui.view"> 
-            <field name="name">sim.view.tree</field> 
-            <field name="model">sim</field> 
+        <record id="cloud_sim_view_tree" model="ir.ui.view"> 
+            <field name="name">cloud.sim.view.tree</field> 
+            <field name="model">cloud.sim</field> 
             <field name="arch" type="xml"> 
                 <tree string="SIM List"> 
+                    <field name="ip_address"/>
                     <field name="user_number"/>
                     <field name="sim_id"/> 
                     <field name="date_sim"/> 
@@ -58,12 +59,12 @@
 
 
         <!-- base structure of sim tree view -->
-        <record id="sim_type_view_tree" model="ir.ui.view">
-            <field name="name">sim.type.view.tree</field>
-            <field name="model">sim.type</field>
+        <record id="cloud_sim_type_view_tree" model="ir.ui.view">
+            <field name="name">cloud.sim.type.view.tree</field>
+            <field name="model">cloud.sim.type</field>
             <field name="arch" type="xml">
                 <tree string="SIM Type">
-                    <field name="sim_type_id"/>
+                    <field name="name"/>
                     <field name="max_storage"/>
                     <field name="business_number"/>
                 </tree>
@@ -71,16 +72,16 @@
         </record>
 
         <!-- base structure of sim_type form view -->
-        <record model="ir.ui.view" id="sim_type_view_form">
-            <field name="name">sim.type.view.form</field>
-            <field name="model">sim.type</field>
+        <record model="ir.ui.view" id="cloud_sim_type_view_form">
+            <field name="name">cloud.sim.type.view.form</field>
+            <field name="model">cloud.sim.type</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="SIM Type">
                     <sheet>
                         <div class="oe_title" style="float:left;">
                             <label class="oe_edit_only" string="SIM ID"/>
-                            <h2><field name="sim_type_id"/></h2>
+                            <h2><field name="name"/></h2>
                         </div>
                         <group>
                             <group>
@@ -149,27 +150,27 @@
 
 
 	<!--The action -->
-        <record model="ir.actions.act_window" id="buttons_sim_action">
+        <record model="ir.actions.act_window" id="buttons_cloud_sim_action">
             <field name="name">SIM list</field>
-            <field name="res_model">sim</field>
+            <field name="res_model">cloud.sim</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name='view_id' ref='sim_view_tree'/>
+            <field name='view_id' ref='cloud_sim_view_tree'/>
         </record>
-       <record model="ir.actions.act_window" id="buttons_sim_type_action">
+       <record model="ir.actions.act_window" id="buttons_cloud_sim_type_action">
             <field name="name">SIM type</field>
-            <field name="res_model">sim.type</field>
+            <field name="res_model">cloud.sim.type</field>
             <field name="view_type">form</field>
             <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='sim_type_view_form'/>
+            <field name='view_id' ref='cloud_sim_type_view_form'/>
         </record>
 
         <!-- top level menu: no parent -->
-        <menuitem id="sim"
-                  action="buttons_sim_action"
+        <menuitem id="cloud_sim"
+                  action="buttons_cloud_sim_action"
                   parent="button_menu_cloud"/>
-        <menuitem id="sim_type"
-                  action="buttons_sim_type_action"
+        <menuitem id="cloud_sim_type"
+                  action="buttons_cloud_sim_type_action"
                   parent="button_menu_cloud"/>
 
     </data>

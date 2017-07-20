@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <record model="ir.ui.view" id="cloud_view_form">
-	    <field name="name">cloud.view.form</field>
-	    <field name="model">cloud</field>
+        <record model="ir.ui.view" id="cloud_order_view_form">
+	    <field name="name">cloud.order.view.form</field>
+	    <field name="model">cloud.order</field>
 	    <field name="type">form</field>
 	    <field name="arch" type="xml">
 	        <form string="TKCLOUD">
                     <header>
+                        <button string="Communication Check" type="object" name="check" states="order"/>
                         <button string="Start" type="object" name="start" states="check,stop"/>
                         <button string="Stop" type="object" name="stop" states="work"/>
                         <button string="Finish" type="object" name="finish" states="work,stop"/>
-                        <field name="state" widget="statusbar" statusbar_visible="check,work,stop,finish"/>
+                        <field name="state" widget="statusbar" statusbar_visible="order,check,work,stop,finish"/>
                     </header>
                     <sheet>
-		        <div class="oe_title">
-                            <label string="Property Infomation"/>
+		        <div class="oe_title" style="float:left;">
+                            <label class="oe_edit_only" string="Property Infomation"/>
                             <h2><field name="property_name" placeholder="Name"/></h2>
                             <field name="property_add"/>
                         </div>
                         <group>
                             <group>
                                 <field name="date_cloud"/>
+                                <field name="communication_date" attrs="{'invisible': ['|', '|', ('state', '!=', 'order'),('state', '!=', 'check')]}"/>
                                 <field name="partner_id"/>
                                 <field name="user_id"/>
                             </group>
@@ -37,9 +39,17 @@
                                 <group>
                                     <group string="DVR">
                                         <field name="dvr1"/>
-                                        <field name="dvr2"/>
-                                        <field name="dvr3"/>
-                                        <field name="dvr4"/>
+                                        <field name="cam1" attrs="{'invisible': [('dvr1', '=', False)]}"/>
+                                        <field name="hdd1" attrs="{'invisible': [('dvr1', '=', False)]}"/>
+                                        <field name="dvr2" attrs="{'invisible': [('dvr1', '=', False)]}"/>
+                                        <field name="cam2" attrs="{'invisible': [('dvr2', '=', False)]}"/>
+                                        <field name="hdd2" attrs="{'invisible': [('dvr2', '=', False)]}"/>
+                                        <field name="dvr3" attrs="{'invisible': [('dvr2', '=', False)]}"/>
+                                        <field name="cam3" attrs="{'invisible': [('dvr3', '=', False)]}"/>
+                                        <field name="hdd3" attrs="{'invisible': [('dvr3', '=', False)]}"/>
+                                        <field name="dvr4" attrs="{'invisible': [('dvr3', '=', False)]}"/>
+                                        <field name="cam4" attrs="{'invisible': [('dvr4', '=', False)]}"/>
+                                        <field name="hdd4" attrs="{'invisible': [('dvr4', '=', False)]}"/>
                                     </group>
                                     <group string="Memo">
                                         <field name="memo" nolabel="1" placeholder="memo"/>
@@ -84,9 +94,9 @@
 	    </field>
 	</record>
 
-        <record model="ir.ui.view" id="cloud_view_tree">
-            <field name="name">cloud.view.tree</field>
-            <field name="model">cloud</field>
+        <record model="ir.ui.view" id="cloud_order_view_tree">
+            <field name="name">cloud.order.view.tree</field>
+            <field name="model">cloud.order</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="TKCLOUD">
@@ -133,19 +143,19 @@
 
 
         <!-- The Action -->
-        <record model="ir.actions.act_window" id="cloud_view_action">
+        <record model="ir.actions.act_window" id="cloud_order_view_action">
             <field name="name">TKCLOUD</field>
-            <field name="res_model">cloud</field>
+            <field name="res_model">cloud.order</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name='view_id' ref='cloud_view_tree'/>
+            <field name='view_id' ref='cloud_order_view_tree'/>
         </record>
 
         <!-- Side Menu Sales -->
         <menuitem id="button_menu_cloud" name="CLOUD" 
                   parent="base.menu_sales"
                   sequence="20"/>
-        <menuitem id="cloud" action="cloud_view_action" 
+        <menuitem id="cloud" action="cloud_order_view_action" 
                   parent="button_menu_cloud"/>
 
 

@@ -4,16 +4,16 @@ from datetime import datetime, timedelta, date
 from dateutil.relativedelta import relativedelta
 
 
-class Sim(models.Model):
-    _name = 'sim'
+class CloudSim(models.Model):
+    _name = 'cloud.sim'
     _order = 'date_sim desc'
     _inherit = ['mail.thread', 'ir.needaction_mixin']
-    _rec_name = 'user_number'
+    _rec_name = 'ip_address'
 
     user_number = fields.Char(string='SIM User Number', required=True, copy=False,)
     phone = fields.Char(string='SIM Tel Number', required=False, copy=False,)
     sim_id = fields.Many2one('sim.type', string='SIM Type ID')
-    date_sim = fields.Datetime(string='Record Date', required=True, index=True, copy=False, default=fields.Datetime.now, help='SIM moushikonda date')
+    date_sim = fields.Datetime(string='Record Date', required=True, copy=False, default=fields.Datetime.now, help='SIM moushikonda date')
     iccid_number = fields.Char(string='Iccid Number', copy=False,)
 
     reception_date = fields.Date(string='Reception Date', required=True, copy=False, store=True, index=True,)
@@ -22,7 +22,7 @@ class Sim(models.Model):
     charge_date = fields.Date(string='Charge Date', store=True)
     min_month = fields.Date(string='Minimum Usage Date', store=True)
     expiration_date = fields.Date(string='Expiration Date', store=True)
-    ip_address = fields.Char('IP Address')
+    ip_address = fields.Char('IP Address', copy=False, required=True)
 
 
     @api.onchange('reception_date')
@@ -42,11 +42,11 @@ class Sim(models.Model):
 
 
 
-class SimType(models.Model):
-    _name = 'sim.type'
-    _rec_name = 'sim_type_id' 
+class CloudSimType(models.Model):
+    _name = 'cloud.sim.type'
+    _rec_name = 'name' 
 
-    sim_type_id = fields.Char(string='SIM Type ID', required=True, copy=False,)
+    name = fields.Char(string='SIM Type ID', required=True, copy=False,)
     max_storage = fields.Char(string='Max Strage')
     business_number = fields.Char(string='Business Number')
     size_code = fields.Char(string='Size Code')
