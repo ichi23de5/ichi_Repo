@@ -36,18 +36,20 @@ class CloudOrder(models.Model):
     end_user = fields.Char('User Name')
     end_phone = fields.Char('User Phone Number')
     contact_check = fields.Boolean('Contact OK')
-    dvr1 = fields.Many2one('product.product', string='dvr1')
+
+    cloud_partner_id = fields.Many2one('cloud.partner', 'Management Company', required=True, domain="[('partner_id', '=', partner_id)]")
+    dvr1 = fields.Many2one('product.product', string='dvr1', domain="[('type','=','product'), ('is_cloud','=',True)]")
     cam1 = fields.Integer('cam1')
-    hdd1 = fields.Integer('hdd1')
-    dvr2 = fields.Many2one('product.product', string='dvr2')
+    hdd1 = fields.Integer('hdd1', default='1')
+    dvr2 = fields.Many2one('product.product', string='dvr2', domain="[('type','=','product'), ('is_cloud','=',True)]")
     cam2 = fields.Integer('cam2')
-    hdd2 = fields.Integer('hdd2')
-    dvr3 = fields.Many2one('product.product', string='dvr3')
+    hdd2 = fields.Integer('hdd2', default='1')
+    dvr3 = fields.Many2one('product.product', string='dvr3', domain="[('type','=','product'), ('is_cloud','=',True)]")
     cam3 = fields.Integer('cam3')
-    hdd3 = fields.Integer('hdd3')
-    dvr4 = fields.Many2one('product.product', string='dvr4')
+    hdd3 = fields.Integer('hdd3', default='1')
+    dvr4 = fields.Many2one('product.product', string='dvr4', domain="[('type','=','product'), ('is_cloud','=',True)]")
     cam4 = fields.Integer('cam4')
-    hdd4 = fields.Integer('hdd4')
+    hdd4 = fields.Integer('hdd4', default='1')
     sim_id = fields.Many2one('cloud.sim', string='SIM IP address', copy=False)
     memo = fields.Text('Memo')
 
@@ -112,3 +114,21 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template' 
 
     rate_id = fields.Many2one('cloud.rate.plan', 'CLOUD Rate Plan')
+
+
+
+class CloudPartner(models.Model):
+    _name = 'cloud.partner'
+    _rec_name = 'name'
+
+    name = fields.Char('Management Partner', required=True, help='Kanrigaisya toshite toroku sareru name.')
+    address =  fields.Char('Management Partner address')
+    phone = fields.Char('Management Partner phone')
+    partner_id = fields.Many2one('res.partner', 'Partner name', required=True, help='Kanrigaisya wo motteiru partner.', 
+                                 domain="[('company_type','=','company'), ('customer','=',True)]")
+    management_number = fields.Char('Management ID')
+    login_name = fields.Char('WEB login ID')
+    login_pass = fields.Char('WEB login PASS') 
+    mail1 = fields.Char('Mail Address 1')
+    mail2 = fields.Char('Mail Address 2')
+    mail3 = fields.Char('Mail Address 3')

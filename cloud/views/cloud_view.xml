@@ -17,18 +17,18 @@
                     <sheet>
 		        <div class="oe_title" style="float:left;">
                             <label class="oe_edit_only" string="Property Infomation"/>
-                            <h2><field name="property_name" placeholder="Name"/></h2>
+                            <h2><field name="property_name" placeholder="name"/></h2>
                             <field name="property_add"/>
                         </div>
                         <group>
                             <group>
-                                <field name="date_cloud"/>
                                 <field name="communication_date" attrs="{'invisible': ['|', '|', ('state', '!=', 'order'),('state', '!=', 'check')]}"/>
+                                <field name="order_id"/>
                                 <field name="partner_id"/>
                                 <field name="user_id"/>
                             </group>
                             <group>
-                                <field name="order_id"/>
+                                <field name="date_cloud" attrs="{'invisible': [('state', '=', 'order')]}"/>
                                 <field name="sim_id"/>
                                 <field name="plan"/>
                                 <field name="rate_id"/>
@@ -37,7 +37,8 @@
                         <notebook> 
                             <page string="Quotation list">
                                 <group>
-                                    <group string="DVR">
+                                    <group string="Constitution">
+                                        <field name="cloud_partner_id"/>
                                         <field name="dvr1"/>
                                         <field name="cam1" attrs="{'invisible': [('dvr1', '=', False)]}"/>
                                         <field name="hdd1" attrs="{'invisible': [('dvr1', '=', False)]}"/>
@@ -130,6 +131,57 @@
             </field>
         </record>
 
+        <!-- Model : cloud.partner -->
+        <record model="ir.ui.view" id="cloud_partner_view_form">
+            <field name="name">cloud.partner.view.form</field>
+            <field name="model">cloud.partner</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Kanrigaisya">
+                    <sheet>
+                        <div class="oe_title" style="float:left;">
+                            <label class="oe_edit_only" string="Name"/>
+                            <h2><field name="name" placeholder="name"/></h2>
+                            <field name="address" placeholder="address"/>
+                            <field name="phone" placeholder="tel"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="management_number"/>
+                            </group>
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="WEB">
+                                <field name="login_name"/>
+                                <field name="login_pass"/>
+                            </group>
+                            <group string="Mail">
+                                <field name="mail1"/>
+                                <field name="mail2"/>
+                                <field name="mail3"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cloud_partner_view_tree">
+            <field name="name">cloud.partner.view.tree</field>
+            <field name="model">cloud.partner</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Kanrigaisya">
+                    <field name="management_number"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- add module -->
         <record id="view_order_form_add_cloud" model="ir.ui.view">
             <field name="name">product.template.form.cloud</field>
             <field name="model">product.template</field>
