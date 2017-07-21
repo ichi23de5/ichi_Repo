@@ -37,7 +37,7 @@ class CloudOrder(models.Model):
     end_phone = fields.Char('User Phone Number')
     contact_check = fields.Boolean('Contact OK')
 
-    cloud_partner_id = fields.Many2one('cloud.partner', 'Management Company', required=True, domain="[('partner_id', '=', partner_id)]")
+    cloud_partner_id = fields.Many2one('cloud.partner', 'Management Company', required=True, domain="[('partner_id', '=', partner_id)]", help='cloud ni toroku suru kanrigaisya.')
     dvr1 = fields.Many2one('product.product', string='dvr1', domain="[('type','=','product'), ('is_cloud','=',True)]")
     cam1 = fields.Integer('cam1')
     hdd1 = fields.Integer('hdd1', default='1')

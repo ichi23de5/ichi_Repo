@@ -22,7 +22,10 @@
                         </div>
                         <group>
                             <group>
+                                <field name="communication_date"/>
+<!--
                                 <field name="communication_date" attrs="{'invisible': ['|', '|', ('state', '!=', 'order'),('state', '!=', 'check')]}"/>
+-->
                                 <field name="order_id"/>
                                 <field name="partner_id"/>
                                 <field name="user_id"/>
