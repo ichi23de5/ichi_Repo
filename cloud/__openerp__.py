@@ -2,7 +2,7 @@
 {
     'name': "CLOUD",
 
-    'summary': "SideMenu[FIX]",
+    'summary': "View[FIX]",
     'author': "ichi2",
     'website': "http://www.toyo-kiki.co.jp",
     'installable': True,

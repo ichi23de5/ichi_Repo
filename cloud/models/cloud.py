@@ -25,14 +25,14 @@ class CloudOrder(models.Model):
     #### auto input ### with 'order_id' ###
     property_name = fields.Char(related='order_id.property_id.name', string='Property Name', store=True, help='Property name ha jiyu ni henkou siteyoi.')
     property_add = fields.Char(related='order_id.property_id.address', string='Property Add', readonly=True, store=True)
-    partner_id = fields.Many2one('res.partner', related='order_id.partner_id', string='PartnerName', readonly=True)
+    partner_id = fields.Many2one('res.partner', related='order_id.partner_id', string='Partner Name', readonly=True)
     user_id = fields.Many2one('res.users', 'Salesperson', related='order_id.user_id', readonly=True)
+    rate_id = fields.Many2one('cloud.rate.plan', 'Rate Plan', required=True)
     plan = fields.Selection([
            ('lite', 'Lite'),
            ('basic', 'Basic'),
            ('entry', 'Entry')],         
            string='TKCLOUD Plan', required=True)
-    rate_id = fields.Many2one('cloud.rate.plan', 'Rate Plan', required=True)
     end_user = fields.Char('User Name')
     end_phone = fields.Char('User Phone Number')
     contact_check = fields.Boolean('Contact OK')
@@ -114,6 +114,7 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template' 
 
     rate_id = fields.Many2one('cloud.rate.plan', 'CLOUD Rate Plan')
+
 
 
 
