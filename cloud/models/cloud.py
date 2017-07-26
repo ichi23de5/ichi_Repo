@@ -50,6 +50,7 @@ class CloudOrder(models.Model):
     dvr4 = fields.Many2one('product.product', string='dvr4', domain="[('type','=','product'), ('is_cloud','=',True)]")
     cam4 = fields.Integer('cam4')
     hdd4 = fields.Integer('hdd4', default='1')
+    tk_number = fields.Char('Kanshisouchi ID')
     sim_id = fields.Many2one('cloud.sim', string='SIM IP address', copy=False)
     memo = fields.Text('Memo')
 

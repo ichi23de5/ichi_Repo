@@ -39,6 +39,7 @@
                             <page string="Quotation list">
                                 <group>
                                     <group string="Constitution">
+                                        <field name="tk_number" attrs="{'required': [('state', '=', 'check')]}"/>
                                         <field name="cloud_partner_id"/>
                                         <field name="dvr1"/>
                                         <field name="cam1" attrs="{'invisible': [('dvr1', '=', False)]}"/>
@@ -102,6 +103,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="TKCLOUD">
+                    <field name="tk_number"/>
                     <field name="property_name"/>
                     <field name="partner_id"/>
                     <field name="plan"/>
