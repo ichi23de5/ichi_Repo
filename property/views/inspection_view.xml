@@ -1,6 +1,6 @@
 <openerp>
     <data>
-	<!-- base structure of inspection form view -->
+	<!-- Model : property.inspection -->
 	<record model="ir.ui.view" id="inspection_view_form">
 	    <field name="name">inspection.view.form</field>
 	    <field name="model">property.inspection</field>
@@ -47,15 +47,12 @@
                 </form>
 	    </field>
 	</record>
-
-
-        <!-- base structure of inspection tree view -->
         <record id="inspection_view_tree" model="ir.ui.view"> 
             <field name="name">inspection.view.tree</field> 
             <field name="model">property.inspection</field> 
             <field name="arch" type="xml"> 
                 <tree string="Inspection List"> 
-                    <field name="property_id"/>
+                    <field name="property_ins_id" invisible="1"/>
                     <field name="date"/> 
                     <field name="inspector_id"/> 
                     <field name="act_type"/>  
@@ -66,7 +63,7 @@
 
 
 
-        <!-- base structure of inspection_request tree view -->
+        <!-- Model : property.inspection.request -->
         <record id="inspection_request_view_tree" model="ir.ui.view">
             <field name="name">inspection.request.view.tree</field>
             <field name="model">property.inspection.request</field>
@@ -80,8 +77,6 @@
                 </tree>
             </field>
         </record>
-
-        <!-- base structure of inspection_request form view -->
         <record model="ir.ui.view" id="inspection_request_view_form">
             <field name="name">inspection.request.view.form</field>
             <field name="model">property.inspection.request</field>

@@ -30,11 +30,11 @@
                             <field name="note" placeholder="Note"/>
                         </div>
                         <notebook>
-                            <page string="Warranty">
-                                <field name="warranty_ids"/>
-                            </page>
                             <page string="Inspection">
                                 <field name="inspection_ids"/>
+                            </page>
+                            <page string="Warranty">
+                                <field name="warranty_ids"/>
                             </page>
                         </notebook>
 		    </sheet>
@@ -108,7 +108,7 @@
             <field name="res_model">property</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name='view_id' ref='property_view_form'/>
+            <field name='view_id' ref='property_view_tree'/>
         </record>
         <record model="ir.actions.act_window" id="buttons_warranty_action">
             <field name="name">Warranty</field>

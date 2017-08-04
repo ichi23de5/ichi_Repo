@@ -20,7 +20,7 @@ class Property(models.Model):
     ### warranty ###
     warranty_ids = fields.One2many('warranty','warranty_id', string='Warranty', help='Hosyu ga attara nyuryoku')
     ### inspection ###
-    inspection_ids = fields.One2many('property.inspection','property_id', string='property_id')
+    inspection_ids = fields.One2many('property.inspection','property_ins_id', string='Inspection')
 
 
 
