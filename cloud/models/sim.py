@@ -12,7 +12,7 @@ class CloudSim(models.Model):
 
     user_number = fields.Char('SIM User Number', required=True, copy=False,)
     phone = fields.Char('SIM Tel Number', required=False, copy=False,)
-    sim_id = fields.Many2one('sim.type', 'SIM Type ID')
+    sim_id = fields.Many2one('cloud.sim.type', 'SIM Type ID')
     date_sim = fields.Datetime('Record Date', required=True, copy=False, default=fields.Datetime.now, help='SIM moushikonda date')
     iccid_number = fields.Char('Iccid Number', copy=False,)
 

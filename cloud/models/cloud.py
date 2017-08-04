@@ -23,8 +23,8 @@ class CloudOrder(models.Model):
     communication_date = fields.Datetime('Communication Date', help='Sotsu kakunin Datetime order.')
     order_id = fields.Many2one('sale.order', 'Quotation Number', required=True, domain=[('purchase_order','=',True),('check_state','=',('manager','president'))], help='Hachusyo naito check dekinai')
     #### auto input ### with 'order_id' ###
-    property_name = fields.Char(related='order_id.property_id.name', string='Property Name', store=True, help='Property name ha jiyu ni henkou siteyoi.')
-    property_add = fields.Char(related='order_id.property_id.address', string='Property Add', readonly=True, store=True)
+    property_name = fields.Char('Property Name', store=True, help='Property name ha jiyu ni henkou siteyoi.')
+    property_add = fields.Char('Property Add', store=True)
     partner_id = fields.Many2one('res.partner', related='order_id.partner_id', string='Partner Name', readonly=True)
     user_id = fields.Many2one('res.users', 'Salesperson', related='order_id.user_id', readonly=True)
     rate_id = fields.Many2one('cloud.rate.plan', 'Rate Plan', required=True)
@@ -74,6 +74,13 @@ class CloudOrder(models.Model):
         if main:
             exp = main + relativedelta(day=1, months=25)
             self.update({'expiration_date': exp})
+            return
+
+    @api.onchange('order_id')
+    def _auto_property(self):
+        if self.order_id:
+            self.update({'property_add': self.order_id.property_id.address})
+            self.update({'property_name': self.order_id.property_id.name})
             return
 
 
@@ -134,3 +141,23 @@ class CloudPartner(models.Model):
     mail1 = fields.Char('Mail Address 1')
     mail2 = fields.Char('Mail Address 2')
     mail3 = fields.Char('Mail Address 3')
+
+    entry_mail_ids = fields.One2many('cloud.partner.mail','cloud_partner_id', string='Entry plan Email')
+
+class CloudPartnerMail(models.Model):
+    _name = 'cloud.partner.mail'
+    _rec_name = 'address'
+
+
+    address = fields.Char('Mail address', required=True, store=True)
+    partner_id = fields.Many2one('res.partner', 'Name', help='Mail address no mochinushi.')
+    cloud_partner_id = fields.Many2one('cloud.partner', 'Cloud partner', index=True, ondelete='cascade', oldname='cloud_id') 
+
+
+    @api.onchange('partner_id')
+    def _auto_address(self):
+        if self.partner_id:
+            mail = self.partner_id.mail_address
+            self.update({'address': mail})
+            return
+

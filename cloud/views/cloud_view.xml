@@ -22,7 +22,6 @@
                         </div>
                         <group>
                             <group>
-<!--                                <field name="communication_date"/>-->
                                 <field name="communication_date" attrs="{'invisible': ['|', ('state', 'not in', ('order','check'))]}"/>
                                 <field name="order_id"/>
                                 <field name="partner_id"/>
@@ -156,17 +155,26 @@
                                 <field name="partner_id"/>
                             </group>
                         </group>
-                        <group>
-                            <group string="WEB">
-                                <field name="login_name"/>
-                                <field name="login_pass"/>
-                            </group>
-                            <group string="Mail">
-                                <field name="mail1"/>
-                                <field name="mail2"/>
-                                <field name="mail3"/>
-                            </group>
-                        </group>
+                        <notebook>
+                            <page name="basic" string="Basic">
+                                <group>
+                                    <group string="WEB">
+                                        <field name="login_name"/>
+                                        <field name="login_pass"/>
+                                    </group>
+                                    <group string="Mail">
+                                        <field name="mail1"/>
+                                        <field name="mail2"/>
+                                        <field name="mail3"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="entry" string="Entry">
+                                <group string="Mail">
+                                    <field name="entry_mail_ids" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -183,6 +191,38 @@
                 </tree>
             </field>
         </record>
+
+        <!-- Model : cloud.partner.mail -->
+        <record model="ir.ui.view" id="cloud_partner_mail_view_form">
+            <field name="name">cloud.partner.mail.view.form</field>
+            <field name="model">cloud.partner.mail</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="TKCLOUD Entry address">
+                    <group>
+                        <group>
+                            <field name="address"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cloud_partner_mail_view_tree">
+            <field name="name">cloud.partner.mail.view.tree</field>
+            <field name="model">cloud.partner.mail</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="TKCLOUD Entry address">
+                    <field name="cloud_partner_id" invisible="1"/>
+                    <field name="address"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
 
         <!-- add module -->
         <record id="view_order_form_add_cloud" model="ir.ui.view">
