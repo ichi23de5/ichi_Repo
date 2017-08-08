@@ -60,24 +60,23 @@
 
 
 
-        <!-- base structure of warranty tree view -->
-        <record id="warranty_view_tree" model="ir.ui.view">
-            <field name="name">warranty.view.tree</field>
-            <field name="model">warranty</field>
+        <!-- Model: product.warranty -->
+        <record id="product_warranty_view_tree" model="ir.ui.view">
+            <field name="name">product.warranty.view.tree</field>
+            <field name="model">product.warranty</field>
             <field name="arch" type="xml">
                 <tree string="Warranty">
                     <field name="warranty_id"/>
                     <field name="scope_of_covaerage"/>
                     <field name="range_coverage"/>
                     <field name="active"/>
+                    <field name="property_war_id" invisible="1"/>
                 </tree>
             </field>
         </record>
-
-        <!-- base structure of warranty form view -->
-        <record model="ir.ui.view" id="warranty_view_form">
-            <field name="name">warranty.view.form</field>
-            <field name="model">warranty</field>
+        <record model="ir.ui.view" id="product_warranty_view_form">
+            <field name="name">product.warranty.view.form</field>
+            <field name="model">product.warranty</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Warranty">
@@ -112,10 +111,10 @@
         </record>
         <record model="ir.actions.act_window" id="buttons_warranty_action">
             <field name="name">Warranty</field>
-            <field name="res_model">warranty</field>
+            <field name="res_model">product.warranty</field>
             <field name="view_type">form</field>
             <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='warranty_view_form'/>
+            <field name='view_id' ref='product_warranty_view_form'/>
         </record>
 
 

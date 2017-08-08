@@ -18,7 +18,7 @@ class Property(models.Model):
 
 
     ### warranty ###
-    warranty_ids = fields.One2many('warranty','warranty_id', string='Warranty', help='Hosyu ga attara nyuryoku')
+    warranty_ids = fields.One2many('product.warranty','property_war_id', string='Warranty')
     ### inspection ###
     inspection_ids = fields.One2many('property.inspection','property_ins_id', string='Inspection')
 
@@ -26,14 +26,16 @@ class Property(models.Model):
 
 
 
-class Warranty(models.Model):
-    _name = 'warranty'
+class ProductWarranty(models.Model):
+    _name = 'product.warranty'
     _order = 'warranty_id desc'
     _inherit = ['mail.thread', 'ir.needaction_mixin']
     _rec_name = 'warranty_id'
 
-    warranty_id = fields.Many2one('product.product', string='Name', required=True)
-    scope_of_covaerage = fields.Char(string='Scope of Covaerage')
-    range_coverage = fields.Integer(string='range_coverage', required=True)
-    active = fields.Boolean(string='Active')
+    warranty_id = fields.Many2one('product.product', 'Name', required=True, domain="[('is_warranty','=',True)]")
+    scope_of_covaerage = fields.Char('Scope of Covaerage')
+    range_coverage = fields.Integer('range_coverage', required=True)
+    active = fields.Boolean('Active')
+
+    property_war_id = fields.Many2one('property', 'Property warranty ID', index=True, ondelete='cascade', oldname='property_id')
 
