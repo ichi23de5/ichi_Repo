@@ -13,17 +13,17 @@
 		    	        <field name="date"/>
                                 <field name="inspector_id" widget="selection"/>
                                 <field name="act_type"/>
-                                <field name="state"/>
+                                <!-- <field name="state"/> -->
                             </group>
                             <group>
-                                <field name="product_memo"/>
+                                <field name="product_memo" attrs="{'invisible': [('act_type', '==', 'mail')]}"/>
                             </group>
                         </group>
                         <div>
-                            <field name="inspection_note" placeholder="Note"/>
+                            <field name="inspection_note" placeholder="Note" attrs="{'invisible': [('act_type', '==', 'mail')]}"/>
                         </div>
                         <notebook>
-                            <page string="request">
+                            <page string="request" attrs="{'invisible': [('act_type', '==', 'mail')]}">
                                 <group>
                                     <group>
                                         <field name="request_id"/>
@@ -37,6 +37,12 @@
                                 <div>
                                     <field name="request_note"/>
                                 </div>
+                            </page>
+                            <page string="Mail notification" attrs="{'invisible': [('act_type', '!=', 'mail')]}">
+                                <group>
+                                    <field name="symptom"/>
+                                    <field name="mail_comment"/>
+                                </group>
                             </page>
                         </notebook>
 		    </sheet>
@@ -56,7 +62,7 @@
                     <field name="date"/> 
                     <field name="inspector_id"/> 
                     <field name="act_type"/>  
-                    <field name="state"/>
+                    <!-- <field name="state"/> -->
                 </tree> 
             </field> 
         </record> 

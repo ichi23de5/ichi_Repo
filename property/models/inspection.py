@@ -19,8 +19,9 @@ class Inspection(models.Model):
         ('change', 'Koukan'),
         ('repair', 'Syuri'),
         ('coordinate', 'Tyousei'),
-        ('others', 'Other'),],
-        string='Act type')
+        ('others', 'Other'),
+        ('mail', 'Mail Notification'),
+        ], 'Act type')
     inspection_note = fields.Text('Note')
     product_memo = fields.Text('product_memo', help='Koukan sita kiki wo kaitene')
     ### request ###
@@ -30,13 +31,17 @@ class Inspection(models.Model):
     request_note = fields.Text('request_note', related='request_id.request_note', readonly=True)
     responder_name = fields.Char('responder_name', related='request_id.user_id.name', readonly=True)
  
-    state = fields.Selection([
-        ('ongoing', 'Taioutyu'),
-        ('arranging', 'Tehaityu'),
-        ('finishing', 'Kanryo'),],
-        string='state')
+#    state = fields.Selection([
+#        ('ongoing', 'Taioutyu'),
+#        ('arranging', 'Tehaityu'),
+#        ('finishing', 'Kanryo'),],
+#        string='state')
     property_ins_id = fields.Many2one('property', 'Property inspection ID', index=True, ondelete='cascade', oldname='property_id')
 
+
+    ### TKCLOUD Mail Notification ###
+    symptom = fields.Char('Symptom', help='Tsuchi shita mail no syojo wo sonomama kaku. Shinkihassei no tokidake touroku suru.')
+    mail_comment = fields.Char('Remarks', help='Tsuchi shita mail no Bikou wo sonomama kaku.')   
 
 class InspectionRequest(models.Model):
     _name = 'property.inspection.request'
