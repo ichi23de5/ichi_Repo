@@ -10,8 +10,8 @@
     'version': "9.0.0.1.1",
     'depends': ['base','sale','product','property','toki_sale'],
     'data': [
-#        'security/user_groups.xml',
-#	'security/ir.model.access.csv',
+        'security/user_groups.xml',
+	'security/ir.model.access.csv',
 	'views/cloud_view.xml',
         'views/sim_view.xml'
     ],

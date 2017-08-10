@@ -3,7 +3,7 @@
 <openerp>
     <data>
 
-	<!-- base structure of sim form view -->
+	<!-- Model: cloud.sim -->
 	<record model="ir.ui.view" id="cloud_sim_view_form">
 	    <field name="name">cloud.sim.view.form</field>
 	    <field name="model">cloud.sim</field>
@@ -39,9 +39,6 @@
                </form>
 	    </field>
 	</record>
-
-
-        <!-- base structure of sim tree view -->
         <record id="cloud_sim_view_tree" model="ir.ui.view"> 
             <field name="name">cloud.sim.view.tree</field> 
             <field name="model">cloud.sim</field> 
@@ -58,7 +55,7 @@
 
 
 
-        <!-- base structure of sim tree view -->
+        <!-- Model: cloud.sim.type -->
         <record id="cloud_sim_type_view_tree" model="ir.ui.view">
             <field name="name">cloud.sim.type.view.tree</field>
             <field name="model">cloud.sim.type</field>
@@ -70,8 +67,6 @@
                 </tree>
             </field>
         </record>
-
-        <!-- base structure of sim_type form view -->
         <record model="ir.ui.view" id="cloud_sim_type_view_form">
             <field name="name">cloud.sim.type.view.form</field>
             <field name="model">cloud.sim.type</field>
@@ -161,7 +156,7 @@
             <field name="name">SIM type</field>
             <field name="res_model">cloud.sim.type</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form,tree</field>
+            <field name="view_mode">tree,form</field>
             <field name='view_id' ref='cloud_sim_type_view_form'/>
         </record>
 
@@ -171,6 +166,7 @@
                   parent="button_menu_cloud"/>
         <menuitem id="cloud_sim_type"
                   action="buttons_cloud_sim_type_action"
+                  groups="cloud.group_operator"
                   parent="button_menu_cloud"/>
 
     </data>

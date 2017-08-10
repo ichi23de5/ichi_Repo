@@ -57,7 +57,9 @@
             <field name="model">product.product</field> 
             <field name="inherit_id" ref="product.product_normal_form_view"/> 
             <field name="arch" type="xml"> 
-                <xpath expr="//field[@name='invoice_policy']" position="replace"/>
+                <xpath expr="//field[@name='invoice_policy']" position="attributes">
+                    <attribute name="inbisible">"1"</attribute>
+                </xpath>
                 <xpath expr="//field[@name='lst_price']" position="after">
                     <field name="open_price"/>
                 </xpath>

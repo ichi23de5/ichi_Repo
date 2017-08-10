@@ -1,3 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-demo_admin, Model admin access,model_cloud,cloud.group_manager,1,1,1,1
-demo_user, Model user access,model_cloud,cloud.group_user,1,0,0,0
+access_cloud_order_user,cloud.order,model_cloud_order,cloud.group_user,1,0,0,0
+access_cloud_sales_user,cloud.order,model_cloud_order,cloud.group_sales_user,1,0,1,0
+access_cloud_order_admin,cloud.order,model_cloud_order,cloud.group_operator,1,1,1,1
+access_cloud_sim_user,cloud.sim,model_cloud_sim,cloud.group_user,1,0,0,0
+access_cloud_sim_admin,cloud.sim,model_cloud_sim,cloud.group_manager,1,1,1,1
+access_cloud_sim_type_user,cloud.sim.type,model_cloud_sim_type,cloud.group_user,1,0,0,0
+access_cloud_sim_type_admin,cloud.sim.type,model_cloud_sim_type,cloud.group_manager,1,1,1,1
+access_cloud_partner_user,cloud.partner,model_cloud_partner,cloud.group_user,1,0,0,0
+access_cloud_partner_admin,cloud.partner,model_cloud_partner,cloud.group_operator,1,1,1,1
+access_cloud_partner_mail_user,cloud.partner.mail,model_cloud_partner_mail,cloud.group_user,1,0,0,0
+access_cloud_partner_mail_admin,cloud.partner.mail,model_cloud_partner_mail,cloud.group_operator,1,1,1,1
+access_cloud_rate_plan_user,cloud.rate.plan,model_cloud_rate_plan,cloud.group_user,1,0,0,0

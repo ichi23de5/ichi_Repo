@@ -2,7 +2,7 @@
 <openerp>
     <data>
 
-	<!-- base structure of Property form view -->
+	<!-- Model: property -->
 	<record model="ir.ui.view" id="property_view_form">
 	    <field name="name">property.view.form</field>
 	    <field name="model">property</field>
@@ -45,7 +45,6 @@
                 </form>
 	    </field>
 	</record>
-        <!-- base structure of property tree view -->
         <record id="property_view_tree" model="ir.ui.view"> 
             <field name="name">property.view.tree</field> 
             <field name="model">property</field> 

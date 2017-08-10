@@ -8,19 +8,19 @@ class Property(models.Model):
     _inherit = ['mail.thread', 'ir.needaction_mixin']
 
     ### property infomation ###
-    name = fields.Char(string='Name', required=True, copy=False)
-    phone = fields.Char(string='TEL', required=False, copy=False)
-    address = fields.Char(string='ADDRESS', copy=False)    
-    partner_name = fields.Many2one('res.partner', string='Partner', domain="[('customer','=',True), ('company_type','=','company')]")
-    key = fields.Char(string="Key", help="Key or Auto lock number when locked")
-    note = fields.Text(string='NOTE')
+    name = fields.Char('Name', required=True, copy=False)
+    phone = fields.Char('TEL', required=False, copy=False)
+    address = fields.Char('ADDRESS', copy=False)    
+    partner_name = fields.Many2one('res.partner', 'Partner', domain="[('customer','=',True), ('company_type','=','company')]")
+    key = fields.Char('Key', help="Key or Auto lock number when locked")
+    note = fields.Text('Note')
 
 
 
     ### warranty ###
-    warranty_ids = fields.One2many('product.warranty','property_war_id', string='Warranty')
+    warranty_ids = fields.One2many('product.warranty','property_war_id', 'Warranty')
     ### inspection ###
-    inspection_ids = fields.One2many('property.inspection','property_ins_id', string='Inspection')
+    inspection_ids = fields.One2many('property.inspection','property_ins_id', 'Inspection')
 
 
 

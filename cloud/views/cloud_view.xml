@@ -8,10 +8,10 @@
 	    <field name="arch" type="xml">
 	        <form string="TKCLOUD">
                     <header>
-                        <button string="Communication Check" type="object" name="check" states="order"/>
-                        <button string="Start" type="object" name="start" states="check,stop"/>
-                        <button string="Stop" type="object" name="stop" states="work"/>
-                        <button string="Finish" type="object" name="finish" states="work,stop"/>
+                        <button string="Communication Check" type="object" name="check" states="order" groups="cloud.group_operator"/>
+                        <button string="Start" type="object" name="start" states="check,stop" groups="cloud.group_operator"/>
+                        <button string="Stop" type="object" name="stop" states="work" groups="cloud.group_operator"/>
+                        <button string="Finish" type="object" name="finish" states="work,stop" groups="cloud.group_operator"/>
                         <field name="state" widget="statusbar" statusbar_visible="order,check,work,stop,finish"/>
                     </header>
                     <sheet>
