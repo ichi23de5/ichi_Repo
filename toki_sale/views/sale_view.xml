@@ -9,9 +9,9 @@
                 <!-- ringi button -->
                 <xpath expr="//header/button[@name='action_confirm']" position="before">
                     <button string="Ringishinsei" type="object" name="request" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'ng'),('state', '=', 'cancel')]}" class="oe_highlight"/>
-                    <button string="OK" type="object" name="manager_ok" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
-                    <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
-                    <button string="President" type="object" name="president" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'manager'),('request_flag', '=', False)]}"/>
+                    <button string="OK" type="object" name="manager_ok" attrs="{'invisible': [('check_state', '!=', 'stand')]}" groups="toki_sale.group_sale_authorizer_manager"/>
+                    <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}" groups="toki_sale.group_sale_authorizer_manager"/>
+                    <button string="President" type="object" name="president" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'manager'),('request_flag', '=', False)]}" groups="toki_sale.group_sale_authorizer_president"/>
                 </xpath>
                 <xpath expr="//field[@name='state']" position="after">
                     <field name="check_state" widget="statusbar" statusbar_visible="stand,manager,president" attrs="{'invisible': [('request_flag', '=', False)]}"/>

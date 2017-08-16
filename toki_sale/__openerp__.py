@@ -11,14 +11,16 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property","base","account","sale_margin","sale_stock",
+                   "sale","property","base","account","sale_margin","sale_stock"
                    ],
         "data": [
                 "views/sale_view.xml",
                 "views/sale_president_view.xml", 
                 "views/product_view.xml",
                 "views/res_partner_view.xml",
-#                "security/ir.model.access.csv",
+                "security/ir.model.access.csv",
+                "security/user_groups.xml",
+#                "security/president_groups.xml",
 #                "report/construction_report.xml",
                 ],
 }
