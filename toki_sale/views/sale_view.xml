@@ -97,11 +97,11 @@
                         <field name="construction_ids" mode="tree">
                             <form string="Construction">
                                 <group>
-                                    <field name="list_id"/>
+                                    <field name="template_id"/>
                                 </group>
                             </form>
                             <tree string="Construction" editable="bottom">
-                                 <field name="list_id"/>
+                                 <field name="template_id"/>
                             </tree>
                         </field>
                         <field name="construction_note" placeholder="Sonota tokkizikou"/>
@@ -125,11 +125,11 @@
                         <field name="construction_ids_o" mode="tree">
                             <form string="Construction">
                                 <group>
-                                    <field name="list_id"/>
+                                    <field name="template_id"/>
                                 </group>
                             </form>
                             <tree string="Construction" editable="bottom">
-                                 <field name="list_id"/>
+                                 <field name="template_id"/>
                             </tree>
                         </field>
                         <field name="construction_note_o" placeholder="Sonota tokkizikou"/>
@@ -161,7 +161,6 @@
                 </xpath>
             </field>
         </record>
-
 
         <record id="view_sale_order_tree_add2" model="ir.ui.view">
             <field name="name">sale.order.tree.add2</field>

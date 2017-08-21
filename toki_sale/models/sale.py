@@ -9,7 +9,6 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
 
-
     check_state = fields.Selection([
          ('stand', 'Check waiting'),
          ('ng', 'Check NG'),
@@ -57,7 +56,7 @@ class SaleOrder(models.Model):
     start_time_o = fields.Char(string='Start time')
     end_time_o = fields.Char(string='End time')
     construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
-    construction_ids_o = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
+    construction_ids_o = fields.One2many('sale.construction','order_o_id', string='yokutsukau tokkizikou model', store=True)
     construction_note_o = fields.Text('Others', help='Sonota tokkizikou')
     memo = fields.Text('memo')
 
@@ -144,18 +143,20 @@ class SaleOrderLine(models.Model):
 
 class Construction(models.Model):
     _name = 'sale.construction'
-    _rec_name = 'list_id'
+    _rec_name = 'template_id'
 
-    list_id = fields.Many2one('sale.construction.list', 'template')
-    order_id = fields.Many2one('sale.order', 'Order Reference', required=True, ondelete='cascade', index=True, copy=False)
+    template_id = fields.Many2one('sale.construction.list', 'Template')
 
- 
+    order_id = fields.Many2one('sale.order', 'Order Reference', ondelete='cascade', copy=False, index=True)
+    order_o_id = fields.Many2one('sale.order', 'Order Reference', ondelete='cascade', copy=False, index=True)
+    
 
 
 class ConstructionList(models.Model):
     _name = 'sale.construction.list'
-    _rec_name = 'list_id'
+    _rec_name = 'template'
 
 
-    list_id = fields.Char(string='template', required=True)
+    template = fields.Char(string='template', required=True)
     note = fields.Text(string='memo')
+
