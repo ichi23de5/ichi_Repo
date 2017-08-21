@@ -37,7 +37,6 @@ class AccountPropertyLine(models.Model):
     _name = 'account.property.line'
     _rec_name = 'origin'
 
-#    invoice_id = fields.Many2one('account.invoice', 'Invoice Reference', required=True, ondelete='cascade', index=True, copy=False)
     invoice_id = fields.Many2one('account.invoice', 'Invoice Reference', ondelete='cascade', index=True, copy=False)
     origin = fields.Char('Source', help='Reference of the document that produced this invoice')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, index=True)

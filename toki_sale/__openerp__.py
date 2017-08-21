@@ -14,13 +14,12 @@
                    "sale","property","base","account","sale_margin","sale_stock"
                    ],
         "data": [
+                "security/user_groups.xml",
+                "security/ir.model.access.csv",
                 "views/sale_view.xml",
                 "views/sale_president_view.xml", 
                 "views/product_view.xml",
                 "views/res_partner_view.xml",
-                "security/ir.model.access.csv",
-                "security/user_groups.xml",
-#                "security/president_groups.xml",
 #                "report/construction_report.xml",
                 ],
 }
