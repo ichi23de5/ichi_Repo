@@ -26,7 +26,7 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
 
-    payee_bank = fields.Many2one('res.partner.bank', string='Hurikomisaki',
+    payee_bank = fields.Many2one('res.partner.bank', 'Hurikomisaki',
                                  domain="[('partner_id.id', '=', '1')]",
                                  help='seikyu surutoki no TOKI furikomisaki bank')
 
