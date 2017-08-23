@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-# Copyright 2015 Anybox S.A.S
-# Copyright 2016 Camptocamp SA
-from odoo import fields, models
-from odoo.addons import decimal_precision as dp
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+from openerp import fields, models
+
+import openerp.addons.decimal_precision as dp
 
 
 class ProductSetLine(models.Model):
@@ -15,18 +16,9 @@ class ProductSetLine(models.Model):
         'product.product', domain=[('sale_ok', '=', True)],
         string='Product', required=True)
     quantity = fields.Float(
-        string='Quantity',
         digits=dp.get_precision('Product Unit of Measure'),
-        required=True,
-        default=1
-    )
+        required=True, default=1)
     product_set_id = fields.Many2one(
-        'product.set',
-        string='Set',
-        ondelete='cascade',
-    )
-    sequence = fields.Integer(
-        string='Sequence',
-        required=True,
-        default=0,
-    )
+        'product.set', string='Set', readonly=True, ondelete='cascade',
+        index=True, copy=False)
+    sequence = fields.Integer(required=True, default=0)
