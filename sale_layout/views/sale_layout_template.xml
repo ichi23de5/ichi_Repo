@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="subtotal_template">
+    <!-- Subtotal -->
+    <t t-if="'subtotal' in p['category'] and p['category'].subtotal is True">
+        <tr class="text-right">
+            <td colspan="6">
+                <strong>
+                <span>
+                    <t t-if="p['category'].name">
+                        <t t-esc="p['category'].name"/>
+                    </t>
+                    <t t-if="not p['category'].name">
+                        Uncategorized
+                    </t>
+                </span>Subtotal:
+                </strong>
+                <span t-esc="p['subtotal']" t-esc-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.currency_id&quot;}"/>
+            </td>
+        </tr>
+    </t>
+</template>
+
+</data>
+</openerp>
