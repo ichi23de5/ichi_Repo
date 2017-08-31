@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template t-name="toki_report.report_sale_order_toki_template">
+            <div class="header">
+                <div class="oe_structure"/>
+                <div class="row">
+                    <div class="col-xs-4 text-left">
+                        <h2><b>OMITSUMORISYO</b></h2>
+                    </div>
+                    <div class="col-xs-3  col-xs-offset-5 text-right" style="margin-top:5px;">
+                        <b><div t-field="doc.name"/></b>
+                        <p><span t-field="doc.date_order" t-field-options='{"format": "yyyy"}'/>Y<span t-field="doc.date_order" t-field-options='{"format": "MM"}'/>M<span t-field="doc.date_order" t-field-options='{"format": "dd"}'/>D</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <p style="font-size:17px"><span t-field="doc.partner_shipping_id"/>
+                        <span t-field="doc.rep_partner_id.name"/> SAMA</p>
+                        <div style="border-bottom: 1px solid black;"/>
+                        <p><span>KAKINOTORIMITSUMORIMOSHIAGEMASU.</span></p>
+                        <div class="row">
+                           <div class="col-xs-8">
+                               <table class="table table-condensed">
+                                   <tr style="border-bottom: 1px solid black;">
+                                       <td class="col-xs-4"><span style="vertical-align: middle;">OMITSUMORIKINGAKU</span></td>
+                                       <td class="col-xs-7 text-center"><span t-field="doc.amount_untaxed" style="font-size:25px" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/></td>
+                                   </tr>
+                               </table>
+                           </div>
+                           <div class="col-xs-4">(ZEINUKIKAKAKU)</div>
+                        </div>
+                        <div class="row">
+                            <span style="font-size:17px"><b>KOUJIBUKKENMEI:</b> <span t-field="doc.property_id"/></span>
+                            <span t-field="doc.version"/><br/>
+                            <b>SHIHARAIJOKEN:</b> <span t-field="doc.partner_id.property_payment_term_id"/><br/>
+                            <b>MITSUMORIKIGEN:</b> 3MONTH
+                        </div>
+                    </div>
+                    <div class="col-xs-5 text-right">
+                        <img src="" 
+                             name="toki" align="right" border="0" />
+                        <div class="row">
+                            <div class="col-xs-3"/>
+                            <span class="col-xs-5"><b>EIGYOUTANTOU:</b></span>
+                            <span class="col-xs-4" t-field="doc.user_id"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8"/>
+                            <span class="col-xs-4" t-field="doc.assistant_id"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page">
+                <div class="oe_structure"/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <!-- Is there a discount on at least one line? -->
+                <div class="row">
+                    <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>TEKIYO</th>
+                                <th class="text-right">KAZU</th>
+                                <th class="text-right">TEIKA</th>
+                                <th class="text-right">TANKA</th>
+                                <th class="text-right">KINGAKU</th>
+                            </tr>
+                       </thead>
+                       <tbody class="sale_tbody">
+                            <t t-foreach="doc.order_line" t-as="l">
+                                <tr t-if="l.product_uom_qty">
+                                    <td>
+                                        <span t-field="l.product_id.description_sale"/> (<span t-field="l.product_id.default_code"/>)
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="l.product_uom_qty"/>
+                                        <span groups="product.group_uom" t-field="l.product_uom"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="l.open_price"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="l.price_unit"/>
+                                    </td>
+                                    <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+                                        <span t-field="l.discount"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="l.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.pricelist_id.currency_id&quot;}"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- GOUKEIKINGAKU -->
+                    <div class="row" name="total">
+                        <div class="col-xs-8 pull-left">
+                            <table class="table  table-round-border">
+                                <tr class="border-black">
+                                    <p t-field="doc.note" style="font-size: 12px;"/>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-xs-4 pull-right">
+                            <table class="table table-condensed">
+                                <tr class="border-black">
+                                    <td><strong>TOTAL</strong></td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_untaxed" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.pricelist_id.currency_id&quot;}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>TAX(8%)</td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.pricelist_id.currency_id&quot;}"/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black">
+                                    <td><strong>ZEIKOMIGOUKEIKINGAKU</strong></td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.pricelist_id.currency_id&quot;}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td><span class="text-left" style="font-size: 11px;">
+                                        CAMERA inspection!<br/>
+                                        20000 TIME.<br/>
+                                        IR rule.
+                                    </span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </div>    
+        </template>
+
+        <template t-name="toki_report.report_sale_order_toki">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="toki_report.report_sale_order_toki_template" t-lang="doc.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

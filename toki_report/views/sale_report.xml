@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <!--<report
+        <report
             id="toki_report_sale_order"
             string="Quotation/TOKI"
             model="sale.order"
@@ -9,7 +9,7 @@
             file="toki_report.report_sale_order_toki"
             name="toki_report.report_sale_order_toki"
             attachment_use="False"
-        />-->
+        />
 
         <report 
             id="toki_report_sale_construction"
