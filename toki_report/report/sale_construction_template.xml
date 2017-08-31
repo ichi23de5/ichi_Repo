@@ -2,7 +2,7 @@
 <openerp>
     <data>
     <!--sale construction report-->
-        <t t-name="toki_report.report_sale_construction_template">
+        <template t-name="toki_report.report_sale_construction_template">
             <div class="header">
                 <div class="oe_structure"/>
                 <div class="row">
@@ -118,15 +118,15 @@
                     </div>
                 </div>
             </div>
-        </t>
+        </template>
         
-        <t t-name="toki_report.report_sale_construction">
+        <template t-name="toki_report.report_sale_construction">
             <t t-call="report.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="toki_report.report_sale_construction_template" t-lang="doc.partner_id.lang"/>
                 </t>
             </t>
-        </t>
+        </template>
     </data>
 </openerp>
 
