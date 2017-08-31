@@ -15,6 +15,6 @@
                    ],
         "data": [
                 "views/sale_report.xml", 
-#                "report/sale_construction_template.xml",
+                "report/sale_construction_template.xml",
                 ],
 }

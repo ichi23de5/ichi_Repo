@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <report
+            id="toki_report_sale_order"
+            string="Quotation/TOKI"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="toki_report.report_sale_order_toki"
+            name="toki_report.report_sale_order_toki"
+            attachment_use="False"
+        />
+
         <report 
-            id="report_sale_construction"
-            string="Construction/TOKI"
+            id="toki_report_sale_construction"
+            string="Construction Order"
             model="sale.order" 
             report_type="qweb-pdf"
-            file="report_sale_construction" 
-            name="report_sale_construction" 
+            file="toki_report.report_sale_construction" 
+            name="toki_report.report_sale_construction"
+            attachment_use="False" 
         />
     </data>
 </openerp>

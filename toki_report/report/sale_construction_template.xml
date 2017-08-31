@@ -1,88 +1,132 @@
-<?xml version="1.0"?>
-<t t-name="report_sale_construction">
-    <div class="page">
-        <div class="row">
-            <div class="col-xs-4 text-left">
-                <h2><b>KojiShiyosyo</b></h2>
-            </div>
-            <div class="col-xs-3  col-xs-offset-5 text-right" style="margin-top:5px;">
-                <b><div t-field="doc.name"/></b>
-                <p><span t-field="doc.date_order" t-field-options='{"format": "yyyy"}'/>Nen<span t-field="doc.date_order" t-field-options='{"format": "MM"}'/>Tsuki<span t-field="doc.date_order" t-field-options='{"format": "dd"}'/>Nichi</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-7">
-                <table>
-                    <tr style="border-bottom: 1px solid black;">
-                        <td style="font-size:17px"><b>Name:</b> 
-                            <span t-field="doc.property_id"/>
-                        </td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid black;">
-                        <td style="font-size:15px"><b>Address:</b>
-                            <span t-field="doc.property_id.address"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-xs-5 text-right">  
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <!--sale construction report-->
+        <t t-name="toki_report.report_sale_construction_template">
+            <div class="header">
+                <div class="oe_structure"/>
                 <div class="row">
-                    <div class="col-xs-3"/>
-                    <span class="col-xs-5"><b>Eigyotantou:</b></span>
-                    <span class="col-xs-4" t-field="doc.user_id"/>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8"/>
-                    <span class="col-xs-4" t-field="doc.assistant_id"/>
-                </div>
-            </div>
-        </div>
-        <div class="row text-center">
-            <h6> * * * </h6>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-            </div>
-            <div class="col-xs-4">
-            </div>
-            <div class="col-xs-4">
-            </div>
-        </div>
-        <div class="row">
-            <table border="1">
-                <tr>
-                    <td t-field="doc.construction_title"/>
-                </tr>
-            </table>
-            <div class="col-xs-4">
-<!--
-                <table class="table table-condensed">
-                    <tbody class="sale_tbody">
-                        <t t-foreach="doc.order_line" t-as="l">
-                        </t>
-                    </tbody>
-                </table>
--->
-            </div>
-
-            <div class="col-xs-4">
-                <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
-                <table class="table table-condensed">
-                    <tbody class="sale_tbody">
-                        <t t-foreach="doc.order_line" t-as="l">
-                            <tr t-if="l.product_uom_qty">
-                                <td>
-                                   <span t-field="l.product_id.description_sale"/> (<span t-field="l.product_id.default_code"/>)
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="l.product_uom_qty"/>
-                                    <span groups="product.group_uom" t-field="l.product_uom"/>
+                    <div class="col-xs-5 text-left">
+                        <h2><b>KOUJISIYOSYO</b></h2>
+                    </div>
+                    <div class="col-xs-3  col-xs-offset-4 text-right">
+                        <b><div t-field="doc.name"/></b>
+                        <p><span t-esc="datetime.datetime.now().strftime('%Y-%m-%d-')"/></p>
+                    </div>
+               </div>
+               <div class="row">
+                    <div class="col-xs-7">
+                        <table>
+                            <tr style="border-bottom: 1px solid black;">
+                                <td style="font-size:20px"><b>BUKKENMEI</b> 
+                                <span t-field="doc.property_id"/>
                                 </td>
                             </tr>
-                        </t>
-                    </tbody>
-                </table>
+                            <tr style="border-bottom: 1px solid black;">
+                                <td style="font-size:18px"><b>JUSYO:</b>
+                                    <span t-field="doc.property_id.address"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-5 text-right">  
+                        <div class="row">
+                            <div class="col-xs-4"/>
+                            <span class="col-xs-5"><b>EIGYOTANTO:</b></span>
+                            <span class="col-xs-3" t-field="doc.user_id"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-9"/>
+                            <span class="col-xs-3" t-field="doc.assistant_id"/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <table border="1">
+                            <tr style="font-size:18px">
+                                <td><b>SEKONICHIJI:</b></td>
+                                <td class="text-center"><span t-field="doc.start_date" t-field-options="{&quot;format&quot;: &quot;yyyy&quot;}"/>Y<span t-field="doc.start_date" t-field-options="{&quot;format&quot;: &quot;MM&quot;}"/>M<span t-field="doc.start_date" t-field-options="{&quot;format&quot;: &quot;dd&quot;}"/>D</td>
+                                <td class="text-center"><b>~</b></td>
+                                <td class="text-center"><span t-field="doc.end_date" t-field-options="{&quot;format&quot;: &quot;yyyy&quot;}"/>Y<span t-field="doc.end_date" t-field-options="{&quot;format&quot;: &quot;MM&quot;}"/>M<span t-field="doc.end_date" t-field-options="{&quot;format&quot;: &quot;dd&quot;}"/>D</td>
+                            </tr>
+                            <tr style="font-size:16px">
+                                <td><b>SEKOKANOJIKAN:</b></td>
+                                <td class="text-center"><span t-field="doc.start_time"/></td>
+                                <td class="text-center"><b>~</b></td>
+                                <td class="text-center"><span t-field="doc.end_time"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-5">
+                        <b>GOIRAISYAMEI:</b><br/>
+                        <span t-field="doc.partner_id"/>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</t>
+
+            <div class="page">
+                <br/>
+                <br/>
+                <p class="text-center">***</p>
+                <div class="row">
+                    <table border="1">
+                        <tr>
+                            <td><h3><span t-field="doc.construction_title"/></h3></td>
+                        </tr>
+                    </table>
+                    <div class="col-xs-7">
+                        <t t-set="display_template" t-value="any([l.template_id for l in doc.construction_ids])"/>
+                        <table class="table table-condensed">
+                            <tbody class="sale_tbody">
+                                <tr style="border-black; background-color: #e0e0e0;">
+                                    <td style="font-size:16px; border-black;"><b>TOKKIJIKO:</b></td>
+                                </tr>
+                                <t t-foreach="doc.construction_ids" t-as="l">
+                                    <tr>
+                                        <td><span t-field="l.template_id"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tr style="border-bottom: 1px solid black;">
+                                <td><span t-field="doc.construction_note"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-5">
+                        <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
+                        <table class="table  table-round-border">
+                            <tbody class="sale_tbody">
+                                <tr style="border-black; background-color: #e0e0e0;">
+                                    <td style="font-size:16px; border-black;"><b>SHIYOKIKI:</b></td>
+                                    <td/>
+                                </tr>
+                                <t t-foreach="doc.order_line" t-as="l">
+                                    <tr t-if="l.product_id.type == 'product'" style="border-bottom: 1px solid black;">
+                                        <td>
+                                           <span t-field="l.product_id.description_sale"/>
+                                           (<span t-field="l.product_id.default_code"/>)
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.product_uom_qty"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+        
+        <t t-name="toki_report.report_sale_construction">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="toki_report.report_sale_construction_template" t-lang="doc.partner_id.lang"/>
+                </t>
+            </t>
+        </t>
+    </data>
+</openerp>
+
