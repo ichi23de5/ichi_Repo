@@ -1,16 +1,28 @@
-<?xml version="1.0"?>
-<data inherit_id="sale.report_saleorder_document">
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="layout_subtotal_template_add">
+            <t t-if="'subtotal' in p['category'] and p['category'].subtotal is True">
+                <tr class="text-right">
+                    <td colspan="6">
+                        <b><t t-esc="p['category'].name"></t>Subtotal:</b>
+                        <span t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/>
+                    </td>
+                </tr>
+            </t>
+        </template>
+
+
+        <template id="report_sale_layout_add" inherit_id="toki_report.report_sale_order_toki_template">
             <xpath expr="//table/tbody[@class='sale_tbody']" position="replace">
                 <t t-foreach="doc.sale_layout_lines(order_id = doc.id)" t-as="p">
-                    <!-- Name of the category -->
-                    <t t-call="sale_layout.category_template"/>
 
                     <!-- Lines associated -->
                     <t t-foreach="p['lines']" t-as="l">
-                        <tr t-if="l.product_uom_qty">
+                        <tr>
                             <td>
-                               <span t-field="l.product_id.description_sale"/> 
-                               <t t-if="l.product_id.default_code">(<span t-field="l.product_id.default_code"/>)</t>
+                                <span t-field="l.product_id.description_sale"/>
+                                <span t-if="l.product_id.default_code"> (<span t-field="l.product_id.default_code"/>)</span>
                             </td>
                             <td class="text-right">
                                 <span t-field="l.product_uom_qty"/>
@@ -26,16 +38,16 @@
                                 <span t-field="l.discount"/>
                             </td>
                             <td class="text-right">
-                                <span t-field="l.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.pricelist_id.currency_id&quot;}"/>
+                                <span t-field="l.price_subtotal"
+                                    t-field-options='{"widget": "monetary", "display_currency": "doc.pricelist_id.currency_id"}'/>
                             </td>
                         </tr>
                     </t>
 
                     <!-- Subtotal -->
-                    <t t-call="sale_layout.subtotal_template"/>
-
-
+                    <t t-call="toki_report.layout_subtotal_template_add"/>
                 </t>
             </xpath>
-       </data>
-    
+       </template>
+    </data>
+</openerp>

@@ -11,11 +11,12 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property","base","account","toki_sale",
+                   "sale","property","base","account","toki_sale","sale_layout",
                    ],
         "data": [
                 "views/sale_report.xml", 
                 "report/sale_order_template.xml",
                 "report/sale_construction_template.xml",
+                "report/sale_layout_add.xml",
                 ],
 }

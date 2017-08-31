@@ -65,7 +65,7 @@
                     <t t-set="display_discount" t-value="any([l.discount for l in doc.order_line])"/>
                     <table class="table table-condensed">
                         <thead>
-                            <tr>
+                            <tr style="background-color: #e0e0e0;">
                                 <th>TEKIYO</th>
                                 <th class="text-right">KAZU</th>
                                 <th class="text-right">TEIKA</th>
@@ -77,7 +77,8 @@
                             <t t-foreach="doc.order_line" t-as="l">
                                 <tr t-if="l.product_uom_qty">
                                     <td>
-                                        <span t-field="l.product_id.description_sale"/> (<span t-field="l.product_id.default_code"/>)
+                                        <span t-field="l.product_id.description_sale"/>
+                                        <span t-if="l.product_id.default_code"> (<span t-field="l.product_id.default_code"/>)</span>
                                     </td>
                                     <td class="text-right">
                                         <span t-field="l.product_uom_qty"/>
