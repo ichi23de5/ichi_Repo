@@ -10,7 +10,8 @@
                 <button class="oe_stat_button"
                         type="object"
                         name="act_out"
-                        icon="fa-wrench">
+                        icon="fa-wrench" 
+                        attrs="{'invisible': [('construction_type', '=', 'toki')]}">
 <!--
                     <span>OutSource</span>
 -->
