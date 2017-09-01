@@ -17,16 +17,11 @@
                 <xpath expr="//field[@name='property_stock_inventory']" position="after">
                     <field name="invoice_policy" widget="radio"/>
                 </xpath>
-                <xpath expr="//field[@name='seller_ids']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
                 <notebook>
                     <page string="Flag">
                         <group string="Flag">
                             <field name="is_warranty"/>
                             <field name="is_cloud"/>
-                            <field name="is_payment"/>
-                            <field name="pay_per"/>
                         </group>
                     </page>
                 </notebook>
@@ -62,7 +57,9 @@
             <field name="model">product.product</field> 
             <field name="inherit_id" ref="product.product_normal_form_view"/> 
             <field name="arch" type="xml"> 
-                <xpath expr="//field[@name='invoice_policy']" position="replace"/>
+                <xpath expr="//field[@name='invoice_policy']" position="attributes">
+                    <attribute name="inbisible">"1"</attribute>
+                </xpath>
                 <xpath expr="//field[@name='lst_price']" position="after">
                     <field name="open_price"/>
                 </xpath>
@@ -72,16 +69,11 @@
                 <xpath expr="//field[@name='property_stock_inventory']" position="after">
                     <field name="invoice_policy" widget="radio"/>
                 </xpath>
-                <xpath expr="//field[@name='seller_ids']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
                 <notebook>
                     <page string="Flag">
                         <group string="Flag">
                             <field name="is_warranty"/>
                             <field name="is_cloud"/>
-                            <field name="is_payment"/>
-                            <field name="pay_per"/>
                         </group>
                     </page>
                 </notebook>

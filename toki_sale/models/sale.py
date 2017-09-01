@@ -9,7 +9,6 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
 
-
     check_state = fields.Selection([
          ('stand', 'Check waiting'),
          ('ng', 'Check NG'),
@@ -18,7 +17,7 @@ class SaleOrder(models.Model):
          ], string='State2', readonly=True, copy=False, index=True, default='ng')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime('Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=True, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=False, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
@@ -32,6 +31,7 @@ class SaleOrder(models.Model):
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     version = fields.Char('Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     purchase_order = fields.Boolean('Purchase order', copy=False)
+    inspection_id = fields.Many2one('property.inspection', string='Inspection', help='Kokokara hosyujouhou nyuryoku')
 
     ### construction field for (old) purchase order ###
     construction_type = fields.Selection([
@@ -49,18 +49,25 @@ class SaleOrder(models.Model):
     construction_ids = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
     construction_note = fields.Text('Others', help='Sonota tokkizikou')
     ### construction OUTSIDE ORDER ###
-    outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
+#    outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
+    outside_id = fields.Many2one('res.partner', string='Outside Supplier')
     amount_outside = fields.Integer(string='Gaityukingaku')
     start_date_o = fields.Date(string='Kouji start')
     end_date_o = fields.Date(string='Kouji end')
     start_time_o = fields.Char(string='Start time')
     end_time_o = fields.Char(string='End time')
     construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
-    construction_ids_o = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
+    construction_ids_o = fields.One2many('sale.construction','order_o_id', string='yokutsukau tokkizikou model', store=True)
     construction_note_o = fields.Text('Others', help='Sonota tokkizikou')
     memo = fields.Text('memo')
 
-
+    direct_flag = fields.Boolean('Direct transaction')
+    @api.onchange('partner_id')
+#    def _flag_direct_transaction(self):
+#        direct = self.partner_id.direct_transaction
+#        if direct:
+#            self.update({'direct_flag':True})
+#            return
 
 
     @api.onchange('construction_type') 
@@ -115,6 +122,8 @@ class SaleOrder(models.Model):
     def president(self):
         self.write({'check_state': 'president'})
 
+
+
     @api.multi 
     def action_cancel(self): 
         self.write({'state': 'cancel'}) 
@@ -129,25 +138,26 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    open_price = fields.Char('Open Price', related='product_id.open_price', required=True, store=True)
-    maker = fields.Char('Maker', related='product_id.maker_id.default_code')
+    open_price = fields.Char('Open Price', related='product_id.open_price', index=True)
+    maker = fields.Char('Maker', related='product_id.maker_id.default_code', index=True)
 
 
 class Construction(models.Model):
     _name = 'sale.construction'
-    _rec_name = 'list_id'
+    _rec_name = 'template_id'
 
-    list_id = fields.Many2one('sale.construction.list', 'template')
-    order_id = fields.Many2one('sale.order', 'Order Reference', required=True, ondelete='cascade', index=True, copy=False)
+    template_id = fields.Many2one('sale.construction.list', 'Template')
 
- 
+    order_id = fields.Many2one('sale.order', 'Order Reference', ondelete='cascade', copy=False, index=True)
+    order_o_id = fields.Many2one('sale.order', 'Order Reference', ondelete='cascade', copy=False, index=True)
+    
 
 
 class ConstructionList(models.Model):
     _name = 'sale.construction.list'
-    _rec_name = 'list_id'
+    _rec_name = 'template'
 
 
-    list_id = fields.Char(string='template', required=True)
+    template = fields.Char(string='template', required=True)
     note = fields.Text(string='memo')
 

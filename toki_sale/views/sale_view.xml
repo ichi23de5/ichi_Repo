@@ -9,17 +9,13 @@
                 <!-- ringi button -->
                 <xpath expr="//header/button[@name='action_confirm']" position="before">
                     <button string="Ringishinsei" type="object" name="request" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'ng'),('state', '=', 'cancel')]}" class="oe_highlight"/>
-                    <button string="OK" type="object" name="manager_ok" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
-                    <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}"/>
-                    <button string="President" type="object" name="president" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'manager'),('request_flag', '=', False)]}"/>
-                </xpath>
-                <xpath expr="//header/button[@name='action_confirm']" position="attributes">
-                    <attribute name="string">President</attribute>
+                    <button string="OK" type="object" name="manager_ok" attrs="{'invisible': [('check_state', '!=', 'stand')]}" groups="toki_sale.group_sale_authorizer_manager"/>
+                    <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}" groups="toki_sale.group_sale_authorizer_manager"/>
+                    <button string="President" type="object" name="president" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'manager'),('request_flag', '=', False)]}" groups="toki_sale.group_sale_authorizer_president"/>
                 </xpath>
                 <xpath expr="//field[@name='state']" position="after">
                     <field name="check_state" widget="statusbar" statusbar_visible="stand,manager,president" attrs="{'invisible': [('request_flag', '=', False)]}"/>
                 </xpath>
-
                 <xpath expr="//field[@name='name']" position="after">
                     <label class="oe_edit_only" string="Property Name"/>
                     <h2><field name="property_id"/></h2>
@@ -46,7 +42,9 @@
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="replace"/>
                 <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="rep_partner_id"/>
+                    <field name="direct_flag" invisible="1"/>
+                    <field name="rep_partner_id" attrs="{'required': [('direct_flag', '==', False)]}"/>
+                    <field name="inspection_id" attrs="{'invisible': [('work_type', '!=', 'inspection')]}"/>
                     <field name="user_id" widget="selection"/>
                     <field name="assistant_id" widget="selection"/>
                     <field name="request_flag" invisible="1"/>
@@ -99,11 +97,11 @@
                         <field name="construction_ids" mode="tree">
                             <form string="Construction">
                                 <group>
-                                    <field name="list_id"/>
+                                    <field name="template_id"/>
                                 </group>
                             </form>
                             <tree string="Construction" editable="bottom">
-                                 <field name="list_id"/>
+                                 <field name="template_id"/>
                             </tree>
                         </field>
                         <field name="construction_note" placeholder="Sonota tokkizikou"/>
@@ -127,11 +125,11 @@
                         <field name="construction_ids_o" mode="tree">
                             <form string="Construction">
                                 <group>
-                                    <field name="list_id"/>
+                                    <field name="template_id"/>
                                 </group>
                             </form>
                             <tree string="Construction" editable="bottom">
-                                 <field name="list_id"/>
+                                 <field name="template_id"/>
                             </tree>
                         </field>
                         <field name="construction_note_o" placeholder="Sonota tokkizikou"/>
@@ -163,7 +161,6 @@
                 </xpath>
             </field>
         </record>
-
 
         <record id="view_sale_order_tree_add2" model="ir.ui.view">
             <field name="name">sale.order.tree.add2</field>
@@ -214,35 +211,5 @@
             </field>
         </record>
 
-
-        <!-- President approval view -->
-<!--        <record model="ir.ui.view" id="sale_president_view_tree">
-            <field name="name">sale.president.view.tree</field>
-            <field name="model">sale.order</field>
-            <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <tree string="President approval pending">
-                    <field name="name"/>
-                    <field name="property_id"/>
-                    <field name="partner_id"/>
-                    <field name="order_date"/>
-                    <field name="check_state"/>
-                </tree>
-            </field>
-        </record>
-        <record model="ir.actions.act_window" id="sale_president_view_action">
-            <field name="name">President</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_mode">tree</field>
-            <field name='view_id' ref='sale_president_view_tree'/>
-        </record>
-
-        <menuitem id="president"
-                  action="sale_president_view_action"
-                  parent="base.menu_sales" sequence="10"/>
-
--->
-
     </data>
 </openerp>
-

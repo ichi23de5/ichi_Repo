@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+	<record id="view_partner_form_add" model="ir.ui.view">
+	    <field name="name">view.res.partner.form.add</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <h3><field name="default_code" domain="[('is_company', '=', True)]" attrs="{'invisible': [('is_company','=', False)]}" placeholder="Nickname"/></h3>
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="replace"/>
+                <xpath expr="//field[@name='email']" position="replace"/>
+                <xpath expr="//field[@name='category_id']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='lang']" position="replace"/>
+                <xpath expr="//field[@name='title']" position="replace"/>
+                <xpath expr="//field[@name='fax']" position="after">
+                    <field name="mail_address"/>
+                    <field name="partner_number" placeholder="partner contraction ID" attrs="{'invisible': [('is_company','=', False)]}"/>
+                </xpath>
+<!--
+                <xpath expr="//field[@name='user_id']" position="before">
+
+                    <field name="direct_transaction"/>
+                </xpath>
+-->
+                <xpath expr="//group/field[@name='supplier']" position="after">
+                    <field name="outside_order"/>
+                    <field name="maker"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_tree_add" model="ir.ui.view">
+            <field name="name">view.res.partner.tree.add</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="fax"/>
+                </xpath>
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <field name="default_code"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record id="base.res_partner_action_add" model="ir.actions.act_window"> 
+            <field name="name">res.partner</field> 
+            <field name="type">ir.actions.act_window</field> 
+            <field name="res_model">res.partner</field> 
+            <field name="view_mode">tree,form,kanban</field>  
+            <field name="view_id" ref="base.view_partner_tree"/> 
+        </record> 
+
+    </data>
+</openerp> 

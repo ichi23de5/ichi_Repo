@@ -11,12 +11,12 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property","base","account","sale_margin","sale_stock","report_aeroo","aeroo_page_count"
+                   "sale","property","base","account","sale_margin","sale_stock",
                    ],
         "data": [
                 "views/sale_view.xml",
                 "views/product_view.xml",
                 "views/res_partner_view.xml",
-                "report/construction_report.xml",
+#                "report/construction_report.xml",
                 ],
 }
