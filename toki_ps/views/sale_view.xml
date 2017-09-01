@@ -11,7 +11,10 @@
                         type="object"
                         name="act_out"
                         icon="fa-wrench">
+<!--
                     <span>OutSource</span>
+-->
+                 <field name="outsource_count" widget="statinfo" string="OutSource"/>
                 </button>
             </xpath>
         </field>

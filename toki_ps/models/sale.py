@@ -8,21 +8,27 @@ import openerp.addons.decimal_precision as dp
 from openerp.tools.misc import formatLang
 from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 import time
-
+from openerp.exceptions import UserError
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
+
+    outsource_count = fields.Integer(string='Outside Orders', compute='_compute_outsource')
 
 
     @api.multi
     def act_out(self):
 
         self.ensure_one()
+        for ln in self:
+            if not ln.outside_id:
+                raise UserError(_('Please input Gaichuugyousha.'))
+                return
+#        poc = ""
         gaichu_product = self.env['product.template'].browse(115)
-#        self.write({'version': gaichu_product.name + str(gaichu_product.id) + str(gaichu_product.uom_po_id.id) + str(gaichu_product.list_price)})
         str = "2017-9-1 00:00:00"
         dt = datetime.strptime( str,DATETIME_FORMAT)
-
+#        self.write({'version':str})
      
         pur_vals = {
             'partner_id':  self.outside_id.id,
@@ -44,3 +50,11 @@ class SaleOrder(models.Model):
         }
 
         return self.env["purchase.order"].create(pur_vals)
+
+
+
+    @api.multi
+    def _compute_outsource(self):
+        for order in self:
+            poc = self.env['purchase.order'].search([('origin', '=', self.name)]) 
+            order.outsource_count = len(poc)
