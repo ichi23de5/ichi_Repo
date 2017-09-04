@@ -24,7 +24,7 @@
         <report
             id="toki_report_outside_order"
             string="Outside Order"
-            model="purchase.order"
+            model="sale.order"
             report_type="qweb-pdf"
             file="toki_report.report_outside_order"
             name="toki_report.report_outside_order"

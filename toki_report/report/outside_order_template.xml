@@ -15,7 +15,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-7">
-                        <p style="font-size:17px"><span t-field="doc.outside_id"/> Want You</p>
+                        <p style="font-size:17px"><span t-field="doc.outside_id"/>Want You</p>
                         <div style="border-bottom: 1px solid black;"/>
                         <p><span>KAKINOTORIHACCHUMOUSIAGEMASU.</span></p>
                         <div class="row">
@@ -53,12 +53,71 @@
             <div class="page">
                 <div class="oe_structure"/>
                 <div class="row"/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row">
+                    <table class="col-xs-12 text-center"> 
+                        <tr> 
+                            <td>***</td> 
+                        </tr> 
+                    </table> 
                 </div>
+                <div class="row">
+                    <table>
+                        <tr style="font-size:20px; border-bottom: 1px solid black;">
+                            <td><b>BUKKENMEI:</b><span t-field="doc.property_id"/></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:16px; border-bottom: 1px solid black;"><b>JUSYO:</b><span t-field="doc.property_id.address"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <br/>
+                <div style="border-bottom: 1px solid black;"/>
+                <div class="row">
+                    <table border="1">
+                        <tr>
+                            <td><h3><span t-field="doc.construction_title_o"/></h3></td>
+                        </tr>
+                    </table>
+                    <div class="col-xs-7">
+                        <span style="font-size:18px">
+                            <b>SEKOUNICHIJI:</b>
+                            <span t-field="doc.start_date_o" t-field-options='{"format": "YYYY"}'/>Y<span t-field="doc.start_date_o" t-field-options='{"format": "MM"}'/>M<span t-field="doc.start_date_o" t-field-options='{"format": "dd"}'/>D
+                            <b> ~ </b>
+                            <span t-field="doc.end_date_o" t-field-options='{"format": "yyyy"}'/>Y<span t-field="doc.end_date_o" t-field-options='{"format": "MM"}'/>M<span t-field="doc.end_date_o" t-field-options='{"format": "dd"}'/>D
+                            <br/>
+                            <span style="font-size:16px"/>
+                            <b>SEKOUKANOUJIKAN:</b>
+                            <span t-field="doc.start_time_o"/>
+                            <b> ~ </b>
+                            <span t-field="doc.end_time_o"/>
+                        </span>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <t t-set="display_template" t-value="any([l.template_id for l in doc.construction_ids_o])"/>
+                    <table class="table table-condensed">
+                        <tbody class="sale_tbody">
+                            <tr style="border-black; background-color: #e0e0e0;">
+                                <td style="font-size:16px; border-black;"><b>BIKOU</b></td>
+                            </tr>
+                            <t t-foreach="doc.construction_ids_o" t-as="l">
+                                <tr>
+                                    <td><span t-field="l.template_id"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tr style="border-bottom: 1px solid black;">
+                            <td><span t-field="doc.construction_note_o"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="oe_structure"/>
             </div>
         </template>
 
@@ -72,6 +131,3 @@
 
     </data>
 </openerp>
-
-
-
