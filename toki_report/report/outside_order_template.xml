@@ -3,6 +3,7 @@
     <data>
         <template t-name="toki_report.report_outside_order_template">
             <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            <t t-set="so" t-value="doc.order_id"/>
             <div class="header">
                 <div class="row">
                     <div class="col-xs-4 text-left">
@@ -15,7 +16,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-7">
-                        <p style="font-size:17px"><span t-field="doc.outside_id"/>Want You</p>
+                        <p style="font-size:17px"><span t-field="doc.partner_id"/>Want You</p>
                         <div style="border-bottom: 1px solid black;"/>
                         <p><span>KAKINOTORIHACCHUMOUSIAGEMASU.</span></p>
                         <div class="row">
@@ -23,7 +24,7 @@
                                 <table class="table table-condensed">
                                     <tr style="border-bottom: 1px solid black;">
                                         <td class="col-xs-4"><span style="vertical-align: middle;">HACCHUKINAGKU</span></td>
-                                        <td class="col-xs-7 text-center" style="font-size:25px"><span t-field="doc.amount_outside"/>YEN</td>
+                                        <td class="col-xs-7 text-center" style="font-size:25px"><span t-field="doc.amount_untaxed"/></td>
                                     </tr>
                                 </table>
                             </div>
@@ -31,7 +32,7 @@
                         </div>
                         <div class="row">
                             *JOUKIKAKAKUHAZEINUKIKAKAKUDESU.<br/>
-                            <b>SIHARAIJOKEN:</b> <span t-field="doc.outside_id.property_supplier_payment_term_id"/><br/>
+                            <b>SIHARAIJOKEN:</b> <span t-field="doc.partner_id.property_supplier_payment_term_id"/><br/>
                         </div>
                     </div>
                     <div class="col-xs-5 text-right">
@@ -40,11 +41,11 @@
                         <div class="row">
                             <div class="col-xs-3"/>
                             <span class="col-xs-5"><b>EIGYOTANTO </b></span>
-                            <span class="col-xs-4" t-field="doc.user_id"/>
+                            <span class="col-xs-4" t-field="so.user_id"/>
                         </div>
                         <div class="row">
                             <div class="col-xs-8"/>
-                            <span class="col-xs-4" t-field="doc.assistant_id"/>
+                            <span class="col-xs-4" t-field="so.assistant_id"/>
                         </div>
                     </div>
                 </div>
@@ -68,10 +69,10 @@
                 <div class="row">
                     <table>
                         <tr style="font-size:20px; border-bottom: 1px solid black;">
-                            <td><b>BUKKENMEI:</b><span t-field="doc.property_id"/></td>
+                            <td><b>BUKKENMEI:</b><span t-field="so.property_id"/></td>
                         </tr>
                         <tr>
-                            <td style="font-size:16px; border-bottom: 1px solid black;"><b>JUSYO:</b><span t-field="doc.property_id.address"/></td>
+                            <td style="font-size:16px; border-bottom: 1px solid black;"><b>JUSYO:</b><span t-field="so.property_id.address"/></td>
                         </tr>
                     </table>
                 </div>
@@ -80,40 +81,40 @@
                 <div class="row">
                     <table border="1">
                         <tr>
-                            <td><h3><span t-field="doc.construction_title_o"/></h3></td>
+                            <td><h3><span t-field="so.construction_title_o"/></h3></td>
                         </tr>
                     </table>
                     <div class="col-xs-7">
                         <span style="font-size:18px">
                             <b>SEKOUNICHIJI:</b>
-                            <span t-field="doc.start_date_o" t-field-options='{"format": "YYYY"}'/>Y<span t-field="doc.start_date_o" t-field-options='{"format": "MM"}'/>M<span t-field="doc.start_date_o" t-field-options='{"format": "dd"}'/>D
+                            <span t-field="so.start_date_o" t-field-options='{"format": "YYYY"}'/>Y<span t-field="so.start_date_o" t-field-options='{"format": "MM"}'/>M<span t-field="so.start_date_o" t-field-options='{"format": "dd"}'/>D
                             <b> ~ </b>
-                            <span t-field="doc.end_date_o" t-field-options='{"format": "yyyy"}'/>Y<span t-field="doc.end_date_o" t-field-options='{"format": "MM"}'/>M<span t-field="doc.end_date_o" t-field-options='{"format": "dd"}'/>D
+                            <span t-field="so.end_date_o" t-field-options='{"format": "yyyy"}'/>Y<span t-field="so.end_date_o" t-field-options='{"format": "MM"}'/>M<span t-field="so.end_date_o" t-field-options='{"format": "dd"}'/>D
                             <br/>
                             <span style="font-size:16px"/>
                             <b>SEKOUKANOUJIKAN:</b>
-                            <span t-field="doc.start_time_o"/>
+                            <span t-field="so.start_time_o"/>
                             <b> ~ </b>
-                            <span t-field="doc.end_time_o"/>
+                            <span t-field="so.end_time_o"/>
                         </span>
                     </div>
                 </div>
                 <br/>
                 <div class="row">
-                    <t t-set="display_template" t-value="any([l.template_id for l in doc.construction_ids_o])"/>
+                    <t t-set="display_template" t-value="any([l.template_id for l in so.construction_ids_o])"/>
                     <table class="table table-condensed">
                         <tbody class="sale_tbody">
                             <tr style="border-black; background-color: #e0e0e0;">
                                 <td style="font-size:16px; border-black;"><b>BIKOU</b></td>
                             </tr>
-                            <t t-foreach="doc.construction_ids_o" t-as="l">
+                            <t t-foreach="so.construction_ids_o" t-as="l">
                                 <tr>
                                     <td><span t-field="l.template_id"/></td>
                                 </tr>
                             </t>
                         </tbody>
                         <tr style="border-bottom: 1px solid black;">
-                            <td><span t-field="doc.construction_note_o"/></td>
+                            <td><span t-field="so.construction_note_o"/></td>
                         </tr>
                     </table>
                 </div>
@@ -131,3 +132,5 @@
 
     </data>
 </openerp>
+
+

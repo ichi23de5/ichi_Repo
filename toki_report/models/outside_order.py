@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
 from openerp import models, fields, api, _
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
@@ -9,6 +7,11 @@ from openerp.tools.misc import formatLang
 from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 import time
 from openerp.exceptions import UserError
+
+class PurchaseOrder(models.Model):
+    _inherit = "purchase.order"
+
+    order_id = fields.Many2one('sale.order', 'Order')
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -24,7 +27,7 @@ class SaleOrder(models.Model):
                 raise UserError(_('Please input Gaichuugyousha.'))
                 return
 
-        gaichu_product = self.env['product.template'].browse(115)
+        gaichu_product = self.env['product.template'].browse(10)
         str = "2017-9-1 00:00:00"
         dt = datetime.strptime( str,DATETIME_FORMAT)
      
@@ -36,6 +39,7 @@ class SaleOrder(models.Model):
             'date_order':  datetime.now().strftime(DATETIME_FORMAT),
             'date_planned':  datetime.now().strftime(DATETIME_FORMAT),
             'origin': self.name,
+            'order_id': self.id,
             'order_line': [
                 (0, 0, {
                     'name': gaichu_product.name,
