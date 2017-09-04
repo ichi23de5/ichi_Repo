@@ -10,7 +10,7 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "base",
+                   "base","account",
                    ],
         "data": [
                 "views/res_bank_view.xml",

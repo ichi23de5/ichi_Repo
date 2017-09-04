@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	<record id="view_partner_form_report_flag" model="ir.ui.view">
+	    <field name="name">view.res.partner.form.report.flag</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="quotation_template" attrs="{'invisible': [('customer','=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_partner_quotation_form" model="ir.ui.view">
+            <field name="name">view.partner.quotation.form</field>
+            <field name="model">res.partner.quotation.template</field>
+	    <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Quotation Template">
+                    <sheet>
+                        <div>
+                            <center><field name="image" widget="image"/></center>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="maker_flag"/>
+                            <field name="code_flag"/>
+                            <field name="warranty_flag"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

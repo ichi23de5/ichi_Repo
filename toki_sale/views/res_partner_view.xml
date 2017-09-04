@@ -22,7 +22,7 @@
                     <field name="partner_number" placeholder="partner contraction ID" attrs="{'invisible': [('is_company','=', False)]}"/>
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="before">
-                    <field name="direct_transaction"/>
+                    <field name="direct_transaction" attrs="{'invisible': [('customer','=', False)]}"/>
                 </xpath>
                 <xpath expr="//group/field[@name='supplier']" position="after">
                     <field name="outside_order"/>

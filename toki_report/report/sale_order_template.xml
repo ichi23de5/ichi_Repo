@@ -34,7 +34,8 @@
                             <span style="font-size:17px"><b>KOUJIBUKKENMEI:</b> <span t-field="doc.property_id"/></span>
                             <span t-field="doc.version"/><br/>
                             <b>SHIHARAIJOKEN:</b> <span t-field="doc.partner_id.property_payment_term_id"/><br/>
-                            <b>MITSUMORIKIGEN:</b> 3MONTH
+                            <b>MITSUMORIKIGEN:</b> 3MONTH<br/>
+                            <span t-if="doc.partner_id.quotation_template.warranty_flag"><b>SEIHINHOSYO:</b> ?????</span>
                         </div>
                     </div>
                     <div class="col-xs-5 text-right">
@@ -54,6 +55,7 @@
             </div>
             <div class="page">
                 <div class="oe_structure"/>
+                    <span t-if="doc.partner_id.quotation_template.warranty_flag"><br/></span>
                     <br/>
                     <br/>
                     <br/>
@@ -66,6 +68,7 @@
                     <table class="table table-condensed">
                         <thead>
                             <tr style="background-color: #e0e0e0;">
+                                <th t-if="doc.partner_id.quotation_template.maker_flag">MAKER</th>
                                 <th>TEKIYO</th>
                                 <th class="text-right">KAZU</th>
                                 <th class="text-right">TEIKA</th>
@@ -76,6 +79,9 @@
                        <tbody class="sale_tbody">
                             <t t-foreach="doc.order_line" t-as="l">
                                 <tr t-if="l.product_uom_qty">
+                                    <td class="text-right" t-if="doc.partner_id.quotation_template.maker_flag">
+                                        <span t-field="l.maker"/>
+                                    </td>
                                     <td>
                                         <span t-field="l.product_id.description_sale"/>
                                         <span t-if="l.product_id.default_code"> (<span t-field="l.product_id.default_code"/>)</span>

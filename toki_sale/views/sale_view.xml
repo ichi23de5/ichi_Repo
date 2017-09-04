@@ -109,7 +109,7 @@
                     <page string="Outside" attrs="{'invisible': [('construction_type', '==', 'toki')]}">
                         <group class="oe_left">
                             <field name="outside_id"/>
-                            <field name="amount_outside"/>
+                            <!--<field name="amount_outside"/>-->
                         </group>
                         <group>
                             <group string="Construction Dates">
