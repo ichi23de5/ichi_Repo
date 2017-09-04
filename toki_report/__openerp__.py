@@ -14,6 +14,7 @@
                    "sale","property","base","account","toki_sale","sale_layout",
                    ],
         "data": [
+                "security/ir.model.access.csv",
                 "views/sale_report.xml", 
                 "views/res_partner_view.xml",
                 "report/sale_order_template.xml",
