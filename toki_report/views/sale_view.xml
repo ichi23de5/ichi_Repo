@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_order_outsourcing_form">
+            <field name="name">sale.order.form.outside</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button"
+                            type="object"
+                            name="act_out"
+                            icon="fa-wrench" 
+                            attrs="{'invisible': [('construction_type', '=', 'toki')]}">
+                        <field name="outsource_count" widget="statinfo" string="OutSource"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

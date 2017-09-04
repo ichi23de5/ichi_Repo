@@ -15,10 +15,12 @@
                    ],
         "data": [
                 "security/ir.model.access.csv",
-                "views/sale_report.xml", 
+                "views/custom_report.xml", 
+                "views/sale_view.xml",
                 "views/res_partner_view.xml",
                 "report/sale_order_template.xml",
                 "report/sale_construction_template.xml",
+                "report/outside_order_template.xml",
                 "report/sale_layout_add.xml",
                 ],
 }

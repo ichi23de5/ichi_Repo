@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
-import parser
+import outside_order
 import res_partner

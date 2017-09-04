@@ -20,5 +20,16 @@
             name="toki_report.report_sale_construction"
             attachment_use="False" 
         />
+
+        <report
+            id="toki_report_outside_order"
+            string="Outside Order"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            file="toki_report.report_outside_order"
+            name="toki_report.report_outside_order"
+            attachment_use="False"
+        />
+
     </data>
 </openerp>

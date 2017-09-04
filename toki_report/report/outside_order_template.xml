@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template t-name="toki_report.report_outside_order_template">
+            <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-4 text-left">
+                        <h2><b>HAcchusyo</b></h2>
+                    </div>
+                    <div class="col-xs-3  col-xs-offset-5 text-right" style="margin-top:5px;">
+                        <b><div t-field="doc.name"/></b>
+                        <p><span t-esc="datetime.datetime.now().strftime('%YY%mM%dD')"/></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <p style="font-size:17px"><span t-field="doc.outside_id"/> Want You</p>
+                        <div style="border-bottom: 1px solid black;"/>
+                        <p><span>KAKINOTORIHACCHUMOUSIAGEMASU.</span></p>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <table class="table table-condensed">
+                                    <tr style="border-bottom: 1px solid black;">
+                                        <td class="col-xs-4"><span style="vertical-align: middle;">HACCHUKINAGKU</span></td>
+                                        <td class="col-xs-7 text-center" style="font-size:25px"><span t-field="doc.amount_outside"/>YEN</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-xs-4"/>
+                        </div>
+                        <div class="row">
+                            *JOUKIKAKAKUHAZEINUKIKAKAKUDESU.<br/>
+                            <b>SIHARAIJOKEN:</b> <span t-field="doc.outside_id.property_supplier_payment_term_id"/><br/>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 text-right">
+                        <img src="" 
+                          name="toki" align="right" border="0"/>
+                        <div class="row">
+                            <div class="col-xs-3"/>
+                            <span class="col-xs-5"><b>EIGYOTANTO </b></span>
+                            <span class="col-xs-4" t-field="doc.user_id"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8"/>
+                            <span class="col-xs-4" t-field="doc.assistant_id"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row"/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </template>
+
+        <template t-name="toki_report.report_outside_order">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="toki_report.report_outside_order_template" t-lang="doc.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>
+
+
+
