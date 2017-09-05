@@ -21,6 +21,7 @@
                 "report/outside_order_template.xml",
                 "report/account_invoice_header.xml",
                 "report/account_invoice_template.xml",
+                "report/account_invoice_template2.xml",
                 "report/sale_layout_add.xml",
                 "views/custom_report.xml",
                 ],

@@ -41,5 +41,15 @@
             attachment_use="False"
         />
 
+        <report
+            id="toki_report_account_invoice2"
+            string="Invoice/TOKI2"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="toki_report.report_account_invoice2"
+            name="toki_report.report_account_invoice2"
+            attachment_use="False"
+        />
+
     </data>
 </openerp>
