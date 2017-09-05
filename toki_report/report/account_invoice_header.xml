@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template t-name="toki_report.report_account_invoice_header">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-4 text-left">
+                        <h2><b> SEIKYUSYO</b></h2>
+                    </div>
+                    <div class="col-xs-3  col-xs-offset-5 text-right" style="margin-top:5px;">
+                        <b><div t-field="doc.number"/></b>
+                        <p>
+                            <span t-field="doc.date_invoice" t-field-options="{&quot;format&quot;: &quot;YYYY&quot;}"/>Y
+                            <span t-field="doc.date_invoice" t-field-options="{&quot;format&quot;: &quot;MM&quot;}"/>M
+                            <span t-field="doc.date_invoice" t-field-options="{&quot;format&quot;: &quot;dd&quot;}"/>D
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <p style="font-size:20px"><span t-field="doc.partner_id"/> Want You</p>
+                        <div style="border-bottom: 1px solid black;"/>
+                        <div class="row">
+                            <br/>
+                            <p>ZIP:<span t-field="doc.partner_id.zip"/><br/>
+                                <span t-field="doc.partner_id.state_id"/>
+                                <span t-field="doc.partner_id.city"/>
+                                <span t-field="doc.partner_id.street"/><br/>
+                                <span t-field="doc.partner_id.street2"/>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <table class="col-xs-7">
+                                <tr>
+                                    <td><b>TEL: </b><span t-field="doc.partner_id.phone"/></td>
+                                </tr>
+                                <tr>
+                                    <td><b>FAX: </b><span t-field="doc.partner_id.fax"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 text-right">
+                        <img src="" name="toki" align="right" border="0"/>
+                        <div class="row">
+                            <div class="col-xs-3"/>
+                            <table class="text-right">
+                                <tr class="text-right">
+                                    <td><b>FURIKOMISAKI: </b></td>
+                                    <td class="text-left">
+                                        <span t-field="doc.partner_id.payee_bank.bank_id"/>
+                                        <span t-field="doc.partner_id.payee_bank.branch"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td/>
+                                    <td class="text-left">
+                                        <span t-field="doc.partner_id.payee_bank.acc_type"/>
+                                        <span t-field="doc.partner_id.payee_bank.acc_number"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td/>
+                                    <td class="text-left">TESURYOHAGOFUTANKUDASAI.</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </data>
+</openerp>
+

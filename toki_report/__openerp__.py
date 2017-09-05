@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 {
         "name": " TOKI report",
         "summary": "construction ",
@@ -11,16 +10,18 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property","base","account","purchase","report","toki_sale","sale_layout",
+                   "sale","property","base","account","purchase","report","toki_sale","toki_account","toki_bank","sale_layout",
                    ],
         "data": [
-                "security/ir.model.access.csv",
-                "views/custom_report.xml", 
+                "security/ir.model.access.csv", 
                 "views/sale_view.xml",
                 "views/res_partner_view.xml",
                 "report/sale_order_template.xml",
                 "report/sale_construction_template.xml",
                 "report/outside_order_template.xml",
+                "report/account_invoice_header.xml",
+                "report/account_invoice_template.xml",
                 "report/sale_layout_add.xml",
+                "views/custom_report.xml",
                 ],
 }
