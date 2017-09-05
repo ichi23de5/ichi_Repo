@@ -3,7 +3,7 @@
 from openerp import api, fields ,models, _
 
 class ProductTemplate(models.Model):
-	_inherit = "product.template"
+    _inherit = "product.template"
 
     lease_names = fields.Many2many("product.lease", string='Lease Name', copy=True)
 
