@@ -14,7 +14,7 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     outsource_count = fields.Integer(string='Outside Orders', compute='_compute_outsource')
-
+    test_m2m = fields.Many2many("product.template", "product_temp_m2m","sale_id","prod_id", string="test M2M")
 
     @api.multi
     def act_out(self):
@@ -58,3 +58,13 @@ class SaleOrder(models.Model):
         for order in self:
             poc = self.env['purchase.order'].search([('origin', '=', self.name)]) 
             order.outsource_count = len(poc)
+
+
+class PurchaseOrder(models.Model):
+    _inherit = "purchase.order"
+
+    @api.model
+    def create(self, vals):
+        if vals.get('name', 'New') == 'New':
+            vals['name'] = self.env['ir.sequence'].next_by_code('sale.order.ps') or '/'
+        return super(PurchaseOrder, self).create(vals)

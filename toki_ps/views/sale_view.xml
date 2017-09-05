@@ -18,6 +18,10 @@
                  <field name="outsource_count" widget="statinfo" string="OutSource"/>
                 </button>
             </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="test_m2m" widget="many2many_kanban"/>
+                </xpath>
+
         </field>
     </record>
 
