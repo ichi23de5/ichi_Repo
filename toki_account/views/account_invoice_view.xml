@@ -2,56 +2,113 @@
 
 <openerp>
     <data>
+        <!-- account.invoice -->
         <record id="view_account_invoice_form_add" model="ir.ui.view">
             <field name="name">account.invoice.form.add</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="before">
-                    <field name="property_name"/>
-                </xpath>
-                <xpath expr="//field[@name='date_due']" position="after">
-                    <field name="completion_date"/>
-                </xpath>
+                <xpath expr="//field[@name='name']" position="after"> 
+                    <field name="completion_date"/> 
+                    <field name="purchase_number"/> 
+                </xpath> 
                 <xpath expr="//field[@name='team_id']" position="attributes">
                     <attribute name="invisible">"1"</attribute>
                 </xpath>
+                <xpath expr="//field[@name='comment']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='account_id']" position="attributes"> 
+                    <attribute name="invisible">1</attribute> 
+                </xpath> 
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='invoice_line_tax_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <notebook> 
+                    <page string="Property Line"> 
+                        <field name="property_line_ids"/> 
+                    </page> 
+                </notebook>
             </field>
         </record>
 
-        <record id="view_account_invoice_tree_add" model="ir.ui.view">
-            <field name="name">account.invoice.tree.add</field>
-            <field name="model">account.invoice</field>
-            <field name="inherit_id" ref="account.invoice_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="property_name"/>
-                </xpath>
-                <xpath expr="//field[@name='user_id']" position="after">
+        <!-- account.invoice.line -->
+        <record id="view_invoice_line_tree_add" model="ir.ui.view"> 
+            <field name="name">account.invoice.line.tree.add</field> 
+            <field name="model">account.invoice.line</field>
+            <field name="inherit_id" ref="account.view_invoice_line_tree"/> 
+            <field name="arch" type="xml"> 
+                <xpath expr="//field[@name='name']" position="after">
                     <field name="completion_date"/>
+                    <field name="purchase_number"/>
                 </xpath>
             </field>
         </record>
 
+        <!-- account.property.line -->
+        <record id="account_property_line_view_tree" model="ir.ui.view"> 
+            <field name="name">account.property.line.tree</field> 
+            <field name="model">account.property.line</field> 
+            <field name="arch" type="xml"> 
+                <tree string="Property Lines"> 
+                    <field name="origin" invisible="1"/>
+                    <field name="completion_date"/> 
+                    <field name="property_id"/> 
+                    <field name="purchase_number"/>
+                    <field name="type_id"/>
+                    <field name="price_total"/> 
+                </tree> 
+            </field> 
+        </record> 
+        <record id="account_property_line_view_form" model="ir.ui.view">
+            <field name="name">account.property.line.form</field>
+            <field name="model">account.property.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Property List">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="invoice_id" invisible="1"/>
+                                <field name="origin"/>
+                                <field name="property_id"/>
+                            </group>
+                            <group>
+                                <field name="completion_date"/>
+                                <field name="purchase_number"/>
+                                <field name="type_id"/>
+                                <field name="price_total"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- account.act.type -->
         <record model="ir.ui.view" id="view_account_act_type_form">
             <field name="name">view.account.act.type.form</field>
             <field name="model">account.act.type</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <group>
-                    <field name="type_id"/>
-                </group>
-                <group>
-                    <group>
-                        <field name="category"/>
-                    </group>
-                    <group>
-                    </group>
-                </group>
+                <form string="Act type">
+                    <sheet>
+                        <group>
+                            <field name="type_id"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="category"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                   </sheet>
+                </form>
             </field>
         </record>
 
-
+        <!-- sale.order -->
         <record id="view_sale_order_form_add2" model="ir.ui.view">
             <field name="name">sale.order.form.add2</field>
             <field name="model">sale.order</field>
