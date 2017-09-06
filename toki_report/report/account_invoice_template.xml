@@ -71,7 +71,7 @@
                                         <span t-field="doc.amount_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.pricelist_id.currency_id&quot;}"/>
                                     </td>
                                 </tr>
-                                <tr class="border-black">
+                                <tr class="border-black" style="font-size:18px">
                                     <td><strong>TOTAL</strong></td>
                                     <td class="text-right">
                                         <span t-field="doc.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.pricelist_id.currency_id&quot;}"/>

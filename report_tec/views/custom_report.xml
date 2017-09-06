@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            id="tec_report_sale_order"
+            string="Quotation/TEC"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="report_tec.report_sale_order_tec"
+            name="report_tec.report_sale_order_tec"
+            attachment_use="False"
+        />
+    </data>
+</openerp>
+

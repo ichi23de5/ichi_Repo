@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template t-name="report_tec.report_sale_order_tec_template">
+            <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+            <t t-call="report_tec.report_sale_order_tec_header"/>
+            <div class="page">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row">
+                    <p>1234567</p>
+                </div>
+            </div>    
+        </template>
+
+        <template t-name="report_tec.report_sale_order_tec">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="report_tec.report_sale_order_tec_template" t-lang="doc.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

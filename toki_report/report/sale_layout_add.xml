@@ -5,7 +5,7 @@
             <t t-if="'subtotal' in p['category'] and p['category'].subtotal is True">
                 <tr class="text-right">
                     <td colspan="6">
-                        <b><t t-esc="p['category'].name"></t>Subtotal:</b>
+                        <b><t t-esc="p['category'].name"/>Subtotal:</b>
                         <span t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/>
                     </td>
                 </tr>
