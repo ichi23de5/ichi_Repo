@@ -31,8 +31,11 @@
                                 </span>
                             </td>
                             <td class="text-right">
-                                <span t-field="l.product_uom_qty"/>
-                                <span groups="product.group_uom" t-field="l.product_uom"/>
+                                <span t-if="l.product_id.default_code">
+                                    <span t-field="l.product_uom_qty"/>
+                                    <span groups="product.group_uom" t-field="l.product_uom"/>
+                                </span>
+                                <span t-if="l.product_id.default_code == False">ISSHIKI</span>
                             </td>
                             <td class="text-right">
                                 <span t-field="l.open_price"/>
