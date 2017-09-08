@@ -3,7 +3,7 @@
 from openerp import api, fields ,models,  _
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
-
+from openerp.exceptions import UserError
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -100,6 +100,28 @@ class SaleOrder(models.Model):
         if self.env['ir.values'].get_default('sale.config.settings', 'auto_done_setting'):
             self.action_done()
         return True
+   
+    ### user error message ##
+    @api.onchange('order_line')
+    def onchange_orderline(self):
+        if not self.partner_id:
+            raise UserError(_('Kokyaku ga haittemasen!'))
+
+#    @api.multi
+#    @api.onchange('product_id')
+#    def product_id_change(self):
+#        if not self.product_id:
+#            return {'domain': {'product_uom': []}}
+        ### add code ###   
+#        if not self.order_id.partner_id:
+#            raise UserError(_('Kokyaku ga haittemasen!'))
+        ###
+#        vals = {}
+#        domain = {'product_uom': [('category_id', '=', self.product_id.uom_id.category_id.id)]}
+#        if not self.product_uom or (self.product_id.uom_id.id != self.product_uom.id):
+#            vals['product_uom'] = self.product_id.uom_id
+#            vals['product_uom_qty'] = 1.0
+
 
     ### check_state move ###
     request_flag = fields.Boolean('request', copy=False)
@@ -120,8 +142,6 @@ class SaleOrder(models.Model):
     @api.multi
     def president(self):
         self.write({'check_state': 'president'})
-
-
 
     @api.multi 
     def action_cancel(self): 

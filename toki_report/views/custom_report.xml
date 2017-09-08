@@ -33,12 +33,13 @@
 
         <report
             id="toki_report_account_invoice"
-            string="Invoice/TOKI"
+            string="Invoice TOKI"
             model="account.invoice"
             report_type="qweb-pdf"
             file="toki_report.report_account_invoice"
             name="toki_report.report_account_invoice"
-            attachment_use="False"
+            attachment_use="True"
+            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
         />
 
         <report

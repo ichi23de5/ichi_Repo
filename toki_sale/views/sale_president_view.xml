@@ -33,8 +33,8 @@
             </field> 
         </record>
 
-        <menuitem id="president_button_menu" name="President"/>
-                  <!-- groups="toki_sale.group_sale_authorizer_president"/-->
+        <menuitem id="president_button_menu" name="President"
+                  groups="toki_sale.group_sale_authorizer_president"/>
         <menuitem id="button_menu_approval" name="President Approval"
                   parent="president_button_menu"/>
         <menuitem id="sale_president"
