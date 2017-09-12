@@ -25,6 +25,7 @@ class ProductPricelistPrint(models.TransientModel):
     product_ids = fields.Many2many(
         comodel_name='product.product',
         string='Products', help='Keep empty for all products')
+    show_maker_id = fields.Boolean('Show Maker')
     show_default_code = fields.Boolean('Show Default Code', default=True)
     show_standard_price = fields.Boolean('Show Cost Price')
     show_sale_price = fields.Boolean('Show Sale Price')

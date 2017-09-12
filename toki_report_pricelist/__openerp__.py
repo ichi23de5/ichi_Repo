@@ -13,6 +13,7 @@
         "product",
     ],
     "data": [
+#        "views/product_spec_views.xml",
         "views/report_product_pricelist.xml",
         "views/paperformat.xml",
         "wizards/product_pricelist_print_view.xml",
