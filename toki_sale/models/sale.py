@@ -102,10 +102,10 @@ class SaleOrder(models.Model):
         return True
    
     ### user error message ##
-    @api.onchange('order_line')
-    def onchange_orderline(self):
-        if not self.partner_id:
-            raise UserError(_('Kokyaku ga haittemasen!'))
+#    @api.onchange('order_line')
+#    def onchange_orderline(self):
+#        if not self.partner_id:
+#            raise UserError(_('Kokyaku ga haittemasen!'))
 
 #    @api.multi
 #    @api.onchange('product_id')
