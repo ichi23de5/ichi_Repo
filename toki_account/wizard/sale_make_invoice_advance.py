@@ -170,8 +170,3 @@ class SaleAdvancePaymentInv(models.TransientModel):
 #                'type_id': so.act_type,
 #            }   
 #            p_obj.create(val)
-
-
-
-    def create_invoice_toki(self):
-        pass

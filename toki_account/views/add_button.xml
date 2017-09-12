@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_sale_advance_payment_inv_add" model="ir.ui.view">
+            <field name="name">advance.payment.add.button</field>
+            <field name="model">sale.advance.payment.inv</field>
+            <field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='create_invoices']" position="after">
+                    <button name="create_invoice_toki" string="Create TOKI Invoice" class="oe_highlight" type="object"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

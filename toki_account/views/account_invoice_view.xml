@@ -26,6 +26,7 @@
                 </xpath>
                 <notebook> 
                     <page string="Property Line"> 
+                        <field name ="debug"/>
                         <field name="property_line_ids"/> 
                     </page> 
                 </notebook>
