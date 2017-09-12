@@ -14,6 +14,7 @@
     ],
     "data": [
         "views/report_product_pricelist.xml",
+        "views/paperformat.xml",
         "wizards/product_pricelist_print_view.xml",
     ],
 }

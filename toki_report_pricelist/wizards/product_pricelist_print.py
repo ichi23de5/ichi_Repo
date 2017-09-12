@@ -11,29 +11,23 @@ class ProductPricelistPrint(models.TransientModel):
 
     pricelist_id = fields.Many2one(
         comodel_name='product.pricelist',
-        string='Pricelist',
-    )
+        string='Pricelist')
     partner_id = fields.Many2one(
         comodel_name='res.partner',
-        string='Customer',
-    )
+        string='Customer')
     categ_ids = fields.Many2many(
         comodel_name='product.category',
-        string='Categories',
-    )
+        string='Categories')
     show_variants = fields.Boolean()
     product_tmpl_ids = fields.Many2many(
         comodel_name='product.template',
-        string='Products',
-        help='Keep empty for all products',
-    )
+        string='Products', help='Keep empty for all products')
     product_ids = fields.Many2many(
         comodel_name='product.product',
-        string='Products',
-        help='Keep empty for all products',
-    )
-    show_standard_price = fields.Boolean(string='Show Cost Price')
-    show_sale_price = fields.Boolean(string='Show Sale Price')
+        string='Products', help='Keep empty for all products')
+    show_default_code = fields.Boolean('Show Default Code', default=True)
+    show_standard_price = fields.Boolean('Show Cost Price')
+    show_sale_price = fields.Boolean('Show Sale Price')
 
     @api.model
     def default_get(self, fields):
