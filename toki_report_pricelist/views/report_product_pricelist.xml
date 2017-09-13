@@ -16,7 +16,7 @@
                             </span>
                         </b></h3>
                     </div>
-                    <div class="col-xs-3  col-xs-offset-4 text-right" style="font-size:12px;">
+                    <div class="col-xs-3 col-xs-offset-4 text-right" style="font-size:12px;">
                         <span t-esc="datetime.datetime.now().strftime('%YY%mM%dD')"/>
                         <p>TOYO-KIKI</p>
                     </div>
@@ -73,6 +73,7 @@
                                 <td t-if="o.pricelist_id">
                                     <strong t-field="product.with_context(pricelist=o.pricelist_id.id).price"/>
                                 </td>
+                                <td><span t-field="product.spec_remarks"/></td>
                             </tr>
                         </t>
                     </tbody>

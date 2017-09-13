@@ -10,12 +10,12 @@
     "author": "ichi2",
     "license": "AGPL-3",
     "depends": [
-        "product",
+        "product","toki_sale",
     ],
     "data": [
-#        "views/product_spec_views.xml",
-        "views/report_product_pricelist.xml",
+        "views/product_spec_views.xml",
         "views/paperformat.xml",
+        "views/report_product_pricelist.xml",
         "wizards/product_pricelist_print_view.xml",
     ],
 }

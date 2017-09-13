@@ -5,4 +5,5 @@ from openerp import api, fields ,models
 class ResPartner(models.Model):
     _inherit = "product.template"
 
-    spec_note = fields.text('Spec')
+    spec_note = fields.Text('Spec')
+    spec_remarks = fields.Char('Remarks Column')

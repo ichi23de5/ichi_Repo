@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <openerp>
     <data>
         <record id="view_product_template_pricelist_form" model="ir.ui.view">
@@ -9,7 +8,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='is_cloud']" position="after">
                     <field name="spec_note"/>
-                </xpath
+                    <field name="spec_remarks"/>
+                </xpath>
             </field>
         </record>
     </data>
