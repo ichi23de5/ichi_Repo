@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+       <record model="ir.ui.view" id="account_property_line_view_tree">
+            <field name="name">account.property.line.view.tree</field>
+            <field name="model">account.property.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Property Line">
+                    <field name="invoice_id"/>
+                    <field name="origin"/>
+                    <field name="property_id"/>
+                    <field name="completion_date"/>
+                    <field name="price_total"/>
+                    <field name="purchase_number"/>
+                    <field name="type_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_property_line_view_form">
+            <field name="name">account.property.line.view.form</field>
+            <field name="model">account.property.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Property Line">
+                    <group>
+                        <group>
+                    <field name="invoice_id"/>
+                    <field name="origin"/>
+                    <field name="property_id"/>
+                    <field name="completion_date"/>
+                    <field name="price_total"/>
+                    <field name="purchase_number"/>
+                    <field name="type_id"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+-->
+        <!-- The Action -->
+        <record model="ir.actions.act_window" id="property_line_view_action">
+            <field name="name">Property_Line</field>
+            <field name="res_model">account.property.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='view_id' ref='account_property_line_view_tree'/>
+        </record>
+
+        <!-- Side Menu Sales -->
+        <menuitem id="button_menu_property_line" name="Property Line" 
+                  parent="base.menu_sales"
+                  sequence="30"/>
+        <menuitem id="property_line" action="property_line_view_action" 
+                  parent="button_menu_property_line"/>
+
+    </data>
+</openerp>

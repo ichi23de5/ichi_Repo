@@ -3,6 +3,7 @@
 <openerp>
     <data>
         <!-- account.invoice -->
+
         <record id="view_account_invoice_form_add" model="ir.ui.view">
             <field name="name">account.invoice.form.add</field>
             <field name="model">account.invoice</field>
@@ -26,10 +27,11 @@
                 </xpath>
                 <notebook> 
                     <page string="Property Line"> 
-                        <field name ="debug"/>
                         <field name="property_line_ids"/> 
                     </page> 
+
                 </notebook>
+
             </field>
         </record>
 
