@@ -58,12 +58,10 @@ class SaleOrder(models.Model):
                 'origin': order.name,
                 'property_id': order.property_id.id or False,
                 'completion_date': order.completion_date,
-                'price_total': invoices[group_key].amount_untaxed,
+                'price_total': order.amount_untaxed,
                 'purchase_number': order.purchase_number or False,
                 'type_id': order.act_type.display_name,
                  })
-
-#        invoices[group_key].write({'property_line_ids': [(6, 0, pp_line)]})
         ## to here
 
 
