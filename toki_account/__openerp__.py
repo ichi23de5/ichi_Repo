@@ -16,7 +16,6 @@
         "data": [
                 "security/ir.model.access.csv",
                 "views/account_invoice_view.xml",
-                "views/add_button.xml",
                 ],
 }
 

@@ -7,11 +7,34 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='is_cloud']" position="after">
+                    <field name="video_system" widget="selection"/>
                     <field name="spec_note"/>
                     <field name="spec_remarks"/>
                 </xpath>
             </field>
         </record>
+
+	<record model="ir.ui.view" id="product_video_system_view_tree">
+	    <field name="name">product.video.system.tree</field>
+	    <field name="model">product.video.system</field>
+	    <field name="type">tree</field>
+	    <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="product_video_system_view_action">
+            <field name="name">Video System</field>
+            <field name="res_model">product.video.system</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='view_id' ref='product_video_system_view_tree'/>
+        </record>
+        <menuitem id="product_video_system"
+                action="product_video_system_view_action" parent="product.prod_config_main"
+                groups="base.group_sale_manager" sequence="6"/>
+
     </data>
 </openerp>
 

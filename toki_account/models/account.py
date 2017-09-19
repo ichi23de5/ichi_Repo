@@ -13,17 +13,7 @@ class AccountInvoice(models.Model):
     ### invoice for property list ###
     property_line_ids = fields.One2many('account.property.line','invoice_id', string='Property Lines', oldname='property_line',
         readonly=True, states={'draft': [('readonly', False)]}, copy=True) 
-#    amount_untaxed_pro = fields.Integer(string='Untaxed Amount', store=True, readonly=True, compute='_amount_pro', track_visibility='always')
 
-#    @api.depends('property_line_ids.price_total') 
-#    def _amount_pro(self):
-#        for order in self: 
-#            amount_untaxed_pro = 0.0 
-#            for line in order.property_line_ids:
-#                amount_untaxed_pro += line.price_total
-#            order.update({ 
-#                'amount_untaxed_pro': round(amount_untaxed_pro), 
-#            }) 
 
 
 class AccountInvoiceLine(models.Model): 
@@ -80,18 +70,6 @@ class SaleOrder(models.Model):
         if not self.purchase_order:
             raise UserError(_('Hachusyo ga kiteimasen!'))
 
-   ## add code from here
-#        property_line_obj = self.env['account.property.line']
-#        pp_line = property_line_obj.create({
-#            'invoice_id':self.env['account.invoice'].id,
-#            'origin': self.name,
-#            'property_id': self.property_id.id or False,
-#            'completion_date': self.completion_date,
-#            'price_total': self.amount_untaxed,
-#            'purchase_number': self.purchase_number or False,
-#            'type_id': self.act_type.type_id,
-#            })
-
 
         invoice_vals = {
             'name': self.client_order_ref or '',
@@ -107,16 +85,7 @@ class SaleOrder(models.Model):
             'fiscal_position_id': self.fiscal_position_id.id or self.partner_invoice_id.property_account_position_id.id,
             'company_id': self.company_id.id,
             'user_id': self.user_id and self.user_id.id,
-            'team_id': self.team_id.id,
-#            'property_line_ids': [(0, 0, {pp_line})],
-            'property_line_ids': [(0, 0, {
-                'origin': self.name,
-                'property_id': self.property_id.id or False,
-                'completion_date': self.completion_date,
-                'price_total': self.amount_untaxed,
-                'purchase_number': self.purchase_number or False,
-                'type_id': self.act_type.type_id,
-            })],           
+            'team_id': self.team_id.id,          
         }
         return invoice_vals
 
@@ -132,7 +101,6 @@ class SaleOrderLine(models.Model):
     def _prepare_invoice_line(self, qty):
         """
         Prepare the dict of values to create the new invoice line for a sales order line.
-
         :param qty: float quantity to invoice
         """
         self.ensure_one()
