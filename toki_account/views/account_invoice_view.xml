@@ -51,6 +51,7 @@
             <field name="model">account.property.line</field> 
             <field name="arch" type="xml"> 
                 <tree string="Property Lines"> 
+                    <field name="sequence" widget="handle"/>
                     <field name="origin" invisible="1"/>
                     <field name="completion_date"/> 
                     <field name="property_id"/> 

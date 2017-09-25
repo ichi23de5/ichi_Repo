@@ -26,7 +26,9 @@ class AccountInvoiceLine(models.Model):
 class AccountPropertyLine(models.Model):
     _name = 'account.property.line'
     _rec_name = 'origin'
+    _order = "sequence"
 
+    sequence = fields.Integer('Sequence', default=10, help='Drag & Drop de Ugokaseru.')
     invoice_id = fields.Many2one('account.invoice', 'Invoice Reference', ondelete='cascade', index=True, copy=False)
     origin = fields.Char('Source', help='Reference of the document that produced this invoice')
     property_id = fields.Many2one('property', string='Property Name', readonly=True, index=True)
@@ -69,6 +71,8 @@ class SaleOrder(models.Model):
             raise UserError(_('Please define an accounting sale journal for this company.'))
         if not self.purchase_order:
             raise UserError(_('Hachusyo ga kiteimasen!'))
+        if not self.completion_date:
+            raise UserError(_('Syunkoubi ga minyuryoku!'))
 
 
         invoice_vals = {

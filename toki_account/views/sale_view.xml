@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_sale_order_tree_add_invoice" model="ir.ui.view">
+            <field name="name">sale.order.tree.add.invoice</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="completion_date"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
+
+
+

@@ -15,9 +15,9 @@ class SaleOrder(models.Model):
          ('manager', 'Manager OK'),
          ('president', 'President OK'),
          ], string='State2', readonly=True, copy=False, index=True, default='ng')
-    property_id = fields.Many2one('property', string='Property Name', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    property_id = fields.Many2one('property', string='Property Name', readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime('Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=False, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+    rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=False, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
@@ -100,28 +100,6 @@ class SaleOrder(models.Model):
         if self.env['ir.values'].get_default('sale.config.settings', 'auto_done_setting'):
             self.action_done()
         return True
-   
-    ### user error message ##
-#    @api.onchange('order_line')
-#    def onchange_orderline(self):
-#        if not self.partner_id:
-#            raise UserError(_('Kokyaku ga haittemasen!'))
-
-#    @api.multi
-#    @api.onchange('product_id')
-#    def product_id_change(self):
-#        if not self.product_id:
-#            return {'domain': {'product_uom': []}}
-        ### add code ###   
-#        if not self.order_id.partner_id:
-#            raise UserError(_('Kokyaku ga haittemasen!'))
-        ###
-#        vals = {}
-#        domain = {'product_uom': [('category_id', '=', self.product_id.uom_id.category_id.id)]}
-#        if not self.product_uom or (self.product_id.uom_id.id != self.product_uom.id):
-#            vals['product_uom'] = self.product_id.uom_id
-#            vals['product_uom_qty'] = 1.0
-
 
     ### check_state move ###
     request_flag = fields.Boolean('request', copy=False)
@@ -148,6 +126,66 @@ class SaleOrder(models.Model):
         self.write({'state': 'cancel'}) 
         self.write({'request_flag': False})
         self.write({'check_state': 'ng'})
+
+
+    ### onchange pricelist with partner_id  ###
+    @api.multi
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        """
+        Update the following fields when the partner is changed:
+        - Pricelist
+        - Payment term
+        - Invoice address
+        - Delivery address
+        """
+        if not self.partner_id:
+            self.update({
+                'partner_invoice_id': False,
+                'partner_shipping_id': False,
+                'payment_term_id': False,
+                'fiscal_position_id': False,
+            })
+            return
+
+        addr = self.partner_id.address_get(['delivery', 'invoice'])
+        values = {
+            'pricelist_id': self.partner_id.property_product_pricelist and self.partner_id.property_product_pricelist.id or False,
+            'payment_term_id': self.partner_id.property_payment_term_id and self.partner_id.property_payment_term_id.id or False,
+            'partner_invoice_id': addr['invoice'],
+            'partner_shipping_id': addr['delivery'],
+        }
+        if self.env.user.company_id.sale_note:
+            values['note'] = self.with_context(lang=self.partner_id.lang).env.user.company_id.sale_note
+
+        if self.partner_id.user_id:
+            values['user_id'] = self.partner_id.user_id.id
+        if self.partner_id.team_id:
+            values['team_id'] = self.partner_id.team_id.id
+        self.update(values)
+
+        for line in self.order_line:
+        
+            if line.order_id.pricelist_id and line.order_id.partner_id:
+                product = line.product_id.with_context(
+                    lang=line.order_id.partner_id.lang,
+                    partner=line.order_id.partner_id.id,
+                    quantity=line.product_uom_qty,
+                    date=line.order_id.date_order,
+                    pricelist=line.order_id.pricelist_id.id,
+                    uom=line.product_uom.id,
+                    fiscal_position=line.env.context.get('fiscal_position')
+                )
+
+            product_price = self.env['account.tax']._fix_tax_included_price(product.price, product.taxes_id, line.tax_id)
+            line.update({'price_unit': product_price})
+            price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+            taxes = line.tax_id.compute_all(price, line.order_id.currency_id, line.product_uom_qty, product=line.product_id, partner=line.order_id.partner_shipping_id)
+            line.update({
+                'price_tax': taxes['total_included'] - taxes['total_excluded'],
+                'price_total': taxes['total_included'],
+                'price_subtotal': taxes['total_excluded'],
+            })
 
 
 
