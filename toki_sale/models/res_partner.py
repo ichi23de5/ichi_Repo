@@ -14,6 +14,7 @@ class ResPartner2(models.Model):
     maker = fields.Boolean('Maker Flag')
     default_code = fields.Char('Ryakusyou')
     direct_transaction = fields.Boolean('Direct Transaction', help='TOKI to cyokusetsu torihiki siteru kojin nado')
+    payee_bank = fields.Many2one('res.partner.bank', 'Hurikomisaki', help='seikyu surutoki no TOKI furikomisaki bank')
 
 
     @api.onchange('direct_transaction')
@@ -28,4 +29,8 @@ class ResPartner2(models.Model):
         if self.outside_order:
             self.update({'supplier':True})
             return
+
+class ResPartnerBank(models.Model):
+    _inherit = 'res.partner.bank'
+    _rec_name = 'bank_id'
 

@@ -49,13 +49,12 @@
                                     <td><b>FURIKOMISAKI: </b></td>
                                     <td class="text-left">
                                         <span t-field="doc.partner_id.payee_bank.bank_id"/>
-                                        <span t-field="doc.partner_id.payee_bank.branch"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td/>
                                     <td class="text-left">
-                                        <span t-field="doc.partner_id.payee_bank.acc_type"/>
+                                        Futsu 
                                         <span t-field="doc.partner_id.payee_bank.acc_number"/>
                                     </td>
                                 </tr>

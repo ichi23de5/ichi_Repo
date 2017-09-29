@@ -10,7 +10,7 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","property","base","account","purchase","report","toki_sale","toki_account","toki_bank","sale_layout",
+                   "sale","property","base","account","purchase","report","toki_sale","toki_account","sale_layout",
                    ],
         "data": [
                 "security/ir.model.access.csv", 

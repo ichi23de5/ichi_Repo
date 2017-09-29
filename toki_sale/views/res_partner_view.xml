@@ -24,6 +24,9 @@
                 <xpath expr="//field[@name='user_id']" position="before">
                     <field name="direct_transaction" attrs="{'invisible': [('customer','=', False)]}"/>
                 </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="payee_bank" widget="selection" domain="[('partner_id.id', '=', '1')]" attrs="{'invisible': [('customer','=', False)]}"/>
+                </xpath>
                 <xpath expr="//group/field[@name='supplier']" position="after">
                     <field name="outside_order" attrs="{'invisible': [('supplier','=', False)]}"/>
                     <field name="maker" attrs="{'invisible': [('supplier','=', False)]}"/>
