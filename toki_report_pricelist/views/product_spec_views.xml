@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='is_cloud']" position="after">
-                    <field name="video_system" widget="selection"/>
+                    <!--<field name="video_system" widget="selection"/>-->
                     <field name="spec_note"/>
                     <field name="spec_remarks"/>
                 </xpath>

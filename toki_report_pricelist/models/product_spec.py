@@ -7,7 +7,7 @@ class ResPartner(models.Model):
 
     spec_note = fields.Text('Spec')
     spec_remarks = fields.Char('Remarks Column')
-    video_system = fields.Many2one('product.video.system', 'Video System')
+#    video_system = fields.Many2one('product.video.system', 'Video System')
 
 
 
