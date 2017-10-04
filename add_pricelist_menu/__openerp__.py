@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-        "name": " TOKI sale",
+        "name": " Test module pricelist",
         "summary": "res_partner[fix]",
         "version": "9.0.0.1.1",
         "category": "Sales",
@@ -11,14 +11,9 @@
         "application": False,
         "installable": True,
         "depends": [
-                   "sale","mail","property","base","account","sale_margin","sale_stock"
+                   "sale","product"
                    ],
         "data": [
-                "security/user_groups.xml",
-                "security/ir.model.access.csv",
                 "views/sale_view.xml",
-                "views/sale_president_view.xml", 
-                "views/product_view.xml",
-                "views/res_partner_view.xml",
                 ],
 }

@@ -15,6 +15,12 @@
                 <xpath expr="//field[@name='category_id']" position="attributes">
                     <attribute name="invisible">"1"</attribute>
                 </xpath>
+                <xpath expr="//field[@name='notify_email']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
+                <xpath expr="//field[@name='opt_out']" position="attributes">
+                    <attribute name="invisible">"1"</attribute>
+                </xpath>
                 <xpath expr="//field[@name='lang']" position="replace"/>
                 <xpath expr="//field[@name='title']" position="replace"/>
                 <xpath expr="//field[@name='fax']" position="after">
