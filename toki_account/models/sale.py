@@ -61,7 +61,7 @@ class SaleOrder(models.Model):
                 'price_total': order.amount_untaxed,
                 'purchase_number': order.purchase_number or False,
                 'type_id': order.act_type.display_name,
-                 })
+                })
         ## to here
 
 

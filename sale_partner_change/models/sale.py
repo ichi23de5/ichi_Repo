@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from openerp import api, fields ,models,  _
-from datetime import datetime, timedelta
-from dateutil.relativedelta import relativedelta
-
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
-
 
 
     @api.multi
@@ -45,6 +41,7 @@ class SaleOrder(models.Model):
             values['team_id'] = self.partner_id.team_id.id
         self.update(values)
 
+        ## additional code from here
         for line in self.order_line:
         
             if line.order_id.pricelist_id and line.order_id.partner_id:
@@ -57,8 +54,6 @@ class SaleOrder(models.Model):
                     uom=line.product_uom.id,
                     fiscal_position=line.env.context.get('fiscal_position')
                 )
-#                line.price_unit = self.env['account.tax']._fix_tax_included_price(product.price, product.taxes_id, self.tax_id)
-
 
             product_price = self.env['account.tax']._fix_tax_included_price(product.price, product.taxes_id, line.tax_id)
             line.update({'price_unit': product_price})
@@ -69,4 +64,4 @@ class SaleOrder(models.Model):
                 'price_total': taxes['total_included'],
                 'price_subtotal': taxes['total_excluded'],
             })
-
+        ## up to here 
