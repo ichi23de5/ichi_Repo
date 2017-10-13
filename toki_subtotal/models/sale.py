@@ -15,10 +15,7 @@ class SaleOrder(models.Model):
     @api.onchange('order_line')
     def _compute_subtotal(self):
         self.ensure_one()
-        datas = 0
-        datas2 = 0
-        datas3 = 0
-        datas4 = 0
+        datas = datas2 = datas3 = datas4 = 0
         for category, lines in groupby(self.order_line, lambda l: l.sale_layout_cat_id):
             for c_line in lines:
                 if c_line.sale_layout_cat_id.id == 1:
@@ -29,13 +26,13 @@ class SaleOrder(models.Model):
                     datas3 = datas3 + c_line.price_subtotal
                 else:
                     pass
-            if datas3:
-                datas4 = self.amount_untaxed - (datas + datas2 + datas3)
-            else:
-                datas4 = self.amount_untaxed - (datas + datas2)
-            self.update({'product_subtotal': datas})
-            self.update({'service_subtotal': datas2})
-            self.update({'discount_subtotal': datas3})
-            self.update({'other_subtotal': datas4})
+            
+            datas4 = self.amount_untaxed - (datas + datas2 + datas3) if datas3 else self.amount_untaxed - (datas + datas2)
 
+####### Ue no shiki wa konna imi desu
+#            if datas3:
+#                datas4 = self.amount_untaxed - (datas + datas2 + datas3)
+#            else:
+#                datas4 = self.amount_untaxed - (datas + datas2)
 
+            self.update({'product_subtotal': datas, 'service_subtotal': datas2, 'discount_subtotal': datas3, 'other_subtotal': datas4})
