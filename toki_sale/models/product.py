@@ -20,4 +20,3 @@ class Product(models.Model):
     range_coverage = fields.Integer('range_coverage')
     active = fields.Boolean('Active')
     property_war_id = fields.Many2one('property', 'Property warranty ID', index=True, ondelete='cascade', oldname='property_id')
-

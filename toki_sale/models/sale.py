@@ -217,4 +217,3 @@ class ConstructionList(models.Model):
 
     template = fields.Char(string='template', required=True)
     note = fields.Text(string='memo')
-
