@@ -21,7 +21,6 @@
                     <page string="Flag">
                         <group string="Flag">
                             <field name="is_warranty"/>
-                            <field name="is_cloud"/>
                         </group>
                     </page>
                 </notebook>
@@ -73,7 +72,6 @@
                     <page string="Flag">
                         <group string="Flag">
                             <field name="is_warranty"/>
-                            <field name="is_cloud"/>
                         </group>
                     </page>
                 </notebook>

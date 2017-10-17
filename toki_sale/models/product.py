@@ -9,8 +9,9 @@ class Product(models.Model):
     _sql_constraints = [('unique_name', 'unique(name, default_code)', 'Product name or Default code must be unique'),
                         ('barcode_uniq', 'unique(barcode)', _("A barcode can only be assigned to one product !")),]
 
-    open_price = fields.Char('Vender Price', copy=True, default="OPEN")
-    is_cloud = fields.Boolean('Cloud Flag')
+#    open_price = fields.Char('Vender Price', copy=True, default="OPEN")
+    open_price = fields.Monetary('Vender Price', help='"-1": OPEN PRICE  "0": Blank')
+#    no_number = fields.Boolean('No Number Flag')
     maker_id = fields.Many2one('res.partner', 'maker', domain="[('maker','=',True)]", help='TEC no Quotation ni kaku maker wo toroku sitene. res.partner no maker field to default_code field wo kanarazu touroku sitene.')
 
     is_warranty = fields.Boolean('Warranty Flag')

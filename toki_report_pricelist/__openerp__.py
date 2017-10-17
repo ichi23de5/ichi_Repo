@@ -10,13 +10,13 @@
     "author": "ichi2",
     "license": "AGPL-3",
     "depends": [
-        "base","product","toki_sale",
+        "base","product","toki_sale","toki_category",
     ],
     "data": [
         "views/product_spec_views.xml",
         "views/paperformat.xml",
         "views/report_product_pricelist.xml",
         "wizards/product_pricelist_print_view.xml",
-        "security/ir.model.access.csv",
+#        "security/ir.model.access.csv",
     ],
 }
