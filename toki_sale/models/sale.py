@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import openerp.addons.decimal_precision as dp
 from openerp import api, fields ,models,  _
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
@@ -195,7 +195,7 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    open_price = fields.Char('Open Price', related='product_id.open_price', index=True)
+    open_price = fields.Float('Open Price', related='product_id.open_price', index=True, digits=dp.get_precision('Product Price'))
     maker = fields.Char('Maker', related='product_id.maker_id.default_code', index=True)
 
 
