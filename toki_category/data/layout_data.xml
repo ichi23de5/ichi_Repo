@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="layout_category_product" model="sale_layout.category">
+            <field name="name">Product Price</field>
+            <field name="subtotal" eval="True"/>
+            <field name="separator" eval="True"/>
+            <field name="pagebreak" eval="False"/>
+            <field name="sequence">1</field>
+        </record>
+        <record id="layout_category_service" model="sale_layout.category">
+            <field name="name">Service Price</field>
+            <field name="subtotal" eval="True"/>
+            <field name="separator" eval="True"/>
+            <field name="pagebreak" eval="False"/>
+            <field name="sequence">2</field>
+        </record>
+        <record id="layout_category_discount" model="sale_layout.category">
+            <field name="name">Discount Price</field>
+            <field name="subtotal" eval="True"/>
+            <field name="separator" eval="True"/>
+            <field name="pagebreak" eval="False"/>
+            <field name="sequence">3</field>
+        </record>
+        <record id="layout_category_other" model="sale_layout.category">
+            <field name="name">Other Price</field>
+            <field name="subtotal" eval="True"/>
+            <field name="separator" eval="True"/>
+            <field name="pagebreak" eval="False"/>
+            <field name="sequence">4</field>
+        </record>
+
+    </data>
+</openerp>
