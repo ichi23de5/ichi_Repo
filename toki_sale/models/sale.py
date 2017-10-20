@@ -14,11 +14,11 @@ class SaleOrder(models.Model):
          ('ng', 'Check NG'),
          ('manager', 'Manager OK'),
          ('president', 'President OK'),
-         ], string='State2', readonly=True, copy=False, index=True, default='ng')
-    property_id = fields.Many2one('property', string='Property Name', readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
+         ], 'State2', readonly=True, copy=False, index=True, default='ng')
+    property_id = fields.Many2one('property', 'Property Name', readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     order_date = fields.Datetime('Create Date', default=fields.Datetime.now, required=True, readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     rep_partner_id = fields.Many2one('res.partner', string='Rep Name', required=False, domain="[('company_type','=','person'), ('parent_id', '=', partner_id)]", readonly=True, index=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
-    assistant_id = fields.Many2one('res.users', string='Assistant', copy=False)
+    assistant_id = fields.Many2one('res.users', 'Sub User', copy=False)
     work_type = fields.Selection([
         ('new', 'New construction'),
         ('renewal', 'ReNewal'),
@@ -31,7 +31,7 @@ class SaleOrder(models.Model):
         string='Type', required=True, default='new', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     version = fields.Char('Plan version', readonly=True, states={'draft': [('readonly', False)], 'sent': [('readonly', False)]})
     purchase_order = fields.Boolean('Purchase order', copy=False)
-    inspection_id = fields.Many2one('property.inspection', string='Inspection', help='Kokokara hosyujouhou nyuryoku')
+    inspection_id = fields.Many2one('property.inspection', 'Inspection', help='Kokokara hosyujouhou nyuryoku')
 
     ### construction field for (old) purchase order ###
     construction_type = fields.Selection([
@@ -41,20 +41,20 @@ class SaleOrder(models.Model):
         ], string='Work', default='toki')
     outside_order = fields.Boolean('Outside order', default=False)
     ### construction TOKI ###
-    start_date = fields.Date(string='Kouji start')
-    end_date = fields.Date(string='Kouji end')
-    start_time = fields.Char(string='Start time')
-    end_time = fields.Char(string='End time')
+    start_date = fields.Date('Kouji start')
+    end_date = fields.Date('Kouji end')
+    start_time = fields.Char('Start time')
+    end_time = fields.Char('End time')
     construction_title = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids = fields.One2many('sale.construction','order_id', string='yokutsukau tokkizikou model', store=True)
     construction_note = fields.Text('Others', help='Sonota tokkizikou')
     ### construction OUTSIDE ORDER ###
-    outside_id = fields.Many2one('res.partner', string='Outside Supplier', domain="[('outside_order','=',True)]")
-    amount_outside = fields.Integer(string='Gaityukingaku')
-    start_date_o = fields.Date(string='Kouji start')
-    end_date_o = fields.Date(string='Kouji end')
-    start_time_o = fields.Char(string='Start time')
-    end_time_o = fields.Char(string='End time')
+    outside_id = fields.Many2one('res.partner', 'Outside Supplier', domain="[('outside_order','=',True)]")
+    amount_outside = fields.Integer('Gaityukingaku')
+    start_date_o = fields.Date('Kouji start')
+    end_date_o = fields.Date('Kouji end')
+    start_time_o = fields.Char('Start time')
+    end_time_o = fields.Char('End time')
     construction_title_o = fields.Char('title', help='Kouzibu he order suru gaiyou. ex:Camera 3dai kouzi.')
     construction_ids_o = fields.One2many('sale.construction','order_o_id', string='yokutsukau tokkizikou model', store=True)
     construction_note_o = fields.Text('Others', help='Sonota tokkizikou')
@@ -80,8 +80,6 @@ class SaleOrder(models.Model):
             exp = main + relativedelta(months=3)
             self.update({'validity_date': exp})
             return
-
-
 
 
     confirmation_date = fields.Datetime(string='Confirmation Date',
@@ -196,7 +194,25 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     open_price = fields.Float('Open Price', related='product_id.open_price', index=True, digits=dp.get_precision('Product Price'))
-    maker = fields.Char('Maker', related='product_id.maker_id.default_code', index=True)
+    maker = fields.Char('Maker', related='product_id.maker_id.default_code')
+    chr_open_price = fields.Char('OpenPrice', store=True, readonly=False)
+
+    ### Open price for display ###
+    @api.onchange('open_price')
+    def _compute_openprice(self):
+        self.ensure_one()
+        st = ""
+        if self.open_price == 0 or not self.open_price:
+            st = "" 
+        elif self.open_price < 0:
+            st = "OPEN"
+        else:
+            st = str(self.open_price)
+      
+        return self.update({"chr_open_price": st })
+
+
+
 
 
 class Construction(models.Model):

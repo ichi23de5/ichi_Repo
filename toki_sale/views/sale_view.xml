@@ -76,6 +76,9 @@
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="before">
                     <field name="maker" invisible="1"/>
                 </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
+                    <field name="chr_open_price" inisible="1"/>
+                </xpath>
                 <notebook>
                     <page string="Note">
                         <group string="Bikouran">
