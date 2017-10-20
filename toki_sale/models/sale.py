@@ -193,23 +193,24 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    open_price = fields.Float('Open Price', related='product_id.open_price', index=True, digits=dp.get_precision('Product Price'))
+    chr_open_price = fields.Float('Open Price', related='product_id.open_price', digits=dp.get_precision('Product Price'))
+    open_price = fields.Char('Open Price', digits=dp.get_precision('Product Price'))
     maker = fields.Char('Maker', related='product_id.maker_id.default_code')
-    chr_open_price = fields.Char('OpenPrice', store=True, readonly=False)
 
     ### Open price for display ###
-    @api.onchange('open_price')
+    @api.onchange('product_id')
     def _compute_openprice(self):
         self.ensure_one()
         st = ""
-        if self.open_price == 0 or not self.open_price:
-            st = "" 
-        elif self.open_price < 0:
+        if not self.product_id.open_price_type:
+            st = ""
+        elif self.product_id.open_price_type == "open":
             st = "OPEN"
-        else:
-            st = str(self.open_price)
-      
-        return self.update({"chr_open_price": st })
+        elif self.product_id.open_price_type == "value":
+            st = str(self.product_id.open_price)
+        return self.update({"open_price": st })
+
+
 
 
 

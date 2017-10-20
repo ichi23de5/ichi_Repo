@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='invoice_policy']" position="replace"/>
                 <xpath expr="//field[@name='list_price']" position="after">
-                    <field name="open_price"/>
+                    <field name="open_price_type" attrs="{'invisible': [('type', '=', 'service')]}"/>
+                    <field name="open_price" widget="monetary" attrs="{'invisible': ['|', '|', ('type', '=', 'service'),('open_price_type', '!=', 'value')]}"/>
                 </xpath>
                 <xpath expr="//field[@name='barcode']" position="after">
                     <field name="maker_id"/>
@@ -60,7 +61,8 @@
                     <attribute name="inbisible">"1"</attribute>
                 </xpath>
                 <xpath expr="//field[@name='lst_price']" position="after">
-                    <field name="open_price"/>
+                    <field name="open_price_type" attrs="{'invisible': [('type', '=', 'service')]}"/>
+                    <field name="open_price" widget="monetary" attrs="{'invisible': ['|', '|', ('type', '=', 'service'),('open_price_type', '!=', 'value')]}"/>
                 </xpath>
                 <xpath expr="//field[@name='barcode']" position="after">
                     <field name="maker_id"/>

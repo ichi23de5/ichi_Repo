@@ -77,7 +77,7 @@
                     <field name="maker" invisible="1"/>
                 </xpath>
                 <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
-                    <field name="chr_open_price" inisible="1"/>
+                    <field name="chr_open_price" invisible="1"/>
                 </xpath>
                 <notebook>
                     <page string="Note">
