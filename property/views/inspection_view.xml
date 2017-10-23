@@ -26,12 +26,12 @@
                             <page string="request" attrs="{'invisible': [('act_type', '==', 'mail')]}">
                                 <group>
                                     <group>
-                                        <field name="request_id"/>
-                                        <field name="responder_name"/>
+                                        <field name="date"/>
+                                        <field name="responder_id"/>
                                     </group>
                                     <group>
-                                        <field name="requester_name"/>
-                                        <field name="requester_rep_name"/>
+                                        <field name="requester_id"/>
+                                        <field name="requester_rep_id"/>
                                     </group>
                                 </group>
                                 <div>
@@ -69,49 +69,7 @@
 
 
 
-        <!-- Model : property.inspection.request -->
-        <record id="inspection_request_view_tree" model="ir.ui.view">
-            <field name="name">inspection.request.view.tree</field>
-            <field name="model">property.inspection.request</field>
-            <field name="arch" type="xml">
-                <tree string="Inspection Request">
-                    <field name="date"/>
-                    <field name="partner_id"/>
-                    <field name="rep_partner_id"/>
-                    <field name="request_note"/>
-                    <field name="user_id"/>
-                </tree>
-            </field>
-        </record>
-        <record model="ir.ui.view" id="inspection_request_view_form">
-            <field name="name">inspection.request.view.form</field>
-            <field name="model">property.inspection.request</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <form string="Inspection Request">
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="date"/>
-                                <field name="partner_id"/>
-                                <field name="rep_partner_id"/>
-                                <field name="user_id"/>
-                            </group>
-                            <group>
-                                <field name="request_note"/>
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-
-
-
-
-
-	<!--The action -->
+        <!--The action -->
         <record model="ir.actions.act_window" id="buttons_inspection_action">
             <field name="name">Inspection</field>
             <field name="res_model">property.inspection</field>
@@ -119,15 +77,6 @@
             <field name="view_mode">tree,form</field>
             <field name='view_id' ref='inspection_view_tree'/>
         </record>
-        <record model="ir.actions.act_window" id="buttons_inspection_request_action">
-            <field name="name">Inspection Request</field>
-            <field name="res_model">property.inspection.request</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name='view_id' ref='inspection_request_view_tree'/>
-        </record>
-
-
 
         <!-- top level menu: no parent -->
         <menuitem id="button_menu_inspection" name="Inspection" 
@@ -138,10 +87,6 @@
                   action="buttons_inspection_action"
                   parent="button_menu_inspection"
                   sequence="10"/>
-        <menuitem id="inspection_request"
-                  action="buttons_inspection_request_action"
-                  parent="button_menu_inspection"
-                  sequence="11"/>
 
 
     </data>

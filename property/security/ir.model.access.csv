@@ -5,6 +5,4 @@ access_inspection_admin,property.inspection,model_property_inspection,property.g
 access_inspection_user,property.inspection,model_property_inspection,property.group_user,1,0,0,0
 access_warranty_admin,product.warranty,model_product_warranty,property.group_manager,1,1,1,1
 access_warranty_user,product.warranty,model_product_warranty,property.group_user,1,0,0,0
-access_inspection_request_admin,property.inspection.request,model_property_inspection_request,property.group_manager,1,1,1,1
-access_inspection_request_user,property.inspection.request,model_property_inspection_request,property.group_user,1,0,0,0
 
