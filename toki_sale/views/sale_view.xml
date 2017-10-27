@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <!-- ringi button -->
                 <xpath expr="//header/button[@name='action_confirm']" position="before">
+                    <button string="Test" type="object" name="test_button"/>
                     <button string="Ringishinsei" type="object" name="request" attrs="{'invisible': ['|', '|', ('check_state', '!=', 'ng'),('state', '=', 'cancel')]}" class="oe_highlight"/>
                     <button string="OK" type="object" name="manager_ok" attrs="{'invisible': [('check_state', '!=', 'stand')]}" groups="toki_sale.group_sale_authorizer_manager"/>
                     <button string="NG" type="object" name="manager_ng" attrs="{'invisible': [('check_state', '!=', 'stand')]}" groups="toki_sale.group_sale_authorizer_manager"/>

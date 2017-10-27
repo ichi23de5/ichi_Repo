@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Model: product.warranty -->
+        <record id="product_warranty_view_tree" model="ir.ui.view">
+            <field name="name">product.warranty.view.tree</field>
+            <field name="model">product.warranty</field>
+            <field name="arch" type="xml">
+                <tree string="Warranty">
+                    <field name="warranty_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="property_war_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="product_warranty_view_form">
+            <field name="name">product.warranty.view.form</field>
+            <field name="model">product.warranty</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Warranty">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="warranty_id"/>
+                                <field name="property_war_id"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <group string="Schedule">
+                            <field name="warranty_sch_ids" nolabel="1">
+                                <tree string="Schedule">
+                                    <field name="date"/>
+                                    <field name="type"/>
+                                    <field name="finish"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="product_warranty_view_calendar" model="ir.ui.view">
+            <field name="name">product.warranty.view.calendar</field>
+            <field name="model">product.warranty</field>
+            <field name="arch" type="xml">
+                <calendar string="Warranty Schedulec" date_start="end_date" color="warranty_id">
+                    <field name="property_war_id"/>
+                    <field name="warranty_id"/>
+                </calendar>
+            </field>
+        </record>
+
+
+        <!-- Model: product -->
+        <record id="product_template_add_warranty_form" model="ir.ui.view">
+            <field name="name">product.template.add.warranty.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <notebook>
+                    <page string="Product Info" attrs="{'invisible': [('type', '!=', 'service')]}">
+                        <group>
+                            <group name="warranty" string="Warranty">
+                                <field name="is_warranty"/>
+                                <field name="scope_of_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <field name="range_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <field name="count_inspection" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+
+
+
+	<!--The action -->
+        <record model="ir.actions.act_window" id="buttons_warranty_action">
+            <field name="name">Warranty</field>
+            <field name="res_model">product.warranty</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,form,tree</field>
+            <field name='view_id' ref='product_warranty_view_form'/>
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="button_menu_warranty" name="Warranty management"
+                  parent="main_button_menu"/>
+        <menuitem id="warranty"
+                  action="buttons_warranty_action"
+                  parent="button_menu_warranty"
+                  sequence="10"/>
+
+
+    </data>
+</openerp>

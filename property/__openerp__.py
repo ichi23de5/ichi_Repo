@@ -13,6 +13,7 @@
         'security/user_groups.xml',
         'security/ir.model.access.csv',
         "views/property_view.xml",
+        "views/warranty_view.xml",
         "views/inspection_view.xml",
     ],
     

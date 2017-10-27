@@ -29,17 +29,6 @@
                               placeholder="This note will be displayed on the quotations."/> 
                     </group>
                 </xpath>
-                <notebook>
-                    <page string="Product Info" attrs="{'invisible': [('type', '!=', 'service')]}">
-                        <group>
-                            <group name="warranty" string="Warranty">
-                                <field name="is_warranty"/>
-                                <field name="scope_of_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
-                                <field name="range_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
-                            </group>
-                        </group>
-                    </page>
-                </notebook>
             </field>
         </record>
 
