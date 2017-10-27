@@ -56,7 +56,18 @@
             </field>
         </record>
 
-
+        <!-- Model: product.warranty.schedule -->
+<!--        <record id="product_warranty_schedule_view_calendar" model="ir.ui.view">
+            <field name="name">product.warranty.schedule.view.calendar</field>
+            <field name="model">product.warranty.schedule</field>
+            <field name="arch" type="xml">
+                <calendar string="Warranty Schedule" date_start="date" color="type">
+                    <field name="type"/>
+                    <field name="warranty_id"/>
+                </calendar>
+            </field>
+        </record>
+-->
         <!-- Model: product -->
         <record id="product_template_add_warranty_form" model="ir.ui.view">
             <field name="name">product.template.add.warranty.form</field>
@@ -89,6 +100,14 @@
             <field name="view_mode">calendar,form,tree</field>
             <field name='view_id' ref='product_warranty_view_form'/>
         </record>
+<!--        <record model="ir.actions.act_window" id="buttons_warranty_schedule_action">
+            <field name="name">Warranty Schedule</field>
+            <field name="res_model">product.warranty.schedule</field>
+            <field name="view_type">calender</field>
+            <field name="view_mode">calendar,form</field>
+            <field name='view_id' ref='product_warranty_schedule_view_calender'/>
+        </record>
+-->
 
         <!-- top level menu: no parent -->
         <menuitem id="button_menu_warranty" name="Warranty management"
@@ -96,8 +115,12 @@
         <menuitem id="warranty"
                   action="buttons_warranty_action"
                   parent="button_menu_warranty"
+                  sequence="9"/>
+<!--        <menuitem id="warranty_schedule"
+                  action="buttons_warranty_schedule_action"
+                  parent="button_menu_warranty"
                   sequence="10"/>
-
+-->
 
     </data>
 </openerp>
