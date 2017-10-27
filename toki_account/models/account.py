@@ -19,8 +19,9 @@ class AccountInvoice(models.Model):
 class AccountInvoiceLine(models.Model): 
     _inherit = 'account.invoice.line' 
 
-    completion_date = fields.Date('Syunkoubi', readonly=True, index=True)
-    purchase_number = fields.Char('Purchase Number', readonly=True, index=True)
+    completion_date = fields.Date('Syunkoubi', readonly=True)
+    purchase_number = fields.Char('Purchase Number', readonly=True)
+#    description_sale = fields.Char('SO Explanation', readonly=True)
 
 
 class AccountPropertyLine(models.Model):

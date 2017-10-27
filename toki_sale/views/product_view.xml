@@ -18,10 +18,25 @@
                 <xpath expr="//field[@name='property_stock_inventory']" position="after">
                     <field name="invoice_policy" widget="radio"/>
                 </xpath>
+                <xpath expr="//group[@name='description']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='description_sale']" position="replace"/>
+                <xpath expr="//group[@name='description']" position="after">
+                    <group name="spec_sale">
+                        <separator string="Description for Quotations" colspan="4"/>
+                        <field name="description_sale" colspan="4" nolabel="1"
+                              placeholder="This note will be displayed on the quotations."/> 
+                    </group>
+                </xpath>
                 <notebook>
-                    <page string="Flag">
-                        <group string="Flag">
-                            <field name="is_warranty"/>
+                    <page string="Product Info" attrs="{'invisible': [('type', '!=', 'service')]}">
+                        <group>
+                            <group name="warranty" string="Warranty">
+                                <field name="is_warranty"/>
+                                <field name="scope_of_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <field name="range_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                            </group>
                         </group>
                     </page>
                 </notebook>
@@ -69,6 +84,17 @@
                 </xpath>
                 <xpath expr="//field[@name='property_stock_inventory']" position="after">
                     <field name="invoice_policy" widget="radio"/>
+                </xpath>
+                <xpath expr="//group[@name='description']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='description_sale']" position="replace"/>
+                <xpath expr="//group[@name='description']" position="after">
+                    <group name="spec_sale">
+                        <separator string="Description for Quotations" colspan="4"/>
+                        <field name="description_sale" colspan="4" nolabel="1"
+                              placeholder="This note will be displayed on the quotations."/>
+                    </group>
                 </xpath>
                 <notebook>
                     <page string="Flag">

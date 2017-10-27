@@ -25,13 +25,11 @@ class Inspection(models.Model):
     inspection_note = fields.Text('Note')
     product_memo = fields.Text('product_memo', help='Koukan sita kiki wo kaitene')
     ### request ###
-    date = fields.Date('Date', required=True, copy=False,)
-    requester_id = fields.Many2one('res.partner', 'partner_id', domain="[('customer','=',True), ('company_type','=','company')]")
-    requester_rep_id = fields.Many2one('res.partner', 'Rep Name', domain="[('company_type','=','person'), ('parent_id', '=', requester_id)]")
+    date = fields.Date('Date', copy=False,)
+#    requester_id = fields.Many2one('res.partner', 'partner_id', domain="[('customer','=',True), ('company_type','=','company')]")
+#    requester_rep_id = fields.Many2one('res.partner', 'Rep Name', domain="[('company_type','=','person'), ('parent_id', '=', property_ins_id.partner_id)]")
     request_note = fields.Text('request_note',)
-    responder_id = fields.Many2one('res.users', 'user_id', required=True, help='hosyu no irai wo uketahitoy')
-
-
+    responder_id = fields.Many2one('res.users', 'user_id', help='hosyu no irai wo uketahitoy')
 
  
 #    state = fields.Selection([

@@ -30,8 +30,6 @@
                                         <field name="responder_id"/>
                                     </group>
                                     <group>
-                                        <field name="requester_id"/>
-                                        <field name="requester_rep_id"/>
                                     </group>
                                 </group>
                                 <div>

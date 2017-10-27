@@ -70,14 +70,18 @@
                 <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="after">
+                    <field name="description_sale"/>
+                </xpath>
                 <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
                     <field name="open_price"/>
+                    <field name="chr_open_price" invisible="1"/>
                 </xpath>
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_uom_qty']" position="before">
                     <field name="maker" invisible="1"/>
-                </xpath>
-                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="before">
-                    <field name="chr_open_price" invisible="1"/>
                 </xpath>
                 <notebook>
                     <page string="Note">
@@ -201,7 +205,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='margin']" position="replace"/>
                 <xpath expr="//field[@name='amount_total']" position="after">
-                    <field name="margin"/>
+                    <field name="margin" invisible="1"/>
                 </xpath>
             </field>
         </record>

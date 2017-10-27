@@ -196,6 +196,7 @@ class SaleOrderLine(models.Model):
     chr_open_price = fields.Float('Open Price', related='product_id.open_price', digits=dp.get_precision('Product Price'))
     open_price = fields.Char('Open Price', digits=dp.get_precision('Product Price'))
     maker = fields.Char('Maker', related='product_id.maker_id.default_code')
+    description_sale = fields.Char('SO Explanation')
 
     ### Open price for display ###
     @api.onchange('product_id')
@@ -210,6 +211,12 @@ class SaleOrderLine(models.Model):
             st = str(self.product_id.open_price)
         return self.update({"open_price": st })
 
+    @api.onchange('product_id')
+    def _onchange_description(self):
+        ds = self.product_id.description_sale
+        if ds:
+            self.update({"description_sale": ds})
+            return
 
 
 
