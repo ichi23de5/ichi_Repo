@@ -13,7 +13,7 @@ class ProductWarranty(models.Model):
     end_date = fields.Date('End Date')
     property_war_id = fields.Many2one('property', 'Property warranty ID', index=True, ondelete='cascade', oldname='property_id')
 
-    warranty_sch_ids = fields.One2many('product.warranty.schedule','warranty_sch_id', 'Schedule')
+#    warranty_sch_ids = fields.One2many('product.warranty.schedule','warranty_sch_id', 'Schedule')
 
     @api.onchange('start_date')
     def onchange_period(self):
@@ -37,7 +37,7 @@ class ProductWarrantySchedule(models.Model):
         'Type')
     finish = fields.Boolean('Finish')
 
-    warranty_sch_id = fields.Many2one('product.warranty', 'Property warranty ID', index=True, ondelete='cascade', oldname='property_id')
+    warranty_sch_id = fields.Many2one('product.warranty', 'Property warranty ID', index=True, ondelete='cascade')
 
 
 
