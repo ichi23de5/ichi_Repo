@@ -34,7 +34,7 @@
                         </group>
                         <group string="Schedule">
                             <field name="warranty_sch_ids" nolabel="1">
-                                <tree string="Schedule">
+                                <tree string="Schedule" editable="bottom">
                                     <field name="date"/>
                                     <field name="type"/>
                                     <field name="finish"/>
@@ -45,11 +45,12 @@
                 </form>
             </field>
         </record>
+        <!-- debug view -->
         <record id="product_warranty_view_calendar" model="ir.ui.view">
             <field name="name">product.warranty.view.calendar</field>
             <field name="model">product.warranty</field>
             <field name="arch" type="xml">
-                <calendar string="Warranty Schedulec" date_start="end_date" color="warranty_id">
+                <calendar string="Warranty Schedule" date_start="end_date" color="warranty_id">
                     <field name="property_war_id"/>
                     <field name="warranty_id"/>
                 </calendar>
@@ -57,17 +58,18 @@
         </record>
 
         <!-- Model: product.warranty.schedule -->
-<!--        <record id="product_warranty_schedule_view_calendar" model="ir.ui.view">
+        <record id="product_warranty_schedule_view_calendar" model="ir.ui.view">
             <field name="name">product.warranty.schedule.view.calendar</field>
             <field name="model">product.warranty.schedule</field>
             <field name="arch" type="xml">
                 <calendar string="Warranty Schedule" date_start="date" color="type">
+                    <field name="date"/>
                     <field name="type"/>
-                    <field name="warranty_id"/>
+                    <field name="property_id"/>
                 </calendar>
             </field>
         </record>
--->
+
         <!-- Model: product -->
         <record id="product_template_add_warranty_form" model="ir.ui.view">
             <field name="name">product.template.add.warranty.form</field>
@@ -89,7 +91,17 @@
             </field>
         </record>
 
-
+        <record id="view_sale_order_form_test_debug" model="ir.ui.view">
+            <field name="name">sale.order.form.add.debug</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- ringi button -->
+                <xpath expr="//header/button[@name='action_confirm']" position="before">
+                    <button string="Test" type="object" name="test_button"/>
+                </xpath>
+            </field>
+        </record>
 
 
 	<!--The action -->
@@ -100,14 +112,22 @@
             <field name="view_mode">calendar,form,tree</field>
             <field name='view_id' ref='product_warranty_view_form'/>
         </record>
-<!--        <record model="ir.actions.act_window" id="buttons_warranty_schedule_action">
+        <record model="ir.actions.act_window" id="buttons_warranty_schedule_action">
             <field name="name">Warranty Schedule</field>
             <field name="res_model">product.warranty.schedule</field>
-            <field name="view_type">calender</field>
-            <field name="view_mode">calendar,form</field>
-            <field name='view_id' ref='product_warranty_schedule_view_calender'/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name='view_id' ref='product_warranty_schedule_view_calendar'/>
         </record>
--->
+        <record model="ir.actions.act_window" id="buttons_warranty_product_action">
+            <field name="name">Warranty Product</field>
+            <field name="res_model">product.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name='view_id' ref='product.product_template_tree_view'/>
+            <field name="domain">[('is_warranty', '=', True)]</field>
+        </record>
+
 
         <!-- top level menu: no parent -->
         <menuitem id="button_menu_warranty" name="Warranty management"
@@ -116,11 +136,15 @@
                   action="buttons_warranty_action"
                   parent="button_menu_warranty"
                   sequence="9"/>
-<!--        <menuitem id="warranty_schedule"
+        <menuitem id="warranty_schedule"
                   action="buttons_warranty_schedule_action"
                   parent="button_menu_warranty"
                   sequence="10"/>
--->
+        <menuitem id="warranty_product"
+                  action="buttons_warranty_product_action"
+                  parent="button_menu_warranty"
+                  sequence="11"/>
+
 
     </data>
 </openerp>
