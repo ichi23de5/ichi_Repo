@@ -21,7 +21,7 @@ class AccountInvoiceLine(models.Model):
 
     completion_date = fields.Date('Syunkoubi', readonly=True)
     purchase_number = fields.Char('Purchase Number', readonly=True)
-#    description_sale = fields.Char('SO Explanation', readonly=True)
+    description_sale = fields.Char('SO Explanation')
 
 
 class AccountPropertyLine(models.Model):
@@ -133,5 +133,6 @@ class SaleOrderLine(models.Model):
             'account_analytic_id': self.order_id.project_id.id,
             'purchase_number': self.order_id.purchase_number,
             'completion_date': self.order_id.completion_date,
+            'description_sale': self.description_sale,
         }
         return res

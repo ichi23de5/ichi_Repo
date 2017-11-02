@@ -11,7 +11,7 @@ class ProductWarranty(models.Model):
     warranty_id = fields.Many2one('product.template', 'Name', required=True, domain="[('is_warranty','=',True)]")
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
-    action = fields.Boolean('Action')
+    action = fields.Boolean('Finish')
     property_war_id = fields.Many2one('property', 'Property warranty ID', index=True, ondelete='cascade', oldname='property_id', readonly=True)
 
     warranty_sch_ids = fields.One2many('product.warranty.schedule','warranty_sch_id', 'Schedule')
@@ -24,6 +24,17 @@ class ProductWarranty(models.Model):
             exp = start + relativedelta(years=period)
             self.update({'end_date': exp})
             return
+
+    ### test ###
+#    @api.multi
+#    def test_button(self):
+#        for line in self.warranty_sch_ids:
+#            count = self.warranty_id.count_inspection
+#            if count >= 1:
+#                self.env['product.warranty.schedule'].create({
+#                })
+
+
 
 class ProductWarrantySchedule(models.Model):
     _name = 'product.warranty.schedule'
@@ -42,9 +53,6 @@ class ProductWarrantySchedule(models.Model):
     warranty_sch_id = fields.Many2one('product.warranty', 'Property warranty ID', index=True, ondelete='cascade')
 
 
-
-
-
 class Product(models.Model):
     _inherit = 'product.template'
 
@@ -59,21 +67,26 @@ class SaleOrder(models.Model):
 
     @api.multi
     def test_button(self):
-        val_set = {}
         if any(line.product_tmpl_id.is_warranty == 1 for line in self.order_line):
             start = fields.Date.from_string(self.completion_date)
             for line in self.order_line:
-                if line.product_tmpl_id.is_warranty == 1:
-                    period = line.product_id.range_coverage
+                period = line.product_id.range_coverage
+                war = line.product_tmpl_id.is_warranty == 1
+                if war and period != 0:
                     exp = start + relativedelta(years=period)
-                    self.env['product.warranty'].create({
-                        'warranty_id' : line.product_id.id,
-                        'range_coverage' : period,
-                        'property_war_id' : line.order_id.property_id.id,
-#                        'active' : True,
-                        'start_date' : line.order_id.completion_date,
-                        'end_date' : exp,
-                })
+                    self.create_warranty(line, exp, period)
+                elif war and period == 0:
+                    exp = False
+                    self.create_warranty(line, exp, period)
         else:
-            raise UserError("Warranty item ga arimasen!!")
+            raise UserError(_("Warranty item ga arimasen!!"))
         return
+
+    def create_warranty(self, line, exp, period):
+        self.env['product.warranty'].create({
+            'warranty_id' : line.product_id.id,
+            'range_coverage' : period,
+            'property_war_id' : line.order_id.property_id.id,
+            'start_date' : line.order_id.completion_date,
+            'end_date' : exp,
+        })

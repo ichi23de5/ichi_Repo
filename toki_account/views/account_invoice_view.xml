@@ -20,6 +20,14 @@
                 <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='invoice_line_tax_ids']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='name']" position="after">
+                    <field name="description_sale"/>
+                    <field name="completion_date" invisible="1"/>
+                    <field name="purchase_number" invisible="1"/>
+                </xpath>
                 <notebook> 
                     <page string="Property Line"> 
                         <field name="property_line_ids"/> 
@@ -35,7 +43,7 @@
             <field name="inherit_id" ref="account.view_invoice_line_tree"/> 
             <field name="arch" type="xml"> 
                 <xpath expr="//field[@name='name']" position="after">
-                    <!--<field name="description_sale"/>-->
+                    <field name="description_sale"/>
                     <field name="completion_date"/>
                     <field name="purchase_number"/>
                 </xpath>

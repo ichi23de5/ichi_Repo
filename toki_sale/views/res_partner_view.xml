@@ -47,7 +47,7 @@
                 </xpath>
                 <xpath expr="//group/field[@name='supplier']" position="after">
                     <field name="outside_order" attrs="{'invisible': [('supplier','=', False)]}"/>
-                    <field name="maker" attrs="{'invisible': [('supplier','=', False)]}"/>
+                    <field name="maker"/>
                 </xpath>
             </field>
         </record>

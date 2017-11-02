@@ -21,6 +21,9 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Warranty">
+                    <header>
+                        <button string="test" name="test_button" type="object"/>
+                    </header>
                     <sheet>
                         <group>
                             <group>
@@ -82,15 +85,61 @@
                             <group name="warranty" string="Warranty">
                                 <field name="is_warranty"/>
                                 <field name="scope_of_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
-                                <field name="range_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
-                                <field name="count_inspection" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <label for="range_coverage" string="Hosyokikan" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <div attrs="{'invisible': [('is_warranty', '=', False)]}">
+                                    <field name="range_coverage" class="oe_inline"/> years
+                                </div>
+                                <label for="count_inspection" string="Count" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <div attrs="{'invisible': [('is_warranty', '=', False)]}">
+                                    <field name="count_inspection" class="oe_inline"/> times
+                                </div>
                             </group>
+                            <group/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+        <record id="product_template_add_warranty_tree" model="ir.ui.view">
+            <field name="name">product.template.add.warranty.tree</field>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <tree string="Warranty Product">
+                    <field name="name"/>
+                    <field name="description_sale"/>
+                    <field name="categ_id"/>
+                    <field name="list_price"/>
+                </tree>
+            </field>
+        </record>
+        <record id="product_product_add_warranty_form" model="ir.ui.view">
+            <field name="name">product.product.add.warranty.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <notebook>
+                    <page string="Product Info" attrs="{'invisible': [('type', '!=', 'service')]}">
+                        <group>
+                            <group name="warranty" string="Warranty">
+                                <field name="is_warranty"/>
+                                <field name="scope_of_coverage" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <label for="range_coverage" string="Hosyokikan" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <div attrs="{'invisible': [('is_warranty', '=', False)]}">
+                                    <field name="range_coverage" class="oe_inline"/> years
+                                </div>
+                                <label for="count_inspection" string="Count" attrs="{'invisible': [('is_warranty', '=', False)]}"/>
+                                <div attrs="{'invisible': [('is_warranty', '=', False)]}">
+                                    <field name="count_inspection" class="oe_inline"/> times
+                                </div>
+                            </group>
+                            <group/>
                         </group>
                     </page>
                 </notebook>
             </field>
         </record>
 
+        <!-- debug view -->
         <record id="view_sale_order_form_test_debug" model="ir.ui.view">
             <field name="name">sale.order.form.add.debug</field>
             <field name="model">sale.order</field>
@@ -124,7 +173,7 @@
             <field name="res_model">product.template</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name='view_id' ref='product.product_template_tree_view'/>
+            <field name='view_id' ref='product_template_add_warranty_tree'/>
             <field name="domain">[('is_warranty', '=', True)]</field>
         </record>
 
@@ -132,10 +181,13 @@
         <!-- top level menu: no parent -->
         <menuitem id="button_menu_warranty" name="Warranty management"
                   parent="main_button_menu"/>
+
+        <!-- debug menu -->
         <menuitem id="warranty"
                   action="buttons_warranty_action"
                   parent="button_menu_warranty"
                   sequence="9"/>
+
         <menuitem id="warranty_schedule"
                   action="buttons_warranty_schedule_action"
                   parent="button_menu_warranty"
