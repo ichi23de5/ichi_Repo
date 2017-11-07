@@ -20,5 +20,6 @@
                 "views/sale_president_view.xml", 
                 "views/product_view.xml",
                 "views/res_partner_view.xml",
+                "views/property_view.xml"
                 ],
 }

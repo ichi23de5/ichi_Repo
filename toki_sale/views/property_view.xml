@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="sale_property_view_tree">
+            <field name="name">sale.property.tree</field>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <tree string="SO for Property">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="version"/>
+                    <field name="order_date"/>
+                    <field name="partner_id"/>
+                    <field name="amount_untaxed"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="property_so_action" model="ir.actions.act_window">
+            <field name="name">Property Sale Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale_property_view_tree"/>
+            <field name="domain"></field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no related Sale Order record.
+                </p><p>
+                    Create So.
+                </p>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="property_view_form_add_button">
+            <field name="name">property.view.form.add.button</field>
+            <field name="model">property</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="property.property_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="%(property_so_action)d" class="oe_stat_button" type="action" icon="fa-usd">
+                        <field name="so_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

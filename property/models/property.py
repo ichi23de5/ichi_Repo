@@ -17,3 +17,10 @@ class Property(models.Model):
 
     warranty_ids = fields.One2many('product.warranty','property_war_id', 'Warranty')
     inspection_ids = fields.One2many('property.inspection','property_ins_id', 'Inspection')
+    so_count = fields.Integer('Sale Order', compute='_compute_so_count')
+
+    @api.multi
+    def _compute_so_count(self):
+        for count in self:
+            so = self.env['sale.order'].search([('property_id', '=', self.name)])
+            count.so_count = len(so)
