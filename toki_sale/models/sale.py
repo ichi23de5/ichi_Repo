@@ -24,7 +24,7 @@ class SaleOrder(models.Model):
         ('renewal', 'ReNewal'),
         ('add', 'Extention'),
         ('building', 'Shinchiku'),
-        ('inspection', 'Inspection'),
+        ('inspection', 'Hosyu Tenken'),
         ('goods', 'Sale of Product'),
         ('other', 'Others')
         ],

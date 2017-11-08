@@ -25,7 +25,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="sale_property_view_tree"/>
-            <field name="domain"></field>
+            <!--<field name="domain">[]</field>-->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     There is no related Sale Order record.
@@ -41,7 +41,7 @@
             <field name="inherit_id" ref="property.property_view_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='button_box']" position="inside">
-                    <button name="%(property_so_action)d" class="oe_stat_button" type="action" icon="fa-usd">
+                    <button name="property_so_action_button" class="oe_stat_button" type="object" icon="fa-usd">
                         <field name="so_count" widget="statinfo"/>
                     </button>
                 </xpath>
