@@ -9,7 +9,7 @@
     'website': 'http://www.toki.com',
     'version': '9.0.1.0.0',
     'sequence': 1,
-    'depends': ['sale_layout','sale','base','sale_product_set'],
+    'depends': ['sale_layout','sale','base','sale_product_set','property'],
     'data': [
 #             'security/ir.model.access.csv',
              'views/category_view.xml',

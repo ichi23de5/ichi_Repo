@@ -36,6 +36,7 @@ class CloudOrder(models.Model):
     end_user = fields.Char('User Name')
     end_phone = fields.Char('User Phone Number')
     contact_check = fields.Boolean('Contact OK')
+    contract_id = fields.Char('Contract ID')
 
     cloud_partner_id = fields.Many2one('cloud.partner', 'Management Company', required=True, domain="[('partner_id', '=', partner_id)]", help='cloud ni toroku suru kanrigaisya.')
     dvr1 = fields.Many2one('product.product', string='dvr1', domain="[('type','=','product'), ('is_cloud','=',True)]")
@@ -122,7 +123,7 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template' 
 
     rate_id = fields.Many2one('cloud.rate.plan', 'CLOUD Rate Plan')
-
+    is_cloud = fields.Boolean('Cloud Flag')
 
 
 

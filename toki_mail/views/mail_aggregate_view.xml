@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+	<record id="mail_aggregate_view_form" model="ir.ui.view">
+	    <field name="name">mail.aggregate.view.form</field>
+	    <field name="model">mail.aggregate</field>
+	    <field name="type">form</field>
+	    <field name="arch" type="xml">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="property"/>
+                        </group>
+                        <group/>
+                    </group>
+                    <field name="mail_message_ids">
+                    
+                    </field>
+                </sheet>
+            </field>
+        </record>
+        <record id="action_view_mail_aggregate" model="ir.actions.act_window">
+            <field name="name">action.view.mail.aggregate</field>
+            <field name="res_model">mail.aggregate</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mail_aggregate_view_form"/>
+        </record>
+        <menuitem name="MailAggregate" id="menu_mail_aggregate" parent="base.menu_email" action="action_view_mail_aggregate"/>
+
+    </data>
+</openerp>

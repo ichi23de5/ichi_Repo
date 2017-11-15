@@ -78,7 +78,8 @@ class SaleOrderLine(models.Model):
         if product.type:
             if product.type == "product":
                 self.update({"sale_layout_cat_id": 1})
-            elif product.type == "service" and not is_warranty:
+#            elif product.type == "service":
+            elif product.type == "service" and not self.product_id.is_warranty:
                 self.update({"sale_layout_cat_id": 2})
         return {'domain': domain}
 

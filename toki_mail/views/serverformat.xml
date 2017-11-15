@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="tkcloud_receive" model="fetchmail.server">
+            <field name="name">toki test receive</field>
+            <field name="type">pop</field>
+            <field name="server">mail.toyo-kiki.co.jp</field>
+            <field name="port">995</field>
+            <field name="user">gmp_ichi@toyo-kiki.co.jp</field>
+            <field name="password">fpewo8Td</field>
+            <field name="is_ssl" eval="True"/>
+        </record>
+        <record id="tkcloud_outgoing" model="ir.mail_server">
+            <field name="name">toki test outgoing</field>
+            <field name="smtp_host">mail.toyo-kiki.co.jp</field>
+            <field name="smtp_port">587</field>
+            <field name="smtp_encryption">starttls</field>
+            <field name="smtp_user">gmp_ichi@toyo-kiki.co.jp</field>
+            <field name="smtp_pass">fpewo8Td</field>
+        </record>
+
+
+    </data>
+</openerp>
+
