@@ -252,8 +252,8 @@
 
         <!-- Side Menu Sales -->
         <menuitem id="button_menu_cloud" name="CLOUD" 
-                  parent="base.menu_sales"
-                  sequence="20"/>
+                  parent="property.button_menu_warranty"
+                  sequence="2"/>
         <menuitem id="cloud" action="cloud_order_view_action" 
                   parent="button_menu_cloud"/>
 

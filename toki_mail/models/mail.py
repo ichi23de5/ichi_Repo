@@ -17,4 +17,12 @@ class MailAggregate(models.Model):
 
 #    property_id = fields.Many2one('property', 'Property')
     property = fields.Char('Property')
-    
+
+    @api.multi
+    def compute_mail(self):
+        messages = self.env['mail.message']
+        msg_count = messages.search_count(['message_type', '=', 'email'])    
+#        msg_count = len('messages.id')
+        name = "There are " + str(msg_count) + " messages in Box!"
+        self.create({ "property" : name })
+ 
