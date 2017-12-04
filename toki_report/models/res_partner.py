@@ -12,6 +12,8 @@ class PartnerTemplate(models.Model):
     maker_flag = fields.Boolean('Display Maker Name')
     code_flag = fields.Boolean('Display Code', help='Tansyukukataban wo hyouji sezu seishiki kataban wo dasu.')
     warranty_flag = fields.Boolean('Display Warranty period', help='Hosyokikan wo hyouji')
+    address_flag = fields.Boolean('Display Address')
+
 
 class ResPartner(models.Model):
     _inherit = "res.partner"

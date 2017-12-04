@@ -17,6 +17,7 @@
         "views/paperformat.xml",
         "views/report_product_pricelist.xml",
         "wizards/product_pricelist_print_view.xml",
+        "views/debug_view.xml",
 #        "security/ir.model.access.csv",
     ],
 }

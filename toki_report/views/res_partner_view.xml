@@ -29,6 +29,7 @@
                             <field name="maker_flag"/>
                             <field name="code_flag"/>
                             <field name="warranty_flag"/>
+                            <field name="address_flag"/>
                         </group>
                     </sheet>
                 </form>
