@@ -12,3 +12,5 @@ class ProductSet(models.Model):
     set_line_ids = fields.One2many(
         comodel_name='product.set.line', inverse_name='product_set_id',
         string='Products')
+    is_set = fields.Boolean('Kotei kakaku plan', help='Is this HLS Koteikakaku plan?')
+

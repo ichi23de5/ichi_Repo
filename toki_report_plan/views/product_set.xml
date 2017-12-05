@@ -24,6 +24,7 @@
                         <h1>
                             <field name="name"/>
                         </h1>
+                        <field name="is_set"/>
                     </div>
                     <notebook>
                         <page string="Products">

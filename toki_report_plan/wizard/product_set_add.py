@@ -35,10 +35,28 @@ class ProductSetAdd(models.TransientModel):
 
     def prepare_sale_order_line_data(self, sale_order_id, set, set_line,
                                      max_sequence=0):
+        """ change category for report """
+        set = self.product_set_id.is_set
+        type = set_line.product_id.type
+#        var = set_line.price_unit
+        if type:
+            if set:
+                layout = 3
+            elif not set and type == "product":
+                ## Kikihi = 1  self.update({"sale_layout_cat_id": 1})
+                layout = 1
+            elif not set and type == "service":
+                ## Sekouhi = 2 self.update({"sale_layout_cat_id": 2})
+                layout = 2
+
+
         return {
             'order_id': sale_order_id,
             'product_id': set_line.product_id.id,
             'product_uom_qty': set_line.quantity * self.quantity,
             'product_uom': set_line.product_id.uom_id.id,
             'sequence': max_sequence + set_line.sequence,
+            'description_sale': set_line.product_id.description_sale, 
+ 
+            'sale_layout_cat_id': layout 
         }

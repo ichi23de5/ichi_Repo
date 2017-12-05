@@ -16,7 +16,7 @@
             <field name="sequence">2</field>
         </record>
         <record id="layout_category_discount" model="sale_layout.category">
-            <field name="name">Discount Price</field>
+            <field name="name">Set Price</field>
             <field name="subtotal" eval="True"/>
             <field name="separator" eval="True"/>
             <field name="pagebreak" eval="False"/>
