@@ -8,7 +8,7 @@ class SaleOrder(models.Model):
     ### categoly subtotal with sale.layout ###
     product_subtotal = fields.Monetary('Product Subtotal', store=False, readonly=True, compute='_compute_subtotal')
     service_subtotal = fields.Monetary('Service Subtotal', store=False, readonly=True, compute='_compute_subtotal')
-    discount_subtotal = fields.Monetary('Discount Subtotal', store=False, readonly=True, compute='_compute_subtotal')
+    set_subtotal = fields.Monetary('Set Subtotal', store=False, readonly=True, compute='_compute_subtotal')
     other_subtotal = fields.Monetary('Other Subtotal', store=False, readonly=True, compute='_compute_subtotal')
 
 
@@ -21,11 +21,11 @@ class SaleOrder(models.Model):
         datas4 = 0
         for category, lines in groupby(self.order_line, lambda l: l.sale_layout_cat_id):
             for c_line in lines:
-                if c_line.sale_layout_cat_id.id == 1:
+                if c_line.sale_layout_cat_id.id == 2:
                     datas = datas + c_line.price_subtotal
-                elif c_line.sale_layout_cat_id.id == 2:
+                elif c_line.sale_layout_cat_id.id == 3:
                     datas2 = datas2 + c_line.price_subtotal
-                elif  c_line.sale_layout_cat_id.id == 3:
+                elif  c_line.sale_layout_cat_id.id == 1:
                     datas3 = datas3 + c_line.price_subtotal
                 else:
                     pass
@@ -35,7 +35,7 @@ class SaleOrder(models.Model):
                 datas4 = self.amount_untaxed - (datas + datas2)
             self.update({'product_subtotal': datas})
             self.update({'service_subtotal': datas2})
-            self.update({'discount_subtotal': datas3})
+            self.update({'set_subtotal': datas3})
             self.update({'other_subtotal': datas4})
 
 
@@ -77,9 +77,9 @@ class SaleOrderLine(models.Model):
 
         if product.type:
             if product.type == "product":
-                self.update({"sale_layout_cat_id": 1})
-            elif product.type == "service" and not self.product_id.is_warranty:
                 self.update({"sale_layout_cat_id": 2})
+            elif product.type == "service" and not self.product_id.is_warranty:
+                self.update({"sale_layout_cat_id": 3})
         return {'domain': domain}
 
 

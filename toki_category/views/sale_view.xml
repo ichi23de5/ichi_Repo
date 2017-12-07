@@ -9,7 +9,7 @@
                 <xpath expr="//field[@name='amount_total']" position="after">
                     <field name="product_subtotal"/>
                     <field name="service_subtotal"/>
-                    <field name="discount_subtotal"/>
+                    <field name="set_subtotal"/>
                     <field name="other_subtotal"/>
                 </xpath>
             </field>

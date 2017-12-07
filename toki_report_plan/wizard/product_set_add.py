@@ -41,13 +41,13 @@ class ProductSetAdd(models.TransientModel):
 #        var = set_line.price_unit
         if type:
             if set:
-                layout = 3
+                layout = 1
             elif not set and type == "product":
                 ## Kikihi = 1  self.update({"sale_layout_cat_id": 1})
-                layout = 1
+                layout = 2
             elif not set and type == "service":
                 ## Sekouhi = 2 self.update({"sale_layout_cat_id": 2})
-                layout = 2
+                layout = 3
 
 
         return {
@@ -56,7 +56,6 @@ class ProductSetAdd(models.TransientModel):
             'product_uom_qty': set_line.quantity * self.quantity,
             'product_uom': set_line.product_id.uom_id.id,
             'sequence': max_sequence + set_line.sequence,
-            'description_sale': set_line.product_id.description_sale, 
- 
+            'description_sale': set_line.product_id.description_sale,  
             'sale_layout_cat_id': layout 
         }
